@@ -1,0 +1,722 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>Rudimentos da teoria de problemas de valor inicial</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 60--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse53.html" >next</a>] [<a 
+href="#tailmainse52.html">tail</a>] [<a 
+href="mainch10.html#mainse52.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">10.1   </span> <a 
+ id="x103-18900010.1"></a>Rudimentos da teoria de problemas de valor inicial</h3>
+<!--l. 61--><p class="noindent" >Uma questão fundamental no estudo dos problemas de valor iniciais
+consiste em analisar se um dado problema é um problema <span 
+class="ec-lmbx-12">bem posto</span>. Ou
+seja,
+      <ul class="itemize1">
+      <li class="itemize">
+      <!--l. 63--><p class="noindent" >Existe uma solução para o problema de valor inicial?
+      </li>
+      <li class="itemize">
+      <!--l. 64--><p class="noindent" >A solução é única?
+      </li>
+      <li class="itemize">
+      <!--l. 65--><p class="noindent" >A solução do problema de valor inicial é pouco sensível a pequenas
+      perturbações nas condições iniciais?</li></ul>
+<!--l. 68--><p class="indent" >   A fim de responder tais questões, precisamos definir o conceito de função
+Lipschitz contínua, ou simplesmente, função Lipschitz <a 
+ id="dx103-189001"></a>
+   <div class="newtheorem">
+<!--l. 69--><p class="noindent" ><span class="head">
+<a 
+ id="x103-189002r1"></a>
+<span 
+class="ec-lmbx-12">Defini</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o 10.1.1.</span>  </span><span 
+class="ec-lmri-12">Uma fun</span><span 
+class="ec-lmri-12">ç</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o</span>
+<!--l. 70--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>u</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math> <span 
+class="ec-lmri-12">é</span> <span 
+class="ec-lmri-12">Lipschitz cont</span><span 
+class="ec-lmri-12">í</span><span 
+class="ec-lmri-12">nua</span>
+<span 
+class="ec-lmri-12">em um intervalo </span><!--l. 70--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>I</mi></math>
+<span 
+class="ec-lmri-12">em </span><!--l. 70--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi></math> <span 
+class="ec-lmri-12">se existe</span>
+<span 
+class="ec-lmri-12">uma constante </span><!--l. 70--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>L</mi></math><span 
+class="ec-lmri-12">,</span>
+<span 
+class="ec-lmri-12">tal que </span><!--l. 70--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+class="MathClass-op">&#x2200;</mi><mo> &#x2061;<!--FUNCTION APPLICATION--></mo><mi 
+>t</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo> <mo 
+class="MathClass-open" stretchy="false">[</mo><mi 
+>a</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>b</mi><mo 
+class="MathClass-close" stretchy="false">]</mo></math> <span 
+class="ec-lmri-12">e</span>
+<!--l. 70--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>v</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo> <mi 
+>&#x211D;</mi></math><span 
+class="ec-lmri-12">,</span>
+<table class="equation"><tr><td>
+<!--l. 71--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 71--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                    <mstyle 
+   id="x103-189003r7"  class="label" ></mstyle><!--endlabel--><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>u</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>v</mi><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-rel" stretchy="false">|</mo><mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mi 
+>L</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>u</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>v</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>,</mi><mspace width="0.33em" class="nbsp" /><mspace width="0.33em" class="nbsp" /><mi 
+class="MathClass-op">&#x2200;</mi><mo> &#x2061;<!--FUNCTION APPLICATION--></mo><mi 
+>t</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo> <mi 
+>I</mi><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(10.7)</td></tr></table>
+   </div>
+<!--l. 72--><p class="indent" >
+<!--l. 74--><p class="indent" >   O seguinte resultado estabelece a existência e unicidade de solução para
+determinada classe de problemas de valor inicial:
+   <div class="newtheorem">
+<!--l. 75--><p class="noindent" ><span class="head">
+<a 
+ id="x103-189004r1"></a>
+<span 
+class="ec-lmbx-12">Teorema 10.1.1 </span>(Teorema de Picard-Lindelöf)<span 
+class="ec-lmbx-12">.</span>  </span><span 
+class="ec-lmri-12">Seja</span>
+<!--l. 75--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>u</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math> <span 
+class="ec-lmri-12">cont</span><span 
+class="ec-lmri-12">í</span><span 
+class="ec-lmri-12">nua</span>
+<span 
+class="ec-lmri-12">em </span><!--l. 75--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>t</mi></math> <span 
+class="ec-lmri-12">e</span>
+<span 
+class="ec-lmri-12">Lipschitz em </span><!--l. 75--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi></math><span 
+class="ec-lmri-12">.</span>
+<span 
+class="ec-lmri-12">Ent</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o o seguinte problema de valor inicial</span><a 
+ id="dx103-189005"></a> <table class="equation"><tr><td>
+<!--l. 76--><p class="indent" >
+<!--l. 76--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x103-189006r8"  class="label" ></mstyle><!--endlabel-->   <mtable 
+class="equation"><mtr><mtd>
+   <mtable  
+columnalign="right left" class="split">
+<mtr class="split-mtr"><mtd 
+class="split-mtd">  <msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-punc" stretchy="false">,</mo></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd"> <mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msup><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>a</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo></mtd>
+   </mtr></mtable>                                                                       </mtd><mtd>
+   </mtd></mtr></mtable>
+</math></td><td class="eq-no">(10.8)</td></tr></table>
+                                                                          
+
+                                                                          
+   <span 
+class="ec-lmri-12">Admite uma </span><span 
+class="ec-lmri-12">ú</span><span 
+class="ec-lmri-12">nica solu</span><span 
+class="ec-lmri-12">ç</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o em um intervalo</span>
+<!--l. 82--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">[</mo><msup><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msup 
+><mi 
+>,</mi><msup><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>f</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></math> <span 
+class="ec-lmri-12">com</span>
+<!--l. 82--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>f</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">&#x003E;</mo> <msup><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo></math>
+   </div>
+<!--l. 83--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 89--><p class="noindent" ><span class="head">
+<a 
+ id="x103-189007r2"></a>
+<span 
+class="ec-lmbx-12">Teorema 10.1.2 </span>(Dependência contínua na condição inicial)<span 
+class="ec-lmbx-12">.</span>  </span><span 
+class="ec-lmri-12">Se</span>
+<!--l. 90--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math> <span 
+class="ec-lmri-12">e</span>
+<!--l. 90--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>v</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>
+<span 
+class="ec-lmri-12">s</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o solu</span><span 
+class="ec-lmri-12">ç</span><span 
+class="ec-lmri-12">õ</span><span 
+class="ec-lmri-12">es do problema de valor inicial</span> (<a 
+href="#x103-189006r8">10.8<!--tex4ht:ref: eq:pvi_picard --></a>)<span 
+class="ec-lmri-12">, isto </span><span 
+class="ec-lmri-12">é</span><span 
+class="ec-lmri-12">, com</span>
+<!--l. 90--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>u</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math> <span 
+class="ec-lmri-12">cont</span><span 
+class="ec-lmri-12">í</span><span 
+class="ec-lmri-12">nua em</span>
+<!--l. 90--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>t</mi></math> <span 
+class="ec-lmri-12">e Lipschitz</span>
+<span 
+class="ec-lmri-12">em </span><!--l. 90--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi></math> <span 
+class="ec-lmri-12">Lipschitz</span>
+<span 
+class="ec-lmri-12">com </span><!--l. 90--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msup 
+></math><span 
+class="ec-lmri-12">,</span>
+<!--l. 90--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>v</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>v</mi></mrow><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msup 
+></math><span 
+class="ec-lmri-12">,</span>
+<span 
+class="ec-lmri-12">ent</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o </span><table class="equation"><tr><td>
+<!--l. 91--><p class="indent" >
+<!--l. 91--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                     <mstyle 
+   id="x103-189008r9"  class="label" ></mstyle><!--endlabel--><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>v</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-rel" stretchy="false">|</mo><mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mi 
+>L</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><msup><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msup 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>v</mi></mrow><mrow 
+>
+<mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(10.9)</td></tr></table>
+   </div>
+<!--l. 92--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 94--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x103-190000"></a>Exercícios resolvidos</h4>
+   <div class="newtheorem">
+<!--l. 96--><p class="noindent" ><span class="head">
+<a 
+ id="x103-190001r1"></a>
+<span 
+class="ec-lmbx-12">ER 10.1.1.</span>  </span>A função <!--l. 96--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mi 
+>,</mi><mi 
+>u</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msqrt><mrow><mi 
+>u</mi></mrow></msqrt><mi 
+>,</mi><mspace width="0.33em" class="nbsp" /><mspace width="0.33em" class="nbsp" /><mi 
+>u</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2265;</mo> <mn>0</mn></math> não
+é uma função Lipschitz em <!--l. 96--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi></math>,
+pois <table class="equation"><tr><td>
+<!--l. 97--><p class="indent" >
+<!--l. 97--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+        <mstyle 
+   id="x103-190002r10"  class="label" ></mstyle><!--endlabel--><munder class="msub"><mrow 
+><mtext class="qopname">lim</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo> </mrow><mrow 
+><mi 
+>u</mi><mo 
+class="MathClass-rel" stretchy="false">&#x2192;</mo><mn>0</mn><mo 
+class="MathClass-bin" stretchy="false">+</mo></mrow></munder 
+><mfrac><mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mi 
+>,</mi><mi 
+>u</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mi 
+>,</mi><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow>
+   <mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>u</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>0</mn><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow></mfrac>     <mo 
+class="MathClass-rel" stretchy="false">=</mo><munder class="msub"><mrow 
+><mtext class="qopname"> lim</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo> </mrow><mrow 
+><mi 
+>u</mi><mo 
+class="MathClass-rel" stretchy="false">&#x2192;</mo><mn>0</mn><mo 
+class="MathClass-bin" stretchy="false">+</mo></mrow></munder 
+><mfrac><mrow 
+><msqrt><mrow><mi 
+>u</mi></mrow></msqrt></mrow> 
+ <mrow 
+><mi 
+>u</mi></mrow></mfrac>  <mo 
+class="MathClass-rel" stretchy="false">=</mo><munder class="msub"><mrow 
+><mtext class="qopname"> lim</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo> </mrow><mrow 
+><mi 
+>u</mi><mo 
+class="MathClass-rel" stretchy="false">&#x2192;</mo><mn>0</mn><mo 
+class="MathClass-bin" stretchy="false">+</mo></mrow></munder 
+>  <mfrac><mrow 
+><mn>1</mn></mrow> 
+<mrow 
+><msqrt><mrow><mi 
+>u</mi></mrow></msqrt></mrow></mfrac> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>&#x221E;</mi>
+</math></td><td class="eq-no">(10.10)</td></tr></table>
+<!--l. 98--><p class="indent" >   Mostre que o seguinte problema de valor inicial não admite solução
+única:
+                                                                          
+
+                                                                          
+<!--tex4ht:inline--><!--l. 99--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1">  <mfrac><mrow 
+><mi 
+>d</mi><mi 
+>u</mi></mrow>
+<mrow 
+><mi 
+>d</mi><mi 
+>t</mi></mrow></mfrac> </mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <msqrt><mrow>
+<mi 
+>u</mi></mrow></msqrt><mi 
+>,</mi><mspace width="0.33em" class="nbsp" /><mspace width="0.33em" class="nbsp" /><mi 
+>u</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003E;</mo> <mn>0</mn><mi 
+>,</mi></mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.11)</mtext><mtext 
+   id="x103-190003r10.11"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1"> <mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mn>0</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo>        </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.12)</mtext><mtext 
+   id="x103-190003r10.12"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>                                                    </mtr></mtable>
+</math>
+<!--l. 102--><p class="nopar" >
+   </div>
+<!--l. 103--><p class="indent" >    <!--resol begin--> <div class="resol"><span 
+class="ec-lmbx-12">Solu</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o. </span>A função identicamente nula,
+<!--l. 105--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn></math>,
+satisfaz a equação diferencial e a condição de contorno, logo
+é uma solução do problema de valor inicial. No entanto, a
+função<span class="footnote-mark"><a 
+href="main104.html#fn1x13"><sup class="textsuperscript">1</sup></a></span><a 
+ id="x103-190004f1"></a> 
+<!--l. 105--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><msup><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow> 
+ <mrow 
+><mn>4</mn></mrow></mfrac> </math> satisfaz a condição
+inicial, pois <!--l. 105--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn></math> e a equação
+diferencial pois <!--l. 105--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mfrac><mrow 
+><mi 
+>d</mi><mi 
+>u</mi></mrow>
+<mrow 
+><mi 
+>d</mi><mi 
+>t</mi></mrow></mfrac>  <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><mi 
+>t</mi></mrow> 
+<mrow 
+><mn>2</mn></mrow></mfrac>  <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msqrt><mrow><mfrac><mrow 
+><msup><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mn>2</mn> </mrow> </msup 
+> </mrow>
+ <mrow 
+><mn>4</mn></mrow></mfrac></mrow></msqrt> </math>.
+<!--l. 107--><p class="noindent" >De fato, qualquer função do tipo <table class="equation"><tr><td>
+<!--l. 108--><p class="indent" >
+<!--l. 108--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x103-190006r13"  class="label" ></mstyle><!--endlabel--><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> {</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <mn>0</mn><mi 
+>,</mi>      </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>0</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mi 
+>t</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <msub><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+>  </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left">  <mfrac><mrow 
+><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow> 
+     <mrow 
+><mn>4</mn></mrow></mfrac>     <mi 
+>,</mi> </mtd><mtd 
+class="array-td"  columnalign="left"> <mi 
+>t</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003E;</mo> <msub><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+>          </mtd></mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left">  </mtd></mtr> <!--ll--></mtable>                                                                                                  </mrow><mo fence="true" form="postfix"></mo></mrow>
+</math></td><td class="eq-no">(10.13)</td></tr></table>
+                                                                          
+
+                                                                          
+<!--l. 114--><p class="indent" >   é solução do problema de valor inicial dado.
+                                                                          <div class="flushright" 
+>
+<!--l. 115--><p class="noindent" >
+<!--l. 115--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-ord">&#x2662;</mo></math></div>
+<!--l. 115--><p class="noindent" ></div> <!--resol end-->
+   <h4 class="likesubsectionHead"><a 
+ id="x103-191000"></a>Exercícios</h4>
+<div class="center" 
+>
+<!--l. 119--><p class="noindent" >
+<div class="tabular"> <table id="TBL-415" class="tabular" 
+rules="groups" 
+><colgroup id="TBL-415-1g"><col 
+id="TBL-415-1"></colgroup><tr 
+class="hline"><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-415-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-415-1-1"  
+class="td11">  Esta seção carece de exercícios. Participe da sua escrita.    </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-415-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-415-2-1"  
+class="td11">                      Veja como em:                                  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-415-3-"><td  style="text-align:center; white-space:nowrap;" id="TBL-415-3-1"  
+class="td11"> <a 
+href="https://github.com/livroscolaborativos/CalculoNumerico" class="url" ><span 
+class="ec-lmtt-12">https://github.com/livroscolaborativos/CalculoNumerico</span></a> </td>
+</tr><tr 
+class="hline"><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-415-4-"><td  style="text-align:center; white-space:nowrap;" id="TBL-415-4-1"  
+class="td11">                                                        </td></tr></table>      </div></div>
+                                                                          
+
+                                                                          
+   <!--l. 122--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse53.html" >next</a>] [<a 
+href="mainse52.html" >front</a>] [<a 
+href="mainch10.html#mainse52.html" >up</a>] </p></div>
+<!--l. 122--><p class="indent" >   <a 
+ id="tailmainse52.html"></a>   
+</body></html> 

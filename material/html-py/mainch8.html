@@ -1,0 +1,114 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>8 Derivaçao numérica</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 3--><div class="crosslinks"><p class="noindent">[<a 
+href="mainch9.html" >next</a>] [<a 
+href="mainch7.html" >prev</a>] [<a 
+href="mainch7.html#tailmainch7.html" >prev-tail</a>] [<a 
+href="#tailmainch8.html">tail</a>] [<a 
+href="main.html#mainch8.html" >up</a>] </p></div>
+   <h2 class="chapterHead"><span class="titlemark">Capítulo&#x00A0;8</span><br /><a 
+ id="x78-1310008"></a>Derivação numérica</h2>
+<a 
+ id="dx78-131001"></a>
+<!--l. 5--><p class="noindent" >Nesta seção, trataremos das estratégias numéricas para aproximação de
+derivadas de funções reais. Com as técnicas abordadas, é possível calcular
+aproximadamente a derivada de uma função a partir de um conjunto discreto de
+pontos <!--l. 5--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">{</mo><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">}</mo></mrow><mrow 
+><mi 
+>i</mi><mo 
+class="MathClass-rel" stretchy="false">=</mo><mn>1</mn></mrow><mrow 
+><mi 
+>n</mi></mrow></msubsup 
+></math>.
+Começamos discutindo as chamadas <span 
+class="ec-lmbx-12">aproxima</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">õ</span><span 
+class="ec-lmbx-12">es por diferen</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">as</span>
+<span 
+class="ec-lmbx-12">finitas</span><a 
+ id="dx78-131002"></a> e, então, as aproximações de derivadas via ajuste ou interpolação.
+<!--l. 11--><p class="indent" >   Ao longo deste capítulo, assumiremos que as seguintes bibliotecas e
+módulos <span class="obeylines-h"><code class="verb">Python</code></span> estão importados:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-64">
+import&#x00A0;numpy&#x00A0;as&#x00A0;np
+import&#x00A0;matplotlib.pyplot&#x00A0;as&#x00A0;plt
+</pre>
+<!--l. 15--><p class="nopar" >
+   <div class="sectionTOCS">
+   <span class="sectionToc" >8.1 <a 
+href="mainse37.html#x79-1320008.1">Diferenças finitas</a></span>
+<br />   <span class="subsectionToc" >8.1.1 <a 
+href="mainse37.html#x79-1330008.1.1" id="QQ2-79-163">Diferenças finitas via série de Taylor</a></span>
+<br />   <span class="subsectionToc" >8.1.2 <a 
+href="mainse37.html#x79-1370008.1.2" id="QQ2-79-168">Erros de arredondamento</a></span>
+<br />   <span class="sectionToc" >8.2 <a 
+href="mainse38.html#x84-1400008.2">Diferença finita para derivada segunda</a></span>
+<br />   <span class="sectionToc" >8.3 <a 
+href="mainse39.html#x85-1430008.3">Obtenção de fórmulas por polinômios interpoladores</a></span>
+<br />   <span class="subsectionToc" >8.3.1 <a 
+href="mainse39.html#x85-1440008.3.1" id="QQ2-85-176">Exercícios resolvidos</a></span>
+<br />   <span class="sectionToc" >8.4 <a 
+href="mainse40.html#x86-1460008.4">Fórmulas de diferenças finitas</a></span>
+<br />   <span class="sectionToc" >8.5 <a 
+href="mainse41.html#x87-1490008.5">Derivada via ajuste ou interpolação</a></span>
+<br />   <span class="sectionToc" >8.6 <a 
+href="mainse42.html#x88-1520008.6">Exercícios finais</a></span>
+   </div>
+
+
+
+
+
+                                                                          
+
+                                                                          
+   <!--l. 6--><div class="crosslinks"><p class="noindent">[<a 
+href="mainch9.html" >next</a>] [<a 
+href="mainch7.html" >prev</a>] [<a 
+href="mainch7.html#tailmainch7.html" >prev-tail</a>] [<a 
+href="mainch8.html" >front</a>] [<a 
+href="main.html#mainch8.html" >up</a>] </p></div>
+<!--l. 6--><p class="indent" >   <a 
+ id="tailmainch8.html"></a>  
+</body></html> 

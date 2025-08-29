@@ -1,0 +1,496 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>Derivada via ajuste ou interpolaçao</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 933--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse42.html" >next</a>] [<a 
+href="mainse40.html" >prev</a>] [<a 
+href="mainse40.html#tailmainse40.html" >prev-tail</a>] [<a 
+href="#tailmainse41.html">tail</a>] [<a 
+href="mainch8.html#mainse41.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">8.5   </span> <a 
+ id="x87-1490008.5"></a>Derivada via ajuste ou interpolação</h3>
+<a 
+ id="dx87-149001"></a>
+<a 
+ id="dx87-149002"></a>
+<!--l. 935--><p class="noindent" >Dados os valores de uma função em um conjuntos de pontos
+<!--l. 935--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">{</mo><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">}</mo></mrow><mrow 
+><mi 
+>i</mi><mo 
+class="MathClass-rel" stretchy="false">=</mo><mn>1</mn></mrow><mrow 
+><mi 
+>N</mi></mrow></msubsup 
+></math>, as
+derivadas <!--l. 935--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+> <mrow><mo fence="true" form="prefix"> (</mo><mrow><mfrac><mrow 
+><mi 
+>d</mi><mi 
+>y</mi></mrow>
+<mrow 
+><mi 
+>d</mi><mi 
+>x</mi></mrow></mfrac> </mrow><mo fence="true" form="postfix">)</mo></mrow> </mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math>
+podem ser obtidas através da derivada de uma curva que melhor ajusta ou interpola
+os pontos. Esse tipo de técnica é necessário quando os pontos são muito
+espaçados entre si ou quando a função oscila muito. Por exemplo, dados os
+pontos <!--l. 935--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mi 
+>,</mi><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>,
+<!--l. 935--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mi 
+>,</mi><mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>,
+<!--l. 935--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>2</mn><mi 
+>,</mi><mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>,
+<!--l. 935--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>3</mn><mi 
+>,</mi><mn>9</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>, a
+parábola que melhor ajusta os pontos é <table class="equation"><tr><td>
+<!--l. 936--><p class="indent" >
+<!--l. 936--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                      <mstyle 
+   id="x87-149003r79"  class="label" ></mstyle><!--endlabel--><mi 
+>Q</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>9</mn><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mi 
+>,</mi><mn>4</mn><mn>5</mn><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mi 
+>,</mi><mn>7</mn><mn>5</mn><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(8.79)</td></tr></table>
+<!--l. 939--><p class="indent" >   Usando esse ajuste para calcular as derivadas, temos: <table class="equation"><tr><td>
+<!--l. 940--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 940--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                            <mstyle 
+   id="x87-149004r80"  class="label" ></mstyle><!--endlabel--><msup><mrow 
+><mi 
+>Q</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>4</mn><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn><mi 
+>,</mi><mn>5</mn><mi 
+>x</mi>
+</math></td><td class="eq-no">(8.80)</td></tr></table>
+<!--l. 943--><p class="indent" >   e
+<!--tex4ht:inline--><!--l. 944--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> </mtd><mtd 
+class="eqnarray-2">   </mtd><mtd 
+class="eqnarray-3">   <msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <msup><mrow 
+><mi 
+>Q</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>4</mn><mn>5</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo><mspace width="2em" class="qquad"/><mspace width="2em" class="qquad"/><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <msup><mrow 
+><mi 
+>Q</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>9</mn><mn>5</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo></mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(8.81)</mtext><mtext 
+   id="x87-149005r8.5"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1"> </mtd><mtd 
+class="eqnarray-2">   </mtd><mtd 
+class="eqnarray-3">   <msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mn>3</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <msup><mrow 
+><mi 
+>Q</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mn>3</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn><mi 
+>,</mi><mn>4</mn><mn>5</mn><mspace width="2em" class="qquad"/><mspace width="0.33em" class="nbsp" /><mstyle 
+class="text"><mtext  >e</mtext></mstyle><mspace width="0.33em" class="nbsp" /><mspace width="2em" class="qquad"/><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mn>4</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <msup><mrow 
+><mi 
+>Q</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mn>4</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>4</mn><mi 
+>,</mi><mn>9</mn><mn>5</mn> </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(8.82)</mtext></mtd>                      </mtr></mtable>
+</math>
+<!--l. 946--><p class="nopar" >
+<!--l. 948--><p class="indent" >   Agora olhe o gráfico da seguinte tabela de pontos.
+<div class="center" 
+>
+<!--l. 949--><p class="noindent" >
+                                                                          
+
+                                                                          
+<div class="tabular"> <table id="TBL-369" class="tabular" 
+rules="groups" 
+><colgroup id="TBL-369-1g"><col 
+id="TBL-369-1"></colgroup><colgroup id="TBL-369-2g"><col 
+id="TBL-369-2"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-369-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-369-1-1"  
+class="td11"> x  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-369-1-2"  
+class="td11">   y    </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-369-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-369-2-1"  
+class="td11"> 0  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-369-2-2"  
+class="td11"> 1,95  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-369-3-"><td  style="text-align:center; white-space:nowrap;" id="TBL-369-3-1"  
+class="td11"> 1  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-369-3-2"  
+class="td11"> 1,67  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-369-4-"><td  style="text-align:center; white-space:nowrap;" id="TBL-369-4-1"  
+class="td11"> 2  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-369-4-2"  
+class="td11"> 3,71  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-369-5-"><td  style="text-align:center; white-space:nowrap;" id="TBL-369-5-1"  
+class="td11"> 3  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-369-5-2"  
+class="td11"> 3,37  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-369-6-"><td  style="text-align:center; white-space:nowrap;" id="TBL-369-6-1"  
+class="td11"> 4  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-369-6-2"  
+class="td11"> 5,12  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-369-7-"><td  style="text-align:center; white-space:nowrap;" id="TBL-369-7-1"  
+class="td11"> 5  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-369-7-2"  
+class="td11"> 5,79  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-369-8-"><td  style="text-align:center; white-space:nowrap;" id="TBL-369-8-1"  
+class="td11"> 6  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-369-8-2"  
+class="td11"> 7,50  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-369-9-"><td  style="text-align:center; white-space:nowrap;" id="TBL-369-9-1"  
+class="td11"> 7  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-369-9-2"  
+class="td11"> 7,55  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-369-10-"><td  style="text-align:center; white-space:nowrap;" id="TBL-369-10-1"  
+class="td11"> 8  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-369-10-2"  
+class="td11"> 9,33  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-369-11-"><td  style="text-align:center; white-space:nowrap;" id="TBL-369-11-1"  
+class="td11"> 9  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-369-11-2"  
+class="td11"> 9,41  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-369-12-"><td  style="text-align:center; white-space:nowrap;" id="TBL-369-12-1"  
+class="td11"> 10  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-369-12-2"  
+class="td11"> 11,48  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-369-13-"><td  style="text-align:center; white-space:nowrap;" id="TBL-369-13-1"  
+class="td11">    </td></tr></table>                                                                   </div></div>
+<div class="center" 
+>
+<!--l. 978--><p class="noindent" >
+<!--l. 979--><p class="noindent" ><img 
+src="./cap_derivacao/pics/graf_der.svg" alt="PIC"  
+width="306" height="230" ></div>
+<!--l. 982--><p class="indent" >   Observe que as derivadas calculadas por diferenças finitas oscilam entre um
+valor pequeno e um grande em cada intervalo e além disso, a fórmula progressiva
+difere da regressiva significantemente. Por exemplo, por diferenças regressivas
+<!--l. 982--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>7</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mfrac><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>7</mn><mi 
+>,</mi><mn>5</mn><mn>5</mn><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>7</mn><mi 
+>,</mi><mn>5</mn><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow> 
+       <mrow 
+><mn>1</mn></mrow></mfrac>         <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>5</mn></math> e por diferenças
+progressivas <!--l. 982--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>7</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mfrac><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>9</mn><mi 
+>,</mi><mn>3</mn><mn>3</mn><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>7</mn><mi 
+>,</mi><mn>5</mn><mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow> 
+       <mrow 
+><mn>1</mn></mrow></mfrac>         <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>7</mn><mn>8</mn></math>.
+A melhor forma de calcular a derivada aqui é fazer um ajuste
+de curva. A reta que melhor ajusta os dados da tabela é
+<!--l. 982--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>2</mn><mn>5</mn><mn>2</mn><mn>2</mn><mn>7</mn><mn>2</mn><mn>7</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mi 
+>,</mi><mn>9</mn><mn>6</mn><mn>5</mn><mn>5</mn><mn>4</mn><mn>5</mn><mn>5</mn><mi 
+>x</mi></math>. Usando esse
+ajuste, temos <!--l. 982--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>7</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>0</mn><mi 
+>,</mi><mn>9</mn><mn>6</mn><mn>5</mn><mn>5</mn><mn>4</mn><mn>5</mn><mn>5</mn></math>.
+<!--l. 984--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x87-150000"></a>Exercícios resolvidos</h4>
+<div class="center" 
+>
+<!--l. 986--><p class="noindent" >
+<div class="tabular"> <table id="TBL-370" class="tabular" 
+rules="groups" 
+><colgroup id="TBL-370-1g"><col 
+id="TBL-370-1"></colgroup><tr 
+class="hline"><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-370-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-370-1-1"  
+class="td11"> Esta seção carece de exercícios resolvidos. Participe da sua escrita.  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-370-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-370-2-1"  
+class="td11">                         Veja como em:                                       </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-370-3-"><td  style="text-align:center; white-space:nowrap;" id="TBL-370-3-1"  
+class="td11">    <a 
+href="https://github.com/livroscolaborativos/CalculoNumerico" class="url" ><span 
+class="ec-lmtt-12">https://github.com/livroscolaborativos/CalculoNumerico</span></a>    </td>
+</tr><tr 
+class="hline"><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-370-4-"><td  style="text-align:center; white-space:nowrap;" id="TBL-370-4-1"  
+class="td11">                                                              </td></tr></table></div></div>
+                                                                          
+
+                                                                          
+<!--l. 988--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x87-151000"></a>Exercícios</h4>
+<div class="center" 
+>
+<!--l. 990--><p class="noindent" >
+<div class="tabular"> <table id="TBL-371" class="tabular" 
+rules="groups" 
+><colgroup id="TBL-371-1g"><col 
+id="TBL-371-1"></colgroup><tr 
+class="hline"><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-371-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-371-1-1"  
+class="td11">  Esta seção carece de exercícios. Participe da sua escrita.    </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-371-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-371-2-1"  
+class="td11">                      Veja como em:                                  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-371-3-"><td  style="text-align:center; white-space:nowrap;" id="TBL-371-3-1"  
+class="td11"> <a 
+href="https://github.com/livroscolaborativos/CalculoNumerico" class="url" ><span 
+class="ec-lmtt-12">https://github.com/livroscolaborativos/CalculoNumerico</span></a> </td>
+</tr><tr 
+class="hline"><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-371-4-"><td  style="text-align:center; white-space:nowrap;" id="TBL-371-4-1"  
+class="td11">                                                        </td></tr></table>      </div></div>
+                                                                          
+
+                                                                          
+   <!--l. 993--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse42.html" >next</a>] [<a 
+href="mainse40.html" >prev</a>] [<a 
+href="mainse40.html#tailmainse40.html" >prev-tail</a>] [<a 
+href="mainse41.html" >front</a>] [<a 
+href="mainch8.html#mainse41.html" >up</a>] </p></div>
+<!--l. 993--><p class="indent" >   <a 
+ id="tailmainse41.html"></a>   
+</body></html> 

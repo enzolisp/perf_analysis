@@ -1,0 +1,5381 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>Interpolaçao cúbica segmentada - spline</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 695--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse32.html" >prev</a>] [<a 
+href="mainse32.html#tailmainse32.html" >prev-tail</a>] [<a 
+href="#tailmainse33.html">tail</a>] [<a 
+href="mainch6.html#mainse33.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">6.6   </span> <a 
+ id="x71-1160006.6"></a>Interpolação cúbica segmentada - spline</h3>
+<a 
+ id="dx71-116001"></a>
+<a 
+ id="dx71-116002"></a>
+<!--l. 696--><p class="noindent" >A ideia empregada na interpolação linear segmentada pode ser estendida
+através da utilização de polinômios de grau superior. A escolha de
+polinômios de grau superior implica uma maior liberdade (há um número
+maior de coeficientes) na construção da interpolação. Parte dessa liberdade
+pode ser utilizada na exigência de suavidade para a interpolação.
+   <div class="newtheorem">
+<!--l. 698--><p class="noindent" ><span class="head">
+<a 
+ id="x71-116003r1"></a>
+<span 
+class="ec-lmbx-12">Defini</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o 6.6.1 </span>(spline de ordem <!--l. 698--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi></math>)<span 
+class="ec-lmbx-12">.</span>
+</span><span 
+class="ec-lmri-12">Dado um conjunto de </span><!--l. 698--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi></math>
+<span 
+class="ec-lmri-12">pontos </span><!--l. 698--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+mathvariant="script"><mi 
+>I</mi></mstyle> <mo 
+class="MathClass-rel" stretchy="false">=</mo><msubsup><mrow 
+> <mrow><mo fence="true" form="prefix"> {</mo><mrow><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mo fence="true" form="postfix">}</mo></mrow> </mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-rel" stretchy="false">=</mo><mn>1</mn></mrow><mrow 
+><mi 
+>n</mi></mrow></msubsup 
+></math>
+<span 
+class="ec-lmri-12">tais que </span><!--l. 698--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">&#x003E;</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math><span 
+class="ec-lmri-12">,</span>
+<span 
+class="ec-lmri-12">ou seja, as abscissas s</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o distintas e est</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o em ordem crescente; um spline de ordem</span>
+<!--l. 698--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi></math> <span 
+class="ec-lmri-12">que interpola estes</span>
+<span 
+class="ec-lmri-12">pontos </span><span 
+class="ec-lmri-12">é</span> <span 
+class="ec-lmri-12">uma fun</span><span 
+class="ec-lmri-12">ç</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o </span><!--l. 698--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>s</mi></math>
+<span 
+class="ec-lmri-12">com as seguintes propriedades:</span>
+      <ul class="itemize1">
+      <li class="itemize">
+      <!--l. 700--><p class="noindent" ><span 
+class="ec-lmri-12">Em cada intervalo </span><!--l. 700--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">[</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></math><span 
+class="ec-lmri-12">,</span>
+      <!--l. 700--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>j</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>2</mn><mi 
+>,</mi><mo>&#x2026;</mo><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>2</mn></math>
+      <span 
+class="ec-lmri-12">e no segmento </span><!--l. 700--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">[</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">]</mo></math>
+      <!--l. 700--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>s</mi></math>
+      <span 
+class="ec-lmri-12">é</span> <span 
+class="ec-lmri-12">um polin</span><span 
+class="ec-lmri-12">ô</span><span 
+class="ec-lmri-12">mio de grau menor ou igual a </span><!--l. 700--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi></math><span 
+class="ec-lmri-12">;</span>
+      </li>
+      <li class="itemize">
+                                                                          
+
+                                                                          
+      <!--l. 701--><p class="noindent" ><span 
+class="ec-lmri-12">Em algum dos intervalos </span><!--l. 701--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>s</mi></math>
+      <span 
+class="ec-lmri-12">é</span> <span 
+class="ec-lmri-12">um polin</span><span 
+class="ec-lmri-12">ô</span><span 
+class="ec-lmri-12">mio de grau </span><!--l. 701--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi></math><span 
+class="ec-lmri-12">;</span>
+      </li>
+      <li class="itemize">
+      <!--l. 702--><p class="noindent" ><span 
+class="ec-lmri-12">Em cada </span><!--l. 702--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo><mstyle 
+mathvariant="script"><mi 
+>I</mi></mstyle></math><span 
+class="ec-lmri-12">,</span>
+      <!--l. 702--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>s</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math><span 
+class="ec-lmri-12">,</span>
+      <span 
+class="ec-lmri-12">isto </span><span 
+class="ec-lmri-12">é</span><span 
+class="ec-lmri-12">, o spline interpola os pontos dados;</span>
+      </li>
+      <li class="itemize">
+      <!--l. 703--><p class="noindent" ><!--l. 703--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>s</mi></math>
+      <span 
+class="ec-lmri-12">é</span> <span 
+class="ec-lmri-12">uma fun</span><span 
+class="ec-lmri-12">ç</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o de classe </span><!--l. 703--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mstyle 
+mathvariant="script"><mi 
+>C</mi></mstyle></mrow><mrow 
+><mi 
+>m</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+></math><span 
+class="ec-lmri-12">,</span>
+      <span 
+class="ec-lmri-12">isto </span><span 
+class="ec-lmri-12">é</span><span 
+class="ec-lmri-12">, </span><span 
+class="ec-lmri-12">é</span> <span 
+class="ec-lmri-12">fun</span><span 
+class="ec-lmri-12">ç</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o </span><!--l. 703--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn></math>
+      <span 
+class="ec-lmri-12">vezes continuamente diferenci</span><span 
+class="ec-lmri-12">á</span><span 
+class="ec-lmri-12">vel.</span></li></ul>
+   </div>
+<!--l. 705--><p class="indent" >
+<!--l. 707--><p class="indent" >   São <!--l. 707--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn></math> intervalos e
+em cada um deles há <!--l. 707--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn></math>
+coeficientes a se determinar. As condições <span 
+class="ec-lmri-12">iii </span>e <span 
+class="ec-lmri-12">iv </span>impostas pela definição correspondem
+respectivamente a <!--l. 707--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi></math>
+e <!--l. 707--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math> equações.
+Estas últimas, se devem à exigência de continuidade nos pontos internos, ou seja, os
+pontos de <!--l. 707--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+mathvariant="script"><mi 
+>I</mi></mstyle></math> com
+índices <!--l. 707--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>j</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><mi 
+>,</mi><mn>3</mn><mi 
+>,</mi><mo>&#x2026;</mo><mi 
+>,</mi><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn></math>.
+Portanto, há <!--l. 707--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn></math>
+coeficientes a mais do que o número de equações e, à exceção do caso
+<!--l. 707--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></math> (interpolação
+linear segmentada), o problema é subdeterminado. Ou seja, uma vez fixada a ordem
+<!--l. 707--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003E;</mo> <mn>1</mn></math>, existem infinitos splines
+de ordem <!--l. 707--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi></math> que interpolam
+os pontos do conjunto <!--l. 707--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+mathvariant="script"><mi 
+>I</mi></mstyle></math>.
+<!--l. 709--><p class="indent" >   O caso <!--l. 709--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn></math>,
+denominado spline cúbico, é de grande interesse pois reproduz o comportamento
+físico de réguas delgadas com estrutura elástica homogênea e perfil
+uniforme sujeitas aos vínculos representados pelos pontos do conjunto
+                                                                          
+
+                                                                          
+<!--l. 709--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+mathvariant="script"><mi 
+>I</mi></mstyle></math>. A
+equação diferencial que rege o comportamento do perfil dessas réguas é um
+caso particular do equação da viga de Euler-Bernoulli. Neste caso, a equação
+tem a forma <table class="equation"><tr><td>
+<!--l. 710--><p class="indent" >
+<!--l. 710--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                                 <mstyle 
+   id="x71-116004r65"  class="label" ></mstyle><!--endlabel--><mstyle displaystyle="true"><mfrac><mrow><msup><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>4</mn></mrow></msup 
+><mi 
+>y</mi>
+</mrow><mrow><mi 
+>d</mi><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>4</mn></mrow></msup 
+></mrow></mfrac></mstyle> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(6.65)</td></tr></table>
+<!--l. 713--><p class="indent" >   cuja solução geral é um polinômio de grau 3.
+<!--l. 715--><p class="indent" >   Vamos supor que um spline cúbico que interpola o conjunto de pontos
+<!--l. 715--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+mathvariant="script"><mi 
+>I</mi></mstyle></math>
+é conhecido. Como esse spline é uma função de classe
+<!--l. 715--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mstyle 
+mathvariant="script"><mi 
+>C</mi></mstyle></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></math>, as suas derivadas nos
+pontos do conjunto <!--l. 715--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+mathvariant="script"><mi 
+>I</mi></mstyle></math> são
+conhecidas também. Seja <!--l. 715--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+></math>,
+o valor dessa derivada em <!--l. 715--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math>.
+Agora, vamos considerar dois pares de pontos sucessivos de
+<!--l. 715--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+mathvariant="script"><mi 
+>I</mi></mstyle></math>,
+<!--l. 715--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></math> e
+<!--l. 715--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></math>. A forma do spline
+cúbico no intervalo <!--l. 715--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">[</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></math>
+pode ser identificada com a solução da equação diferencial (<a 
+href="#x71-116004r65">6.65<!--tex4ht:ref: eq:ed-splin3 --></a>) no intervalo
+<!--l. 715--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></math>
+sujeita às condições de contorno <table class="equation"><tr><td>
+<!--l. 716--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 716--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+          <mstyle 
+   id="x71-116005r66"  class="label" ></mstyle><!--endlabel--><mi 
+>y</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mi 
+>,</mi><mspace width="1em" class="quad"/><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+><mi 
+>,</mi><mspace width="1em" class="quad"/><mi 
+>y</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+><mspace width="1em" class="quad"/><mstyle 
+class="text"><mtext  >e</mtext></mstyle><mspace width="1em" class="quad"/><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(6.66)</td></tr></table>
+<!--l. 719--><p class="indent" >   A solução desse problema de contorno é escrita de modo conveniente como
+<table class="equation"><tr><td>
+<!--l. 720--><p class="indent" >
+<!--l. 720--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+            <mstyle 
+   id="x71-116006r67"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>s</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mi 
+>j</mi></mrow></msub 
+><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>3</mn></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(6.67)</td></tr></table>
+<!--l. 723--><p class="indent" >   onde as constantes <!--l. 723--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math>,
+<!--l. 723--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math>,
+<!--l. 723--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math> e
+<!--l. 723--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math> se relacionam
+às do problema de contorno. As duas primeiras seguem imediatamente das condições de
+contorno em <!--l. 723--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math>:
+<table class="equation"><tr><td>
+<!--l. 724--><p class="indent" >
+<!--l. 724--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                             <mstyle 
+   id="x71-116007r68"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mspace width="1em" class="quad"/><mstyle 
+class="text"><mtext  >e</mtext></mstyle><mspace width="1em" class="quad"/><msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(6.68)</td></tr></table>
+                                                                          
+
+                                                                          
+<!--l. 727--><p class="indent" >   As duas últimas são obtidas pela solução do sistema
+de equações formado pelas condições de contorno em
+<!--l. 727--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+></math>:
+<table class="equation"><tr><td>
+<!--l. 728--><p class="indent" >
+<!--l. 728--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+    <mstyle 
+   id="x71-116008r69"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn>  <mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></mrow>
+<mrow 
+><msup><mrow 
+> <mrow><mo fence="true" form="prefix"> (</mo><mrow><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></mrow><mo fence="true" form="postfix">)</mo></mrow> </mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></mfrac> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+>
+<mi 
+>j</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+></mrow> 
+ <mrow 
+><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></mrow></mfrac>  <mspace width="1em" class="quad"/><mstyle 
+class="text"><mtext  >e</mtext></mstyle><mspace width="1em" class="quad"/><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn>  <mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></mrow>
+<mrow 
+><msup><mrow 
+> <mrow><mo fence="true" form="prefix"> (</mo><mrow><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></mrow><mo fence="true" form="postfix">)</mo></mrow> </mrow><mrow 
+><mn>3</mn></mrow></msup 
+></mrow></mfrac> <mo 
+class="MathClass-bin" stretchy="false">+</mo>  <mfrac><mrow 
+><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+>
+<mi 
+>j</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+></mrow> 
+<mrow 
+><msup><mrow 
+> <mrow><mo fence="true" form="prefix"> (</mo><mrow><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></mrow><mo fence="true" form="postfix">)</mo></mrow> </mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></mfrac>
+</math></td><td class="eq-no">(6.69)</td></tr></table>
+<!--l. 731--><p class="indent" >   Esta relação entre o conjunto de valores para a derivada de um spline cúbico
+<!--l. 731--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">{</mo><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+><mo 
+class="MathClass-close" stretchy="false">}</mo></mrow><mrow 
+>
+<mi 
+>j</mi><mo 
+class="MathClass-rel" stretchy="false">=</mo><mn>1</mn></mrow><mrow 
+><mi 
+>n</mi></mrow></msubsup 
+></math> nos pontos de
+interpolação <!--l. 731--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+mathvariant="script"><mi 
+>I</mi></mstyle></math>
+e os coeficientes dos polinômios em cada intervalo de interpolação pode ser
+resumida na seguinte proposição:
+   <div class="newtheorem">
+<!--l. 732--><p class="noindent" ><span class="head">
+<a 
+ id="x71-116009r1"></a>
+<span 
+class="ec-lmbx-12">Proposi</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o 6.6.1.</span>  </span><span 
+class="ec-lmri-12">Seja </span><!--l. 733--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>s</mi></math>
+<span 
+class="ec-lmri-12">um spline c</span><span 
+class="ec-lmri-12">ú</span><span 
+class="ec-lmri-12">bico que interpola o conjunto de pontos</span>
+<!--l. 733--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+mathvariant="script"><mi 
+>I</mi></mstyle> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msubsup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">{</mo><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">}</mo></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-rel" stretchy="false">=</mo><mn>1</mn></mrow><mrow 
+><mi 
+>n</mi></mrow></msubsup 
+> <mo 
+class="MathClass-rel" stretchy="false">&#x2282;</mo> <msup><mrow 
+><mi 
+>&#x211D;</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></math> <span 
+class="ec-lmri-12">tais que</span>
+<!--l. 733--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">&#x003E;</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math><span 
+class="ec-lmri-12">. Se</span>
+<!--l. 733--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">{</mo><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+><mo 
+class="MathClass-close" stretchy="false">}</mo></mrow><mrow 
+>
+<mi 
+>j</mi><mo 
+class="MathClass-rel" stretchy="false">=</mo><mn>1</mn></mrow><mrow 
+><mi 
+>n</mi></mrow></msubsup 
+></math> <span 
+class="ec-lmri-12">é</span> <span 
+class="ec-lmri-12">o conjunto dos valores</span>
+<span 
+class="ec-lmri-12">da derivada de </span><!--l. 733--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>s</mi></math> <span 
+class="ec-lmri-12">em</span>
+<!--l. 733--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math><span 
+class="ec-lmri-12">, ent</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o em cada intervalo</span>
+<!--l. 733--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">[</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></math> <span 
+class="ec-lmri-12">(fechado tamb</span><span 
+class="ec-lmri-12">é</span><span 
+class="ec-lmri-12">m</span>
+<span 
+class="ec-lmri-12">à</span> <span 
+class="ec-lmri-12">direita quando </span><!--l. 733--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>j</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn></math><span 
+class="ec-lmri-12">) o</span>
+<span 
+class="ec-lmri-12">spline </span><span 
+class="ec-lmri-12">é</span> <span 
+class="ec-lmri-12">igual a </span><!--l. 733--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>s</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math><span 
+class="ec-lmri-12">:</span>
+<table class="equation"><tr><td>
+<!--l. 734--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 734--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+            <mstyle 
+   id="x71-116010r70"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>s</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mi 
+>j</mi></mrow></msub 
+><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>3</mn></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(6.70)</td></tr></table>
+<!--l. 737--><p class="indent" >   <span 
+class="ec-lmri-12">onde </span><table class="equation"><tr><td>
+<!--l. 738--><p class="indent" >
+<!--l. 738--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x71-116011r71"  class="label" ></mstyle><!--endlabel--> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mi 
+>,</mi> </mtd><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn><mstyle displaystyle="true"><mfrac><mrow><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+>
+     </mrow><mrow><msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+>      </mrow></mfrac></mstyle> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mstyle displaystyle="true"><mfrac><mrow><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+>
+<mi 
+>j</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+>
+     </mrow><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+>       </mrow></mfrac></mstyle><mi 
+>,</mi> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+><mi 
+>,</mi> </mtd><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn><mstyle displaystyle="true"><mfrac><mrow><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+>
+     </mrow><mrow><msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mn>3</mn></mrow></msubsup 
+>      </mrow></mfrac></mstyle> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mstyle displaystyle="true"><mfrac><mrow><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+>
+<mi 
+>j</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+>
+    </mrow><mrow><msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+>       </mrow></mfrac></mstyle>  </mtd>
+</mtr>   <!--ll--></mtable>
+</math></td><td class="eq-no">(6.71)</td></tr></table>
+<!--l. 744--><p class="indent" >   <span 
+class="ec-lmri-12">e </span><table class="equation"><tr><td>
+<!--l. 745--><p class="indent" >
+<!--l. 745--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                      <mstyle 
+   id="x71-116012r72"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mi 
+>,</mi><mspace width="1em" class="quad"/><mi 
+>j</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>2</mn><mi 
+>,</mi><mo>&#x2026;</mo><mi 
+>,</mi><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn>
+</math></td><td class="eq-no">(6.72)</td></tr></table>
+<!--l. 748--><p class="indent" >   <span 
+class="ec-lmri-12">é</span> <span 
+class="ec-lmri-12">a dist</span><span 
+class="ec-lmri-12">â</span><span 
+class="ec-lmri-12">ncia entre as abscissas de dois pontos de interpola</span><span 
+class="ec-lmri-12">ç</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o</span>
+<span 
+class="ec-lmri-12">consecutivos.</span>
+                                                                          
+
+                                                                          
+   </div>
+<!--l. 749--><p class="indent" >    De acordo com a proposição anterior, toda informação
+sobre um spline cúbico é armazenada no conjunto
+<!--l. 750--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">{</mo><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mi 
+>,</mi><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">}</mo></mrow><mrow 
+>
+<mi 
+>j</mi><mo 
+class="MathClass-rel" stretchy="false">=</mo><mn>1</mn></mrow><mrow 
+><mi 
+>n</mi></mrow></msubsup 
+></math>. Por construção,
+uma função <!--l. 750--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>s</mi></math>
+definida a partir de (<a 
+href="#x71-116010r70">6.70<!--tex4ht:ref: eq:spline3 --></a>), (<a 
+href="#x71-116011r71">6.71<!--tex4ht:ref: eq:spline3-coef --></a>) e (<a 
+href="#x71-116012r72">6.72<!--tex4ht:ref: eq:espacamento --></a>) com um conjunto
+<!--l. 750--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">{</mo><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mi 
+>,</mi><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">}</mo></mrow><mrow 
+>
+<mi 
+>j</mi><mo 
+class="MathClass-rel" stretchy="false">=</mo><mn>1</mn></mrow><mrow 
+><mi 
+>n</mi></mrow></msubsup 
+> <mo 
+class="MathClass-rel" stretchy="false">&#x2282;</mo> <msup><mrow 
+><mi 
+>&#x211D;</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></math>, onde
+<!--l. 750--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">&#x003E;</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math> é de
+classe <!--l. 750--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mstyle 
+mathvariant="script"><mi 
+>C</mi></mstyle></mrow><mrow 
+><mn>1</mn></mrow></msup 
+></math> mas
+não necessariamente um spline cúbico. Para ser um spline cúbico, os valores do
+conjunto <!--l. 750--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">{</mo><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+><mo 
+class="MathClass-close" stretchy="false">}</mo></mrow><mrow 
+>
+<mi 
+>j</mi><mo 
+class="MathClass-rel" stretchy="false">=</mo><mn>1</mn></mrow><mrow 
+><mi 
+>n</mi></mrow></msubsup 
+></math>
+devem garantir a continuidade da derivada segunda de
+<!--l. 750--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>s</mi></math> em todo
+intervalo <!--l. 750--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></math>.
+Ou seja, devemos ter <table class="equation"><tr><td>
+<!--l. 751--><p class="indent" >
+<!--l. 751--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                       <mstyle 
+   id="x71-116013r73"  class="label" ></mstyle><!--endlabel--><munder class="msub"><mrow 
+><mtext class="qopname">lim</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo> </mrow><mrow 
+><mi 
+>x</mi><mo 
+class="MathClass-rel" stretchy="false">&#x2197;</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+></mrow></munder 
+><msubsup><mrow 
+><mi 
+>s</mi></mrow><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mtext class="qopname"><mi>&#x2033;</mi></mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo></mrow></msubsup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msubsup><mrow 
+><mi 
+>s</mi></mrow><mrow 
+>
+<mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow><mrow 
+><mtext class="qopname"><mi>&#x2033;</mi></mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo></mrow></msubsup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo>
+</math></td><td class="eq-no">(6.73)</td></tr></table>
+<!--l. 754--><p class="indent" >   em todos os pontos internos <!--l. 754--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>j</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>2</mn><mi 
+>,</mi><mo>&#x2026;</mo><mi 
+>,</mi><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>2</mn></math>.
+Em termos dos coeficientes dos polinômios cúbicos (<a 
+href="#x71-116010r70">6.70<!--tex4ht:ref: eq:spline3 --></a>), a equação anterior
+assume a forma <table class="equation"><tr><td>
+<!--l. 755--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 755--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                    <mstyle 
+   id="x71-116014r74"  class="label" ></mstyle><!--endlabel--><mn>2</mn><msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>6</mn><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+><mi 
+>,</mi><mspace width="1em" class="quad"/><mi 
+>j</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>2</mn><mi 
+>,</mi><mo>&#x2026;</mo><mi 
+>,</mi><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>2</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(6.74)</td></tr></table>
+<!--l. 758--><p class="indent" >   Esta última equação e (<a 
+href="#x71-116011r71">6.71<!--tex4ht:ref: eq:spline3-coef --></a>) permitem construir um sistema de equações lineares
+para as variáveis <!--l. 758--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+></math>:
+   <div class="newtheorem">
+<!--l. 759--><p class="noindent" ><span class="head">
+<a 
+ id="x71-116015r2"></a>
+<span 
+class="ec-lmbx-12">Proposi</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o 6.6.2.</span>  </span><span 
+class="ec-lmri-12">Dado o conjunto de pontos</span>
+<!--l. 759--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+mathvariant="script"><mi 
+>I</mi></mstyle> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msubsup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">{</mo><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">}</mo></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-rel" stretchy="false">=</mo><mn>1</mn></mrow><mrow 
+><mi 
+>n</mi></mrow></msubsup 
+> <mo 
+class="MathClass-rel" stretchy="false">&#x2282;</mo> <msup><mrow 
+><mi 
+>&#x211D;</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></math> <span 
+class="ec-lmri-12">tais</span>
+<span 
+class="ec-lmri-12">que </span><!--l. 759--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">&#x003E;</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math><span 
+class="ec-lmri-12">,</span>
+<span 
+class="ec-lmri-12">as derivadas de um spline c</span><span 
+class="ec-lmri-12">ú</span><span 
+class="ec-lmri-12">bico que interpola os pontos</span>
+<!--l. 759--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+mathvariant="script"><mi 
+>I</mi></mstyle></math><span 
+class="ec-lmri-12">,</span>
+<!--l. 759--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+></math><span 
+class="ec-lmri-12">,</span>
+<!--l. 759--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>j</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>2</mn><mi 
+>,</mi><mo>&#x2026;</mo><mi 
+>,</mi><mi 
+>n</mi></math>
+<span 
+class="ec-lmri-12">satisfazem o sistema de equa</span><span 
+class="ec-lmri-12">ç</span><span 
+class="ec-lmri-12">õ</span><span 
+class="ec-lmri-12">es alg</span><span 
+class="ec-lmri-12">é</span><span 
+class="ec-lmri-12">bricas lineares </span><table class="equation"><tr><td>
+<!--l. 760--><p class="indent" >
+<!--l. 760--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+   <mstyle 
+   id="x71-116016r75"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+>
+<mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+>
+<mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn> <mrow><mo fence="true" form="prefix"> (</mo><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+>
+<mi 
+>j</mi></mrow></msub 
+><mstyle displaystyle="true"><mfrac><mrow><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+>
+    </mrow><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+>     </mrow></mfrac></mstyle> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mstyle displaystyle="true"><mfrac><mrow><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+>
+     </mrow><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+>      </mrow></mfrac></mstyle></mrow><mo fence="true" form="postfix">)</mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(6.75)</td></tr></table>
+<!--l. 763--><p class="indent" >   <span 
+class="ec-lmri-12">onde </span><!--l. 763--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>j</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><mi 
+>,</mi><mn>3</mn><mi 
+>,</mi><mo>&#x2026;</mo><mi 
+>,</mi><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn></math>
+<span 
+class="ec-lmri-12">e </span><!--l. 763--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math><span 
+class="ec-lmri-12">.</span>
+   </div>
+<!--l. 764--><p class="indent" >    O sistema de equações (<a 
+href="#x71-116016r75">6.75<!--tex4ht:ref: eq:spline3-der --></a>) é subdeterminado. São
+<!--l. 765--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi></math> variáveis
+                                                                          
+
+                                                                          
+e <!--l. 765--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>2</mn></math>
+equações. A inclusão de duas equações adicionais linearmente independentes
+das <!--l. 765--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>2</mn></math>
+equações (<a 
+href="#x71-116016r75">6.75<!--tex4ht:ref: eq:spline3-der --></a>) possibilita a existência de uma única solução.
+Tipicamente essas equações adicionais envolvem o comportamento do spline na
+fronteira ou na sua vizinhança. A seguir, veremos quatro escolhas mais
+conhecidas.
+<!--l. 768--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">6.6.1   </span> <a 
+ id="x71-1170006.6.1"></a>Spline natural</h4>
+<a 
+ id="dx71-117001"></a>
+<!--l. 770--><p class="noindent" >Uma forma de definir as duas equações adicionais para completar o sistema
+(<a 
+href="#x71-116016r75">6.75<!--tex4ht:ref: eq:spline3-der --></a>) é impor condições de fronteira livres (ou naturais), ou seja,
+<table class="equation"><tr><td>
+<!--l. 771--><p class="indent" >
+<!--l. 771--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                            <mstyle 
+   id="x71-117002r76"  class="label" ></mstyle><!--endlabel--><msup><mrow 
+><mi 
+>s</mi></mrow><mrow 
+><mi>&#x2033;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>s</mi></mrow><mrow 
+><mi>&#x2033;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(6.76)</td></tr></table>
+<!--l. 774--><p class="indent" >   De acordo com (<a 
+href="#x71-116010r70">6.70<!--tex4ht:ref: eq:spline3 --></a>) essas equações implicam respectivamente
+<table class="equation"><tr><td>
+<!--l. 775--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 775--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                      <mstyle 
+   id="x71-117003r77"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mspace width="1em" class="quad"/><mstyle 
+class="text"><mtext  >e</mtext></mstyle><mspace width="1em" class="quad"/><mn>2</mn><msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>6</mn><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(6.77)</td></tr></table>
+<!--l. 778--><p class="indent" >   ou seja, <table class="equation"><tr><td>
+<!--l. 779--><p class="indent" >
+<!--l. 779--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x71-117004r78"  class="label" ></mstyle><!--endlabel--><mrow><mo fence="true" form="prefix"> {</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <mn>2</mn><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+>
+<mn>2</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn><mstyle displaystyle="true"><mfrac><mrow><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>
+    </mrow><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>     </mrow></mfrac></mstyle>           </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left">                                                   </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left">  <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+>
+<mi 
+>n</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn><mstyle displaystyle="true"><mfrac><mrow><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+>
+     </mrow><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+>     </mrow></mfrac></mstyle>  </mtd>
+</mtr>   <!--l--></mtable>                                                                       </mrow><mo fence="true" form="postfix"></mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(6.78)</td></tr></table>
+<!--l. 786--><p class="indent" >   Essas duas equações em conjunto com as equações (<a 
+href="#x71-116016r75">6.75<!--tex4ht:ref: eq:spline3-der --></a>) formam um sistema de
+<!--l. 786--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi></math> equações
+algébricas lineares <!--l. 786--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>z</mi></math>,
+onde <table class="equation"><tr><td>
+<!--l. 787--><p class="indent" >
+<!--l. 787--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x71-117005r79"  class="label" ></mstyle><!--endlabel--><mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> [</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <mn>2</mn>   </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>1</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">   <mn>0</mn>   </mtd><mtd 
+class="array-td"  columnalign="center">    <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>    </mtd><mtd 
+class="array-td"  columnalign="center">          <mn>0</mn>            </mtd><mtd 
+class="array-td"  columnalign="center">    <mn>0</mn>    </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>2</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo>  </mtd><mtd 
+class="array-td"  columnalign="center">       <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>        </mtd><mtd 
+class="array-td"  columnalign="center">   <mn>0</mn>   </mtd><mtd 
+class="array-td"  columnalign="center">    <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>    </mtd><mtd 
+class="array-td"  columnalign="center">          <mn>0</mn>            </mtd><mtd 
+class="array-td"  columnalign="center">    <mn>0</mn>    </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">   <mn>0</mn>   </mtd><mtd 
+class="array-td"  columnalign="center">       <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+>        </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>2</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">     <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>    </mtd><mtd 
+class="array-td"  columnalign="center">          <mn>0</mn>            </mtd><mtd 
+class="array-td"  columnalign="center">    <mn>0</mn>    </mtd></mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22F1;</mo> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi></mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <mn>0</mn>   </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">   <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>  </mtd><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>2</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+>  </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">   <mn>0</mn>   </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">   <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>  </mtd><mtd 
+class="array-td"  columnalign="center">    <mn>0</mn>    </mtd><mtd 
+class="array-td"  columnalign="center">            <mn>1</mn>            </mtd><mtd 
+class="array-td"  columnalign="center">    <mn>2</mn>    </mtd></mtr> <!--ccccccc--></mtable>                                          </mrow><mo fence="true" form="postfix">]</mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(6.79)</td></tr></table>
+   <table class="equation"><tr><td>
+<!--l. 799--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 799--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x71-117006r80"  class="label" ></mstyle><!--endlabel--><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> [</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi>  </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> </mtd>
+</mtr>    <!--c--></mtable>                                                                           </mrow><mo fence="true" form="postfix">]</mo></mrow><mspace width="2em" class="qquad"/><mstyle 
+class="text"><mtext  >e</mtext></mstyle><mspace width="2em" class="qquad"/><mi 
+>z</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn> <mrow><mo fence="true" form="prefix"> [</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">                 <mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></mrow></mfrac>                             </mtd>
+</mtr>    <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">             <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></mrow></mfrac>     <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mrow></mfrac>                 </mtd>
+</mtr>    <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">             <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mrow></mfrac>     <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>4</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+></mrow></mfrac>                 </mtd>
+</mtr>    <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">                              <mi 
+>&#x22EE;</mi>                </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+></mrow> 
+     <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+></mrow></mfrac>       <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+></mrow></mfrac>      </mtd>
+</mtr>    <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">                        <mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+></mrow></mfrac>                           </mtd>
+</mtr>       <!--c--></mtable>                                                                                                                                                     </mrow><mo fence="true" form="postfix">]</mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(6.80)</td></tr></table>
+<!--l. 815--><p class="indent" >   Observe que a matriz <!--l. 815--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>
+é diagonal dominante estrita e, portanto, o sistema
+<!--l. 815--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>z</mi></math> possui solução
+única. Calculado <!--l. 815--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+></math>,
+os valores dos <!--l. 815--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math>,
+<!--l. 815--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math>,
+<!--l. 815--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math> e
+<!--l. 815--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math> são
+obtidos diretamente pelas expressões (<a 
+href="#x71-116011r71">6.71<!--tex4ht:ref: eq:spline3-coef --></a>).
+   <div class="newtheorem">
+<!--l. 817--><p class="noindent" ><span class="head">
+<a 
+ id="x71-117007r1"></a>
+<span 
+class="ec-lmbx-12">Exemplo 6.6.1.</span>  </span>Construa um spline cúbico natural que passe pelos pontos
+<!--l. 817--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>2</mn><mi 
+>,</mi><mspace width="0.33em" class="nbsp" /><mn>4</mn><mi 
+>,</mi><mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>,
+<!--l. 817--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>5</mn><mi 
+>,</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn><mi 
+>,</mi><mn>9</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>,
+<!--l. 817--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>9</mn><mi 
+>,</mi><mspace width="0.33em" class="nbsp" /><mn>0</mn><mi 
+>,</mi><mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>
+e <!--l. 817--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>2</mn><mi 
+>,</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>0</mn><mi 
+>,</mi><mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>.
+   </div>
+<!--l. 818--><p class="indent" >    <span 
+class="ec-lmbx-12">Solu</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o. </span>O spline desejado é uma função definida por partes da
+forma: <table class="equation"><tr><td>
+<!--l. 821--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 821--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x71-117008r81"  class="label" ></mstyle><!--endlabel--><mi 
+>s</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> {</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mn>1</mn></mrow></msub 
+><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>3</mn></mrow></msup 
+><mi 
+>,</mi> </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>2</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>5</mn>   </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mn>2</mn></mrow></msub 
+><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>3</mn></mrow></msup 
+><mi 
+>,</mi> </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>5</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>9</mn>   </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>9</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>9</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mn>3</mn></mrow></msub 
+><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>9</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>3</mn></mrow></msup 
+><mi 
+>,</mi> </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>9</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mn>1</mn><mn>2</mn> </mtd></mtr> <!--ll--></mtable>                          </mrow><mo fence="true" form="postfix"></mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(6.81)</td></tr></table>
+<!--l. 828--><p class="indent" >   As variáveis <!--l. 828--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+></math>,
+<!--l. 828--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+></math>,
+<!--l. 828--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+></math> e
+<!--l. 828--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>4</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+></math> resolvem
+o sistema <!--l. 828--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>z</mi></math>,
+onde <table class="equation"><tr><td>
+<!--l. 829--><p class="indent" >
+<!--l. 829--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x71-117009r82"  class="label" ></mstyle><!--endlabel--><mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo>  <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn> </mtd><mtd 
+class="array-td"  columnalign="center">      <mn>1</mn>      </mtd><mtd 
+class="array-td"  columnalign="center">      <mn>0</mn>      </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>4</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>4</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>3</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> </mtd><mtd 
+class="array-td"  columnalign="center">      <mn>3</mn>      </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd><mtd 
+class="array-td"  columnalign="center">      <mn>3</mn>      </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>4</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>4</mn> </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd><mtd 
+class="array-td"  columnalign="center">      <mn>0</mn>      </mtd><mtd 
+class="array-td"  columnalign="center">      <mn>1</mn>      </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                              </mrow><mo fence="true" form="postfix">]</mo></mrow> <mo 
+class="MathClass-rel" stretchy="false">=</mo>  <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn> </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>1</mn>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>0</mn>  </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>4</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>1</mn><mn>4</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>3</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>0</mn></mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>3</mn>  </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn><mn>4</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>4</mn> </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>2</mn></mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                             </mrow><mo fence="true" form="postfix">]</mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(6.82)</td></tr></table>
+   <table class="equation"><tr><td>
+<!--l. 842--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 842--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x71-117010r83"  class="label" ></mstyle><!--endlabel--><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo>  <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>4</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> </mtd>
+</mtr>   <!--*\c@MaxMatrixCols c--></mtable>                                                                          </mrow><mo fence="true" form="postfix">]</mo></mrow><mspace width="1em" class="quad"/><mstyle 
+class="text"><mtext  >e</mtext></mstyle><mspace width="1em" class="quad"/><mi 
+>z</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn> <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">               <mfrac><mrow 
+><mn>1</mn></mrow> 
+<mrow 
+><mn>3</mn></mrow></mfrac><mo 
+class="MathClass-open" stretchy="false">(</mo><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn><mi 
+>,</mi><mn>9</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>4</mn><mi 
+>,</mi><mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo>              </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">   <mfrac><mrow 
+><mn>4</mn></mrow> 
+<mrow 
+><mn>3</mn></mrow></mfrac><mo 
+class="MathClass-open" stretchy="false">(</mo><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn><mi 
+>,</mi><mn>9</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>4</mn><mi 
+>,</mi><mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><mn>3</mn></mrow> 
+<mrow 
+><mn>4</mn></mrow></mfrac><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mi 
+>,</mi><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn><mi 
+>,</mi><mn>9</mn><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">)</mo>  </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <mfrac><mrow 
+><mn>3</mn></mrow> 
+<mrow 
+><mn>4</mn></mrow></mfrac><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mi 
+>,</mi><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn><mi 
+>,</mi><mn>9</mn><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><mn>4</mn></mrow> 
+<mrow 
+><mn>3</mn></mrow></mfrac><mo 
+class="MathClass-open" stretchy="false">(</mo><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>0</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mi 
+>,</mi><mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">)</mo> </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">              <mfrac><mrow 
+><mn>1</mn></mrow> 
+<mrow 
+><mn>3</mn></mrow></mfrac><mo 
+class="MathClass-open" stretchy="false">(</mo><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>0</mn><mi 
+>,</mi><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo><mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">)</mo>             </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                  </mrow><mo fence="true" form="postfix">]</mo></mrow> <mo 
+class="MathClass-rel" stretchy="false">=</mo>  <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>6</mn><mi 
+>,</mi><mn>4</mn>  </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn><mn>0</mn><mi 
+>,</mi><mn>2</mn> </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">   <mn>1</mn><mi 
+>,</mi><mn>4</mn>   </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">   <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn>   </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                                      </mrow><mo fence="true" form="postfix">]</mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(6.83)</td></tr></table>
+<!--l. 861--><p class="indent" >   A solução é <!--l. 861--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn><mi 
+>,</mi><mn>8</mn><mover 
+accent="true"><mrow 
+><mn>3</mn></mrow><mo accent="true">¯</mo></mover></math>,
+<!--l. 861--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>0</mn><mi 
+>,</mi><mn>7</mn><mover 
+accent="true"><mrow 
+><mn>3</mn></mrow><mo accent="true">¯</mo></mover></math>,
+<!--l. 861--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>4</mn><mover 
+accent="true"><mrow 
+><mn>6</mn></mrow><mo accent="true">¯</mo></mover></math> e
+<!--l. 861--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>4</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>0</mn><mi 
+>,</mi><mn>7</mn><mover 
+accent="true"><mrow 
+><mn>3</mn></mrow><mo accent="true">¯</mo></mover></math>.
+Calculamos os coeficientes usando as expressões (<a 
+href="#x71-116011r71">6.71<!--tex4ht:ref: eq:spline3-coef --></a>): <table class="equation"><tr><td>
+<!--l. 862--><p class="indent" >
+<!--l. 862--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x71-117011r84"  class="label" ></mstyle><!--endlabel--> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">=</mo> </mtd><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>4</mn><mi 
+>,</mi><mn>5</mn><mi 
+>,</mi>   </mtd><mtd 
+class="array-td"  columnalign="center"> <mspace width="2em" class="qquad"/> </mtd><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">=</mo> </mtd><mtd 
+class="array-td"  columnalign="left"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn><mi 
+>,</mi><mn>8</mn><mover 
+accent="true"><mrow 
+><mn>3</mn></mrow><mo accent="true">¯</mo></mover><mo 
+class="MathClass-punc" stretchy="false">,</mo> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">=</mo> </mtd><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn><mi 
+>,</mi><mn>9</mn><mi 
+>,</mi> </mtd><mtd 
+class="array-td"  columnalign="center"> <mspace width="2em" class="qquad"/> </mtd><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">=</mo> </mtd><mtd 
+class="array-td"  columnalign="left"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>0</mn><mi 
+>,</mi><mn>7</mn><mover 
+accent="true"><mrow 
+><mn>3</mn></mrow><mo accent="true">¯</mo></mover><mo 
+class="MathClass-punc" stretchy="false">,</mo> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">=</mo> </mtd><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>5</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo>   </mtd><mtd 
+class="array-td"  columnalign="center"> <mspace width="2em" class="qquad"/> </mtd><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">=</mo> </mtd><mtd 
+class="array-td"  columnalign="left"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>4</mn><mover 
+accent="true"><mrow 
+><mn>6</mn></mrow><mo accent="true">¯</mo></mover><mo 
+class="MathClass-punc" stretchy="false">,</mo>   </mtd></mtr><mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"></mtd><mtd 
+class="array-td"  columnalign="center"></mtd><mtd 
+class="array-td"  columnalign="left"></mtd><mtd 
+class="array-td"  columnalign="center"></mtd><mtd 
+class="array-td"  columnalign="left"></mtd><mtd 
+class="array-td"  columnalign="center"></mtd><mtd 
+class="array-td"  columnalign="left"></mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">=</mo> </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>0</mn><mi 
+>,</mi>           </mtd><mtd 
+class="array-td"  columnalign="center"> <mspace width="2em" class="qquad"/> </mtd><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">=</mo> </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mover 
+accent="true"><mrow 
+><mn>7</mn></mrow><mo accent="true">¯</mo></mover><mo 
+class="MathClass-punc" stretchy="false">,</mo>         </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">=</mo> </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>0</mn><mi 
+>,</mi><mn>7</mn><mi 
+>,</mi>         </mtd><mtd 
+class="array-td"  columnalign="center"> <mspace width="2em" class="qquad"/> </mtd><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">=</mo> </mtd><mtd 
+class="array-td"  columnalign="left">  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>9</mn><mn>1</mn><mover 
+accent="true"><mrow 
+><mn>6</mn></mrow><mo accent="true">¯</mo></mover><mo 
+class="MathClass-punc" stretchy="false">,</mo>    </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">=</mo> </mtd><mtd 
+class="array-td"  columnalign="left">  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>0</mn><mi 
+>,</mi><mn>4</mn><mi 
+>,</mi>      </mtd><mtd 
+class="array-td"  columnalign="center"> <mspace width="2em" class="qquad"/> </mtd><mtd 
+class="array-td"  columnalign="left"> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">=</mo> </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mover 
+accent="true"><mrow 
+><mn>4</mn></mrow><mo accent="true">¯</mo></mover><mo 
+class="MathClass-punc" stretchy="false">.</mo>         </mtd></mtr><!--lclclcl--></mtable>
+</math></td><td class="eq-no">(6.84)</td></tr></table>
+<!--l. 873--><p class="indent" >   Portanto:  <table class="equation"><tr><td>
+<!--l. 875--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 875--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x71-117012r85"  class="label" ></mstyle><!--endlabel--><mi 
+>S</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> {</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <mn>4</mn><mi 
+>,</mi><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn><mi 
+>,</mi><mn>8</mn><mover 
+accent="true"><mrow 
+><mn>3</mn></mrow><mo accent="true">¯</mo></mover><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mover 
+accent="true"><mrow 
+><mn>7</mn></mrow><mo accent="true">¯</mo></mover><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>3</mn></mrow></msup 
+>                                  </mtd><mtd 
+class="array-td"  columnalign="left">  <mspace width="-0.17em" class="negthinspace"/><mo 
+class="MathClass-punc" stretchy="false">,</mo><mn>2</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>5</mn>   </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left">  <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn><mi 
+>,</mi><mn>9</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>0</mn><mi 
+>,</mi><mn>7</mn><mover 
+accent="true"><mrow 
+><mn>3</mn></mrow><mo accent="true">¯</mo></mover><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mi 
+>,</mi><mn>7</mn><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>9</mn><mn>1</mn><mover 
+accent="true"><mrow 
+><mn>6</mn></mrow><mo accent="true">¯</mo></mover><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>3</mn></mrow></msup 
+>  </mtd><mtd 
+class="array-td"  columnalign="left">  <mspace width="-0.17em" class="negthinspace"/><mo 
+class="MathClass-punc" stretchy="false">,</mo><mn>5</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>9</mn>   </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <mn>0</mn><mi 
+>,</mi><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mi 
+>,</mi><mn>4</mn><mover 
+accent="true"><mrow 
+><mn>6</mn></mrow><mo accent="true">¯</mo></mover><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>9</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>0</mn><mi 
+>,</mi><mn>4</mn><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>9</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mover 
+accent="true"><mrow 
+><mn>4</mn></mrow><mo accent="true">¯</mo></mover><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>9</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>3</mn></mrow></msup 
+>          </mtd><mtd 
+class="array-td"  columnalign="left">  <mspace width="-0.17em" class="negthinspace"/><mo 
+class="MathClass-punc" stretchy="false">,</mo><mn>9</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo><mn>1</mn><mn>2</mn> </mtd></mtr> <!--ll--></mtable>              </mrow><mo fence="true" form="postfix"></mo></mrow><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no"><span 
+class="ec-lmr-10x-x-109">(6.85)</span></td></tr></table>
+                                                                          <div class="flushright" 
+>
+<!--l. 923--><p class="noindent" >
+<!--l. 923--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-ord">&#x2662;</mo></math></div>
+<!--l. 925--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">6.6.2   </span> <a 
+ id="x71-1180006.6.2"></a>Spline fixado</h4>
+<a 
+ id="dx71-118001"></a>
+<!--l. 927--><p class="noindent" >O spline fixado <!--l. 927--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>s</mi></math>
+é obtido pela escolha dos valores das derivadas nas extremidades do
+intervalo de interpolação. Isto diminui o número de variáveis para
+<!--l. 927--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>2</mn></math> pois
+<!--l. 927--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+></math> e
+<!--l. 927--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+></math>
+deixam de ser incógnitas.
+<!--l. 929--><p class="indent" >   As equações (<a 
+href="#x71-116016r75">6.75<!--tex4ht:ref: eq:spline3-der --></a>) formam um sistema de
+<!--l. 929--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>2</mn></math> equações
+<!--l. 929--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>z</mi></math>, onde
+<table class="equation"><tr><td>
+<!--l. 930--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 930--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x71-118002r86"  class="label" ></mstyle><!--endlabel--><mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> [</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo>  </mtd><mtd 
+class="array-td"  columnalign="center">       <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>        </mtd><mtd 
+class="array-td"  columnalign="center">         <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">   <mn>0</mn>   </mtd><mtd 
+class="array-td"  columnalign="center">    <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>    </mtd><mtd 
+class="array-td"  columnalign="center">          <mn>0</mn>            </mtd><mtd 
+class="array-td"  columnalign="center">            <mn>0</mn>            </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">       <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+>        </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>2</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo>  </mtd><mtd 
+class="array-td"  columnalign="center">       <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>        </mtd><mtd 
+class="array-td"  columnalign="center">   <mn>0</mn>   </mtd><mtd 
+class="array-td"  columnalign="center">    <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>    </mtd><mtd 
+class="array-td"  columnalign="center">          <mn>0</mn>            </mtd><mtd 
+class="array-td"  columnalign="center">            <mn>0</mn>            </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">       <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>4</mn></mrow></msub 
+>        </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>2</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>4</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">     <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>    </mtd><mtd 
+class="array-td"  columnalign="center">          <mn>0</mn>            </mtd><mtd 
+class="array-td"  columnalign="center">            <mn>0</mn>            </mtd></mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22F1;</mo> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi></mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">       <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">   <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>  </mtd><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>2</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo>  </mtd><mtd 
+class="array-td"  columnalign="center">         <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></msub 
+>          </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">         <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">   <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>  </mtd><mtd 
+class="array-td"  columnalign="center">    <mn>0</mn>    </mtd><mtd 
+class="array-td"  columnalign="center">         <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+>          </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>2</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo>  </mtd></mtr> <!--ccccccc--></mtable>                 </mrow><mo fence="true" form="postfix">]</mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(6.86)</td></tr></table>
+   <table class="equation"><tr><td>
+<!--l. 942--><p class="indent" >
+<!--l. 942--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x71-118003r87"  class="label" ></mstyle><!--endlabel--><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> [</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">   <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+>  </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+>  </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">   <mi 
+>&#x22EE;</mi>   </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> </mtd></mtr> <!--c--></mtable>                                                                      </mrow><mo fence="true" form="postfix">]</mo></mrow><mspace width="2em" class="qquad"/><mstyle 
+class="text"><mtext  >e</mtext></mstyle><mspace width="2em" class="qquad"/><mi 
+>z</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn> <mrow><mo fence="true" form="prefix"> [</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">          <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></mrow></mfrac>    <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mrow></mfrac>    <mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+>        </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">            <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mrow></mfrac>    <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>4</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+></mrow></mfrac>                           </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">                                        <mi 
+>&#x22EE;</mi>                       </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">      <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></msub 
+></mrow> 
+     <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></msub 
+></mrow></mfrac>       <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+></mrow> 
+     <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+></mrow></mfrac>                </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+></mrow> 
+     <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+></mrow></mfrac>       <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+></mrow></mfrac>     <mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> </mtd></mtr> <!--c--></mtable>                                    </mrow><mo fence="true" form="postfix">]</mo></mrow><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(6.87)</td></tr></table>
+<!--l. 959--><p class="indent" >   Observe que a matriz <!--l. 959--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>
+é diagonal dominante estrita e, portanto, o sistema
+<!--l. 959--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>z</mi></math>
+possui solução única.
+<!--l. 1046--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">6.6.3   </span> <a 
+ id="x71-1190006.6.3"></a>Spline <span 
+class="ec-lmri-12">not-a-knot</span></h4>
+<a 
+ id="dx71-119001"></a>
+<!--l. 1048--><p class="noindent" >O spline <span 
+class="ec-lmri-12">not-a-knot </span>é definido com um spline cúbico que satisfaz as equações
+adicionais <table class="equation"><tr><td>
+<!--l. 1049--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 1049--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+          <mstyle 
+   id="x71-119002r88"  class="label" ></mstyle><!--endlabel--><munder class="msub"><mrow 
+><mtext class="qopname">lim</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo> </mrow><mrow 
+><mi 
+>x</mi><mo 
+class="MathClass-rel" stretchy="false">&#x2197;</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mrow></munder 
+><msubsup><mrow 
+><mi 
+>s</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mtext class="qopname"><mi>&#x2034;</mi></mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo></mrow></msubsup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msubsup><mrow 
+><mi 
+>s</mi></mrow><mrow 
+>
+<mn>2</mn></mrow><mrow 
+><mtext class="qopname"><mi>&#x2034;</mi></mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo></mrow></msubsup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><mspace width="1em" class="quad"/><mstyle 
+class="text"><mtext  >e</mtext></mstyle><mspace width="1em" class="quad"/><munder class="msub"><mrow 
+><mtext class="qopname"> lim</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo> </mrow><mrow 
+><mi 
+>x</mi><mo 
+class="MathClass-rel" stretchy="false">&#x2197;</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+></mrow></munder 
+><msubsup><mrow 
+><mi 
+>s</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow><mrow 
+><mtext class="qopname"><mi>&#x2034;</mi></mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo></mrow></msubsup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msubsup><mrow 
+><mi 
+>s</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow><mrow 
+><mtext class="qopname"><mi>&#x2034;</mi></mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo></mrow></msubsup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(6.88)</td></tr></table>
+<!--l. 1052--><p class="indent" >   Em termos dos coeficientes (<a 
+href="#x71-116010r70">6.70<!--tex4ht:ref: eq:spline3 --></a>), as equações anteriores correspondem a
+<table class="equation"><tr><td>
+<!--l. 1053--><p class="indent" >
+<!--l. 1053--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                           <mstyle 
+   id="x71-119003r89"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mspace width="1em" class="quad"/><mstyle 
+class="text"><mtext  >e</mtext></mstyle><mspace width="1em" class="quad"/><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(6.89)</td></tr></table>
+<!--l. 1056--><p class="indent" >   ou seja, <table class="equation"><tr><td>
+<!--l. 1057--><p class="indent" >
+<!--l. 1057--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x71-119004r90"  class="label" ></mstyle><!--endlabel--><mrow><mo fence="true" form="prefix"> {</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+>
+<mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+>
+<mn>2</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+>
+<mn>1</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+>
+<mn>2</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+>
+<mn>1</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+>
+<mn>3</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn> <mrow><mo fence="true" form="prefix"> (</mo><mrow><msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+>
+<mn>2</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><mstyle displaystyle="true"><mfrac><mrow><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>
+    </mrow><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>     </mrow></mfrac></mstyle> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><mstyle displaystyle="true"><mfrac><mrow><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>
+    </mrow><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>     </mrow></mfrac></mstyle></mrow><mo fence="true" form="postfix">)</mo></mrow>                                                </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left">                                                                                                                                                                </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left">  <msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+>
+<mi 
+>n</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn> <mrow><mo fence="true" form="prefix"> (</mo><mrow><msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><mstyle displaystyle="true"><mfrac><mrow><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+>
+      </mrow><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+>       </mrow></mfrac></mstyle> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><mstyle displaystyle="true"><mfrac><mrow><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+>
+     </mrow><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+>     </mrow></mfrac></mstyle></mrow><mo fence="true" form="postfix">)</mo></mrow>  </mtd>
+</mtr>   <!--l--></mtable>                                                                                    </mrow><mo fence="true" form="postfix"></mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(6.90)</td></tr></table>
+                                                                          
+
+                                                                          
+<!--l. 1064--><p class="indent" >   Essas duas equações agregadas às equações (<a 
+href="#x71-116016r75">6.75<!--tex4ht:ref: eq:spline3-der --></a>) formam um sistema de
+<!--l. 1064--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi></math> equações
+<!--l. 1064--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>z</mi></math>, onde
+<table class="equation"><tr><td>
+<!--l. 1065--><p class="indent" >
+<!--l. 1065--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x71-119005r91"  class="label" ></mstyle><!--endlabel--><mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> [</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">   <msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+>   </mtd><mtd 
+class="array-td"  columnalign="center">      <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+>     </mtd><mtd 
+class="array-td"  columnalign="center">   <mn>0</mn>   </mtd><mtd 
+class="array-td"  columnalign="center">     <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>    </mtd><mtd 
+class="array-td"  columnalign="center">          <mn>0</mn>            </mtd><mtd 
+class="array-td"  columnalign="center">       <mn>0</mn>       </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>   </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>2</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo>  </mtd><mtd 
+class="array-td"  columnalign="center">       <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>        </mtd><mtd 
+class="array-td"  columnalign="center">   <mn>0</mn>   </mtd><mtd 
+class="array-td"  columnalign="center">     <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>    </mtd><mtd 
+class="array-td"  columnalign="center">          <mn>0</mn>            </mtd><mtd 
+class="array-td"  columnalign="center">       <mn>0</mn>       </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">   <mn>0</mn>   </mtd><mtd 
+class="array-td"  columnalign="center">       <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+>        </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>2</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">      <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>    </mtd><mtd 
+class="array-td"  columnalign="center">          <mn>0</mn>            </mtd><mtd 
+class="array-td"  columnalign="center">       <mn>0</mn>       </mtd></mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22F1;</mo> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi></mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">   <mn>0</mn>   </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">   <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+>   </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>2</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo>  </mtd><mtd 
+class="array-td"  columnalign="center">    <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+>     </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">    <mn>0</mn>   </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">   <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>  </mtd><mtd 
+class="array-td"  columnalign="center"> <msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">   <msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+>   </mtd><mtd 
+class="array-td"  columnalign="center">   <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+>  </mtd></mtr> <!--ccccccc--></mtable>                                       </mrow><mo fence="true" form="postfix">]</mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(6.91)</td></tr></table>
+   <table class="equation"><tr><td>
+<!--l. 1077--><p class="indent" >
+<!--l. 1077--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x71-119006r92"  class="label" ></mstyle><!--endlabel--><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> [</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi>  </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> </mtd></mtr> <!--c--></mtable>                                                                         </mrow><mo fence="true" form="postfix">]</mo></mrow><mspace width="2em" class="qquad"/><mstyle 
+class="text"><mtext  >e</mtext></mstyle><mspace width="2em" class="qquad"/><mi 
+>z</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> [</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">         <mn>2</mn> <mrow><mo fence="true" form="prefix"> (</mo><mrow><msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><mstyle displaystyle="true"><mfrac><mrow><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>
+    </mrow><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>     </mrow></mfrac></mstyle> <mo 
+class="MathClass-bin" stretchy="false">-</mo><msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><mstyle displaystyle="true"><mfrac><mrow><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>
+    </mrow><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>     </mrow></mfrac></mstyle></mrow><mo fence="true" form="postfix">)</mo></mrow>            </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">                  <mn>3</mn> <mrow><mo fence="true" form="prefix"> (</mo><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></mrow></mfrac>    <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mrow></mfrac>    </mrow><mo fence="true" form="postfix">)</mo></mrow>                    </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">                                      <mi 
+>&#x22EE;</mi>                      </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">     <mn>3</mn> <mrow><mo fence="true" form="prefix"> (</mo><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+></mrow> 
+     <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+></mrow></mfrac>       <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+></mrow></mfrac>    </mrow><mo fence="true" form="postfix">)</mo></mrow>         </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <mn>2</mn> <mrow><mo fence="true" form="prefix"> (</mo><mrow><msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><mstyle displaystyle="true"><mfrac><mrow><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+>
+      </mrow><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+>       </mrow></mfrac></mstyle> <mo 
+class="MathClass-bin" stretchy="false">-</mo><msubsup><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><mstyle displaystyle="true"><mfrac><mrow><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+>
+    </mrow><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+>     </mrow></mfrac></mstyle></mrow><mo fence="true" form="postfix">)</mo></mrow>  </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">                                                                      </mtd></mtr> <!--c--></mtable>                                                                  </mrow><mo fence="true" form="postfix">]</mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(6.92)</td></tr></table>
+<!--l. 1094--><p class="indent" >   Se reduzirmos esse sistema pela eliminação das incógnitas
+<!--l. 1094--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+></math> e
+<!--l. 1094--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+></math>, o
+sistema resultante possui uma matriz de coeficientes diagonal dominante estrita,
+portanto, a solução é única.
+                                                                          
+
+                                                                          
+<!--l. 1096--><p class="indent" >   O termo <span 
+class="ec-lmri-12">not-a-knot </span>(não nó) relaciona-se à nomenclatura dos splines. O termo
+<span 
+class="ec-lmri-12">n</span><span 
+class="ec-lmri-12">ó</span> é utilizado para os pontos interpolados. Neles, a derivada terceira da função
+spline é descontínua, portanto, quando impomos a continuidade dessa derivada
+em <!--l. 1096--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math> e
+<!--l. 1096--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+></math> é
+como se esses pontos deixassem de ser nós.
+<!--l. 1098--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">6.6.4   </span> <a 
+ id="x71-1200006.6.4"></a>Spline periódico</h4>
+<a 
+ id="dx71-120001"></a>
+<!--l. 1099--><p class="noindent" >Se o conjunto de <!--l. 1099--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi></math> pontos
+da interpolação <!--l. 1099--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+mathvariant="script"><mi 
+>I</mi></mstyle></math>
+for tal que <!--l. 1099--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+></math>,
+então é possível construir o spline periódico, definido com um spline cúbico
+que satisfaz as seguintes condições de periodicidade <table class="equation"><tr><td>
+<!--l. 1100--><p class="indent" >
+<!--l. 1100--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                   <mstyle 
+   id="x71-120002r93"  class="label" ></mstyle><!--endlabel--><msubsup><mrow 
+><mi 
+>s</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msubsup><mrow 
+><mi 
+>s</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mi 
+>n</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><mspace width="1em" class="quad"/><mstyle 
+class="text"><mtext  >e</mtext></mstyle><mspace width="1em" class="quad"/><msubsup><mrow 
+><mi 
+>s</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mi>&#x2033;</mi></mrow></msubsup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msubsup><mrow 
+><mi 
+>s</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow><mrow 
+><mi>&#x2033;</mi></mrow></msubsup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mi 
+>n</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(6.93)</td></tr></table>
+<!--l. 1103--><p class="indent" >   Em termos dos coeficientes (<a 
+href="#x71-116010r70">6.70<!--tex4ht:ref: eq:spline3 --></a>) <table class="equation"><tr><td>
+<!--l. 1104--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 1104--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                    <mstyle 
+   id="x71-120003r94"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mspace width="1em" class="quad"/><mstyle 
+class="text"><mtext  >e</mtext></mstyle><mspace width="1em" class="quad"/><mn>2</mn><msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><msub><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>6</mn><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(6.94)</td></tr></table>
+<!--l. 1107--><p class="indent" >   ou seja, <table class="equation"><tr><td>
+<!--l. 1108--><p class="indent" >
+<!--l. 1108--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x71-120004r95"  class="label" ></mstyle><!--endlabel--><mrow><mo fence="true" form="prefix"> {</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+>
+<mi 
+>n</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn>                                                                            </mtd></mtr><mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"></mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <mn>2</mn><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+>
+<mn>1</mn></mrow></msub 
+><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+>
+<mn>1</mn></mrow></msub 
+><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn> <mrow><mo fence="true" form="prefix"> (</mo><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mstyle displaystyle="true"><mfrac><mrow><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>
+    </mrow><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>     </mrow></mfrac></mstyle> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mstyle displaystyle="true"><mfrac><mrow><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+>
+     </mrow><mrow><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+>     </mrow></mfrac></mstyle></mrow><mo fence="true" form="postfix">)</mo></mrow>  </mtd>
+</mtr>   <!--l--></mtable>                                                                       </mrow><mo fence="true" form="postfix"></mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(6.95)</td></tr></table>
+<!--l. 1116--><p class="indent" >   Essas duas equações agregadas às equações (<a 
+href="#x71-116016r75">6.75<!--tex4ht:ref: eq:spline3-der --></a>) formam um sistema de
+<!--l. 1116--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi></math> equações
+<!--l. 1116--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>z</mi></math>, onde
+<table class="equation"><tr><td>
+<!--l. 1117--><p class="indent" >
+<!--l. 1117--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x71-120005r96"  class="label" ></mstyle><!--endlabel--><mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> [</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">    <mn>1</mn>     </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">   <mn>0</mn>   </mtd><mtd 
+class="array-td"  columnalign="center">    <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>    </mtd><mtd 
+class="array-td"  columnalign="center">          <mn>0</mn>            </mtd><mtd 
+class="array-td"  columnalign="center">    <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn>   </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">    <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>     </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>2</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo>  </mtd><mtd 
+class="array-td"  columnalign="center">       <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>        </mtd><mtd 
+class="array-td"  columnalign="center">   <mn>0</mn>   </mtd><mtd 
+class="array-td"  columnalign="center">    <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>    </mtd><mtd 
+class="array-td"  columnalign="center">          <mn>0</mn>            </mtd><mtd 
+class="array-td"  columnalign="center">    <mn>0</mn>    </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">     <mn>0</mn>     </mtd><mtd 
+class="array-td"  columnalign="center">       <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+>        </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>2</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">     <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>    </mtd><mtd 
+class="array-td"  columnalign="center">          <mn>0</mn>            </mtd><mtd 
+class="array-td"  columnalign="center">    <mn>0</mn>    </mtd></mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22F1;</mo> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi></mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">    <mn>0</mn>     </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">        <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">   <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>  </mtd><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>2</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+>  </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <mn>2</mn><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">      <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+>      </mtd><mtd 
+class="array-td"  columnalign="center">         <mn>0</mn>        </mtd><mtd 
+class="array-td"  columnalign="center">   <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>  </mtd><mtd 
+class="array-td"  columnalign="center">    <mn>0</mn>    </mtd><mtd 
+class="array-td"  columnalign="center">           <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>            </mtd><mtd 
+class="array-td"  columnalign="center">   <mn>2</mn><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>   </mtd></mtr> <!--ccccccc--></mtable>                                          </mrow><mo fence="true" form="postfix">]</mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(6.96)</td></tr></table>
+   <table class="equation"><tr><td>
+<!--l. 1129--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 1129--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x71-120006r97"  class="label" ></mstyle><!--endlabel--><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> [</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi>  </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+> </mtd></mtr> <!--c--></mtable>                                                                         </mrow><mo fence="true" form="postfix">]</mo></mrow><mspace width="2em" class="qquad"/><mstyle 
+class="text"><mtext  >e</mtext></mstyle><mspace width="2em" class="qquad"/><mi 
+>z</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn> <mrow><mo fence="true" form="prefix"> [</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">                   <mn>0</mn>                    </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">         <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></mrow></mfrac>    <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mrow></mfrac>                 </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">                              <mi 
+>&#x22EE;</mi>                 </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+></mrow> 
+     <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+></mrow></mfrac>       <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+></mrow></mfrac>      </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">         <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></mrow></mfrac>    <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mfrac><mrow 
+><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+></mrow> 
+   <mrow 
+><msub><mrow 
+><mi 
+>h</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+></mrow></mfrac>            </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">                                                              </mtd></mtr> <!--c--></mtable>                                                                                            </mrow><mo fence="true" form="postfix">]</mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(6.97)</td></tr></table>
+<!--l. 1146--><p class="indent" >   Neste caso também, se reduzirmos esse sistema pela eliminação das incógnitas
+<!--l. 1146--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+></math> e
+<!--l. 1146--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msubsup 
+></math>, o
+sistema resultante possui uma matriz de coeficientes diagonal dominante estrita,
+portanto, a solução é única.
+                                                                          
+
+                                                                          
+                                                                          
+
+                                                                          
+                                                                          
+
+                                                                          
+                                                                          
+
+                                                                          
+   <!--l. 3--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse32.html" >prev</a>] [<a 
+href="mainse32.html#tailmainse32.html" >prev-tail</a>] [<a 
+href="mainse33.html" >front</a>] [<a 
+href="mainch6.html#mainse33.html" >up</a>] </p></div>
+<!--l. 3--><p class="indent" >   <a 
+ id="tailmainse33.html"></a>   
+</body></html> 

@@ -1,0 +1,1783 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>Exercícios finais</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 2877--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse67.html" >prev</a>] [<a 
+href="mainse67.html#tailmainse67.html" >prev-tail</a>] [<a 
+href="#tailmainse68.html">tail</a>] [<a 
+href="mainch10.html#mainse68.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">10.17   </span> <a 
+ id="x121-23700010.17"></a>Exercícios finais</h3>
+   <div class="newtheorem">
+<!--l. 2880--><p class="noindent" ><span class="head">
+<a 
+ id="x121-237001r1"></a>
+<span 
+class="ec-lmbx-12">E 10.17.1.</span>  </span>Considere o problema de valor inicial dado por
+<!--tex4ht:inline--><!--l. 2881--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <mfrac><mrow 
+><mi 
+>d</mi><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow>
+  <mrow 
+><mi 
+>d</mi><mi 
+>t</mi></mrow></mfrac>  </mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mo 
+class="MathClass-bin" stretchy="false">-</mo><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mi 
+>t</mi></mrow></msup 
+></mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.391)</mtext><mtext 
+   id="x121-237002r10.391"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1">  <mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mn>0</mn>              </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.392)</mtext><mtext 
+   id="x121-237002r10.392"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>                                                 </mtr></mtable>
+</math>
+<!--l. 2884--><p class="nopar" >
+<!--l. 2885--><p class="indent" >   Resolva analiticamente este problema usando as técnicas elementares de
+equações diferenciais ordinárias. A seguir encontre aproximações
+numéricas usando os métodos de Euler, Euler modificado, Runge-Kutta
+clássico e Adams-Bashforth de ordem 4 conforme pedido nos itens.
+                                                                          
+
+                                                                          
+      <ul class="itemize1">
+      <li class="itemize">
+      <!--l. 2887--><p class="noindent" >Construa uma tabela apresentando valores com 7 algarismos significativos
+      para comparar a solução analítica com as aproximações numéricas
+      produzidas pelos métodos sugeridos. Construa também uma tabela
+      para o erro absoluto obtido por cada método numérico em
+      relação à solução analítica. Nesta última tabela, expresse o
+      erro com 2 algarismos significativos em formato científico. Dica:
+      <!--l. 2887--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mi 
+>o</mi><mi 
+>r</mi><mi 
+>m</mi><mi 
+>a</mi><mi 
+>t</mi><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mi 
+>,</mi><mn>8</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>
+      para a segunda tabela.
+      <div class="center" 
+>
+<!--l. 2888--><p class="noindent" >
+<div class="tabular"> <table id="TBL-487" class="tabular" 
+rules="groups" 
+><colgroup id="TBL-487-1g"><col 
+id="TBL-487-1"></colgroup><colgroup id="TBL-487-2g"><col 
+id="TBL-487-2"></colgroup><colgroup id="TBL-487-3g"><col 
+id="TBL-487-3"></colgroup><colgroup id="TBL-487-4g"><col 
+id="TBL-487-4"></colgroup><colgroup id="TBL-487-5g"><col 
+id="TBL-487-5"></colgroup><colgroup id="TBL-487-6g"><col 
+id="TBL-487-6"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-487-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-487-1-1"  
+class="td11">                       </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-1-2"  
+class="td11"> 0,5  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-1-3"  
+class="td11"> 1,0  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-1-4"  
+class="td11"> 1,5  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-1-5"  
+class="td11"> 2,0  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-1-6"  
+class="td11"> 2,5  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-487-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-487-2-1"  
+class="td11">       Analítico            </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-2-2"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-2-3"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-2-4"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-2-5"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-2-6"  
+class="td11">    </td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-487-3-"><td  style="text-align:center; white-space:nowrap;" id="TBL-487-3-1"  
+class="td11"> Euler </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-3-2"  
+class="td11"> </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-3-3"  
+class="td11"> </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-3-4"  
+class="td11"> </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-3-5"  
+class="td11"> </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-3-6"  
+class="td11"> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-487-4-"><td  style="text-align:center; white-space:nowrap;" id="TBL-487-4-1"  
+class="td11">     Euler modificado        </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-4-2"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-4-3"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-4-4"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-4-5"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-4-6"  
+class="td11">    </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-487-5-"><td  style="text-align:center; white-space:nowrap;" id="TBL-487-5-1"  
+class="td11">   Runge-Kutta clássico    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-5-2"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-5-3"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-5-4"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-5-5"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-5-6"  
+class="td11">    </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-487-6-"><td  style="text-align:center; white-space:nowrap;" id="TBL-487-6-1"  
+class="td11"> Adams-Bashforth ordem 4  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-6-2"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-6-3"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-6-4"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-6-5"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-487-6-6"  
+class="td11">    </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-487-7-"><td  style="text-align:center; white-space:nowrap;" id="TBL-487-7-1"  
+class="td11">                        </td>
+</tr></table>                                                                          </div></div>
+      <div class="center" 
+>
+<!--l. 2906--><p class="noindent" >
+<div class="tabular"> <table id="TBL-488" class="tabular" 
+rules="groups" 
+><colgroup id="TBL-488-1g"><col 
+id="TBL-488-1"></colgroup><colgroup id="TBL-488-2g"><col 
+id="TBL-488-2"></colgroup><colgroup id="TBL-488-3g"><col 
+id="TBL-488-3"></colgroup><colgroup id="TBL-488-4g"><col 
+id="TBL-488-4"></colgroup><colgroup id="TBL-488-5g"><col 
+id="TBL-488-5"></colgroup><colgroup id="TBL-488-6g"><col 
+id="TBL-488-6"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-488-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-488-1-1"  
+class="td11">                       </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-1-2"  
+class="td11"> 0,5  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-1-3"  
+class="td11"> 1,0  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-1-4"  
+class="td11"> 1,5  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-1-5"  
+class="td11"> 2,0  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-1-6"  
+class="td11"> 2,5  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-488-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-488-2-1"  
+class="td11">          Euler               </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-2-2"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-2-3"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-2-4"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-2-5"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-2-6"  
+class="td11">    </td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-488-3-"><td  style="text-align:center; white-space:nowrap;" id="TBL-488-3-1"  
+class="td11"> Euler modificado </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-3-2"  
+class="td11"> </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-3-3"  
+class="td11"> </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-3-4"  
+class="td11"> </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-3-5"  
+class="td11"> </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-3-6"  
+class="td11"> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-488-4-"><td  style="text-align:center; white-space:nowrap;" id="TBL-488-4-1"  
+class="td11">   Runge-Kutta clássico    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-4-2"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-4-3"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-4-4"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-4-5"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-4-6"  
+class="td11">    </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-488-5-"><td  style="text-align:center; white-space:nowrap;" id="TBL-488-5-1"  
+class="td11"> Adams-Bashforth ordem 4  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-5-2"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-5-3"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-5-4"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-5-5"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-488-5-6"  
+class="td11">    </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-488-6-"><td  style="text-align:center; white-space:nowrap;" id="TBL-488-6-1"  
+class="td11">                        </td>
+</tr></table>                                                                          </div></div>
+      </li>
+      <li class="itemize">
+      <!--l. 2922--><p class="noindent" >Calcule o valor produzido por cada um desses método para
+      <!--l. 2922--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math> com
+      passo <!--l. 2922--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>h</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>1</mn></math>,
+      <!--l. 2922--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>h</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>5</mn></math>,
+      <!--l. 2922--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>h</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn></math>,
+      <!--l. 2922--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>h</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>5</mn></math> e
+      <!--l. 2922--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>h</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>1</mn></math>.
+      Complete a tabela com os valores para o erro absoluto encontrado.
+                                                                          
+
+                                                                          
+      <div class="center" 
+>
+<!--l. 2923--><p class="noindent" >
+<div class="tabular"> <table id="TBL-489" class="tabular" 
+rules="groups" 
+><colgroup id="TBL-489-1g"><col 
+id="TBL-489-1"></colgroup><colgroup id="TBL-489-2g"><col 
+id="TBL-489-2"></colgroup><colgroup id="TBL-489-3g"><col 
+id="TBL-489-3"></colgroup><colgroup id="TBL-489-4g"><col 
+id="TBL-489-4"></colgroup><colgroup id="TBL-489-5g"><col 
+id="TBL-489-5"></colgroup><colgroup id="TBL-489-6g"><col 
+id="TBL-489-6"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-489-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-489-1-1"  
+class="td11">                       </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-1-2"  
+class="td11"> 0,1  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-1-3"  
+class="td11"> 0,05  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-1-4"  
+class="td11"> 0,01  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-1-5"  
+class="td11"> 0,005  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-1-6"  
+class="td11"> 0,001  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-489-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-489-2-1"  
+class="td11">          Euler               </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-2-2"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-2-3"  
+class="td11">     </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-2-4"  
+class="td11">     </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-2-5"  
+class="td11">      </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-2-6"  
+class="td11">      </td></tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-489-3-"><td  style="text-align:center; white-space:nowrap;" id="TBL-489-3-1"  
+class="td11"> Euler modificado </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-3-2"  
+class="td11"> </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-3-3"  
+class="td11"> </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-3-4"  
+class="td11"> </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-3-5"  
+class="td11"> </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-3-6"  
+class="td11"> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-489-4-"><td  style="text-align:center; white-space:nowrap;" id="TBL-489-4-1"  
+class="td11">   Runge-Kutta clássico    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-4-2"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-4-3"  
+class="td11">     </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-4-4"  
+class="td11">     </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-4-5"  
+class="td11">      </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-4-6"  
+class="td11">      </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-489-5-"><td  style="text-align:center; white-space:nowrap;" id="TBL-489-5-1"  
+class="td11"> Adams-Bashforth ordem 4  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-5-2"  
+class="td11">    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-5-3"  
+class="td11">     </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-5-4"  
+class="td11">     </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-5-5"  
+class="td11">      </td><td  style="text-align:center; white-space:nowrap;" id="TBL-489-5-6"  
+class="td11">      </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-489-6-"><td  style="text-align:center; white-space:nowrap;" id="TBL-489-6-1"  
+class="td11">                        </td>
+</tr></table>                                                                           </div></div>
+      </li></ul>
+   </div>
+<!--l. 2941--><p class="indent" >
+<!--l. 2944--><p class="noindent" ><!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta.</span>
+<div class="center" 
+>
+<!--l. 2946--><p class="noindent" >
+<div class="tabular"> <table id="TBL-490" class="tabular" 
+rules="groups" 
+><colgroup id="TBL-490-1g"><col 
+id="TBL-490-1"></colgroup><colgroup id="TBL-490-2g"><col 
+id="TBL-490-2"></colgroup><colgroup id="TBL-490-3g"><col 
+id="TBL-490-3"></colgroup><colgroup id="TBL-490-4g"><col 
+id="TBL-490-4"></colgroup><colgroup id="TBL-490-5g"><col 
+id="TBL-490-5"></colgroup><colgroup id="TBL-490-6g"><col 
+id="TBL-490-6"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-490-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-490-1-1"  
+class="td11">                       </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-1-2"  
+class="td11">    0,5      </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-1-3"  
+class="td11">    1,0      </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-1-4"  
+class="td11">    1,5      </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-1-5"  
+class="td11">    2,0      </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-1-6"  
+class="td11">    2,5      </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-490-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-490-2-1"  
+class="td11">       Analítico            </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-2-2"  
+class="td11"> 0,3032653  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-2-3"  
+class="td11"> 0,3678794  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-2-4"  
+class="td11"> 0,3346952  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-2-5"  
+class="td11"> 0,2706706  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-2-6"  
+class="td11"> 0,2052125  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-490-3-"><td  style="text-align:center; white-space:nowrap;" id="TBL-490-3-1"  
+class="td11">          Euler               </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-3-2"  
+class="td11"> 0,3315955  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-3-3"  
+class="td11"> 0,3969266  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-3-4"  
+class="td11"> 0,3563684  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-3-5"  
+class="td11"> 0,2844209  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-3-6"  
+class="td11"> 0,2128243  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-490-4-"><td  style="text-align:center; white-space:nowrap;" id="TBL-490-4-1"  
+class="td11">     Euler modificado        </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-4-2"  
+class="td11"> 0,3025634  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-4-3"  
+class="td11"> 0,3671929  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-4-4"  
+class="td11"> 0,3342207  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-4-5"  
+class="td11"> 0,2704083  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-4-6"  
+class="td11"> 0,2051058  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-490-5-"><td  style="text-align:center; white-space:nowrap;" id="TBL-490-5-1"  
+class="td11">   Runge-Kutta clássico    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-5-2"  
+class="td11"> 0,3032649  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-5-3"  
+class="td11"> 0,3678790  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-5-4"  
+class="td11"> 0,3346949  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-5-5"  
+class="td11"> 0,2706703  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-5-6"  
+class="td11"> 0,2052124  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-490-6-"><td  style="text-align:center; white-space:nowrap;" id="TBL-490-6-1"  
+class="td11"> Adams-Bashforth ordem 4  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-6-2"  
+class="td11"> 0,3032421  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-6-3"  
+class="td11"> 0,3678319  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-6-4"  
+class="td11"> 0,3346486  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-6-5"  
+class="td11"> 0,2706329  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-490-6-6"  
+class="td11"> 0,2051848  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-490-7-"><td  style="text-align:center; white-space:nowrap;" id="TBL-490-7-1"  
+class="td11">                        </td></tr></table>                                                                       </div></div>
+<div class="center" 
+>
+<!--l. 2965--><p class="noindent" >
+<div class="tabular"> <table id="TBL-491" class="tabular" 
+rules="groups" 
+><colgroup id="TBL-491-1g"><col 
+id="TBL-491-1"></colgroup><colgroup id="TBL-491-2g"><col 
+id="TBL-491-2"></colgroup><colgroup id="TBL-491-3g"><col 
+id="TBL-491-3"></colgroup><colgroup id="TBL-491-4g"><col 
+id="TBL-491-4"></colgroup><colgroup id="TBL-491-5g"><col 
+id="TBL-491-5"></colgroup><colgroup id="TBL-491-6g"><col 
+id="TBL-491-6"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-491-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-491-1-1"  
+class="td11">                       </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-1-2"  
+class="td11">  0,5   </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-1-3"  
+class="td11">  1,0   </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-1-4"  
+class="td11">  1,5   </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-1-5"  
+class="td11">  2,0   </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-1-6"  
+class="td11">  2,5   </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-491-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-491-2-1"  
+class="td11">          Euler               </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-2-2"  
+class="td11"> 2,8e-2  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-2-3"  
+class="td11"> 2,9e-2  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-2-4"  
+class="td11"> 2,2e-2  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-2-5"  
+class="td11"> 1,4e-2  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-2-6"  
+class="td11"> 7,6e-3  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-491-3-"><td  style="text-align:center; white-space:nowrap;" id="TBL-491-3-1"  
+class="td11">     Euler modificado        </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-3-2"  
+class="td11"> 7,0e-4  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-3-3"  
+class="td11"> 6,9e-4  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-3-4"  
+class="td11"> 4,7e-4  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-3-5"  
+class="td11"> 2,6e-4  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-3-6"  
+class="td11"> 1,1e-4  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-491-4-"><td  style="text-align:center; white-space:nowrap;" id="TBL-491-4-1"  
+class="td11">   Runge-Kutta clássico    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-4-2"  
+class="td11"> 4,6e-7  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-4-3"  
+class="td11"> 4,7e-7  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-4-4"  
+class="td11"> 3,5e-7  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-4-5"  
+class="td11"> 2,2e-7  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-4-6"  
+class="td11"> 1,2e-7  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-491-5-"><td  style="text-align:center; white-space:nowrap;" id="TBL-491-5-1"  
+class="td11"> Adams-Bashforth ordem 4  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-5-2"  
+class="td11"> 2,3e-5  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-5-3"  
+class="td11"> 4,8e-5  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-5-4"  
+class="td11"> 4,7e-5  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-5-5"  
+class="td11"> 3,8e-5  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-491-5-6"  
+class="td11"> 2,8e-5  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-491-6-"><td  style="text-align:center; white-space:nowrap;" id="TBL-491-6-1"  
+class="td11">                        </td></tr></table>                                                    </div></div>
+<div class="center" 
+>
+<!--l. 2981--><p class="noindent" >
+<div class="tabular"> <table id="TBL-492" class="tabular" 
+rules="groups" 
+><colgroup id="TBL-492-1g"><col 
+id="TBL-492-1"></colgroup><colgroup id="TBL-492-2g"><col 
+id="TBL-492-2"></colgroup><colgroup id="TBL-492-3g"><col 
+id="TBL-492-3"></colgroup><colgroup id="TBL-492-4g"><col 
+id="TBL-492-4"></colgroup><colgroup id="TBL-492-5g"><col 
+id="TBL-492-5"></colgroup><colgroup id="TBL-492-6g"><col 
+id="TBL-492-6"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-492-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-492-1-1"  
+class="td11">                       </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-1-2"  
+class="td11">  0,1   </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-1-3"  
+class="td11">  0,05   </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-1-4"  
+class="td11">  0,01   </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-1-5"  
+class="td11">  0,005   </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-1-6"  
+class="td11">  0,001   </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-492-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-492-2-1"  
+class="td11">          Euler               </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-2-2"  
+class="td11"> 2,9e-2  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-2-3"  
+class="td11"> 5,6e-3  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-2-4"  
+class="td11"> 2,8e-3  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-2-5"  
+class="td11"> 5,5e-4  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-2-6"  
+class="td11"> 2,8e-4  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-492-3-"><td  style="text-align:center; white-space:nowrap;" id="TBL-492-3-1"  
+class="td11">     Euler modificado        </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-3-2"  
+class="td11"> 6,9e-4  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-3-3"  
+class="td11"> 2,5e-5  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-3-4"  
+class="td11"> 6,2e-6  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-3-5"  
+class="td11"> 2,5e-7  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-3-6"  
+class="td11"> 6,1e-8  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-492-4-"><td  style="text-align:center; white-space:nowrap;" id="TBL-492-4-1"  
+class="td11">   Runge-Kutta clássico    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-4-2"  
+class="td11"> 4,7e-7  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-4-3"  
+class="td11"> 6,9e-10  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-4-4"  
+class="td11"> 4,3e-11  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-4-5"  
+class="td11"> 6,8e-14  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-4-6"  
+class="td11"> 4,4e-15  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-492-5-"><td  style="text-align:center; white-space:nowrap;" id="TBL-492-5-1"  
+class="td11"> Adams-Bashforth ordem 4  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-5-2"  
+class="td11"> 4,8e-5  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-5-3"  
+class="td11"> 9,0e-8  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-5-4"  
+class="td11"> 5,7e-9  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-5-5"  
+class="td11"> 9,2e-12  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-492-5-6"  
+class="td11"> 5,8e-13  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-492-6-"><td  style="text-align:center; white-space:nowrap;" id="TBL-492-6-1"  
+class="td11">                        </td></tr></table>                                                         </div></div>
+                                                                          
+
+                                                                          
+<!--l. 2997--><p class="noindent" ></div> <!--resp end-->
+   <div class="newtheorem">
+<!--l. 2999--><p class="noindent" ><span class="head">
+<a 
+ id="x121-237003r2"></a>
+<span 
+class="ec-lmbx-12">E 10.17.2.</span>  </span>Considere o seguinte modelo para o crescimento de uma colônia de
+bactérias, baseado na equação logística (ver (<a 
+href="mainse53.html#x105-192017r29">10.29<!--tex4ht:ref: eq:logistica --></a>)) <table class="equation"><tr><td>
+<!--l. 3000--><p class="indent" >
+<!--l. 3000--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                          <mstyle 
+   id="x121-237004r393"  class="label" ></mstyle><!--endlabel--><msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>&#x03B1;</mi><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mrow><mo fence="true" form="prefix"> (</mo><mrow><mi 
+>A</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mo fence="true" form="postfix">)</mo></mrow>
+</math></td><td class="eq-no">(10.393)</td></tr></table>
+<!--l. 3001--><p class="indent" >   onde <!--l. 3001--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>
+indica a densidade de bactérias em unidades arbitrárias na colônia e
+<!--l. 3001--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi></math> e
+<!--l. 3001--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math> são
+constantes positivas. Pergunta-se:
+      <ul class="itemize1">
+      <li class="itemize">
+      <!--l. 3004--><p class="noindent" >Se <!--l. 3004--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>0</mn></math>
+      e <!--l. 3004--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></math>
+      e <!--l. 3004--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></math>,
+      use métodos numéricos para obter aproximação para <!--l. 3004--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>
+      em <!--l. 3004--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>t</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+></math>,
+      <!--l. 3004--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>t</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo><mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+></math>,
+      <!--l. 3004--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>t</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+></math>
+      e <!--l. 3004--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>t</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></math>.
+      </li>
+      <li class="itemize">
+                                                                          
+
+                                                                          
+      <!--l. 3005--><p class="noindent" >Se <!--l. 3005--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>0</mn></math>
+      e <!--l. 3005--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></math>
+      e <!--l. 3005--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></math>,
+      use métodos numéricos para obter tempo necessário para que a
+      população dobre?
+      </li>
+      <li class="itemize">
+      <!--l. 3006--><p class="noindent" >Se <!--l. 3006--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>0</mn></math>
+      e <!--l. 3006--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></math>
+      e <!--l. 3006--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>4</mn></math>,
+      use métodos numéricos para obter tempo necessário para que a
+      população dobre?</li></ul>
+   </div>
+<!--l. 3008--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta.</span>
+      <ul class="itemize1">
+      <li class="itemize">
+      <!--l. 3011--><p class="noindent" ><!--l. 3011--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mi 
+>,</mi><mn>5</mn><mn>4</mn><mn>8</mn><mn>2</mn><mn>8</mn><mn>0</mn><mn>9</mn><mn>8</mn><mn>9</mn><mn>6</mn><mn>0</mn><mn>3</mn></math>,
+      <!--l. 3011--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>2</mn><mi 
+>,</mi><mn>3</mn><mn>1</mn><mn>9</mn><mn>6</mn><mn>9</mn><mn>3</mn><mn>1</mn><mn>6</mn><mn>6</mn><mn>8</mn><mn>4</mn><mn>1</mn></math>,
+      <!--l. 3011--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>9</mn><mi 
+>,</mi><mn>4</mn><mn>2</mn><mn>8</mn><mn>2</mn><mn>5</mn><mn>6</mn><mn>1</mn><mn>8</mn><mn>5</mn><mn>7</mn><mn>4</mn></math>
+      e <!--l. 3011--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>9</mn><mi 
+>,</mi><mn>9</mn><mn>9</mn><mn>5</mn><mn>9</mn><mn>1</mn><mn>5</mn><mn>6</mn><mn>7</mn><mn>5</mn><mn>1</mn><mn>7</mn><mn>4</mn></math>.
+      </li>
+      <li class="itemize">
+      <!--l. 3012--><p class="noindent" ><!--l. 3012--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>8</mn><mn>1</mn><mn>0</mn><mn>9</mn><mn>3</mn><mn>0</mn><mn>2</mn><mn>1</mn><mn>6</mn><mn>2</mn><mn>2</mn></math>.
+      </li>
+      <li class="itemize">
+      <!--l. 3013--><p class="noindent" ><!--l. 3013--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>1</mn><mn>7</mn><mn>9</mn><mn>1</mn><mn>7</mn><mn>5</mn><mn>9</mn><mn>4</mn><mn>6</mn><mn>9</mn><mn>2</mn><mn>3</mn></math>.</li></ul>
+<!--l. 3016--><p class="indent" >   Obs: A solução analitica do problema de valor inicial é dada por:
+<table class="equation"><tr><td>
+<!--l. 3017--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 3017--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                        <mstyle 
+   id="x121-237005r394"  class="label" ></mstyle><!--endlabel--><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo>            <mfrac><mrow 
+><mi 
+>A</mi><msub><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+></mrow> 
+<mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>A</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mi 
+>A</mi><mi 
+>&#x03B1;</mi><mi 
+>a</mi><mi 
+>t</mi></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+></mrow></mfrac>
+</math></td><td class="eq-no">(10.394)</td></tr></table>
+<!--l. 3018--><p class="indent" >   Os valores exatos para os itens b e c
+são:<!--l. 3018--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mfrac><mrow 
+><mn>1</mn></mrow>
+<mrow 
+><mn>1</mn><mn>0</mn></mrow></mfrac><mtext class="qopname"> ln</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--> <mrow><mo fence="true" form="prefix"> (</mo><mrow><mfrac><mrow 
+><mn>9</mn></mrow>
+<mrow 
+><mn>4</mn></mrow></mfrac> </mrow><mo fence="true" form="postfix">)</mo></mrow></math>
+e <!--l. 3018--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mfrac><mrow 
+><mn>1</mn></mrow>
+<mrow 
+><mn>1</mn><mn>0</mn></mrow></mfrac><mtext class="qopname"> ln</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--> <mrow><mo fence="true" form="prefix"> (</mo><mrow><mn>6</mn></mrow><mo fence="true" form="postfix">)</mo></mrow></math>.
+<!--l. 3020--><p class="indent" >   </div> <!--resp end-->
+   <div class="newtheorem">
+<!--l. 3022--><p class="noindent" ><span class="head">
+<a 
+ id="x121-237006r3"></a>
+<span 
+class="ec-lmbx-12">E 10.17.3.</span>  </span>Considere o seguinte modelo para a evolução da velocidade de um
+objeto em queda: <table class="equation"><tr><td>
+<!--l. 3023--><p class="indent" >
+<!--l. 3023--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                               <mstyle 
+   id="x121-237007r395"  class="label" ></mstyle><!--endlabel--><msup><mrow 
+><mi 
+>v</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>g</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>&#x03B1;</mi><msup><mrow 
+><mi 
+>v</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+>
+</math></td><td class="eq-no">(10.395)</td></tr></table>
+<!--l. 3024--><p class="indent" >   Sabendo que <!--l. 3024--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>g</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>9</mn><mi 
+>,</mi><mn>8</mn></math>
+e <!--l. 3024--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+></math> e
+<!--l. 3024--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>v</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn></math>.
+Pede-se a velocidade ao tocar o solo e o instante quando isto acontece, dado que a
+altura inicial era 100.
+                                                                          
+
+                                                                          
+   </div>
+<!--l. 3025--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta. </span>O valor exato é <!--l. 3027--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msqrt><mrow> <mfrac> <mrow 
+> <mi 
+>g</mi></mrow>
+<mrow 
+><mi 
+>&#x03B1;</mi></mrow></mfrac> <mrow><mo fence="true" form="prefix"> [</mo><mrow><mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn><mn>0</mn><mn>0</mn><mi 
+>&#x03B1;</mi></mrow></msup 
+></mrow><mo fence="true" form="postfix">]</mo></mrow></mrow></msqrt> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>2</mn><mn>9</mn><mi 
+>,</mi><mn>1</mn><mn>0</mn><mn>9</mn><mn>6</mn><mn>4</mn><mn>4</mn><mn>8</mn><mn>3</mn><mn>5</mn><mn>1</mn><mn>4</mn><mn>2</mn></math>
+em <!--l. 3027--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>t</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo>   <mfrac><mrow 
+><mn>1</mn></mrow> 
+<mrow 
+><msqrt><mrow><mi 
+>g</mi><mi 
+>&#x03B1;</mi></mrow></msqrt></mrow></mfrac><msup><mrow 
+><mtext class="qopname"> tanh</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--> </mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mrow><mo fence="true" form="prefix"> (</mo><mrow><msqrt><mrow><mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn><mn>0</mn><mn>0</mn><mi 
+>&#x03B1;</mi></mrow></msup 
+></mrow></msqrt></mrow><mo fence="true" form="postfix">)</mo></mrow> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>2</mn><mi 
+>,</mi><mn>3</mn><mn>9</mn><mn>2</mn><mn>8</mn><mn>3</mn><mn>8</mn><mn>0</mn><mn>1</mn><mn>8</mn><mn>5</mn><mn>4</mn><mn>9</mn><mn>7</mn></math>
+</div> <!--resp end-->
+   <div class="newtheorem">
+<!--l. 3032--><p class="noindent" ><span class="head">
+<a 
+ id="x121-237008r4"></a>
+<span 
+class="ec-lmbx-12">E 10.17.4.</span>  </span>Considere o seguinte modelo para o oscilador não linear de Van der
+Pol: <table class="equation"><tr><td>
+<!--l. 3033--><p class="indent" >
+<!--l. 3033--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                  <mstyle 
+   id="x121-237009r396"  class="label" ></mstyle><!--endlabel--><msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mi>&#x2033;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>&#x03B1;</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>A</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>u</mi><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msubsup><mrow 
+><mi 
+>w</mi></mrow><mrow 
+>
+<mn>0</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn>
+</math></td><td class="eq-no">(10.396)</td></tr></table>
+<!--l. 3034--><p class="indent" >   onde <!--l. 3034--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>,
+<!--l. 3034--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi></math> e
+<!--l. 3034--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>w</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+></math> são
+constantes positivas.
+      <ul class="itemize1">
+      <li class="itemize">
+      <!--l. 3036--><p class="noindent" >Encontre a frequência e a amplitude de oscilações quando <!--l. 3036--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>w</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></math>,
+      <!--l. 3036--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-punc" stretchy="false">.</mo><mn>1</mn></math>
+      e <!--l. 3036--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>0</mn></math>.
+      (Teste diversas condições iniciais)
+      </li>
+      <li class="itemize">
+                                                                          
+
+                                                                          
+      <!--l. 3037--><p class="noindent" >Estude a dependência da frequência e da amplitude com os parâmetros
+      <!--l. 3037--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>,
+      <!--l. 3037--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi></math>
+      e <!--l. 3037--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>w</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+></math>.
+      (Teste diversas condições iniciais)
+      </li>
+      <li class="itemize">
+      <!--l. 3038--><p class="noindent" >Que diferenças existem entre esse oscilador não linear e o oscilador
+      linear?</li></ul>
+   </div>
+<!--l. 3040--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 3042--><p class="noindent" ><span class="head">
+<a 
+ id="x121-237010r5"></a>
+<span 
+class="ec-lmbx-12">E 10.17.5.</span>  </span>Considere o seguinte modelo para um oscilador não linear:
+<!--tex4ht:inline--><!--l. 3043--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mi>&#x2033;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>&#x03B1;</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>A</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>z</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">)</mo><msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msubsup><mrow 
+><mi 
+>w</mi></mrow><mrow 
+>
+<mn>0</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mn>0</mn>    </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.397)</mtext><mtext 
+   id="x121-237011r10.397"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1">                     <mi 
+>C</mi><msup><mrow 
+><mi 
+>z</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>z</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mi 
+>u</mi><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.398)</mtext><mtext 
+   id="x121-237011r10.398"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>                             </mtr></mtable>
+</math>
+<!--l. 3046--><p class="nopar" >
+                                                                          
+
+                                                                          
+<!--l. 3047--><p class="indent" >   onde <!--l. 3047--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>,
+<!--l. 3047--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi></math>,
+<!--l. 3047--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>w</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+></math> e
+<!--l. 3047--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>C</mi></math> são
+constantes positivas.
+      <ul class="itemize1">
+      <li class="itemize">
+      <!--l. 3049--><p class="noindent" >Encontre a frequência e a amplitude de oscilações quando <!--l. 3049--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>w</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></math>,
+      <!--l. 3049--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-punc" stretchy="false">.</mo><mn>1</mn></math>,
+      <!--l. 3049--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>0</mn></math>
+      e <!--l. 3049--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>C</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>0</mn></math>.
+      (Teste diversas condições iniciais)
+      </li>
+      <li class="itemize">
+      <!--l. 3050--><p class="noindent" >Estude a dependência da frequência e da amplitude com os parâmetros
+      <!--l. 3050--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>,
+      <!--l. 3050--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi></math>,
+      <!--l. 3050--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>w</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+></math>
+      e <!--l. 3050--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>C</mi></math>.
+      (Teste diversas condições iniciais)</li></ul>
+   </div>
+<!--l. 3052--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 3054--><p class="noindent" ><span class="head">
+<a 
+ id="x121-237012r6"></a>
+<span 
+class="ec-lmbx-12">E 10.17.6.</span>  </span>Considere o seguinte modelo para o controle de temperatura em um
+processo químico:
+                                                                          
+
+                                                                          
+<!--tex4ht:inline--><!--l. 3055--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <mi 
+>C</mi><msup><mrow 
+><mi 
+>T</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>T</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mi 
+>&#x03BA;</mi><mi 
+>P</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>T</mi></mrow><mrow 
+>
+<mi 
+>e</mi><mi 
+>x</mi><mi 
+>t</mi></mrow></msub 
+>  </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.399)</mtext><mtext 
+   id="x121-237013r10.399"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1">         <msup><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mi 
+>&#x03B1;</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>T</mi></mrow><mrow 
+>
+<mi 
+>s</mi><mi 
+>e</mi><mi 
+>t</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>T</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.400)</mtext><mtext 
+   id="x121-237013r10.400"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>                                      </mtr></mtable>
+</math>
+<!--l. 3058--><p class="nopar" >
+<!--l. 3059--><p class="indent" >   onde <!--l. 3059--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>C</mi></math>,
+<!--l. 3059--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi></math> e
+<!--l. 3059--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03BA;</mi></math> são constantes
+positivas e <!--l. 3059--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>P</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>
+indica o potência do aquecedor. Sabendo que
+<!--l. 3059--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>T</mi></mrow><mrow 
+><mi 
+>s</mi><mi 
+>e</mi><mi 
+>t</mi></mrow></msub 
+></math> é a
+temperatura desejada, interprete o funcionamento desse sistema de controle e
+faça o que se pede:
+      <ul class="itemize1">
+      <li class="itemize">
+      <!--l. 3061--><p class="noindent" >Calcule a solução quando a temperatura externa <!--l. 3061--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>T</mi></mrow><mrow 
+><mi 
+>e</mi><mi 
+>x</mi><mi 
+>t</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn></math>,
+      <!--l. 3061--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>T</mi></mrow><mrow 
+><mi 
+>s</mi><mi 
+>e</mi><mi 
+>t</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>0</mn><mn>0</mn><mn>0</mn></math>,
+      <!--l. 3061--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>C</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>0</mn></math>,
+      <!--l. 3061--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03BA;</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-punc" stretchy="false">.</mo><mn>1</mn></math>
+      e <!--l. 3061--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-punc" stretchy="false">.</mo><mn>1</mn></math>.
+      Considere condições iniciais nulas.
+      </li>
+      <li class="itemize">
+      <!--l. 3062--><p class="noindent" >Quanto tempo demora o sistema para atingir a temperatura 900K?
+      </li>
+      <li class="itemize">
+      <!--l. 3063--><p class="noindent" >Refaça os dois primeiros itens com <!--l. 3063--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>2</mn></math>
+      e <!--l. 3063--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></math>
+                                                                          
+
+                                                                          
+      </li>
+      <li class="itemize">
+      <!--l. 3064--><p class="noindent" >Faça testes para verificar a influência de <!--l. 3064--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>T</mi></mrow><mrow 
+><mi 
+>e</mi><mi 
+>x</mi><mi 
+>t</mi></mrow></msub 
+></math>,
+      <!--l. 3064--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi></math>
+      e <!--l. 3064--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03BA;</mi></math>
+      na temperatura final.</li></ul>
+   </div>
+<!--l. 3066--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 3068--><p class="noindent" ><span class="head">
+<a 
+ id="x121-237014r7"></a>
+<span 
+class="ec-lmbx-12">E 10.17.7.</span>  </span>Considere a equação do pêndulo dada por: <table class="equation"><tr><td>
+<!--l. 3069--><p class="indent" >
+<!--l. 3069--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                         <mstyle 
+   id="x121-237015r401"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><msup><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+><mi 
+>&#x03B8;</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow>
+
+  <mrow 
+><mi 
+>d</mi><msup><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><mi 
+>g</mi></mrow> 
+<mrow 
+><mi 
+>l</mi></mrow></mfrac> <mtext class="qopname"> sen</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--> <mspace width="0.17em" class="thinspace"/><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>&#x03B8;</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn>
+</math></td><td class="eq-no">(10.401)</td></tr></table>
+<!--l. 3070--><p class="indent" >   onde <!--l. 3070--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>g</mi></math>
+é o módulo da aceleração da gravidade e
+<!--l. 3070--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>l</mi></math> é o
+comprimento da haste.
+      <ul class="itemize1">
+      <li class="itemize">
+      <!--l. 3072--><p class="noindent" >Mostre analiticamente que a energia total do sistema dada por <table class="equation"><tr><td>
+      <!--l. 3073--><p class="noindent" >
+                                                                          
+
+                                                                          
+      <!--l. 3073--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                                   <mstyle 
+   id="x121-237016r402"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mn>1</mn></mrow> 
+<mrow 
+><mn>2</mn></mrow></mfrac><msup><mrow 
+> <mrow><mo fence="true" form="prefix"> (</mo><mrow><mfrac><mrow 
+><mi 
+>d</mi><mi 
+>&#x03B8;</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow>
+  <mrow 
+><mi 
+>d</mi><mi 
+>t</mi></mrow></mfrac>  </mrow><mo fence="true" form="postfix">)</mo></mrow></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><mi 
+>g</mi></mrow> 
+<mrow 
+><mi 
+>l</mi></mrow></mfrac> <mtext class="qopname"> cos</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>&#x03B8;</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">)</mo>
+</math></td><td class="eq-no">(10.402)</td></tr></table>
+      <!--l. 3074--><p class="noindent" >é mantida constante.
+      </li>
+      <li class="itemize">
+      <!--l. 3075--><p class="noindent" >Resolva numericamente esta equação para
+      <!--l. 3075--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>g</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>9</mn><mi 
+>,</mi><mn>8</mn><mi 
+>m</mi><mo 
+class="MathClass-bin" stretchy="false">&#x2215;</mo><msup><mrow 
+><mi 
+>s</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></math>
+      e <!--l. 3075--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>l</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>m</mi></math> e
+      as seguintes condições iniciais:
+      <!--l. 3076--><p class="noindent" >&#x00A0;     i. <!--l. 3076--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B8;</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>5</mn></math>
+      e <!--l. 3076--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>&#x03B8;</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn></math>.
+      <!--l. 3077--><p class="noindent" >&#x00A0;     ii. <!--l. 3077--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B8;</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>0</mn></math>
+      e <!--l. 3077--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>&#x03B8;</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn></math>.
+      <!--l. 3078--><p class="noindent" >&#x00A0;     iii. <!--l. 3078--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B8;</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>5</mn></math>
+      e <!--l. 3078--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>&#x03B8;</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn></math>.
+      <!--l. 3079--><p class="noindent" >&#x00A0;     iv. <!--l. 3079--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B8;</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><mi 
+>,</mi><mn>0</mn></math>
+      e <!--l. 3079--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>&#x03B8;</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn></math>.
+      <!--l. 3080--><p class="noindent" >&#x00A0;     v. <!--l. 3080--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B8;</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><mi 
+>,</mi><mn>5</mn></math>
+      e <!--l. 3080--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>&#x03B8;</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn></math>.
+      <!--l. 3081--><p class="noindent" >&#x00A0;     vi. <!--l. 3081--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B8;</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn><mi 
+>,</mi><mn>0</mn></math>
+      e <!--l. 3081--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>&#x03B8;</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn></math>.</li></ul>
+<!--l. 3083--><p class="noindent" >Em todos os casos, verifique se o método numérico reproduz a lei de conservação
+de energia e calcule período e amplitude.
+   </div>
+<!--l. 3084--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 3086--><p class="noindent" ><span class="head">
+                                                                          
+
+                                                                          
+<a 
+ id="x121-237017r8"></a>
+<span 
+class="ec-lmbx-12">E 10.17.8.</span>  </span>Considere o modelo simplificado de FitzHugh-Nagumo para o
+potencial elétrico sobre a membrana de um neurônio:
+<!--tex4ht:inline--><!--l. 3087--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1">  <mfrac><mrow 
+><mi 
+>d</mi><mi 
+>V</mi> </mrow>
+ <mrow 
+><mi 
+>d</mi><mi 
+>t</mi></mrow></mfrac> </mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mi 
+>V</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msup><mrow 
+><mi 
+>V</mi> </mrow><mrow 
+><mn>3</mn></mrow></msup 
+><mo 
+class="MathClass-bin" stretchy="false">&#x2215;</mo><mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>W</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>I</mi>   </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.403)</mtext><mtext 
+   id="x121-237018r10.403"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1"> <mfrac><mrow 
+><mi 
+>d</mi><mi 
+>W</mi></mrow>
+ <mrow 
+><mi 
+>d</mi><mi 
+>t</mi></mrow></mfrac> </mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>8</mn><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>V</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mi 
+>,</mi><mn>7</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>0</mn><mi 
+>,</mi><mn>8</mn><mi 
+>W</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.404)</mtext><mtext 
+   id="x121-237018r10.404"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>                                        </mtr></mtable>
+</math>
+<!--l. 3090--><p class="nopar" >
+<!--l. 3091--><p class="indent" >   onde <!--l. 3091--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>I</mi></math>
+é a corrente de excitação.
+      <ul class="itemize1">
+      <li class="itemize">
+      <!--l. 3093--><p class="noindent" >Encontre o único estado estacionário <!--l. 3093--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mrow><mo fence="true" form="prefix"> (</mo><mrow><msub><mrow 
+><mi 
+>V</mi> </mrow><mrow 
+><mn>0</mn></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>W</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+></mrow><mo fence="true" form="postfix">)</mo></mrow></math>
+      com <!--l. 3093--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>I</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn></math>.
+      </li>
+      <li class="itemize">
+      <!--l. 3094--><p class="noindent" >Resolva numericamente o sistema com condições iniciais dadas por
+      <!--l. 3094--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mrow><mo fence="true" form="prefix"> (</mo><mrow><msub><mrow 
+><mi 
+>V</mi> </mrow><mrow 
+><mn>0</mn></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>W</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+></mrow><mo fence="true" form="postfix">)</mo></mrow></math>
+      e
+                                                                          
+
+                                                                          
+      <!--l. 3095--><p class="noindent" >&#x00A0;     <!--l. 3095--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>I</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn></math>
+      <!--l. 3096--><p class="noindent" >&#x00A0;     <!--l. 3096--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>I</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>2</mn></math>
+      <!--l. 3097--><p class="noindent" >&#x00A0;     <!--l. 3097--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>I</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>4</mn></math>
+      <!--l. 3098--><p class="noindent" >&#x00A0;     <!--l. 3098--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>I</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>8</mn></math>
+      <!--l. 3099--><p class="noindent" >&#x00A0;     <!--l. 3099--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>I</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mi 
+>t</mi><mo 
+class="MathClass-bin" stretchy="false">&#x2215;</mo><mn>2</mn><mn>0</mn><mn>0</mn></mrow></msup 
+></math></li></ul>
+   </div>
+<!--l. 3101--><p class="indent" >
+                                                                          
+
+                                                                          
+                                                                          
+
+                                                                          
+                                                                          
+
+                                                                          
+                                                                          
+
+                                                                          
+   <!--l. 6--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse67.html" >prev</a>] [<a 
+href="mainse67.html#tailmainse67.html" >prev-tail</a>] [<a 
+href="mainse68.html" >front</a>] [<a 
+href="mainch10.html#mainse68.html" >up</a>] </p></div>
+<!--l. 6--><p class="indent" >   <a 
+ id="tailmainse68.html"></a>  
+</body></html> 

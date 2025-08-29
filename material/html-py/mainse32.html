@@ -1,0 +1,497 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>Interpolaçao linear segmentada</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 639--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse33.html" >next</a>] [<a 
+href="mainse31.html" >prev</a>] [<a 
+href="mainse31.html#tailmainse31.html" >prev-tail</a>] [<a 
+href="#tailmainse32.html">tail</a>] [<a 
+href="mainch6.html#mainse32.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">6.5   </span> <a 
+ id="x70-1150006.5"></a>Interpolação linear segmentada</h3>
+<a 
+ id="dx70-115001"></a>
+<!--l. 640--><p class="noindent" >Considere o conjunto <!--l. 640--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+> <mrow><mo fence="true" form="prefix"> (</mo><mrow><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></mrow><mo fence="true" form="postfix">)</mo></mrow> </mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-rel" stretchy="false">=</mo><mn>1</mn></mrow><mrow 
+><mi 
+>n</mi></mrow></msubsup 
+></math>
+de <!--l. 640--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi></math> pontos.
+Assumiremos que <!--l. 640--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">&#x003E;</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math>,
+ou seja, as abscissas são distintas e estão em ordem crescente. A função linear que
+interpola os pontos <!--l. 640--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math>
+e <!--l. 640--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+></math> no
+intervalo <!--l. 640--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>i</mi></math>
+é dada por <table class="equation"><tr><td>
+<!--l. 641--><p class="indent" >
+<!--l. 641--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                  <mstyle 
+   id="x70-115002r61"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+> <mfrac><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow> 
+<mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></mfrac> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>i</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+>   <mfrac><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow> 
+<mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></mfrac>
+</math></td><td class="eq-no">(6.61)</td></tr></table>
+<!--l. 643--><p class="indent" >   O resultado da interpolação linear segmentada é a
+seguinte função contínua definida por partes no intervalo
+<!--l. 643--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">[</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">]</mo></math>:
+<table class="equation"><tr><td>
+<!--l. 644--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 644--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                        <mstyle 
+   id="x70-115003r62"  class="label" ></mstyle><!--endlabel--><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>P</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-punc" stretchy="false">,</mo><mspace width="0.33em" class="nbsp" /><mspace width="0.33em" class="nbsp" /><mspace width="0.33em" class="nbsp" /><mspace width="0.33em" class="nbsp" /><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo> <mo 
+class="MathClass-open" stretchy="false">[</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">]</mo>
+</math></td><td class="eq-no">(6.62)</td></tr></table>
+   <div class="newtheorem">
+<!--l. 646--><p class="noindent" ><span class="head">
+<a 
+ id="x70-115004r1"></a>
+<span 
+class="ec-lmbx-12">Exemplo 6.5.1.</span>  </span>Construa uma função linear por partes que interpola os
+pontos <!--l. 647--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mi 
+>,</mi><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>,
+<!--l. 647--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mi 
+>,</mi><mn>4</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>,
+<!--l. 647--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>2</mn><mi 
+>,</mi><mn>3</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>,
+<!--l. 647--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>3</mn><mi 
+>,</mi><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>,
+<!--l. 647--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>4</mn><mi 
+>,</mi><mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>,
+<!--l. 647--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>5</mn><mi 
+>,</mi><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>.
+<!--l. 649--><p class="indent" >   A função procurada pode ser construída da seguinte forma: <table class="equation"><tr><td>
+<!--l. 650--><p class="indent" >
+<!--l. 650--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x70-115005r63"  class="label" ></mstyle><!--endlabel--><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> {</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <mn>0</mn><mfrac><mrow 
+><mi 
+>x</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow>
+<mrow 
+><mn>0</mn><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></mfrac> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn><mfrac><mrow 
+><mi 
+>x</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>0</mn></mrow>
+<mrow 
+><mn>1</mn><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>0</mn></mrow></mfrac> <mi 
+>,</mi> </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>0</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>1</mn> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <mn>4</mn><mfrac><mrow 
+><mi 
+>x</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow>
+<mrow 
+><mn>1</mn><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></mfrac> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>3</mn><mfrac><mrow 
+><mi 
+>x</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow>
+<mrow 
+><mn>2</mn><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></mfrac> <mi 
+>,</mi> </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>1</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>2</mn> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <mn>3</mn><mfrac><mrow 
+><mi 
+>x</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow>
+<mrow 
+><mn>2</mn><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></mfrac> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mfrac><mrow 
+><mi 
+>x</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow>
+<mrow 
+><mn>3</mn><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></mfrac> <mi 
+>,</mi> </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>2</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>3</mn> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <mn>0</mn><mfrac><mrow 
+><mi 
+>x</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>4</mn></mrow>
+<mrow 
+><mn>3</mn><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>4</mn></mrow></mfrac> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn><mfrac><mrow 
+><mi 
+>x</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow>
+<mrow 
+><mn>4</mn><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></mfrac> <mi 
+>,</mi> </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>3</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>4</mn> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <mn>2</mn><mfrac><mrow 
+><mi 
+>x</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>5</mn></mrow>
+<mrow 
+><mn>4</mn><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>5</mn></mrow></mfrac> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mfrac><mrow 
+><mi 
+>x</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>4</mn></mrow>
+<mrow 
+><mn>5</mn><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>4</mn></mrow></mfrac> <mi 
+>,</mi> </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>4</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mn>5</mn> </mtd></mtr> <!--ll--></mtable>                                                               </mrow><mo fence="true" form="postfix"></mo></mrow>
+</math></td><td class="eq-no">(6.63)</td></tr></table>
+<!--l. 661--><p class="indent" >   Simplificando, obtemos: <table class="equation"><tr><td>
+<!--l. 662--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 662--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x70-115006r64"  class="label" ></mstyle><!--endlabel--><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> {</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <mi 
+>x</mi><mi 
+>,</mi>           </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>0</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>1</mn> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left">  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>5</mn><mi 
+>,</mi>    </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>1</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>2</mn> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left">  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>3</mn><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>9</mn><mi 
+>,</mi>  </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>2</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>3</mn> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <mn>2</mn><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>6</mn><mi 
+>,</mi>     </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>3</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>4</mn> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left">  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>2</mn><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn><mn>0</mn><mi 
+>,</mi> </mtd><mtd 
+class="array-td"  columnalign="left"> <mn>4</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mn>5</mn> </mtd></mtr> <!--ll--></mtable>                                                                 </mrow><mo fence="true" form="postfix"></mo></mrow>
+</math></td><td class="eq-no">(6.64)</td></tr></table>
+   </div>
+<!--l. 673--><p class="indent" >
+<!--l. 675--><p class="indent" >   A Figura&#x00A0;<a 
+href="#x70-1150073">6.3<!--tex4ht:ref: fig:linear_segmentada --></a> é um esboço da função
+<!--l. 675--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>
+obtida.
+<!--l. 686--><p class="indent" >   <hr class="figure"><div class="figure" 
+>
+                                                                          
+
+                                                                          
+<a 
+ id="x70-1150073"></a>
+                                                                          
+
+                                                                          
+<div class="center" 
+>
+<!--l. 687--><p class="noindent" >
+<!--l. 688--><p class="noindent" ><img 
+src="./cap_interp/pics/interpolacao_linear_segmentada.svg" alt="PIC"  
+width="306" height="230" >
+<br /> <div class="caption" 
+><span class="id">Figura&#x00A0;6.3: </span><span  
+class="content">Interpolação linear segmentada.</span></div><!--tex4ht:label?: x70-1150073 -->
+</div>
+                                                                          
+
+                                                                          
+<!--l. 692--><p class="indent" >   </div><hr class="endfigure">
+                                                                          
+
+                                                                          
+   <!--l. 695--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse33.html" >next</a>] [<a 
+href="mainse31.html" >prev</a>] [<a 
+href="mainse31.html#tailmainse31.html" >prev-tail</a>] [<a 
+href="mainse32.html" >front</a>] [<a 
+href="mainch6.html#mainse32.html" >up</a>] </p></div>
+<!--l. 695--><p class="indent" >   <a 
+ id="tailmainse32.html"></a>  
+</body></html> 

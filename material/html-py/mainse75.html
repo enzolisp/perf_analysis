@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>Gráficos</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 500--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse74.html" >prev</a>] [<a 
+href="mainse74.html#tailmainse74.html" >prev-tail</a>] [<a 
+href="#tailmainse75.html">tail</a>] [<a 
+href="mainap1.html#mainse75.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">A.6   </span> <a 
+ id="x132-258000A.6"></a>Gráficos</h3>
+<a 
+ id="dx132-258001"></a>
+<!--l. 502--><p class="noindent" >Para criar um esboço do gráfico de uma função de uma variável real
+<!--l. 502--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>, podemos
+usar a biblioteca <span class="obeylines-h"><code class="verb">Python</code></span> <a 
+href="https://matplotlib.org/" >mathplotlib</a>.A função <span class="obeylines-h"><code class="verb">matplotlib.pyplot.plot</code></span>
+faz uma representação gráfica de um conjunto de pontos
+<!--l. 502--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">{</mo><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">}</mo></math>
+fornecidos. Existe uma série de opções para esta função de forma
+que o usuário pode ajustar várias questões de visualização. Veja a
+<a 
+href="https://matplotlib.org/api/pyplot_api.html?highlight=pyplot.plot#matplotlib.pyplot.plot" >documentação</a>.
+   <div class="newtheorem">
+<!--l. 504--><p class="noindent" ><span class="head">
+<a 
+ id="x132-258002r1"></a>
+<span 
+class="ec-lmbx-12">Exemplo A.6.1.</span>  </span>Veja as seguintes linhas de código:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-133">
+&#x003E;&#x003E;&#x003E;&#x00A0;import&#x00A0;numpy&#x00A0;as&#x00A0;np
+&#x003E;&#x003E;&#x003E;&#x00A0;import&#x00A0;matplotlib.pyplot&#x00A0;as&#x00A0;plt
+&#x003E;&#x003E;&#x003E;&#x00A0;def&#x00A0;f(x):&#x00A0;return&#x00A0;x**3&#x00A0;+&#x00A0;1
+...
+&#x003E;&#x003E;&#x003E;&#x00A0;x&#x00A0;=&#x00A0;np.linspace(-2,2)
+&#x003E;&#x003E;&#x003E;&#x00A0;plt.plot(x,&#x00A0;f(x))
+[&#x003C;matplotlib.lines.Line2D&#x00A0;object&#x00A0;at&#x00A0;0x7f4f6d153510&#x003E;]
+&#x003E;&#x003E;&#x003E;&#x00A0;plt.grid()
+&#x003E;&#x003E;&#x003E;&#x00A0;plt.show()
+</pre>
+<!--l. 516--><p class="nopar" >
+   </div>
+<!--l. 517--><p class="indent" >
+                                                                          
+
+                                                                          
+                                                                          
+
+                                                                          
+                                                                          
+
+                                                                          
+   <!--l. 1--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse74.html" >prev</a>] [<a 
+href="mainse74.html#tailmainse74.html" >prev-tail</a>] [<a 
+href="mainse75.html" >front</a>] [<a 
+href="mainap1.html#mainse75.html" >up</a>] </p></div>
+<!--l. 1--><p class="indent" >   <a 
+ id="tailmainse75.html"></a>  
+</body></html> 

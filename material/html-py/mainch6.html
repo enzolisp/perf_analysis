@@ -1,0 +1,419 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>6 Interpolaçao</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 6--><div class="crosslinks"><p class="noindent">[<a 
+href="mainch7.html" >next</a>] [<a 
+href="mainch5.html" >prev</a>] [<a 
+href="mainch5.html#tailmainch5.html" >prev-tail</a>] [<a 
+href="#tailmainch6.html">tail</a>] [<a 
+href="main.html#mainch6.html" >up</a>] </p></div>
+   <h2 class="chapterHead"><span class="titlemark">Capítulo&#x00A0;6</span><br /><a 
+ id="x63-1070006"></a>Interpolação</h2>
+<a 
+ id="dx63-107001"></a>
+<!--l. 8--><p class="noindent" >Neste capítulo, discutimos os problemas de <span 
+class="ec-lmbx-12">interpola</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o</span><a 
+ id="dx63-107002"></a>. Mais precisamente, dada uma
+sequência de <!--l. 8--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi></math>
+reais <!--l. 8--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mo>&#x2026;</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+></math>, um conjunto
+de pontos <!--l. 8--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+> <mrow><mo fence="true" form="prefix"> {</mo><mrow><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo> <mi 
+>I</mi> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mi 
+>&#x211D;</mi></mrow><mo fence="true" form="postfix">}</mo></mrow> </mrow><mrow 
+><mi 
+>i</mi><mo 
+class="MathClass-rel" stretchy="false">=</mo><mn>1</mn></mrow><mrow 
+><mi 
+>n</mi></mrow></msubsup 
+></math>, onde
+<!--l. 8--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>I</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> [</mo><mrow><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+></mrow><mo fence="true" form="postfix">]</mo></mrow></math> e uma família
+de funções <!--l. 8--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mstyle 
+mathvariant="script"><mi 
+>F</mi></mstyle></mrow><mrow 
+><mi 
+>I</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-open" stretchy="false">{</mo><mi 
+>&#x03C6;</mi> <mo 
+class="MathClass-punc" stretchy="false">:</mo> <mi 
+>I</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2192;</mo> <mi 
+>&#x211D;</mi><mo 
+class="MathClass-close" stretchy="false">}</mo></math>,
+o problema de interpolação consiste em encontrar alguma função
+<!--l. 8--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo><msub><mrow 
+><mstyle 
+mathvariant="script"><mi 
+>F</mi></mstyle></mrow><mrow 
+><mi 
+>I</mi></mrow></msub 
+></math> tal
+que <table class="equation"><tr><td>
+<!--l. 9--><p class="indent" >
+<!--l. 9--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                          <mstyle 
+   id="x63-107003r1"  class="label" ></mstyle><!--endlabel--><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mi 
+>,</mi><mspace width="1em" class="quad"/><mi 
+>i</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>2</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>&#x2026;</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>n</mi><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(6.1)</td></tr></table>
+<!--l. 12--><p class="indent" >   Chamamos uma tal <!--l. 12--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi></math>
+de <span 
+class="ec-lmbx-12">fun</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o interpoladora </span>dos pontos dados. Ou ainda, dizemos que
+<!--l. 12--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi></math>
+interpola os pontos dados.
+<!--l. 14--><p class="indent" >   <hr class="figure"><div class="figure" 
+>
+                                                                          
+
+                                                                          
+<a 
+ id="x63-1070041"></a>
+                                                                          
+
+                                                                          
+<!--l. 16--><p class="noindent" ><img 
+src="./cap_interp/pics/ex_intro_interpolacao/ex_intro_interpolacao.png" alt="PIC"  
+width="65" height="65" >
+<br /> <div class="caption" 
+><span class="id">Figura&#x00A0;6.1: </span><span  
+class="content">Exemplo de interpolação de dois pontos por uma reta, veja o
+Exemplo&#x00A0;<a 
+href="#x63-107005r1">6.0.1<!--tex4ht:ref: ex:intro_interpolacao --></a>.</span></div><!--tex4ht:label?: x63-1070041 -->
+                                                                          
+
+                                                                          
+<!--l. 18--><p class="indent" >   </div><hr class="endfigure">
+   <div class="newtheorem">
+<!--l. 20--><p class="noindent" ><span class="head">
+<a 
+ id="x63-107005r1"></a>
+<span 
+class="ec-lmbx-12">Exemplo 6.0.1.</span>  </span> Um dos problemas de interpolação mais
+simples é o de encontrar a equação da reta que passa por dois
+pontos dados. Por exemplo, sejam dados o conjunto de pontos
+<!--l. 21--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">{</mo><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><mn>2</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">}</mo></math> e a família
+de funções <!--l. 21--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mstyle 
+mathvariant="script"><mi 
+>F</mi></mstyle></mrow><mrow 
+><mo 
+class="MathClass-open" stretchy="false">[</mo><mn>1</mn><mi 
+>,</mi><mn>2</mn><mo 
+class="MathClass-close" stretchy="false">]</mo></mrow></msub 
+></math>:
+<table class="equation"><tr><td>
+<!--l. 22--><p class="indent" >
+<!--l. 22--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+          <mstyle 
+   id="x63-107006r2"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mstyle 
+mathvariant="script"><mi 
+>F</mi></mstyle></mrow><mrow 
+><mo 
+class="MathClass-open" stretchy="false">[</mo><mn>1</mn><mi 
+>,</mi><mn>2</mn><mo 
+class="MathClass-close" stretchy="false">]</mo></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> {</mo><mrow><mi 
+>f</mi> <mo 
+class="MathClass-punc" stretchy="false">:</mo> <mo 
+class="MathClass-open" stretchy="false">[</mo><mn>1</mn><mi 
+>,</mi><mn>2</mn><mo 
+class="MathClass-close" stretchy="false">]</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x2192;</mo> <mi 
+>&#x211D;</mi><mspace width="0.33em" class="nbsp" /><mo 
+class="MathClass-punc" stretchy="false">;</mo> <mspace width="0.33em" class="nbsp" /><mo 
+class="MathClass-open" stretchy="false">[</mo><mn>1</mn><mi 
+>,</mi><mn>2</mn><mo 
+class="MathClass-close" stretchy="false">]</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x220B;</mo> <mi 
+>x</mi><mo 
+class="MathClass-rel" stretchy="false">&#x21A6;</mo><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>a</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>b</mi><mi 
+>x</mi><mo 
+class="MathClass-punc" stretchy="false">;</mo> <mspace width="0.17em" class="thinspace"/><mi 
+>a</mi><mi 
+>,</mi><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo> <mi 
+>&#x211D;</mi></mrow><mo fence="true" form="postfix">}</mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(6.2)</td></tr></table>
+<!--l. 25--><p class="indent" >   Para que uma <!--l. 25--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi></math>
+na família seja a função interpoladora do conjunto de pontos dados,
+precisamos que <table class="equation"><tr><td>
+<!--l. 26--><p class="indent" >
+<!--l. 26--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x63-107007r3"  class="label" ></mstyle><!--endlabel--> <mtable  align="axis" style=""  
+equalrows="false" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <mi 
+>a</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>b</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>  </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left">  <mi 
+>a</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>b</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>  </mtd></mtr><!--l--></mtable>                                                           <mspace width="1em" class="quad"/><mstyle 
+class="text"><mtext  >isto&#x00A0;é</mtext></mstyle><mspace width="1em" class="quad"/> <mtable  align="axis" style=""  
+equalrows="false" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <mi 
+>a</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn>   </mtd></mtr><mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"><mi 
+>a</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn></mtd></mtr><!--l--></mtable>
+</math></td><td class="eq-no">(6.3)</td></tr></table>
+                                                                          
+
+                                                                          
+<!--l. 36--><p class="indent" >   o que nos fornece <!--l. 36--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>a</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn></math>
+e <!--l. 36--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></math>. Então, a função
+interpoladora <!--l. 36--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi></math>
+é tal que <!--l. 36--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>x</mi></math>
+para um <!--l. 36--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo> <mo 
+class="MathClass-open" stretchy="false">[</mo><mn>1</mn><mi 
+>,</mi><mn>2</mn><mo 
+class="MathClass-close" stretchy="false">]</mo></math>.
+Os pontos e a reta interpolada estão esboçados na Figura&#x00A0;<a 
+href="#x63-1070041">6.1<!--tex4ht:ref: fig:ex_intro_interp --></a>.
+   </div>
+<!--l. 37--><p class="indent" >
+<!--l. 39--><p class="indent" >   Um problema de interpolação cuja família de funções constitui-se de
+polinômios é chamado de problema de interpolação polinomial.
+<!--l. 45--><p class="indent" >   Ao longo do capítulo, faremos alguns comentários usando códigos em
+<span class="obeylines-h"><code class="verb">Python</code></span>. Nestes, assumiremos que os seguintes módulos estão carregados:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-51">
+import&#x00A0;numpy&#x00A0;as&#x00A0;np
+from&#x00A0;numpy&#x00A0;import&#x00A0;linalg
+from&#x00A0;numpy.polynomial&#x00A0;import&#x00A0;polynomial&#x00A0;as&#x00A0;poly
+import&#x00A0;matplotlib.pyplot&#x00A0;as&#x00A0;plt
+</pre>
+<!--l. 51--><p class="nopar" >
+   <div class="sectionTOCS">
+   <span class="sectionToc" >6.1 <a 
+href="mainse28.html#x64-1080006.1">Interpolação polinomial</a></span>
+<br />   <span class="sectionToc" >6.2 <a 
+href="mainse29.html#x67-1110006.2">Diferenças divididas de Newton</a></span>
+<br />   <span class="sectionToc" >6.3 <a 
+href="mainse30.html#x68-1120006.3">Polinômios de Lagrange</a></span>
+<br />   <span class="sectionToc" >6.4 <a 
+href="mainse31.html#x69-1130006.4">Aproximação de funções reais por polinômios interpoladores</a></span>
+<br />   <span class="sectionToc" >6.5 <a 
+href="mainse32.html#x70-1150006.5">Interpolação linear segmentada</a></span>
+<br />   <span class="sectionToc" >6.6 <a 
+href="mainse33.html#x71-1160006.6">Interpolação cúbica segmentada - spline</a></span>
+<br />   <span class="subsectionToc" >6.6.1 <a 
+href="mainse33.html#x71-1170006.6.1" id="QQ2-71-142">Spline natural</a></span>
+<br />   <span class="subsectionToc" >6.6.2 <a 
+href="mainse33.html#x71-1180006.6.2" id="QQ2-71-143">Spline fixado</a></span>
+<br />   <span class="subsectionToc" >6.6.3 <a 
+href="mainse33.html#x71-1190006.6.3" id="QQ2-71-144">Spline <span 
+class="ec-lmri-12">not-a-knot</span></a></span>
+<br />   <span class="subsectionToc" >6.6.4 <a 
+href="mainse33.html#x71-1200006.6.4" id="QQ2-71-145">Spline periódico</a></span>
+   </div>
+
+
+
+
+
+                                                                          
+
+                                                                          
+   <!--l. 3--><div class="crosslinks"><p class="noindent">[<a 
+href="mainch7.html" >next</a>] [<a 
+href="mainch5.html" >prev</a>] [<a 
+href="mainch5.html#tailmainch5.html" >prev-tail</a>] [<a 
+href="mainch6.html" >front</a>] [<a 
+href="main.html#mainch6.html" >up</a>] </p></div>
+<!--l. 3--><p class="indent" >   <a 
+ id="tailmainch6.html"></a>  
+</body></html> 

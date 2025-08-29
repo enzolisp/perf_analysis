@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>Elementos da linguagem</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 84--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse72.html" >next</a>] [<a 
+href="mainse70.html" >prev</a>] [<a 
+href="mainse70.html#tailmainse70.html" >prev-tail</a>] [<a 
+href="#tailmainse71.html">tail</a>] [<a 
+href="mainap1.html#mainse71.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">A.2   </span> <a 
+ id="x128-246000A.2"></a>Elementos da linguagem</h3>
+<a 
+ id="dx128-246001"></a>
+<!--l. 86--><p class="noindent" ><span class="obeylines-h"><code class="verb">Python</code></span> é uma linguagem de alto nível, interpretada e dinâmica. Uma
+variável é criada quando um valor é atribuído a ela. Por exemplo:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-98">
+&#x003E;&#x003E;&#x003E;&#x00A0;x=1
+&#x003E;&#x003E;&#x003E;&#x00A0;y&#x00A0;=&#x00A0;x&#x00A0;*&#x00A0;2.0
+</pre>
+<!--l. 90--><p class="nopar" >a variável <span class="obeylines-h"><code class="verb">x</code></span> recebe o valor <span class="obeylines-h"><code class="verb">int</code></span><!--l. 91--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn></math>
+e, logo após, na segunda linha de comando, a variável <span class="obeylines-h"><code class="verb">y</code></span> recebe o valor <span class="obeylines-h"><code class="verb">double</code></span>
+<!--l. 91--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>2</mn></math>.
+Observamos que o símbolo <span class="obeylines-h"><code class="verb">=</code></span> significa o operador de atribuição não o de
+igualdade. O operador lógico de igualdade no <span class="obeylines-h"><code class="verb">Python</code></span> é <span class="obeylines-h"><code class="verb">==</code></span>. Veja os seguintes
+comandos:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-99">
+&#x003E;&#x003E;&#x003E;&#x00A0;print(x,y)
+(1,&#x00A0;2.0)
+&#x003E;&#x003E;&#x003E;&#x00A0;type(x),&#x00A0;type(y)
+(&#x003C;type&#x00A0;'int'&#x003E;,&#x00A0;&#x003C;type&#x00A0;'float'&#x003E;)
+</pre>
+<!--l. 97--><p class="nopar" >
+<!--l. 99--><p class="indent" >   Comentários e continuação de linha de comando são usados como no
+seguinte exemplo:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-100">
+&#x003E;&#x003E;&#x003E;&#x00A0;#&#x00A0;Isto&#x00A0;é&#x00A0;um&#x00A0;comentário
+...
+&#x003E;&#x003E;&#x003E;&#x00A0;x&#x00A0;=&#x00A0;1&#x00A0;\
+...&#x00A0;+&#x00A0;2
+&#x003E;&#x003E;&#x003E;&#x00A0;print(x)
+3
+</pre>
+<!--l. 107--><p class="nopar" >
+<!--l. 109--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">A.2.1   </span> <a 
+ id="x128-247000A.2.1"></a>Operações matemáticas elementares</h4>
+<a 
+ id="dx128-247001"></a>
+<!--l. 111--><p class="noindent" >Em <span class="obeylines-h"><code class="verb">Python</code></span>, os operadores matemáticos elementares são os seguintes:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-101">
+&#x00A0;&#x00A0;+&#x00A0;adição
+&#x00A0;&#x00A0;-&#x00A0;subtração
+&#x00A0;&#x00A0;*&#x00A0;multiplicação
+&#x00A0;&#x00A0;/&#x00A0;divisão
+&#x00A0;&#x00A0;**&#x00A0;potenciação
+</pre>
+<!--l. 118--><p class="nopar" >
+<!--l. 120--><p class="indent" >   Atenção, a operação de divisão se comporta diferente nas versões
+<span class="obeylines-h"><code class="verb">Python&#x00A0;2.7</code></span> e <span class="obeylines-h"><code class="verb">Python&#x00A0;3</code></span>. Em <span class="obeylines-h"><code class="verb">Python&#x00A0;3</code></span>, temos:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-102">
+&#x003E;&#x003E;&#x003E;&#x00A0;1/2
+0.5
+</pre>
+<!--l. 124--><p class="nopar" >Já, em <span class="obeylines-h"><code class="verb">Python&#x00A0;2.7</code></span>:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-103">
+&#x003E;&#x003E;&#x003E;&#x00A0;1/2
+0
+&#x003E;&#x003E;&#x003E;&#x00A0;from&#x00A0;__future__&#x00A0;import&#x00A0;division
+&#x003E;&#x003E;&#x003E;&#x00A0;1/2
+0.5
+</pre>
+<!--l. 132--><p class="nopar" >
+<!--l. 134--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">A.2.2   </span> <a 
+ id="x128-248000A.2.2"></a>Funções e constantes elementares</h4>
+<a 
+ id="dx128-248001"></a>
+<!--l. 136--><p class="noindent" >Várias funções e constantes elementares estão disponíveis no pacote
+módulo Python  <a 
+href="https://docs.python.org/3/library/math.html?highlight=math#module-math" >math</a>. Por exemplo:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-104">
+&#x003E;&#x003E;&#x003E;&#x00A0;import&#x00A0;math&#x00A0;as&#x00A0;math
+&#x003E;&#x003E;&#x003E;&#x00A0;math.cos(math.pi)
+-1.0
+&#x003E;&#x003E;&#x003E;&#x00A0;math.exp(1)
+2.718281828459045
+&#x003E;&#x003E;&#x003E;&#x00A0;math.log(math.exp(1))
+1.0
+</pre>
+<!--l. 145--><p class="nopar" >
+<!--l. 147--><p class="indent" >   Observamos que <span class="obeylines-h"><code class="verb">math.log</code></span> é a função logaritmo natural, isto é,
+<!--l. 147--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo><mtext class="qopname"> ln</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>, enquanto que a
+implementação Python de <!--l. 147--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo><mtext class="qopname"> log</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>
+é:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-105">
+&#x003E;&#x003E;&#x003E;&#x00A0;math.log10(10)
+1.0
+</pre>
+<!--l. 151--><p class="nopar" >Veja mais na documentação do  <a 
+href="https://docs.python.org/3/library/math.html?highlight=math#module-math" >módulo math</a>:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-106">
+&#x003E;&#x003E;&#x003E;&#x00A0;help(math)
+</pre>
+<!--l. 155--><p class="nopar" >
+<!--l. 157--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">A.2.3   </span> <a 
+ id="x128-249000A.2.3"></a>Operadores lógicos</h4>
+<a 
+ id="dx128-249001"></a>
+<!--l. 159--><p class="noindent" >Em <span class="obeylines-h"><code class="verb">Python</code></span>, o valor lógico verdadeiro é escrito como <span class="obeylines-h"><code class="verb">True</code></span> e o valor lógico falso
+como <span class="obeylines-h"><code class="verb">False</code></span>. Temos os seguintes operadores lógicos disponíveis:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-107">
+and&#x00A0;&#x00A0;e&#x00A0;lógico
+or&#x00A0;&#x00A0;ou&#x00A0;lógico
+not&#x00A0;&#x00A0;negação
+==&#x00A0;igualdade
+!=&#x00A0;diferente
+&#x003C;&#x00A0;&#x00A0;menor&#x00A0;que
+&#x003E;&#x00A0;&#x00A0;maior&#x00A0;que
+&#x003C;=&#x00A0;menor&#x00A0;ou&#x00A0;igual&#x00A0;que
+&#x003E;=&#x00A0;maior&#x00A0;ou&#x00A0;igual&#x00A0;que
+</pre>
+<!--l. 170--><p class="nopar" >
+   <div class="newtheorem">
+<!--l. 172--><p class="noindent" ><span class="head">
+<a 
+ id="x128-249002r1"></a>
+<span 
+class="ec-lmbx-12">Exemplo A.2.1.</span>  </span>Se <!--l. 173--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn></math>,
+então <!--l. 173--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math>
+é maior ou igual a 1 e menor que 3?
+   </div>
+<!--l. 174--><p class="indent" >    <span 
+class="ec-lmbx-12">Solu</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o. </span>Em <span class="obeylines-h"><code class="verb">Python</code></span>, temos:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-108">
+&#x003E;&#x003E;&#x003E;&#x00A0;x=2
+&#x003E;&#x003E;&#x003E;&#x00A0;(x&#x00A0;&#x003E;=&#x00A0;1)&#x00A0;and&#x00A0;(x&#x00A0;&#x003C;&#x00A0;3)
+True
+</pre>
+<!--l. 181--><p class="nopar" >
+                                                                          <div class="flushright" 
+>
+<!--l. 182--><p class="noindent" >
+<!--l. 182--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-ord">&#x2662;</mo></math></div>
+                                                                          
+
+                                                                          
+   <!--l. 184--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse72.html" >next</a>] [<a 
+href="mainse70.html" >prev</a>] [<a 
+href="mainse70.html#tailmainse70.html" >prev-tail</a>] [<a 
+href="mainse71.html" >front</a>] [<a 
+href="mainap1.html#mainse71.html" >up</a>] </p></div>
+<!--l. 184--><p class="indent" >   <a 
+ id="tailmainse71.html"></a>   
+</body></html> 

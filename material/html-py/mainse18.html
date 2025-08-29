@@ -1,0 +1,921 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>Complexidade de algoritmos em álgebra linear</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 962--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse19.html" >next</a>] [<a 
+href="mainse17.html" >prev</a>] [<a 
+href="mainse17.html#tailmainse17.html" >prev-tail</a>] [<a 
+href="#tailmainse18.html">tail</a>] [<a 
+href="mainch4.html#mainse18.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">4.2   </span> <a 
+ id="x45-660004.2"></a>Complexidade de algoritmos em álgebra linear</h3>
+<a 
+ id="dx45-66001"></a>
+<!--l. 963--><p class="noindent" >Nesta seção, discutiremos um importante conceito em teoria de algoritmos, a
+complexidade, isto é, uma medida do custo ou eficiência do algoritmo.
+<!--l. 965--><p class="indent" >   Dados dois algoritmos diferentes para resolver o mesmo problema,
+como podemos escolher qual desses algoritmos é o melhor? Se pensarmos
+em termos de <span 
+class="ec-lmbx-12">efici</span><span 
+class="ec-lmbx-12">ê</span><span 
+class="ec-lmbx-12">ncia </span>(ou custo computacional), queremos saber
+qual desses algoritmos consome menos recursos para realizar a mesma
+tarefa.
+<!--l. 967--><p class="indent" >   Em geral podemos responder esta pergunta de duas formas: em termos de
+tempo ou de espaço.
+<!--l. 969--><p class="indent" >   Quando tratamos de <span 
+class="ec-lmbx-12">efici</span><span 
+class="ec-lmbx-12">ê</span><span 
+class="ec-lmbx-12">ncia espacial</span>, queremos saber quanta memória
+(em geral RAM) é utilizada pelo algoritmo para armazenar os dados, sejam eles
+matrizes, vetores ou escalares.
+<!--l. 971--><p class="indent" >   Quando tratamos de <span 
+class="ec-lmbx-12">efici</span><span 
+class="ec-lmbx-12">ê</span><span 
+class="ec-lmbx-12">ncia temporal</span>, queremos saber quanto
+tempo um algoritmo demanda para realizar determinada tarefa. Vamos nos
+concentrar neste segundo conceito, que em geral é o mais difícil de
+tratar.
+<!--l. 973--><p class="indent" >   Naturalmente o tempo vai depender do tipo de computador utilizado. É
+razoável pensar que o tempo vai ser proporcional ao número de operações de
+ponto flutuante (flops) feitas pelo algoritmo (observe que o tempo total não
+depende apenas disso, mas também de outros fatores como memória, taxas de
+transferências de dados da memória para o cpu, redes,...). Entretanto vamos
+nos concentrar na contagem do número de operações (flops) para realizar
+determinada tarefa.
+<!--l. 975--><p class="indent" >   No passado (antes dos anos 80), os computadores demoravam mais tempo para
+realizar operações como multiplicação e divisão, se comparados à adição
+ou à subtração. Assim, em livros clássicos eram contados apenas o custo das
+operações <!--l. 975--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo></math>
+e <!--l. 975--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-bin" stretchy="false">&#x2215;</mo></math>.
+Nos computadores atuais as quatro operações básicas demandam
+                                                                          
+
+                                                                          
+aproximadamente o mesmo tempo. Não obstante, como na maioria dos
+algoritmos de álgebra linear, o número de multiplicações e divisões é
+proporcional ao número somas e subtrações (pois a maioria dessas
+operações podem ser escritas como a combinações de produtos internos), é
+justificável dizer que o tempo de computação continua podendo ser estimado
+pelo número de multiplicações e divisões. Desta forma, na maior parte deste
+material, levaremos em conta somente multiplicações e divisões, a não ser
+que mencionado o contrário.
+<!--l. 977--><p class="indent" >   Teremos em mente que a ideia é estimar o custo quando lidamos com vetores
+e matrizes muito grandes, isto é, o custo quando estas dimensões crescem
+infinitamente.
+   <div class="newtheorem">
+<!--l. 979--><p class="noindent" ><span class="head">
+<a 
+ id="x45-66002r1"></a>
+<span 
+class="ec-lmbx-12">Exemplo 4.2.1 </span>(Produto escalar-vetor)<span 
+class="ec-lmbx-12">.</span>  </span>Qual o custo para multiplicar um
+escalar por um vetor?
+   </div>
+<!--l. 981--><p class="indent" >    <span 
+class="ec-lmbx-12">Solu</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o. </span>Seja <!--l. 983--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>a</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo> <mi 
+>&#x211D;</mi></math>
+e <!--l. 983--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><!--binary math rel, tripple hight--><mi 
+>x</mi><!--/binary math rel, tripple hight--> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo> <msup><mrow 
+><mi 
+>&#x211D;</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msup 
+></math>,
+temos que <table class="equation"><tr><td>
+<!--l. 984--><p class="indent" >
+<!--l. 984--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                      <mstyle 
+   id="x45-66003r56"  class="label" ></mstyle><!--endlabel--><mi 
+>a</mi><!--binary math rel, tripple hight--><mi 
+>x</mi><!--/binary math rel, tripple hight--> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-open" stretchy="false">[</mo><mi 
+>a</mi> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>a</mi> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mi 
+>,</mi><mi 
+>a</mi> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">]</mo>
+</math></td><td class="eq-no">(4.56)</td></tr></table>
+<!--l. 987--><p class="indent" >   usando <!--l. 987--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi></math>
+multiplicações, ou seja, um custo computacional,
+<!--l. 987--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>C</mi></math>, de
+<table class="equation"><tr><td>
+                                                                          
+
+                                                                          
+<!--l. 988--><p class="indent" >
+<!--l. 988--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                               <mstyle 
+   id="x45-66004r57"  class="label" ></mstyle><!--endlabel--><mi 
+>C</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>n</mi><mstyle 
+class="text"><mtext  >&#x00A0;flops</mtext></mstyle><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(4.57)</td></tr></table>
+                                                                          <div class="flushright" 
+>
+<!--l. 991--><p class="noindent" >
+<!--l. 991--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-ord">&#x2662;</mo></math></div>
+   <div class="newtheorem">
+<!--l. 993--><p class="noindent" ><span class="head">
+<a 
+ id="x45-66005r2"></a>
+<span 
+class="ec-lmbx-12">Exemplo 4.2.2 </span>(Produto vetor-vetor)<span 
+class="ec-lmbx-12">.</span>  </span>Qual o custo para calcular o produto
+interno <!--l. 994--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><!--binary math rel, tripple hight--><mi 
+>x</mi><!--/binary math rel, tripple hight--> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo><!--binary math rel, tripple hight--> <mi 
+>y</mi><!--/binary math rel, tripple hight--></math>?
+   </div>
+<!--l. 995--><p class="indent" >    <span 
+class="ec-lmbx-12">Solu</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o. </span>Sejam <!--l. 997--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><!--binary math rel, tripple hight--><mi 
+>x</mi><!--/binary math rel, tripple hight--><mo 
+class="MathClass-punc" stretchy="false">,</mo><!--binary math rel, tripple hight--><mi 
+>y</mi><!--/binary math rel, tripple hight--> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo> <msup><mrow 
+><mi 
+>&#x211D;</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msup 
+></math>,
+temos que <table class="equation"><tr><td>
+<!--l. 998--><p class="indent" >
+<!--l. 998--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                  <mstyle 
+   id="x45-66006r58"  class="label" ></mstyle><!--endlabel--><!--binary math rel, tripple hight--><mi 
+>x</mi><!--/binary math rel, tripple hight--> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo><!--binary math rel, tripple hight--> <mi 
+>y</mi><!--/binary math rel, tripple hight--> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+>
+</math></td><td class="eq-no">(4.58)</td></tr></table>
+                                                                          
+
+                                                                          
+<!--l. 1002--><p class="indent" >   São realizadas <!--l. 1002--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi></math>
+multiplicações (cada produto <!--l. 1002--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math>
+por <!--l. 1002--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math>)
+e <!--l. 1002--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn></math>
+somas, ou seja, o custo total de operações é de <table class="equation"><tr><td>
+<!--l. 1003--><p class="indent" >
+<!--l. 1003--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                     <mstyle 
+   id="x45-66007r59"  class="label" ></mstyle><!--endlabel--><mi 
+>C</mi> <mo 
+class="MathClass-punc" stretchy="false">:</mo><mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>n</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn><mstyle 
+class="text"><mtext  >&#x00A0;flops</mtext></mstyle>
+</math></td><td class="eq-no">(4.59)</td></tr></table>
+                                                                          <div class="flushright" 
+>
+<!--l. 1006--><p class="noindent" >
+<!--l. 1006--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-ord">&#x2662;</mo></math></div>
+   <div class="newtheorem">
+<!--l. 1009--><p class="noindent" ><span class="head">
+<a 
+ id="x45-66008r3"></a>
+<span 
+class="ec-lmbx-12">Exemplo 4.2.3 </span>(Produto matriz-vetor)<span 
+class="ec-lmbx-12">.</span>  </span>Qual o custo para calcular o produto
+de matriz por vetor <!--l. 1010--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi><!--binary math rel, tripple hight--><mi 
+>x</mi><!--/binary math rel, tripple hight--></math>?
+   </div>
+<!--l. 1011--><p class="indent" >    <span 
+class="ec-lmbx-12">Solu</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o. </span>Sejam <!--l. 1013--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo> <msup><mrow 
+><mi 
+>&#x211D;</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo><mi 
+>n</mi></mrow></msup 
+></math>
+e <!--l. 1013--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><!--binary math rel, tripple hight--><mi 
+>x</mi><!--/binary math rel, tripple hight--> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo> <msup><mrow 
+><mi 
+>&#x211D;</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msup 
+></math>,
+temos que <table class="equation"><tr><td>
+<!--l. 1014--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 1014--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x45-66009r60"  class="label" ></mstyle><!--endlabel--> <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo><msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mi 
+>n</mi></mrow></msub 
+>  </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">   <mi 
+>&#x22EE;</mi>  </mtd><mtd 
+class="array-td"  columnalign="center">     </mtd><mtd 
+class="array-td"  columnalign="center">   <mi 
+>&#x22EE;</mi>   </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">         </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo><msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>n</mi><mi 
+>n</mi></mrow></msub 
+> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                        </mrow><mo fence="true" form="postfix">]</mo></mrow>  <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>  </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">   <mi 
+>&#x22EE;</mi>  </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mi 
+>n</mi></mrow></msub 
+> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                                                           </mrow><mo fence="true" form="postfix">]</mo></mrow>  <mo 
+class="MathClass-rel" stretchy="false">=</mo>  <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mn>2</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mi 
+>n</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+>  </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">                         <mi 
+>&#x22EE;</mi>                  </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>n</mi><mn>2</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>n</mi><mi 
+>n</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                            </mrow><mo fence="true" form="postfix">]</mo></mrow>
+</math></td><td class="eq-no">(4.60)</td></tr></table>
+<!--l. 1019--><p class="indent" >   Para obter o primeiro elemento do vetor do lado direito, devemos multiplicar a primeira
+linha de <!--l. 1019--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math> pelo
+vetor coluna <!--l. 1019--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><!--binary math rel, tripple hight--><mi 
+>x</mi><!--/binary math rel, tripple hight--></math>.
+Note que esse é exatamente o custo do produto vetor-vetor do exemplo anterior.
+Como o custo para cada elemento do vetor do lado direito é o mesmo e temos
+<!--l. 1019--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi></math>
+elementos, teremos que o custo para multiplicar matriz-vetor
+é<span class="footnote-mark"><a 
+href="main46.html#fn1x7"><sup class="textsuperscript">1</sup></a></span><a 
+ id="x45-66010f1"></a> 
+<table class="equation"><tr><td>
+<!--l. 1024--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 1024--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                     <mstyle 
+   id="x45-66013r62"  class="label" ></mstyle><!--endlabel--><mi 
+>C</mi> <mo 
+class="MathClass-punc" stretchy="false">:</mo><mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><mn>2</mn><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>n</mi><mstyle 
+class="text"><mtext  >&#x00A0;flops</mtext></mstyle><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(4.62)</td></tr></table>
+<!--l. 1028--><p class="indent" >   À medida que <!--l. 1028--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2192;</mo><mi 
+>&#x221E;</mi></math>,
+temos <table class="equation"><tr><td>
+<!--l. 1029--><p class="indent" >
+<!--l. 1029--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                   <mstyle 
+   id="x45-66014r63"  class="label" ></mstyle><!--endlabel--><mstyle 
+mathvariant="script"><mi 
+>O</mi></mstyle><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>2</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>n</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mstyle 
+mathvariant="script"><mi 
+>O</mi></mstyle><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>2</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mstyle 
+mathvariant="script"><mi 
+>O</mi></mstyle><mo 
+class="MathClass-open" stretchy="false">(</mo><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><mstyle 
+class="text"><mtext  >&#x00A0;flops.</mtext></mstyle>
+</math></td><td class="eq-no">(4.63)</td></tr></table>
+                                                                          <div class="flushright" 
+>
+<!--l. 1033--><p class="noindent" >
+<!--l. 1033--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-ord">&#x2662;</mo></math></div>
+   <div class="newtheorem">
+<!--l. 1035--><p class="noindent" ><span class="head">
+<a 
+ id="x45-66015r4"></a>
+<span 
+class="ec-lmbx-12">Exemplo 4.2.4 </span>(Produto matriz-matriz)<span 
+class="ec-lmbx-12">.</span>  </span>Qual o custo para calcular o produto
+de duas matrizes <!--l. 1036--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>
+e <!--l. 1036--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>B</mi></math>?
+   </div>
+<!--l. 1037--><p class="indent" >    <span 
+class="ec-lmbx-12">Solu</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o. </span>Sejam <!--l. 1039--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>B</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo> <msup><mrow 
+><mi 
+>&#x211D;</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo><mi 
+>n</mi></mrow></msup 
+></math>
+temos que <table class="equation"><tr><td>
+<!--l. 1040--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 1040--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x45-66016r64"  class="label" ></mstyle><!--endlabel--> <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo><msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mi 
+>n</mi></mrow></msub 
+>  </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">   <mi 
+>&#x22EE;</mi>  </mtd><mtd 
+class="array-td"  columnalign="center">     </mtd><mtd 
+class="array-td"  columnalign="center">   <mi 
+>&#x22EE;</mi>   </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">         </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo><msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>n</mi><mi 
+>n</mi></mrow></msub 
+> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                        </mrow><mo fence="true" form="postfix">]</mo></mrow>  <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>1</mn><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>1</mn><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo><msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>1</mn><mi 
+>n</mi></mrow></msub 
+>  </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">   <mi 
+>&#x22EE;</mi>  </mtd><mtd 
+class="array-td"  columnalign="center">     </mtd><mtd 
+class="array-td"  columnalign="center">   <mi 
+>&#x22EE;</mi>   </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">        </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo><msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>n</mi><mi 
+>n</mi></mrow></msub 
+> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                                         </mrow><mo fence="true" form="postfix">]</mo></mrow>  <mo 
+class="MathClass-rel" stretchy="false">=</mo>  <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>1</mn><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>1</mn><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>1</mn><mi 
+>n</mi></mrow></msub 
+>  </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">   <mi 
+>&#x22EE;</mi>  </mtd><mtd 
+class="array-td"  columnalign="center">     </mtd><mtd 
+class="array-td"  columnalign="center">   <mi 
+>&#x22EE;</mi>   </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">         </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi><mi 
+>n</mi></mrow></msub 
+> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                                        </mrow><mo fence="true" form="postfix">]</mo></mrow>
+</math></td><td class="eq-no">(4.64)</td></tr></table>
+<!--l. 1045--><p class="indent" >   onde o elemento <!--l. 1045--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>i</mi><mi 
+>j</mi></mrow></msub 
+></math>
+é o produto da linha <!--l. 1045--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>i</mi></math>
+de <!--l. 1045--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math> pela
+coluna <!--l. 1045--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>j</mi></math>
+de <!--l. 1045--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>B</mi></math>,
+<table class="equation"><tr><td>
+<!--l. 1046--><p class="indent" >
+<!--l. 1046--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                 <mstyle 
+   id="x45-66017r65"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>i</mi><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>i</mi><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>1</mn><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>i</mi><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn><mi 
+>j</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>i</mi><mi 
+>n</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>n</mi><mi 
+>j</mi></mrow></msub 
+>
+</math></td><td class="eq-no">(4.65)</td></tr></table>
+<!--l. 1049--><p class="indent" >   Note que este produto tem o custo do produto vetor-vetor, ou seja,
+<!--l. 1049--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>2</mn><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn></math>. Como temos
+<!--l. 1049--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mi 
+>n</mi></math> elementos em
+<!--l. 1049--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>D</mi></math>, o custo total para
+                                                                          
+
+                                                                          
+multiplicar duas matrizes é<span class="footnote-mark"><a 
+href="main47.html#fn2x7"><sup class="textsuperscript">2</sup></a></span><a 
+ id="x45-66018f2"></a> 
+<table class="equation"><tr><td>
+<!--l. 1054--><p class="indent" >
+<!--l. 1054--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                  <mstyle 
+   id="x45-66021r67"  class="label" ></mstyle><!--endlabel--><mi 
+>C</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><mn>2</mn><mi 
+>n</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+><mstyle 
+class="text"><mtext  >&#x00A0;flops.</mtext></mstyle>
+</math></td><td class="eq-no">(4.67)</td></tr></table>
+                                                                          <div class="flushright" 
+>
+<!--l. 1058--><p class="noindent" >
+<!--l. 1058--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-ord">&#x2662;</mo></math></div>
+                                                                          
+
+                                                                          
+   <!--l. 1061--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse19.html" >next</a>] [<a 
+href="mainse17.html" >prev</a>] [<a 
+href="mainse17.html#tailmainse17.html" >prev-tail</a>] [<a 
+href="mainse18.html" >front</a>] [<a 
+href="mainch4.html#mainse18.html" >up</a>] </p></div>
+<!--l. 1061--><p class="indent" >   <a 
+ id="tailmainse18.html"></a>  
+</body></html> 

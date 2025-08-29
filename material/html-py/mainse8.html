@@ -1,0 +1,2213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>Condicionamento de um problema</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 2170--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse9.html" >next</a>] [<a 
+href="mainse7.html" >prev</a>] [<a 
+href="mainse7.html#tailmainse7.html" >prev-tail</a>] [<a 
+href="#tailmainse8.html">tail</a>] [<a 
+href="mainch2.html#mainse8.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">2.8   </span> <a 
+ id="x25-340002.8"></a>Condicionamento de um problema</h3>
+<!--l. 2171--><p class="noindent" >Nesta seção, utilizaremos a seguinte descrição abstrata para o
+conceito de &#8220;resolver um problema&#8221;: dado um conjunto de dados de
+entrada, encontrar os dados de saída. Se denotamos pela variável
+<!--l. 2171--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math> os dados de entrada
+e pela variável <!--l. 2171--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi></math>
+os dados de saída, resolver o problema significa encontrar
+<!--l. 2171--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi></math> dado
+<!--l. 2171--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math>. Em
+termos matemáticos, a resolução de um problema é realizada pelo mapeamento
+<!--l. 2171--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi> <mo 
+class="MathClass-punc" stretchy="false">:</mo> <mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2192;</mo> <mi 
+>y</mi></math>, ou
+simplesmente <!--l. 2171--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>.
+<!--l. 2173--><p class="indent" >   É certo que, na maioria das aplicações, os dados de entrada do problema &#8212;
+isto é, <!--l. 2173--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math>
+&#8212; não são conhecidos com total exatidão, devido a diversas fontes de erros,
+como incertezas na coleta dos dados e erros de arredondamento. O conceito de
+condicionamento está relacionado à forma como os erros nos dados de entrada
+influenciam os dados de saída.
+<!--l. 2175--><p class="indent" >   Para fins de análise, denotaremos por
+<!--l. 2175--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math>,
+os dados de entrada com precisão absoluta e por
+<!--l. 2175--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">*</mo></mrow></msup 
+></math>,
+os dados com erro. Definiremos também a solução
+<!--l. 2175--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">*</mo></mrow></msup 
+></math>, do problema com
+dados de entrada <!--l. 2175--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">*</mo></mrow></msup 
+></math>,
+ou seja, <!--l. 2175--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">*</mo></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">*</mo></mrow></msup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></math>.
+<!--l. 2177--><p class="indent" >   Estamos interessados em saber se os erros cometidos na entrada
+<!--l. 2177--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="normal">&#x0394;</mi><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">*</mo></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>x</mi></math> influenciaram na saída
+do problema <!--l. 2177--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi mathvariant="normal">&#x0394;</mi><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">*</mo></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>y</mi></math>. No caso
+mais simples, temos que <!--l. 2177--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo> <mi 
+>&#x211D;</mi></math>
+e <!--l. 2177--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo> <mi 
+>&#x211D;</mi></math>. Assumindo
+                                                                          
+
+                                                                          
+que <!--l. 2177--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi></math>
+seja diferenciável, a partir da série de Taylor <table class="equation"><tr><td>
+<!--l. 2178--><p class="indent" >
+<!--l. 2178--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                        <mstyle 
+   id="x25-34001r121"  class="label" ></mstyle><!--endlabel--><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi mathvariant="normal">&#x0394;</mi><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msup><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo><mi mathvariant="normal">&#x0394;</mi><mi 
+>x</mi>
+</math></td><td class="eq-no">(2.121)</td></tr></table>
+<!--l. 2181--><p class="indent" >   obtemos (subtraindo <!--l. 2181--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>
+dos dois lados) <table class="equation"><tr><td>
+<!--l. 2182--><p class="indent" >
+<!--l. 2182--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                     <mstyle 
+   id="x25-34002r122"  class="label" ></mstyle><!--endlabel--><mi mathvariant="normal">&#x0394;</mi><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi mathvariant="normal">&#x0394;</mi><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <msup><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo><mi mathvariant="normal">&#x0394;</mi><mi 
+>x</mi>
+</math></td><td class="eq-no">(2.122)</td></tr></table>
+<!--l. 2185--><p class="indent" >   Para relacionarmos os erros relativos, dividimos o lado esquerdo por
+<!--l. 2185--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi></math>, o lado
+direito por <!--l. 2185--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>y</mi></math>
+e obtemos <table class="equation"><tr><td>
+<!--l. 2186--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 2186--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                             <mstyle 
+   id="x25-34003r123"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mi mathvariant="normal">&#x0394;</mi><mi 
+>y</mi></mrow>
+ <mrow 
+><mi 
+>y</mi></mrow></mfrac> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mfrac><mrow 
+><msup><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow> 
+<mrow 
+><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></mfrac> <mfrac><mrow 
+><mi 
+>x</mi><mi mathvariant="normal">&#x0394;</mi><mi 
+>x</mi></mrow> 
+ <mrow 
+><mi 
+>x</mi></mrow></mfrac>
+</math></td><td class="eq-no">(2.123)</td></tr></table>
+<!--l. 2189--><p class="indent" >   sugerindo a definição de número de condicionamento de um problema.
+   <div class="newtheorem">
+<!--l. 2191--><p class="noindent" ><span class="head">
+<a 
+ id="x25-34004r1"></a>
+<span 
+class="ec-lmbx-12">Defini</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o 2.8.1.</span>  </span><span 
+class="ec-lmri-12">Seja </span><!--l. 2192--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi></math>
+<span 
+class="ec-lmri-12">uma fun</span><span 
+class="ec-lmri-12">ç</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o diferenci</span><span 
+class="ec-lmri-12">á</span><span 
+class="ec-lmri-12">vel. O </span><span 
+class="ec-lmbxi-10x-x-120">n</span><span 
+class="ec-lmbxi-10x-x-120">ú</span><span 
+class="ec-lmbxi-10x-x-120">mero de condicionamento </span><span 
+class="ec-lmri-12">de um</span>
+<span 
+class="ec-lmri-12">problema </span><span 
+class="ec-lmri-12">é</span> <span 
+class="ec-lmri-12">definido como </span><table class="equation"><tr><td>
+<!--l. 2193--><p class="indent" >
+<!--l. 2193--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                             <mstyle 
+   id="x25-34005r124"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>&#x03BA;</mi></mrow><mrow 
+><mi 
+>f</mi></mrow></msub 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-punc" stretchy="false">:</mo><mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> |</mo><mrow><mfrac><mrow 
+><mi 
+>x</mi><msup><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow>
+ <mrow 
+><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></mfrac>  </mrow><mo fence="true" form="postfix">|</mo></mrow>
+</math></td><td class="eq-no">(2.124)</td></tr></table>
+<!--l. 2196--><p class="indent" >   <span 
+class="ec-lmri-12">e fornece uma estimativa de quanto os erros relativos na entrada</span>
+<!--l. 2196--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mrow><mo fence="true" form="prefix"> |</mo><mrow><mfrac><mrow 
+><mi mathvariant="normal">&#x0394;</mi><mi 
+>x</mi></mrow>
+ <mrow 
+><mi 
+>x</mi></mrow></mfrac> </mrow><mo fence="true" form="postfix">|</mo></mrow></math> <span 
+class="ec-lmri-12">ser</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o amplificados</span>
+<span 
+class="ec-lmri-12">na sa</span><span 
+class="ec-lmri-12">í</span><span 
+class="ec-lmri-12">da </span><!--l. 2196--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mrow><mo fence="true" form="prefix"> |</mo><mrow><mfrac><mrow 
+><mi mathvariant="normal">&#x0394;</mi><mi 
+>y</mi></mrow>
+ <mrow 
+><mi 
+>y</mi></mrow></mfrac> </mrow><mo fence="true" form="postfix">|</mo></mrow></math><span 
+class="ec-lmri-12">.</span>
+   </div>
+<!--l. 2197--><p class="indent" >
+<!--l. 2217--><p class="indent" >   De modo geral, quando <!--l. 2217--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi></math>
+depende de várias variáveis, podemos obter <table class="equation"><tr><td>
+<!--l. 2218--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 2218--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+  <mstyle 
+   id="x25-34006r125"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>f</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mi 
+>,</mi><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mi 
+>,</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo><msub><mrow 
+><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mi 
+>,</mi><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mi 
+>,</mi><msub><mrow 
+><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-rel" stretchy="false">|</mo><mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo><munderover accentunder="false" accent="false"><mrow  
+><mo  
+>&#x2211;</mo>
+   </mrow><mrow 
+><mi 
+>i</mi><mo 
+class="MathClass-rel" stretchy="false">=</mo><mn>1</mn></mrow><mrow 
+><mi 
+>n</mi></mrow></munderover 
+> <mrow><mo fence="true" form="prefix"> |</mo><mrow> <mfrac><mrow 
+><mi 
+>&#x2202;</mi><mi 
+>f</mi></mrow>
+<mrow 
+><mi 
+>&#x2202;</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></mrow></mfrac><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mi 
+>,</mi><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mi 
+>,</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mo fence="true" form="postfix">|</mo></mrow> <msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></mrow></msub 
+>
+</math></td><td class="eq-no">(2.125)</td></tr></table>
+<!--l. 2222--><p class="indent" >   Uma matriz de números de condicionamento também poderia ser obtida
+como em [5].
+   <div class="newtheorem">
+<!--l. 2224--><p class="noindent" ><span class="head">
+<a 
+ id="x25-34007r1"></a>
+<span 
+class="ec-lmbx-12">Exemplo 2.8.1.</span>  </span>Considere o problema de calcular
+<!--l. 2225--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msqrt><mrow><mi 
+>x</mi></mrow></msqrt></math> em
+<!--l. 2225--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn></math>. Se
+usarmos <!--l. 2225--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">*</mo></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>9</mn><mn>9</mn><mn>9</mn></math>,
+quanto será o erro relativo na saída? O erro relativo na entrada é
+<table class="equation"><tr><td>
+<!--l. 2226--><p class="indent" >
+<!--l. 2226--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                        <mstyle 
+   id="x25-34008r126"  class="label" ></mstyle><!--endlabel--><mrow><mo fence="true" form="prefix"> |</mo><mrow><mfrac><mrow 
+><mi mathvariant="normal">&#x0394;</mi><mi 
+>x</mi></mrow>
+ <mrow 
+><mi 
+>x</mi></mrow></mfrac> </mrow><mo fence="true" form="postfix">|</mo></mrow> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> |</mo><mrow><mfrac><mrow 
+><mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn><mi 
+>,</mi><mn>9</mn><mn>9</mn><mn>9</mn></mrow>
+     <mrow 
+><mn>2</mn></mrow></mfrac>      </mrow><mo fence="true" form="postfix">|</mo></mrow> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>0</mn><mn>5</mn>
+</math></td><td class="eq-no">(2.126)</td></tr></table>
+<!--l. 2229--><p class="indent" >   O número de condicionamento do problema calcular a raiz é <table class="equation"><tr><td>
+<!--l. 2230--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 2230--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                      <mstyle 
+   id="x25-34009r127"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>&#x03BA;</mi></mrow><mrow 
+><mi 
+>f</mi></mrow></msub 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-punc" stretchy="false">:</mo><mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> |</mo><mrow><mfrac><mrow 
+><mi 
+>x</mi><msup><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow>
+ <mrow 
+><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></mfrac>  </mrow><mo fence="true" form="postfix">|</mo></mrow> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> |</mo><mrow><mfrac><mrow 
+><mi 
+>x</mi>  <mfrac><mrow 
+><mn>1</mn></mrow>
+<mrow 
+><mn>2</mn><msqrt><mrow><mi 
+>x</mi></mrow></msqrt></mrow></mfrac></mrow>
+ <mrow 
+><msqrt><mrow><mi 
+>x</mi></mrow></msqrt></mrow></mfrac> </mrow><mo fence="true" form="postfix">|</mo></mrow> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><mn>1</mn></mrow> 
+<mrow 
+><mn>2</mn></mrow></mfrac>
+</math></td><td class="eq-no">(2.127)</td></tr></table>
+<!--l. 2233--><p class="indent" >   Ou seja, os erros na entrada serão diminuídos pela metade. De fato, usando
+<!--l. 2233--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msqrt><mrow><mn>2</mn></mrow></msqrt> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>4</mn><mn>1</mn><mn>4</mn><mn>2</mn><mn>1</mn><mn>3</mn><mn>6</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo></math> e
+<!--l. 2233--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">*</mo></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msqrt><mrow><mn>1</mn><mi 
+>,</mi><mn>9</mn><mn>9</mn><mn>9</mn></mrow></msqrt> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>4</mn><mn>1</mn><mn>3</mn><mn>8</mn><mn>6</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo></math>,
+obtemos <table class="equation"><tr><td>
+<!--l. 2234--><p class="indent" >
+<!--l. 2234--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                   <mstyle 
+   id="x25-34010r128"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mi mathvariant="normal">&#x0394;</mi><mi 
+>y</mi></mrow>
+ <mrow 
+><mi 
+>y</mi></mrow></mfrac> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><msqrt><mrow><mn>2</mn></mrow></msqrt> <mo 
+class="MathClass-bin" stretchy="false">-</mo><msqrt><mrow><mn>1</mn><mi 
+>,</mi><mn>9</mn><mn>9</mn><mn>9</mn></mrow></msqrt></mrow> 
+       <mrow 
+><msqrt><mrow><mn>2</mn></mrow></msqrt></mrow></mfrac>        <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>0</mn><mn>2</mn><mn>5</mn><mn>0</mn><mn>0</mn><mn>3</mn><mn>1</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.128)</td></tr></table>
+   </div>
+<!--l. 2237--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 2240--><p class="noindent" ><span class="head">
+<a 
+ id="x25-34011r2"></a>
+<span 
+class="ec-lmbx-12">Exemplo 2.8.2.</span>  </span>Considere a função <!--l. 2241--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo>   <mfrac><mrow 
+><mn>1</mn><mn>0</mn></mrow> 
+<mrow 
+><mn>1</mn><mo 
+class="MathClass-bin" stretchy="false">-</mo><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></mfrac></math>
+e <!--l. 2241--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">*</mo></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>9</mn><mn>9</mn><mn>9</mn><mn>5</mn></math>
+com um erro absoluto na entrada de <!--l. 2241--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>0</mn><mn>1</mn></math>.
+<!--l. 2243--><p class="indent" >   Calculando <!--l. 2243--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">*</mo></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">*</mo></mrow></msup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></math>
+temos <table class="equation"><tr><td>
+<!--l. 2244--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 2244--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+             <mstyle 
+   id="x25-34012r129"  class="label" ></mstyle><!--endlabel--><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">*</mo></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo>        <mfrac><mrow 
+><mn>1</mn><mn>0</mn></mrow> 
+<mrow 
+><mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mi 
+>,</mi><mn>9</mn><mn>9</mn><mn>9</mn><mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></mfrac>  <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>1</mn><mn>0</mn><mn>0</mn><mn>0</mn><mn>2</mn><mi 
+>,</mi><mn>5</mn><mn>0</mn><mn>0</mn><mn>6</mn><mn>2</mn><mn>5</mn><mn>1</mn><mn>5</mn><mn>7</mn><mn>7</mn><mn>3</mn><mn>9</mn><mn>7</mn><mn>0</mn><mn>5</mn><mn>1</mn><mn>7</mn><mn>3</mn>
+</math></td><td class="eq-no">(2.129)</td></tr></table>
+<!--l. 2247--><p class="indent" >   Mas qual é a estimativa de erro nessa resposta? Quantos dígitos
+significativos temos nessa resposta?
+<!--l. 2249--><p class="indent" >   Sabendo que <!--l. 2249--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><mn>0</mn><mi 
+>x</mi><mo 
+class="MathClass-bin" stretchy="false">&#x2215;</mo><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></math>,
+o número de condicionamento é <table class="equation"><tr><td>
+<!--l. 2250--><p class="indent" >
+<!--l. 2250--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                        <mstyle 
+   id="x25-34013r130"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>&#x03BA;</mi></mrow><mrow 
+><mi 
+>f</mi></mrow></msub 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-punc" stretchy="false">:</mo><mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> |</mo><mrow><mfrac><mrow 
+><mi 
+>x</mi><msup><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow>
+ <mrow 
+><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></mfrac>  </mrow><mo fence="true" form="postfix">|</mo></mrow> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> |</mo><mrow>  <mfrac><mrow 
+><mn>2</mn><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow>
+<mrow 
+><mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></mfrac> </mrow><mo fence="true" form="postfix">|</mo></mrow>
+</math></td><td class="eq-no">(2.130)</td></tr></table>
+<!--l. 2253--><p class="indent" >   o que nos fornece para <!--l. 2253--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">*</mo></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>9</mn><mn>9</mn><mn>9</mn><mn>5</mn></math>,
+<table class="equation"><tr><td>
+<!--l. 2254--><p class="indent" >
+<!--l. 2254--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                           <mstyle 
+   id="x25-34014r131"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>&#x03BA;</mi></mrow><mrow 
+><mi 
+>f</mi></mrow></msub 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mi 
+>,</mi><mn>9</mn><mn>9</mn><mn>9</mn><mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>1</mn><mn>9</mn><mn>9</mn><mn>8</mn><mi 
+>,</mi><mn>5</mn>
+</math></td><td class="eq-no">(2.131)</td></tr></table>
+                                                                          
+
+                                                                          
+<!--l. 2257--><p class="indent" >   Como o erro relativo na entrada é <table class="equation"><tr><td>
+<!--l. 2258--><p class="indent" >
+<!--l. 2258--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                       <mstyle 
+   id="x25-34015r132"  class="label" ></mstyle><!--endlabel--><mrow><mo fence="true" form="prefix"> |</mo><mrow><mfrac><mrow 
+><mi mathvariant="normal">&#x0394;</mi><mi 
+>x</mi></mrow>
+ <mrow 
+><mi 
+>x</mi></mrow></mfrac> </mrow><mo fence="true" form="postfix">|</mo></mrow> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> |</mo><mrow><mfrac><mrow 
+><mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>0</mn><mn>1</mn></mrow>
+<mrow 
+><mn>0</mn><mi 
+>,</mi><mn>9</mn><mn>9</mn><mn>9</mn><mn>5</mn></mrow></mfrac> </mrow><mo fence="true" form="postfix">|</mo></mrow> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>0</mn><mn>1</mn><mn>0</mn><mn>0</mn><mn>0</mn><mn>5</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.132)</td></tr></table>
+<!--l. 2261--><p class="indent" >   temos que o erro na saída será aproximadamente <table class="equation"><tr><td>
+<!--l. 2262--><p class="indent" >
+<!--l. 2262--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+            <mstyle 
+   id="x25-34016r133"  class="label" ></mstyle><!--endlabel--><mrow><mo fence="true" form="prefix"> |</mo><mrow><mfrac><mrow 
+><mi mathvariant="normal">&#x0394;</mi><mi 
+>y</mi></mrow>
+ <mrow 
+><mi 
+>y</mi></mrow></mfrac> </mrow><mo fence="true" form="postfix">|</mo></mrow> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <msub><mrow 
+><mi 
+>&#x03BA;</mi></mrow><mrow 
+><mi 
+>f</mi></mrow></msub 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mrow><mo fence="true" form="prefix"> |</mo><mrow><mfrac><mrow 
+><mi mathvariant="normal">&#x0394;</mi><mi 
+>x</mi></mrow>
+ <mrow 
+><mi 
+>x</mi></mrow></mfrac> </mrow><mo fence="true" form="postfix">|</mo></mrow> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>1</mn><mn>9</mn><mn>9</mn><mn>8</mn><mi 
+>,</mi><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>0</mn><mn>1</mn><mn>0</mn><mn>0</mn><mn>0</mn><mn>5</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>0</mn><mi 
+>,</mi><mn>1</mn><mn>9</mn><mn>9</mn><mn>9</mn>
+</math></td><td class="eq-no">(2.133)</td></tr></table>
+<!--l. 2265--><p class="indent" >   ou seja um erro relativo de aproximadamente
+<!--l. 2265--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>9</mn><mi 
+>,</mi><mn>9</mn><mn>9</mn><mi 
+>%</mi></math>.
+<!--l. 2267--><p class="indent" >   Note que se usarmos <!--l. 2267--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>9</mn><mn>9</mn><mn>9</mn><mn>4</mn></math>
+e <!--l. 2267--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>9</mn><mn>9</mn><mn>9</mn><mn>6</mn></math>
+(ambos no intervalo do erro absoluto da entrada) encontramos
+                                                                          
+
+                                                                          
+<!--tex4ht:inline--><!--l. 2268--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">*</mo></mrow></msubsup 
+></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo></mtd><mtd 
+class="eqnarray-3">   <mn>8</mn><mn>3</mn><mn>3</mn><mn>5</mn><mi 
+>,</mi><mn>8</mn><mn>3</mn> </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(2.134)</mtext><mtext 
+   id="x25-34017r2.134"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1"> <msubsup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">*</mo></mrow></msubsup 
+></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo></mtd><mtd 
+class="eqnarray-3">   <mn>1</mn><mn>2</mn><mn>5</mn><mn>2</mn><mn>0</mn><mi 
+>,</mi><mn>5</mn><mn>0</mn></mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(2.135)</mtext><mtext 
+   id="x25-34017r2.135"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>                                                      </mtr></mtable>
+</math>
+<!--l. 2271--><p class="nopar" >
+<!--l. 2272--><p class="indent" >   confirmando a estimativa de <!--l. 2272--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>9</mn><mi 
+>,</mi><mn>9</mn><mn>9</mn><mi 
+>%</mi></math>.
+   </div>
+<!--l. 2273--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 2277--><p class="noindent" ><span class="head">
+<a 
+ id="x25-34018r3"></a>
+<span 
+class="ec-lmbx-12">Exemplo 2.8.3.</span>  </span>Seja <!--l. 2278--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>x</mi><mtext class="qopname"> exp</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>.
+Calcule o erro absoluto ao calcular <!--l. 2278--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>
+sabendo que <!--l. 2278--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">±</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>5</mn></math>.
+   </div>
+<!--l. 2279--><p class="indent" >    <span 
+class="ec-lmbx-12">Solu</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o. </span>Temos que <!--l. 2281--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>2</mn></math>
+com erro absoluto de <!--l. 2281--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>x</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>5</mn></math>. Neste
+caso, calculamos <!--l. 2281--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>f</mi></mrow></msub 
+></math>, isto é, o
+erro absoluto ao calcular <!--l. 2281--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>,
+por: <table class="equation"><tr><td>
+<!--l. 2282--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 2282--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                              <mstyle 
+   id="x25-34019r136"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>f</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-rel" stretchy="false">|</mo><msup><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-rel" stretchy="false">|</mo><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+>
+<mi 
+>x</mi></mrow></msub 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.136)</td></tr></table>
+<!--l. 2285--><p class="indent" >   Como <!--l. 2285--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mi 
+>x</mi></mrow></msup 
+></math>,
+temos:
+<!--tex4ht:inline--><!--l. 2286--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>f</mi></mrow></msub 
+></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mo 
+class="MathClass-rel" stretchy="false">|</mo><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mi 
+>x</mi></mrow></msup 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+>
+<mi 
+>x</mi></mrow></msub 
+>      </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(2.137)</mtext><mtext 
+   id="x25-34020r2.8"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1">   </mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mo 
+class="MathClass-rel" stretchy="false">|</mo><mn>3</mn><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>5</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>1</mn><mn>0</mn><mn>8</mn><mn>4</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo></mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(2.138)</mtext></mtd>                                            </mtr></mtable>
+</math>
+<!--l. 2289--><p class="nopar" >
+<!--l. 2290--><p class="indent" >   Portanto, o erro absoluto ao calcular
+<!--l. 2290--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math> quando
+<!--l. 2290--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">±</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>5</mn></math> é de
+<!--l. 2290--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mi 
+>,</mi><mn>1</mn><mn>0</mn><mn>8</mn><mn>4</mn></math>.
+                                                                          <div class="flushright" 
+>
+<!--l. 2291--><p class="noindent" >
+<!--l. 2291--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-ord">&#x2662;</mo></math></div>
+   <div class="newtheorem">
+<!--l. 2293--><p class="noindent" ><span class="head">
+<a 
+ id="x25-34021r4"></a>
+                                                                          
+
+                                                                          
+<span 
+class="ec-lmbx-12">Exemplo 2.8.4.</span>  </span>Calcule        o        erro        relativo        ao        medir
+<!--l. 2293--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mi 
+>,</mi><mi 
+>y</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow> 
+  <mrow 
+><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></mfrac>   <msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mn>2</mn><mi 
+>y</mi></mrow></msup 
+></math>
+sabendo                                                                                    que
+<!--l. 2293--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>3</mn></math>
+é                                       conhecido                                       com
+<!--l. 2293--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>0</mn><mi 
+>%</mi></math>
+de                                             erro                                             e
+<!--l. 2293--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>2</mn></math>
+é                                       conhecido                                       com
+<!--l. 2293--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>3</mn><mi 
+>%</mi></math>
+de erro.
+   </div>
+<!--l. 2294--><p class="indent" >    <span 
+class="ec-lmbx-12">Solu</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o. </span>Calculamos as derivadas parciais de
+<!--l. 2296--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi></math>:
+<table class="equation"><tr><td>
+<!--l. 2297--><p class="indent" >
+<!--l. 2297--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                    <mstyle 
+   id="x25-34022r139"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mi 
+>&#x2202;</mi><mi 
+>f</mi></mrow>
+<mrow 
+><mi 
+>&#x2202;</mi><mi 
+>x</mi></mrow></mfrac> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><mn>2</mn><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><mn>2</mn><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow> 
+         <mrow 
+><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>4</mn></mrow></msup 
+></mrow></mfrac>             <msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mn>2</mn><mi 
+>y</mi></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mfrac><mrow 
+><mn>2</mn><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mn>2</mn><mi 
+>y</mi></mrow></msup 
+></mrow>
+ <mrow 
+><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></mrow></mfrac>
+</math></td><td class="eq-no">(2.139)</td></tr></table>
+<!--l. 2300--><p class="indent" >   e <table class="equation"><tr><td>
+<!--l. 2301--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 2301--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                             <mstyle 
+   id="x25-34023r140"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mi 
+>&#x2202;</mi><mi 
+>f</mi></mrow>
+<mrow 
+><mi 
+>&#x2202;</mi><mi 
+>y</mi></mrow></mfrac> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><mfrac><mrow 
+><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn></mrow>
+   <mrow 
+><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></mfrac>    <msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mn>2</mn><mi 
+>y</mi></mrow></msup 
+>
+</math></td><td class="eq-no">(2.140)</td></tr></table>
+<!--l. 2304--><p class="indent" >   Calculamos o erro absoluto em termos do erro relativo: <table class="equation"><tr><td>
+<!--l. 2305--><p class="indent" >
+<!--l. 2305--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                       <mstyle 
+   id="x25-34024r141"  class="label" ></mstyle><!--endlabel--> <mfrac><mrow 
+><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>x</mi></mrow></msub 
+></mrow>
+<mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow></mfrac> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>1</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x21D2;</mo> <msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>x</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>0</mn><mi 
+>,</mi><mn>1</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>3</mn>
+</math></td><td class="eq-no">(2.141)</td></tr></table>
+   <table class="equation"><tr><td>
+<!--l. 2308--><p class="indent" >
+<!--l. 2308--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                     <mstyle 
+   id="x25-34025r142"  class="label" ></mstyle><!--endlabel--> <mfrac><mrow 
+><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>y</mi></mrow></msub 
+></mrow>
+<mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>y</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow></mfrac> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>3</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x21D2;</mo> <msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>y</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>3</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>6</mn>
+</math></td><td class="eq-no">(2.142)</td></tr></table>
+<!--l. 2311--><p class="indent" >   Aplicando a expressão para estimar o erro em
+<!--l. 2311--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi></math>
+temos
+                                                                          
+
+                                                                          
+<!--tex4ht:inline--><!--l. 2312--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>f</mi></mrow></msub 
+></mtd><mtd 
+class="eqnarray-2">              <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> |</mo><mrow><mfrac><mrow 
+><mi 
+>&#x2202;</mi><mi 
+>f</mi></mrow>
+<mrow 
+><mi 
+>&#x2202;</mi><mi 
+>x</mi></mrow></mfrac> </mrow><mo fence="true" form="postfix">|</mo></mrow> <msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>x</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mrow><mo fence="true" form="prefix"> |</mo><mrow><mfrac><mrow 
+><mi 
+>&#x2202;</mi><mi 
+>f</mi></mrow>
+<mrow 
+><mi 
+>&#x2202;</mi><mi 
+>y</mi></mrow></mfrac> </mrow><mo fence="true" form="postfix">|</mo></mrow> <msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>y</mi></mrow></msub 
+>            </mtd><mtd 
+class="eqnarray-3">   </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(2.143)</mtext><mtext 
+   id="x25-34026r2.8"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1">   </mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><mn>2</mn><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mn>4</mn></mrow></msup 
+></mrow> 
+ <mrow 
+><mn>2</mn><mn>7</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>0</mn><mi 
+>,</mi><mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn><mfrac><mrow 
+><mn>9</mn><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow>
+  <mrow 
+><mn>9</mn></mrow></mfrac>  <msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mn>4</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>6</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>8</mn><mi 
+>,</mi><mn>4</mn><mn>9</mn><mn>3</mn><mn>0</mn><mn>4</mn><mn>5</mn><mn>5</mn><mn>5</mn><mn>7</mn></mtd><mtd 
+class="eqnarray-3">   </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(2.144)</mtext></mtd>                          </mtr></mtable>
+</math>
+<!--l. 2315--><p class="nopar" >
+<!--l. 2316--><p class="indent" >   Portanto, o erro relativo ao calcular
+<!--l. 2316--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi></math> é
+estimado por <table class="equation"><tr><td>
+<!--l. 2317--><p class="indent" >
+<!--l. 2317--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                        <mstyle 
+   id="x25-34027r145"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mi 
+>&#x03B4;</mi><mi 
+>f</mi></mrow>
+<mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>f</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow></mfrac> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><mn>8</mn><mi 
+>,</mi><mn>4</mn><mn>9</mn><mn>3</mn><mn>0</mn><mn>4</mn><mn>5</mn><mn>5</mn><mn>5</mn><mn>7</mn></mrow> 
+    <mrow 
+><mfrac><mrow 
+><mn>9</mn><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow> 
+  <mrow 
+><mn>9</mn></mrow></mfrac>  <msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mn>4</mn></mrow></msup 
+></mrow></mfrac>        <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>4</mn><mi 
+>%</mi>
+</math></td><td class="eq-no">(2.145)</td></tr></table>
+                                                                          <div class="flushright" 
+>
+<!--l. 2320--><p class="noindent" >
+<!--l. 2320--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-ord">&#x2662;</mo></math></div>
+                                                                          
+
+                                                                          
+   <div class="newtheorem">
+<!--l. 2322--><p class="noindent" ><span class="head">
+<a 
+ id="x25-34028r5"></a>
+<span 
+class="ec-lmbx-12">Exemplo 2.8.5.</span>  </span>No exemplo anterior, reduza o erro relativo em <!--l. 2322--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math>
+pela metade e calcule o erro relativo em <!--l. 2322--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi></math>.
+Depois, repita o processo reduzindo o erro relativo em <!--l. 2322--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi></math>
+pela metade.
+   </div>
+<!--l. 2323--><p class="indent" >    <span 
+class="ec-lmbx-12">Solu</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o. </span>Na primeira situação temos
+<!--l. 2325--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn></math> com erro
+relativo de <!--l. 2325--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>5</mn><mi 
+>%</mi></math> e
+<!--l. 2325--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>x</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>3</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>1</mn><mn>5</mn></math>. Calculamos
+<!--l. 2325--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>f</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>7</mn><mi 
+>,</mi><mn>8</mn><mn>8</mn><mn>6</mn><mn>3</mn><mn>9</mn><mn>9</mn><mn>4</mn><mn>5</mn><mn>0</mn></math> e o erro
+relativo em <!--l. 2325--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi></math> de
+<!--l. 2325--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>3</mn><mi 
+>%</mi></math>. Na segunda
+situação, temos <!--l. 2325--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn></math>
+com erro de <!--l. 2325--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mi 
+>,</mi><mn>5</mn><mi 
+>%</mi></math>
+e <!--l. 2325--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>y</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn><mn>5</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>3</mn></math>. Calculamos
+<!--l. 2325--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>f</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>4</mn><mi 
+>,</mi><mn>8</mn><mn>5</mn><mn>3</mn><mn>1</mn><mn>6</mn><mn>8</mn><mn>8</mn><mn>9</mn><mn>2</mn></math> e o erro
+relativo em <!--l. 2325--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi></math> de
+<!--l. 2325--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>8</mn><mi 
+>%</mi></math>. Observe que mesma
+o erro relativo em <!--l. 2325--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math>
+sendo maior, o erro em <!--l. 2325--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi></math>
+é mais significante na função.
+                                                                          <div class="flushright" 
+>
+<!--l. 2326--><p class="noindent" >
+<!--l. 2326--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-ord">&#x2662;</mo></math></div>
+   <div class="newtheorem">
+<!--l. 2329--><p class="noindent" ><span class="head">
+<a 
+ id="x25-34029r6"></a>
+                                                                          
+
+                                                                          
+<span 
+class="ec-lmbx-12">Exemplo 2.8.6.</span>  </span>Considere  um  triângulo  retângulo  onde  a  hipotenusa
+e  um  dos  catetos  são  conhecidos  a  menos  de  um  erro:  hipotenusa
+<!--l. 2330--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>a</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">±</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn></math>
+metros                                         e                                         cateto
+<!--l. 2330--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">±</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn></math>
+metros. Calcule o erro absoluto ao calcular a área dessa triângulo.
+   </div>
+<!--l. 2331--><p class="indent" >    <span 
+class="ec-lmbx-12">Solu</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o. </span>Primeiro vamos encontrar a expressão para a área em função da hipotenusa
+<!--l. 2333--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>a</mi></math> e um cateto
+<!--l. 2333--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi></math>. A tamanho de segundo
+cateto <!--l. 2333--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>c</mi></math> é dado pelo
+teorema de Pitágoras, <!--l. 2333--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msup><mrow 
+><mi 
+>c</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></math>,
+ou seja, <!--l. 2333--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>c</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msqrt><mrow><msup><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>2</mn> </mrow> </msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></msqrt></math>.
+Portanto a área é <table class="equation"><tr><td>
+<!--l. 2334--><p class="indent" >
+<!--l. 2334--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                           <mstyle 
+   id="x25-34030r146"  class="label" ></mstyle><!--endlabel--><mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><mi 
+>b</mi><mi 
+>c</mi></mrow> 
+<mrow 
+><mn>2</mn></mrow></mfrac>  <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><mi 
+>b</mi><msqrt><mrow><msup><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>2</mn> </mrow> </msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></msqrt></mrow> 
+        <mrow 
+><mn>2</mn></mrow></mfrac>      <mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.146)</td></tr></table>
+<!--l. 2337--><p class="indent" >   Agora calculamos as derivadas <table class="equation"><tr><td>
+<!--l. 2338--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 2338--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                             <mstyle 
+   id="x25-34031r147"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mi 
+>&#x2202;</mi><mi 
+>A</mi></mrow>
+<mrow 
+><mi 
+>&#x2202;</mi><mi 
+>a</mi></mrow></mfrac> <mo 
+class="MathClass-rel" stretchy="false">=</mo>      <mfrac><mrow 
+><mi 
+>a</mi><mi 
+>b</mi></mrow> 
+<mrow 
+><mn>2</mn><msqrt><mrow><msup><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>2</mn> </mrow> </msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></msqrt></mrow></mfrac><mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(2.147)</td></tr></table>
+   <table class="equation"><tr><td>
+<!--l. 2341--><p class="indent" >
+<!--l. 2341--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                       <mstyle 
+   id="x25-34032r148"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mi 
+>&#x2202;</mi><mi 
+>A</mi></mrow>
+<mrow 
+><mi 
+>&#x2202;</mi><mi 
+>b</mi></mrow></mfrac> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><msqrt><mrow><msup><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>2</mn> </mrow> </msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></msqrt></mrow> 
+       <mrow 
+><mn>2</mn></mrow></mfrac>      <mo 
+class="MathClass-bin" stretchy="false">-</mo>    <mfrac><mrow 
+><msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow> 
+<mrow 
+><mn>2</mn><msqrt><mrow><msup><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>2</mn> </mrow> </msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></msqrt></mrow></mfrac><mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(2.148)</td></tr></table>
+<!--l. 2344--><p class="indent" >   e substituindo na estimativa para o erro
+<!--l. 2344--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>A</mi></mrow></msub 
+></math> em termos
+de <!--l. 2344--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>a</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn></math> e
+<!--l. 2344--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>b</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn></math>:
+                                                                          
+
+                                                                          
+<!--tex4ht:inline--><!--l. 2345--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>A</mi></mrow></msub 
+></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo></mtd><mtd 
+class="eqnarray-3">   <mrow><mo fence="true" form="prefix"> |</mo><mrow><mfrac><mrow 
+><mi 
+>&#x2202;</mi><mi 
+>A</mi></mrow>
+<mrow 
+><mi 
+>&#x2202;</mi><mi 
+>a</mi></mrow></mfrac> </mrow><mo fence="true" form="postfix">|</mo></mrow><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>a</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mrow><mo fence="true" form="prefix"> |</mo><mrow><mfrac><mrow 
+><mi 
+>&#x2202;</mi><mi 
+>A</mi></mrow>
+<mrow 
+><mi 
+>&#x2202;</mi><mi 
+>b</mi></mrow></mfrac> </mrow><mo fence="true" form="postfix">|</mo></mrow><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mi 
+>b</mi></mrow></msub 
+>                        </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(2.149)</mtext><mtext 
+   id="x25-34033r2.8"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1">   </mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo></mtd><mtd 
+class="eqnarray-3">   <mfrac><mrow 
+><mn>3</mn><msqrt><mrow><mn>5</mn></mrow></msqrt></mrow>
+  <mrow 
+><mn>5</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><msqrt><mrow><mn>5</mn></mrow></msqrt></mrow> 
+ <mrow 
+><mn>1</mn><mn>0</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn><mn>5</mn><mn>6</mn><mn>5</mn><mn>2</mn><mn>4</mn><mn>7</mn><mn>5</mn><mn>8</mn><mn>4</mn></mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(2.150)</mtext></mtd>                        </mtr></mtable>
+</math>
+<!--l. 2348--><p class="nopar" >
+<!--l. 2349--><p class="indent" >   Em termos do erro relativo temos erro na hipotenusa de
+<!--l. 2349--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mfrac><mrow 
+><mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn></mrow>
+  <mrow 
+><mn>3</mn></mrow></mfrac>  <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>0</mn><mi 
+>,</mi><mn>3</mn><mn>3</mn><mn>3</mn><mi 
+>%</mi></math>, erro no
+cateto de <!--l. 2349--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mfrac><mrow 
+><mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn></mrow>
+  <mrow 
+><mn>2</mn></mrow></mfrac>    <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>5</mn><mi 
+>%</mi></math>
+e erro na área de <table class="equation"><tr><td>
+<!--l. 2350--><p class="indent" >
+<!--l. 2350--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                          <mstyle 
+   id="x25-34034r151"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn><mn>5</mn><mn>6</mn><mn>5</mn><mn>2</mn><mn>4</mn><mn>7</mn><mn>5</mn><mn>8</mn><mn>4</mn></mrow>
+     <mrow 
+><mfrac><mrow 
+><mn>2</mn><msqrt><mrow><msup><mrow 
+><mn>3</mn></mrow><mrow 
+><mn>2</mn> </mrow> </msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo><msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></msqrt></mrow> 
+      <mrow 
+><mn>2</mn></mrow></mfrac>      </mrow></mfrac>    <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>7</mn><mi 
+>%</mi>
+</math></td><td class="eq-no">(2.151)</td></tr></table>
+                                                                          <div class="flushright" 
+>
+<!--l. 2353--><p class="noindent" >
+<!--l. 2353--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-ord">&#x2662;</mo></math></div>
+                                                                          
+
+                                                                          
+<!--l. 2355--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x25-35000"></a>Exercícios</h4>
+   <div class="newtheorem">
+<!--l. 2357--><p class="noindent" ><span class="head">
+<a 
+ id="x25-35001r1"></a>
+<span 
+class="ec-lmbx-12">E 2.8.1.</span>  </span>Considere que a variável <!--l. 2357--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>2</mn></math>
+é conhecida com um erro relativo de
+<!--l. 2357--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mi 
+>%</mi></math> e a variável
+<!--l. 2357--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>1</mn><mn>0</mn></math> com um erro relativo
+de <!--l. 2357--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>0</mn><mi 
+>%</mi></math>. Calcule o erro
+relativo associado a <!--l. 2357--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>z</mi></math>
+quando: <table class="equation"><tr><td>
+<!--l. 2358--><p class="indent" >
+<!--l. 2358--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                               <mstyle 
+   id="x25-35002r152"  class="label" ></mstyle><!--endlabel--><mi 
+>z</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo>    <mfrac><mrow 
+><msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>4</mn></mrow></msup 
+></mrow> 
+<mrow 
+><mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>4</mn></mrow></msup 
+></mrow></mfrac><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mi 
+>x</mi></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.152)</td></tr></table>
+<!--l. 2361--><p class="indent" >   Suponha que você precise conhecer o valor de
+<!--l. 2361--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>z</mi></math> com um
+erro de <!--l. 2361--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>5</mn><mi 
+>%</mi></math>.
+Você propõe uma melhoria na medição da variável
+<!--l. 2361--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math> ou
+<!--l. 2361--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi></math>?
+Explique.
+   </div>
+<!--l. 2362--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta. </span><!--l. 2364--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>2</mn><mi 
+>%</mi></math>, deve-se
+melhorar a medida na variável <!--l. 2364--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math>,
+pois, por mais que o erro relativo seja maior para esta variável, a propagação
+                                                                          
+
+                                                                          
+de erros através desta variáveis é muito menos importante do que para a outra
+variável. </div> <!--resp end-->
+   <div class="newtheorem">
+<!--l. 2367--><p class="noindent" ><span class="head">
+<a 
+ id="x25-35003r2"></a>
+<span 
+class="ec-lmbx-12">E 2.8.2.</span>  </span>A corrente <!--l. 2367--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>I</mi></math> em
+ampéres e a tensão <!--l. 2367--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>V</mi> </math>
+em volts em uma lâmpada se relacionam conforme a seguinte expressão:
+<table class="equation"><tr><td>
+<!--l. 2368--><p class="indent" >
+<!--l. 2368--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                                <mstyle 
+   id="x25-35004r153"  class="label" ></mstyle><!--endlabel--><mi 
+>I</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo><msup><mrow 
+> <mrow><mo fence="true" form="prefix"> (</mo><mrow> <mfrac><mrow 
+><mi 
+>V</mi> </mrow>
+<mrow 
+><msub><mrow 
+><mi 
+>V</mi> </mrow><mrow 
+><mn>0</mn></mrow></msub 
+></mrow></mfrac> </mrow><mo fence="true" form="postfix">)</mo></mrow> </mrow><mrow 
+><mi 
+>&#x03B1;</mi></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(2.153)</td></tr></table>
+<!--l. 2371--><p class="indent" >   onde <!--l. 2371--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi></math> é um
+número entre <!--l. 2371--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn></math>
+e <!--l. 2371--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn></math> e
+<!--l. 2371--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>V</mi> </mrow><mrow 
+><mn>0</mn></mrow></msub 
+></math> é tensão nominal
+em volts. Sabendo que <!--l. 2371--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>V</mi> </mrow><mrow 
+><mn>0</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><mn>2</mn><mn>0</mn> <mo 
+class="MathClass-bin" stretchy="false">±</mo> <mn>3</mn><mi 
+>%</mi></math>
+e <!--l. 2371--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x03B1;</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>0</mn><mi 
+>,</mi><mn>8</mn> <mo 
+class="MathClass-bin" stretchy="false">±</mo> <mn>4</mn><mi 
+>%</mi></math>,
+calcule a corrente e o erro relativo associado quando a tensão vale
+<!--l. 2371--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>2</mn><mn>2</mn><mn>0</mn> <mo 
+class="MathClass-bin" stretchy="false">±</mo> <mn>1</mn><mi 
+>%</mi></math>.<br 
+class="newline" /><span 
+class="ec-lmbx-12">Obs:. </span>Este problema pode ser resolvido de duas formas distintas: usando a expressão
+aproximada para a propagação de erro e inspecionando os valores máximos e
+mínimos que a expressão pode assumir. Pratique os dois métodos.<span 
+class="ec-lmbx-12">Dica: </span>lembre
+que <!--l. 2372--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>&#x03B1;</mi></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mi 
+>&#x03B1;</mi><mtext class="qopname"> ln</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msup 
+></math>
+   </div>
+                                                                          
+
+                                                                          
+<!--l. 2373--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta. </span><!--l. 2375--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>3</mn><mi 
+>,</mi><mn>2</mn><mi 
+>%</mi></math> pela
+aproximação ou <!--l. 2375--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>3</mn><mi 
+>,</mi><mn>4</mn><mi 
+>%</mi></math> pelo
+segundo método, isto é, <!--l. 2375--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" > <mrow><mo fence="true" form="prefix"> (</mo><mrow><mn>0</mn><mi 
+>,</mi><mn>9</mn><mn>6</mn><mn>7</mn><mn>5</mn><mn>8</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mi 
+>I</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mn>1</mn><mi 
+>,</mi><mn>0</mn><mn>3</mn><mn>4</mn><mn>2</mn></mrow><mo fence="true" form="postfix">)</mo></mrow></math>.
+</div> <!--resp end-->
+                                                                          
+
+                                                                          
+   <!--l. 2381--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse9.html" >next</a>] [<a 
+href="mainse7.html" >prev</a>] [<a 
+href="mainse7.html#tailmainse7.html" >prev-tail</a>] [<a 
+href="mainse8.html" >front</a>] [<a 
+href="mainch2.html#mainse8.html" >up</a>] </p></div>
+<!--l. 2381--><p class="indent" >   <a 
+ id="tailmainse8.html"></a>   
+</body></html> 

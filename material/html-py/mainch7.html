@@ -1,0 +1,452 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>7 Ajuste de curvas</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 3--><div class="crosslinks"><p class="noindent">[<a 
+href="mainch8.html" >next</a>] [<a 
+href="mainch6.html" >prev</a>] [<a 
+href="mainch6.html#tailmainch6.html" >prev-tail</a>] [<a 
+href="#tailmainch7.html">tail</a>] [<a 
+href="main.html#mainch7.html" >up</a>] </p></div>
+   <h2 class="chapterHead"><span class="titlemark">Capítulo&#x00A0;7</span><br /><a 
+ id="x72-1210007"></a>Ajuste de curvas</h2>
+<a 
+ id="dx72-121001"></a>
+<a 
+ id="dx72-121002"></a>
+<!--l. 5--><p class="noindent" >Neste capítulo, abordamos os problemas de <span 
+class="ec-lmbx-12">ajuste de curvas</span><a 
+ id="dx72-121003"></a> pelo <span 
+class="ec-lmbx-12">m</span><span 
+class="ec-lmbx-12">é</span><span 
+class="ec-lmbx-12">todo</span>
+<span 
+class="ec-lmbx-12">dos m</span><span 
+class="ec-lmbx-12">í</span><span 
+class="ec-lmbx-12">nimos quadrados</span><a 
+ id="dx72-121004"></a>. Mais precisamente, dado um conjunto de
+<!--l. 5--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>N</mi></math> pontos
+<!--l. 5--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msubsup><mrow 
+> <mrow><mo fence="true" form="prefix"> {</mo><mrow><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo> <msup><mrow 
+><mi 
+>&#x211D;</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow><mo fence="true" form="postfix">}</mo></mrow> </mrow><mrow 
+>
+<mi 
+>j</mi><mo 
+class="MathClass-rel" stretchy="false">=</mo><mn>1</mn></mrow><mrow 
+><mi 
+>N</mi></mrow></msubsup 
+></math> e uma família
+de funções <!--l. 5--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+mathvariant="script"><mi 
+>F</mi></mstyle> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-open" stretchy="false">{</mo><mi 
+>f</mi> <mo 
+class="MathClass-punc" stretchy="false">:</mo> <mi 
+>&#x211D;</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2192;</mo> <mi 
+>&#x211D;</mi><mo 
+class="MathClass-punc" stretchy="false">;</mo> <mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">}</mo></math>,
+o problema de ajuste de curvas consiste em encontrar uma função da família
+<!--l. 5--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+mathvariant="script"><mi 
+>F</mi></mstyle></math> que
+melhor se ajusta aos pontos dados, não necessariamente que os interpola.
+<!--l. 7--><p class="indent" >   <hr class="figure"><div class="figure" 
+>
+                                                                          
+
+                                                                          
+<a 
+ id="x72-1210051"></a>
+                                                                          
+
+                                                                          
+<!--l. 9--><p class="noindent" ><img 
+src="./cap_ajuste/pics/ex_intro_ajuste/ex_intro_ajuste.png" alt="PIC"  
+width="65" height="65" >
+<br /> <div class="caption" 
+><span class="id">Figura&#x00A0;7.1: </span><span  
+class="content">Exemplo de um problema de ajuste de uma reta entre três
+pontos, veja o Exemplo&#x00A0;<a 
+href="#x72-121009r1">7.0.1<!--tex4ht:ref: ex:intro_ajuste --></a>.</span></div><!--tex4ht:label?: x72-1210051 -->
+                                                                          
+
+                                                                          
+<!--l. 12--><p class="indent" >   </div><hr class="endfigure">
+<!--l. 14--><p class="indent" >   Aqui, o termo &#8220;melhor se ajusta&#8221; é entendido no sentido de
+mínimos quadrados, isto é, buscamos encontrar uma função
+<!--l. 14--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo><mstyle 
+mathvariant="script"><mi 
+>F</mi></mstyle></math> tal
+que <!--l. 14--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>
+resolve o seguinte problema de minimização <table class="equation"><tr><td>
+<!--l. 15--><p class="indent" >
+<!--l. 15--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                       <mstyle 
+   id="x72-121006r1"  class="label" ></mstyle><!--endlabel--><munder class="msub"><mrow 
+><mtext class="qopname">min</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo> </mrow><mrow 
+><mi 
+>f</mi><mo 
+class="MathClass-rel" stretchy="false">&#x2208;</mo><mstyle 
+mathvariant="script"><mi 
+>F</mi></mstyle></mrow></munder 
+><munderover accentunder="false" accent="false"><mrow  
+><mo  
+> &#x2211;</mo>
+   </mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-rel" stretchy="false">=</mo><mn>1</mn></mrow><mrow 
+><mi 
+>N</mi></mrow></munderover 
+><msup><mrow 
+> <mrow><mo fence="true" form="prefix"> (</mo><mrow><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></mrow><mo fence="true" form="postfix">)</mo></mrow> </mrow><mrow 
+><mn>2</mn></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(7.1)</td></tr></table>
+<!--l. 18--><p class="indent" >   ou seja, <!--l. 18--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math> é a função
+da família <!--l. 18--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mstyle 
+mathvariant="script"><mi 
+>F</mi></mstyle></math> cujo erro
+quadrático entre <!--l. 18--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math>
+e <!--l. 18--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></math>,
+<!--l. 18--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>j</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>2</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>&#x2026;</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>N</mi></math>, é
+mínimo. A expressão <table class="equation"><tr><td>
+<!--l. 19--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 19--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x72-121007r2"  class="label" ></mstyle><!--endlabel-->   <mtable 
+class="equation"><mtr><mtd>
+   <mtable  
+columnalign="right left" class="split">
+<mtr class="split-mtr"><mtd 
+class="split-mtd"> <mi 
+>R</mi></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-punc" stretchy="false">:</mo><mo 
+class="MathClass-rel" stretchy="false">=</mo><munderover accentunder="false" accent="false"><mrow  
+><mo  
+> &#x2211;</mo>
+   </mrow><mrow 
+><mi 
+>j</mi><mo 
+class="MathClass-rel" stretchy="false">=</mo><mn>1</mn></mrow><mrow 
+><mi 
+>N</mi></mrow></munderover 
+><msup><mrow 
+> <mrow><mo fence="true" form="prefix"> (</mo><mrow><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></mrow><mo fence="true" form="postfix">)</mo></mrow> </mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">  </mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo><msup><mrow 
+> <mrow><mo fence="true" form="prefix"> (</mo><mrow><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></mrow><mo fence="true" form="postfix">)</mo></mrow> </mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo><msup><mrow 
+> <mrow><mo fence="true" form="prefix"> (</mo><mrow><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mrow><mo fence="true" form="postfix">)</mo></mrow> </mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo><msup><mrow 
+> <mrow><mo fence="true" form="prefix"> (</mo><mrow><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mi 
+>N</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>N</mi></mrow></msub 
+></mrow><mo fence="true" form="postfix">)</mo></mrow> </mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mtd>
+   </mtr></mtable>                                                                       </mtd><mtd>
+   </mtd></mtr></mtable>
+</math></td><td class="eq-no">(7.2)</td></tr></table>
+   é chamada de <span 
+class="ec-lmbx-12">soma do quadrado dos res</span><span 
+class="ec-lmbx-12">í</span><span 
+class="ec-lmbx-12">duos</span><a 
+ id="dx72-121008"></a> e
+consiste na soma dos quadrados das diferenças entre a ordenadas
+<!--l. 25--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+></math> e o valor da
+função procurada <!--l. 25--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></math>.
+   <div class="newtheorem">
+<!--l. 27--><p class="noindent" ><span class="head">
+<a 
+ id="x72-121009r1"></a>
+<span 
+class="ec-lmbx-12">Exemplo 7.0.1.</span>  </span> Dado o conjunto de pontos <!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">{</mo><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>1</mn><mi 
+>,</mi><mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mi 
+>,</mi><mn>5</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>1</mn><mi 
+>,</mi><mn>3</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>,
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>2</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>2</mn><mi 
+>,</mi><mn>3</mn><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">}</mo></math>
+e a família de retas <!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>a</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>b</mi><mi 
+>x</mi></math>,
+podemos mostrar que <!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn><mi 
+>,</mi><mn>1</mn><mi 
+>x</mi></math>
+é a reta que melhor aproxima os pontos dados no sentido de mínimos
+quadrados. Os pontos e a reta ajustada e são esboçados na Figura&#x00A0;<a 
+href="#x72-1210051">7.1<!--tex4ht:ref: fig:ex_intro --></a>.
+   </div>
+<!--l. 29--><p class="indent" >
+<!--l. 31--><p class="indent" >   Na sequência, discutimos o procedimento de ajuste de uma reta, então,
+mostramos a generalização da técnica para problemas lineares de ajuste e, por
+fim, discutimos alguns problemas de ajuste não lineares.
+<!--l. 37--><p class="indent" >   Ao longo deste capítulo, assumiremos que as seguintes bibliotecas e
+módulos <span class="obeylines-h"><code class="verb">Python</code></span> estão carregadas:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-54">
+&#x003E;&#x003E;&#x003E;&#x00A0;import&#x00A0;numpy&#x00A0;as&#x00A0;np
+&#x003E;&#x003E;&#x003E;&#x00A0;from&#x00A0;numpy&#x00A0;import&#x00A0;linalg
+&#x003E;&#x003E;&#x003E;&#x00A0;import&#x00A0;matplotlib.pyplot&#x00A0;as&#x00A0;plt
+</pre>
+<!--l. 42--><p class="nopar" >
+   <div class="sectionTOCS">
+   <span class="sectionToc" >7.1 <a 
+href="mainse34.html#x73-1220007.1">Ajuste de uma reta</a></span>
+<br />   <span class="sectionToc" >7.2 <a 
+href="mainse35.html#x74-1250007.2">Ajuste linear geral</a></span>
+<br />   <span class="subsectionToc" >7.2.1 <a 
+href="mainse35.html#x74-1260007.2.1" id="QQ2-74-154">Ajuste polinomial</a></span>
+<br />   <span class="sectionToc" >7.3 <a 
+href="mainse36.html#x76-1280007.3">Aproximando problemas não lineares por problemas lineares</a></span>
+   </div>
+
+
+                                                                          
+
+                                                                          
+   <!--l. 3--><div class="crosslinks"><p class="noindent">[<a 
+href="mainch8.html" >next</a>] [<a 
+href="mainch6.html" >prev</a>] [<a 
+href="mainch6.html#tailmainch6.html" >prev-tail</a>] [<a 
+href="mainch7.html" >front</a>] [<a 
+href="main.html#mainch7.html" >up</a>] </p></div>
+<!--l. 3--><p class="indent" >   <a 
+ id="tailmainch7.html"></a>  
+</body></html> 
