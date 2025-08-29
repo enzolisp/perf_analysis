@@ -1,0 +1,135 @@
+%
+% sa.tex - exemplo de artigo para o Seminário de Andamento
+% $Id: sa.tex,v 1.1.1.1 2005/01/18 23:54:44 avila Exp $
+%
+% UFRGS TeX Users Group
+% Institute of Informatics --- UFRGS
+% Porto Alegre, Brazil
+% http://www.inf.ufrgs.br/utug
+% Discussion list: utug-l@inf.ufrgs.br
+%
+% Copyright (C) 2001 UFRGS TeX Users Group
+% This is free software, distributed under the GNU GPL; please take
+% a look in `iiufrgs.cls' to see complete information on using, copying
+% and redistributing these files
+%
+\documentclass{sa}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+
+\title{Formato dos artigos para a Semana Acadêmica do PPGC da UFRGS}
+\author{%
+\mbox{UFRGS} {\TeX} Users Group\\
+Leslie Lamport (orientador)\\
+Donald E. Knuth (co-orientador)\\
+utug-l@inf.ufrgs.br
+}
+
+\begin{document}
+\maketitle
+
+%---------------------------------------------------------------------------
+\begin{abstract}
+Este documento apresenta as instruções para o formato dos artigos a serem 
+incluídos nos Anais da Semana Acadêmica do PPGC da UFRGS, que reúne os 
+Seminários de Andamento das Dissertações de Mestrado em elaboração no curso. 
+Este Resumo não deve conter menos do que 6~(seis) e mais do que 8~(oito) 
+linhas. Ele deve introduzir claramente qual é o tema principal da Dissertação 
+de Mestrado e as principais vantagens ou características da metodologia ou 
+sistema sendo desenvolvido. A palavra Resumo deve ser escrita em negrito. 
+O texto do Resumo deve ser escrito em itálico.
+\end{abstract}
+%---------------------------------------------------------------------------
+\section{DESCRIÇÃO}
+\label{sec:intro}
+O objeto de estudo deste trabalho é a solução numérica da
+equação do calor em uma, duas e três dimensões.
+Essa equação descreve a forma como o calor se espalha por um
+objeto. Será implementado algoritmos em duas linguagens de
+programação distintas, julia e python.
+A justificativa das linguagens vem do fato de python ser uma
+linguagem consistente para uso científico devido suas
+bibliotecas e ser amplamente popular, por outro lado julia
+apresenta ótimos resultados em cálculo numérico.
+
+%\[
+%\begin{equation}
+%\boldsymbol{\frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}, \quad x \in [0,L], \; t > 0} 
+%\end{equation}	
+%\\[12mm]
+%\qquad & \boldsymbol{\frac{\partial u}{\partial t} = \alpha \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right), \quad (x,y) \in \Omega, \; t > 0} %
+	%\\[12mm]    
+%\qquad & \boldsymbol{\frac{\partial u}{\partial t} = \alpha \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} \right), \quad (x,y,z) \in \Omega, \; t > 0}
+
+%\]
+
+
+%---------------------------------------------------------------------------
+\section{MÉTODO DE ANÁLISE}
+Julia utiliza compilação just-in-time (JIT):
+A primeira execução de um código em Julia pode ser mais lenta
+devido à necessidade de compilar o código antes de executá-lo.
+Em execuções subsequentes, o código já está compilado, o que
+resulta em tempos de execução significativamente mais rápidos.
+Python é uma linguagem interpretada:
+Cada vez que um script Python é executado, o interpretador lê
+e interpreta o código linha por linha.
+Isso pode resultar em tempos de execução mais lentos,
+especialmente para tarefas computacionalmente intensivas.
+Para garantir uma comparação justa, o tempo de compilação
+inicial do Julia será separado do tempo de execução.
+O foco da análise será o tempo de execução após a compilação
+inicial.
+%---------------------------------------------------------------------------
+\section{JUSTIFICATIVA}
+Resolução de EDP’s já estudada pelos membros do grupo em
+outras disciplinas, através da abordagem analítica.
+Nenhum membro do grupo explorou a abordagem
+computacional da resolução da equação.
+Enxergamos esse trabalho como uma oportunidade de estudar
+a equação sob outra visão, nos possibilitando abordar
+conteúdos relativos a cálculo numérico.
+
+%\begin{figure}
+	%\centerline{\includegraphics[width=4cm]{fig}}
+	%\caption{Exemplo de utilização de figura no texto.}
+	%\label{fig}
+%\end{figure}
+
+%---------------------------------------------------------------------------
+\section{DEFINIÇÃO DE MÉTRICAS}
+Tempo de execução
+- Coletar múltiplas amostras para fazer uma média e garantir
+robustez nos resultados
+- Distinguir o tempo de compilação inicial do Julia do tempo de
+execução a fim de ter uma comparação mais justa com Python
+Uso de memória
+- Avaliar a eficiência da alocação de memória por ambas as
+linguagens
+%---------------------------------------------------------------------------
+\section{CRONOGRAMA PRELIMINAR}
+Escrita dos algoritmos de resolução da equação.
+Definição dos métodos de medição.
+Coleta dos dados.
+Análise dos dados.
+Escrita do relatório final.
+%---------------------------------------------------------------------------
+\section*{AGRADECIMENTOS}
+Caso o mestrado esteja sendo apoiado por bolsa de estudos de alguma agência 
+de fomento ou tenha apoio de alguma universidade/empresa, um agradecimento 
+deve ser incluído. Agradecimentos a pessoas que estejam colaborando de 
+forma relevante para o trabalho também podem ser incluídos.
+%---------------------------------------------------------------------------
+\begin{thebibliography}{10}
+\bibitem{chu}
+Y.~Chu. \underline{Introduction to Computer Organization}. Englewood Cliffs, 
+Prentice Hall, 1970.
+
+\bibitem{wagner} F.~Wagner, I.~Jansch-Pôrto, T.S.~Weber e R.F.~Weber. 
+Uma proposta de currículo em arquitetura de computadores. In:
+\underline{Workshop de Educação em Informática, II}. Caxambu, Agosto 1994. 
+Anais. SBC/UFMG, 1994, pp 41-57.
+
+\bibitem{lamport} L.~Lamport. \underline{\LaTeX}: a Document Preparation System. Addison-Wesley, 1994. 2.ed.
+\end{thebibliography}
+\end{document}
