@@ -47,6 +47,9 @@
 % Command to create title page
 \InfTitlePage
 
+% 1D Heat equation
+
+
 \section{Detalhamento}
 
 \frame{
@@ -55,8 +58,25 @@
     \begin{itemize}
         \item O objeto de estudo deste trabalho é a solução numérica da equação do calor em uma, duas e três dimensões. 
 		\item Essa equação descreve a forma como o calor se espalha por um objeto. Será implementado algoritmos em duas linguagens de programação distintas, julia e python. 
+        
+       % \begin{equation*} \label{eq:heat}
+       % \boldsymbol{u_t = \alpha \, u_{xx}}
+       % \end{equation*}
+        
         \item A justificativa das linguagens vem do fato de python ser uma linguagem consistente para uso científico devido suas bibliotecas e ser amplamente popular, por outro lado julia apresenta ótimos resultados em cálculo numérico.
     \end{itemize}
+}
+
+
+\frame{
+    \frametitle{Descrição}
+    \[
+    \begin{aligned}  
+    \qquad & \boldsymbol{\frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}, \quad x \in [0,L], \; t > 0} \\[12mm]
+    \qquad & \boldsymbol{\frac{\partial u}{\partial t} = \alpha \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right), \quad (x,y) \in \Omega, \; t > 0} \\[12mm]    
+    \qquad & \boldsymbol{\frac{\partial u}{\partial t} = \alpha \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} \right), \quad (x,y,z) \in \Omega, \; t > 0}
+    \end{aligned}
+    \]
 }
 
 \section{Detalhamento}
@@ -69,20 +89,35 @@
     \end{itemize}
 }
 
+\frame{
+    \frametitle{Método de Análise}
+    
+    \begin{itemize}
+        \item Julia utiliza compilação just-in-time (JIT): 
+        \begin{itemize}
+            \item A primeira execução de um código em Julia pode ser mais lenta devido à necessidade de compilar o código antes de executá-lo.
+            \item Em execuções subsequentes, o código já está compilado, o que resulta em tempos de execução significativamente mais rápidos.
+        \end{itemize}
+        \item Python é uma linguagem interpretada:
+        \begin{itemize}
+            \item Cada vez que um script Python é executado, o interpretador lê e interpreta o código linha por linha.
+            \item Isso pode resultar em tempos de execução mais lentos, especialmente para tarefas computacionalmente intensivas.
+        \end{itemize}
+        \item Para garantir uma comparação justa, o tempo de compilação inicial do Julia será separado do tempo de execução.
+        \item O foco da análise será o tempo de execução após a compilação inicial.
+
+    \end{itemize}
+}
+
 \section{Detalhamento}
 
 \frame{
     \frametitle{Justificativa}
 
     \begin{itemize}
-        \item Uma temática já estudada pelos membros do grupo em outras disciplinas.
-        \item Enxergamos esse trabalho como uma oportunidade de estudar a equação sob outra visão, nos possibilitando abordar conteúdos relativos a cálculo numérico.
+        \item Resolução de EDP's já estudada pelos membros do grupo em outras disciplinas, através da abordagem analítica.
         \item Nenhum membro do grupo explorou a abordagem computacional da resolução da equação.
-        %\begin{itemize}
-        %    \item nome da seção
-        %    \item subseção
-        %    \item título do slide
-        %\end{itemize}
+        \item Enxergamos esse trabalho como uma oportunidade de estudar a equação sob outra visão, nos possibilitando abordar conteúdos relativos a cálculo numérico.
     \end{itemize}
 }
 
@@ -91,12 +126,17 @@
 \frame{
     \frametitle{Definição das Métricas}
 
-    \begin{theorem}
-        foo
-    \end{theorem}
-    \begin{proof}
-        bar
-    \end{proof}
+    \begin{itemize}
+        \item Tempo de execução
+        \begin{itemize}
+            \item Coletar múltiplas amostras para fazer uma média e garantir robustez nos resultados
+            \item Distinguir o tempo de compilação inicial do Julia do tempo de execução a fim de ter uma comparação mais justa com Python
+        \end{itemize}
+        \item Uso de memória
+        \begin{itemize}
+            \item Avaliar a eficiência da alocação de memória por ambas as linguagens
+        \end{itemize}
+    \end{itemize}
 }
 
 \section{Detalhamento}
