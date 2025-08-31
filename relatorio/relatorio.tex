@@ -42,15 +42,9 @@ intuito de ser um estudo em calculo computacional e análise de desempenho.
 %---------------------------------------------------------------------------
 \section{DESCRIÇÃO}
 \label{sec:intro}
-O objeto de estudo deste trabalho é a solução numérica da
-equação do calor em uma, duas e três dimensões.
-Essa equação descreve a forma como o calor se espalha por um
-objeto. Será implementado algoritmos em duas linguagens de
-programação distintas, julia e python.
-A justificativa das linguagens vem do fato de python ser uma
-linguagem consistente para uso científico devido suas
-bibliotecas e ser amplamente popular, por outro lado julia
-apresenta ótimos resultados em cálculo numérico.
+O objeto de estudo deste trabalho é a solução numérica da equação do calor em uma, duas e três dimensões. Essa equação descreve a forma como o calor se espalha por um objeto. Será implementado algoritmos em duas linguagens de programação distintas, julia e python. A justificativa, vem do fato de python ser consistente para uso científico devido suas bibliotecas e ser amplamente popular, por outro lado julia apresenta ótimos resultados em cálculo numérico.
+Assim, o objetivo é fazer a análise desses algoritmos e com isso quantificar e compreender os fatores que influenciam o desempenho em cada linguagem, para isso métricas como tempo de execução e uso de memória em cada dimensão serão analisados. Ao final do trabalho esperamos compreender as razões por trás das diferenças observadas, aprimorar nossos conhecimentos em cálculo numérico e aplicar os conteúdos vistos durante a cadeira de Análise de desempenho. 
+
 %---------------------------------------------------------------------------
 \section{MÉTODO DE ANÁLISE}
 As duas linguagens possuem abordagens diferentes em relação a execução do 
@@ -71,13 +65,8 @@ inicial, assim como o uso de recursos pela aplicação durante
 sua execução, tais como memória utilizada.
 %---------------------------------------------------------------------------
 \section{JUSTIFICATIVA}
-Resolução de EDP’s já estudada pelos membros do grupo em
-outras disciplinas, através da abordagem analítica.
-Nenhum membro do grupo explorou a abordagem
-computacional da resolução da equação.
-Enxergamos esse trabalho como uma oportunidade de estudar
-a equação sob outra visão, nos possibilitando abordar
-conteúdos relativos a cálculo numérico.
+A resolução de Equações Diferenciais Parciais já foi estudada pelos membros do grupo em outras disciplinas, através da abordagem analítica. No entanto, nenhum de nós explorou a dimensão computacional da solução, que é crucial para problemas complexos do mundo real. Enxergamos esse trabalho como uma oportunidade de estudar a equação sob outra visão, possibilitando abordar conteúdos relativos a cálculo numérico. Também é uma chance de se familiarizar com Julia, já que nenhum dos integrantes possui experiência com a linguagem . 
+
 
 %\begin{figure}
 	%\centerline{\includegraphics[width=4cm]{fig}}
@@ -87,12 +76,8 @@ conteúdos relativos a cálculo numérico.
 
 %---------------------------------------------------------------------------
 \section{DEFINIÇÃO DE MÉTRICAS}
-As principais métricas avaliadas nesta pesquisa serão: o tempo de execução 
-e o uso de memória. Através da coleta de múltiplas amostras será construída
-uma média afim de garantir a robustez dos resultados. Será distinguido o 
-tempo de compilação inicial de Julia do tempo de execução, o último será
-comparado com o tempo de execução do Python. A memória utilizada por ambas
-as aplicações durante a execução será comparada.
+A análise de desempenho deste trabalho será fundamentada em duas métricas principais: o tempo de execução e o uso de memória. Para obter resultados robustos, faremos múltiplas medições para cada implementação, depois será calculada uma média para garantir robustez nos resultados . Julia, por utilizar a compilação just-in-time (JIT), terá o tempo inicial de compilação separado do tempo de execução real do código. Essa abordagem nos permitirá comparar o desempenho de Julia com o de Python, garantindo uma avaliação mais justa. Paralelamente, monitoraremos o uso de memória para avaliar a eficiência de alocação de ambas as linguagens, uma métrica crucial para entender o quão viável cada solução é para problemas de grande escala.
+
 %---------------------------------------------------------------------------
 \section{CRONOGRAMA PRELIMINAR}
 \begin{tabular}{l r}
