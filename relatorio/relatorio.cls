@@ -12,13 +12,16 @@
 % This is free software, distributed under the GNU GPL; please take
 % a look in `iiufrgs.cls' to see complete information on using, copying
 % and redistributing these files
+% Stage 1 - Comp. Sys. Perf Analysis (2025/2) - Lucas M. Schnorr
+% Group F: Enzo Lisboa Peixoto - 00584827, Nathan Mattes - 00342941 e Pedro Scholz Soares - 00578266 
+%
 %==============================================================================
 
 %==============================================================================
 % Identification
 %==============================================================================
 \NeedsTeXFormat{LaTeX2e}
-\ProvidesClass{sa}[2001/05/04 v1.0 Artigo para o Seminario de Andamento]
+\ProvidesClass{relatorio}[2001/05/04 v1.0 Artigo para o Seminario de Andamento]
 
 %==============================================================================
 % Optional parameters handling

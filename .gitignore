@@ -4,4 +4,6 @@
 *.out
 *.snm
 *.toc
-beamer.pdf
+*.fls
+*.fdb_latexmk
+*.synctex.gz
