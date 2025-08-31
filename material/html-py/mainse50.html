@@ -1,0 +1,1169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>Integrais impróprias</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 1756--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse51.html" >next</a>] [<a 
+href="mainse49.html" >prev</a>] [<a 
+href="mainse49.html#tailmainse49.html" >prev-tail</a>] [<a 
+href="#tailmainse50.html">tail</a>] [<a 
+href="mainch9.html#mainse50.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">9.8   </span> <a 
+ id="x99-1830009.8"></a>Integrais impróprias</h3>
+<!--l. 1758--><p class="noindent" >A aplicação de quadraturas numéricas para integrais impróprias geralmente
+demanda alguns cuidados adicionais. Aqui, abordaremos apenas alguns
+aspectos, começando por integrandos com singularidade no intervalo de
+integração.
+<!--l. 1760--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">9.8.1   </span> <a 
+ id="x99-1840009.8.1"></a>Integrandos com singularidade do tipo
+<!--l. 1760--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mo 
+class="MathClass-bin" stretchy="false">&#x2215;</mo><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mi 
+>n</mi></mrow></msup 
+></math></h4>
+<!--l. 1762--><p class="noindent" >Consideremos a integral imprópria<span class="footnote-mark"><a 
+href="main100.html#fn3x12"><sup class="textsuperscript">3</sup></a></span><a 
+ id="x99-184001f3"></a> 
+<table class="equation"><tr><td>
+<!--l. 1763--><p class="indent" >
+<!--l. 1763--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                        <mstyle 
+   id="x99-184003r213"  class="label" ></mstyle><!--endlabel--><msubsup><mrow 
+><mo  
+>&#x222B;
+  <!--nolimits--></mo><!--nolimits--></mrow><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>b</mi></mrow></msubsup 
+>  <mfrac><mrow 
+><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow>
+<mrow 
+><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mi 
+>p</mi></mrow></msup 
+></mrow></mfrac><mspace width="0.17em" class="thinspace"/><mi 
+>d</mi><mi 
+>x</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mspace width="1em" class="quad"/><mn>0</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mi 
+>p</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>1</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(9.213)</td></tr></table>
+<!--l. 1767--><p class="indent" >   Observamos, que para uma tal integral, não é possível aplicar,
+diretamente, as regras do trapézio e de Simpson. Alternativamente, podemos
+aplicar a regra do ponto médio e quadraturas gaussianas, por exemplo.
+Entretanto, aplicações diretas de tais quadraturas fornecem resultados pouco
+                                                                          
+
+                                                                          
+precisos (veja o Exemplo&#x00A0;<a 
+href="#x99-184004r1">9.8.1<!--tex4ht:ref: ex:int_impropria1 --></a>).
+   <div class="newtheorem">
+<!--l. 1769--><p class="noindent" ><span class="head">
+<a 
+ id="x99-184004r1"></a>
+<span 
+class="ec-lmbx-12">Exemplo 9.8.1.</span>  </span> Aplicando as regras compostas do ponto médio e quadratura
+gaussiana com dois pontos à integral <table class="equation"><tr><td>
+<!--l. 1771--><p class="indent" >
+<!--l. 1771--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                                <mstyle 
+   id="x99-184005r214"  class="label" ></mstyle><!--endlabel--><msubsup><mrow 
+><mo  
+>&#x222B;
+  <!--nolimits--></mo><!--nolimits--></mrow><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>1</mn></mrow></msubsup 
+> <mfrac><mrow 
+><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mi 
+>x</mi></mrow></msup 
+></mrow>
+<mrow 
+><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn><mo 
+class="MathClass-bin" stretchy="false">&#x2215;</mo><mn>2</mn></mrow></msup 
+></mrow></mfrac><mspace width="0.17em" class="thinspace"/><mi 
+>d</mi><mi 
+>x</mi>
+</math></td><td class="eq-no">(9.214)</td></tr></table>
+<!--l. 1774--><p class="indent" >   obtemos os seguintes resultados (<!--l. 1774--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi></math>
+número de subintervalos):
+<div class="center" 
+>
+<!--l. 1775--><p class="noindent" >
+<div class="tabular"> <table id="TBL-409" class="tabular" 
+rules="groups" 
+><colgroup id="TBL-409-1g"><col 
+id="TBL-409-1"><col 
+id="TBL-409-2"></colgroup><colgroup id="TBL-409-3g"><col 
+id="TBL-409-3"></colgroup><colgroup id="TBL-409-4g"><col 
+id="TBL-409-4"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-409-1-"><td  style="text-align:left; white-space:nowrap;" id="TBL-409-1-1"  
+class="td11"> n                                                                                                  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-1-2"  
+class="td11">                                h                                                  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-1-3"  
+class="td11"> Ponto Médio  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-1-4"  
+class="td11"> G-L(2)  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-409-2-"><td  style="text-align:left; white-space:nowrap;" id="TBL-409-2-1"  
+class="td11"> 1                                                                                                    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-2-2"  
+class="td11">                                1                                                   </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-2-3"  
+class="td11">    0,8577       </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-2-4"  
+class="td11"> 1,1363  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-409-3-"><td  style="text-align:left; white-space:nowrap;" id="TBL-409-3-1"  
+class="td11"> 10                                                                                                  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-3-2"  
+class="td11"> <!--l. 1779--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-3-3"  
+class="td11">    1,3007       </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-3-4"  
+class="td11"> 1,3829  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-409-4-"><td  style="text-align:left; white-space:nowrap;" id="TBL-409-4-1"  
+class="td11"> <!--l. 1780--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-4-2"  
+class="td11"> <!--l. 1780--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-4-3"  
+class="td11">    1,4331       </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-4-4"  
+class="td11"> 1,4587  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-409-5-"><td  style="text-align:left; white-space:nowrap;" id="TBL-409-5-1"  
+class="td11"> <!--l. 1781--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-5-2"  
+class="td11"> <!--l. 1781--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></msup 
+></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-5-3"  
+class="td11">    1,4745       </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-5-4"  
+class="td11"> 1,4826  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-409-6-"><td  style="text-align:left; white-space:nowrap;" id="TBL-409-6-1"  
+class="td11"> <!--l. 1782--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>4</mn></mrow></msup 
+></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-6-2"  
+class="td11"> <!--l. 1782--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>4</mn></mrow></msup 
+></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-6-3"  
+class="td11">    1,4876       </td><td  style="text-align:center; white-space:nowrap;" id="TBL-409-6-4"  
+class="td11"> 1,4902  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-409-7-"><td  style="text-align:left; white-space:nowrap;" id="TBL-409-7-1"  
+class="td11">                                                                 </td></tr></table>                                                                                                             </div></div>
+<!--l. 1856--><p class="indent" >   No <span class="obeylines-h"><code class="verb">Python</code></span>, podemos computar os valores apresentados na tabela acima da
+seguinte forma:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-73">
+def&#x00A0;f(x):
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;return&#x00A0;np.exp(-x)/np.sqrt(x)
+def&#x00A0;F(u):
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;return&#x00A0;(x[i+1]-x[i])/2*f((x[i+1]-x[i])/2*(u+1)+x[i])
+
+a&#x00A0;=&#x00A0;0
+b&#x00A0;=&#x00A0;1
+n&#x00A0;=&#x00A0;10
+h&#x00A0;=&#x00A0;(b-a)/n
+x&#x00A0;=&#x00A0;np.linspace(a,b,n+1)
+
+#regra&#x00A0;do&#x00A0;ponto&#x00A0;medio
+s_med&#x00A0;=&#x00A0;0;
+for&#x00A0;i&#x00A0;in&#x00A0;range(n):
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;s_med&#x00A0;+=&#x00A0;f((x[i]+x[i+1])/2)*h
+
+#quadratura&#x00A0;gaussiana&#x00A0;(2&#x00A0;pontos)
+s_gl=0
+for&#x00A0;i&#x00A0;in&#x00A0;range(n):
+&#x00A0;&#x00A0;&#x00A0;s_gl&#x00A0;+=&#x00A0;F(np.sqrt(3)/3)&#x00A0;+&#x00A0;F(-np.sqrt(3)/3)
+
+print('''Para&#x00A0;{}&#x00A0;subintervalos&#x00A0;tem-se:
+\tPonto&#x00A0;medio&#x00A0;=~&#x00A0;{:.4e}&#x00A0;e
+\tquadratura&#x00A0;gaussiada&#x00A0;(2&#x00A0;pontos)&#x00A0;=~&#x00A0;{:.4e}'''.format(n,&#x00A0;s_med,&#x00A0;s_gl))
+</pre>
+<!--l. 1882--><p class="nopar" >
+   </div>
+<!--l. 1886--><p class="indent" >
+<!--l. 1888--><p class="indent" >   Uma estratégia para se computar uma tal integral imprópria <table class="equation"><tr><td>
+<!--l. 1889--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 1889--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                            <mstyle 
+   id="x99-184006r215"  class="label" ></mstyle><!--endlabel--><mi 
+>I</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo><msubsup><mrow 
+><mo  
+> &#x222B;
+ <!--nolimits--></mo><!--nolimits--></mrow><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>b</mi></mrow></msubsup 
+>   <mfrac><mrow 
+><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow>
+<mrow 
+><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mi 
+>p</mi></mrow></msup 
+></mrow></mfrac><mspace width="0.17em" class="thinspace"/><mi 
+>d</mi><mi 
+>x</mi>
+</math></td><td class="eq-no">(9.215)</td></tr></table>
+<!--l. 1892--><p class="indent" >   é reescrevê-la da forma <table class="equation"><tr><td>
+<!--l. 1893--><p class="indent" >
+<!--l. 1893--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+               <mstyle 
+   id="x99-184007r216"  class="label" ></mstyle><!--endlabel--><mi 
+>I</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo><munder class="msub"><mrow 
+><munder accentunder="false"><mrow> <msubsup><mrow 
+><mo  
+>&#x222B;
+ <!--nolimits--></mo><!--nolimits--></mrow><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>b</mi></mrow></msubsup 
+><mfrac><mrow 
+><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>p</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow>
+  <mrow 
+><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mi 
+>n</mi></mrow></msup 
+></mrow></mfrac>   <mspace width="0.17em" class="thinspace"/><mi 
+>d</mi><mi 
+>x</mi></mrow><mo>&#x23DF;</mo></munder></mrow><mrow 
+><msub><mrow 
+><mi 
+>I</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></mrow></munder 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo><munder class="msub"><mrow 
+><munder accentunder="false"><mrow> <msubsup><mrow 
+><mo  
+>&#x222B;
+ <!--nolimits--></mo><!--nolimits--></mrow><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>b</mi></mrow></msubsup 
+>   <mfrac><mrow 
+><mi 
+>p</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow>
+<mrow 
+><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mi 
+>n</mi></mrow></msup 
+></mrow></mfrac><mspace width="0.17em" class="thinspace"/><mi 
+>d</mi><mi 
+>x</mi></mrow><mo>&#x23DF;</mo></munder></mrow><mrow 
+><msub><mrow 
+><mi 
+>I</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mrow></munder 
+>
+</math></td><td class="eq-no">(9.216)</td></tr></table>
+<!--l. 1896--><p class="indent" >   onde <!--l. 1896--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>p</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>
+é escolhida de forma que a singularidade esteja presente somente em
+<!--l. 1896--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>I</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>
+e esta possa ser calculada de forma analítica, restando computar
+<!--l. 1896--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>I</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></math> numericamente. Isto
+pode ser feito, escolhendo <!--l. 1896--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>p</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>
+como a expansão em polinômio de Taylor da função
+<!--l. 1896--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math> em torno
+do ponto <!--l. 1896--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>a</mi></math>,
+i.e. <table class="equation"><tr><td>
+<!--l. 1897--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 1897--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x99-184008r217"  class="label" ></mstyle><!--endlabel-->   <mtable 
+class="equation"><mtr><mtd>
+   <mtable  
+columnalign="right left" class="split">
+<mtr class="split-mtr"><mtd 
+class="split-mtd"> <mi 
+>p</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msup><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><msup><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mi>&#x2033;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow> 
+  <mrow 
+><mn>2</mn><mo 
+class="MathClass-punc" stretchy="false">!</mo></mrow></mfrac>  <msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><msup><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>m</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow> 
+   <mrow 
+><mi 
+>m</mi><mo 
+class="MathClass-punc" stretchy="false">!</mo></mrow></mfrac>   <msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mi 
+>m</mi></mrow></msup 
+></mtd>
+   </mtr></mtable>                                                                       </mtd><mtd>
+   </mtd></mtr></mtable>
+</math></td><td class="eq-no">(9.217)</td></tr></table>
+   Com esta escolha, o integrando de
+<!--l. 1902--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>I</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></math> passa
+a ter uma singularidade removível <table class="equation"><tr><td>
+<!--l. 1903--><p class="indent" >
+<!--l. 1903--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                         <mstyle 
+   id="x99-184009r218"  class="label" ></mstyle><!--endlabel--><munder class="msub"><mrow 
+><mtext class="qopname">lim</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo> </mrow><mrow 
+><mi 
+>x</mi><mo 
+class="MathClass-rel" stretchy="false">&#x2192;</mo><mi 
+>a</mi></mrow></munder 
+><mfrac><mrow 
+><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>p</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow>
+  <mrow 
+><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mi 
+>p</mi></mrow></msup 
+></mrow></mfrac>   <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(9.218)</td></tr></table>
+<!--l. 1906--><p class="indent" >   e pode ser computada numericamente. A integral
+<!--l. 1906--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>I</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math> pode
+ser calculada analiticamente, de fato <table class="equation"><tr><td>
+<!--l. 1907--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 1907--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x99-184010r219"  class="label" ></mstyle><!--endlabel-->   <mtable 
+class="equation"><mtr><mtd>
+   <mtable  
+columnalign="right left" class="split">
+<mtr class="split-mtr"><mtd 
+class="split-mtd"> <msubsup><mrow 
+><mo  
+> &#x222B;
+ <!--nolimits--></mo><!--nolimits--></mrow><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>b</mi></mrow></msubsup 
+>  <mfrac><mrow 
+><mi 
+>p</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow>
+<mrow 
+><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mi 
+>p</mi></mrow></msup 
+></mrow></mfrac><mspace width="0.17em" class="thinspace"/><mi 
+>d</mi><mi 
+>x</mi></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo><msubsup><mrow 
+> <mrow><mo fence="true" form="prefix"> </mo><mrow>   <mfrac><mrow 
+><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow>
+<mrow 
+><mn>1</mn><mo 
+class="MathClass-punc" stretchy="false">!</mo><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>p</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></mfrac><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>1</mn><mo 
+class="MathClass-bin" stretchy="false">-</mo><mi 
+>p</mi></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo>   <mfrac><mrow 
+><msup><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>m</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow> 
+<mrow 
+><mi 
+>m</mi><mo 
+class="MathClass-punc" stretchy="false">!</mo><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>m</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>p</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></mfrac><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>a</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mi 
+>m</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mi 
+>p</mi></mrow></msup 
+></mrow><mo fence="true" form="postfix">|</mo></mrow> </mrow><mrow 
+>
+<mi 
+>a</mi></mrow><mrow 
+><mi 
+>b</mi></mrow></msubsup 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo></mtd>
+   </mtr></mtable>                                                                       </mtd><mtd>
+   </mtd></mtr></mtable>
+</math></td><td class="eq-no">(9.219)</td></tr></table>
+   <div class="newtheorem">
+<!--l. 1913--><p class="noindent" ><span class="head">
+<a 
+ id="x99-184011r2"></a>
+<span 
+class="ec-lmbx-12">Exemplo 9.8.2.</span>  </span>Consideremos a integral imprópria <table class="equation"><tr><td>
+<!--l. 1915--><p class="indent" >
+<!--l. 1915--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                              <mstyle 
+   id="x99-184012r220"  class="label" ></mstyle><!--endlabel--><mi 
+>I</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo><msubsup><mrow 
+><mo  
+> &#x222B;
+ <!--nolimits--></mo><!--nolimits--></mrow><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>1</mn></mrow></msubsup 
+><mfrac><mrow 
+><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mi 
+>x</mi></mrow></msup 
+></mrow>
+<mrow 
+><msqrt><mrow><mi 
+>x</mi></mrow></msqrt></mrow></mfrac><mspace width="0.17em" class="thinspace"/><mi 
+>d</mi><mi 
+>x</mi><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(9.220)</td></tr></table>
+<!--l. 1918--><p class="indent" >   Computando o polinômio de Taylor de grau 4 de
+<!--l. 1918--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mi 
+>x</mi></mrow></msup 
+></math> em torno
+de <!--l. 1918--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn></math>,
+obtemos <table class="equation"><tr><td>
+<!--l. 1919--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 1919--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                       <mstyle 
+   id="x99-184013r221"  class="label" ></mstyle><!--endlabel--><mi 
+>p</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow> 
+ <mrow 
+><mn>2</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></mrow> 
+ <mrow 
+><mn>3</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>4</mn></mrow></msup 
+></mrow> 
+ <mrow 
+><mn>4</mn></mrow></mfrac> <mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(9.221)</td></tr></table>
+<!--l. 1922--><p class="indent" >   Então, escrevemos <table class="equation"><tr><td>
+<!--l. 1923--><p class="indent" >
+<!--l. 1923--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                 <mstyle 
+   id="x99-184014r222"  class="label" ></mstyle><!--endlabel--><mi 
+>I</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo><munder class="msub"><mrow 
+><munder accentunder="false"><mrow> <msubsup><mrow 
+><mo  
+>&#x222B;
+ <!--nolimits--></mo><!--nolimits--></mrow><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>1</mn></mrow></msubsup 
+><mfrac><mrow 
+><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mi 
+>x</mi></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>p</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow>
+     <mrow 
+><msqrt><mrow><mi 
+>x</mi></mrow></msqrt></mrow></mfrac>    <mspace width="0.17em" class="thinspace"/><mi 
+>d</mi><mi 
+>x</mi></mrow><mo>&#x23DF;</mo></munder></mrow><mrow 
+><msub><mrow 
+><mi 
+>I</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></mrow></munder 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo><munder class="msub"><mrow 
+><munder accentunder="false"><mrow> <msubsup><mrow 
+><mo  
+>&#x222B;
+ <!--nolimits--></mo><!--nolimits--></mrow><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>1</mn></mrow></msubsup 
+><mfrac><mrow 
+><mi 
+>p</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow>
+ <mrow 
+><msqrt><mrow><mi 
+>x</mi></mrow></msqrt></mrow></mfrac> <mspace width="0.17em" class="thinspace"/><mi 
+>d</mi><mi 
+>x</mi></mrow><mo>&#x23DF;</mo></munder></mrow><mrow 
+><msub><mrow 
+><mi 
+>I</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mrow></munder 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(9.222)</td></tr></table>
+<!--l. 1927--><p class="indent" >   Calculando <!--l. 1927--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>I</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>
+analiticamente, temos <table class="equation"><tr><td>
+<!--l. 1928--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 1928--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x99-184015r223"  class="label" ></mstyle><!--endlabel-->   <mtable 
+class="equation"><mtr><mtd>
+   <mtable  
+columnalign="right left" class="split">
+<mtr class="split-mtr"><mtd 
+class="split-mtd"> <msub><mrow 
+><mi 
+>I</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo><msubsup><mrow 
+><mo  
+> &#x222B;
+ <!--nolimits--></mo><!--nolimits--></mrow><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>1</mn></mrow></msubsup 
+><mfrac><mrow 
+><mi 
+>p</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow>
+ <mrow 
+><msqrt><mrow><mi 
+>x</mi></mrow></msqrt></mrow></mfrac> <mspace width="0.17em" class="thinspace"/><mi 
+>d</mi><mi 
+>x</mi></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">   </mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo><msubsup><mrow 
+> <mrow><mo fence="true" form="prefix"> </mo><mrow><mn>2</mn><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn><mo 
+class="MathClass-bin" stretchy="false">&#x2215;</mo><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><mn>2</mn></mrow> 
+<mrow 
+><mn>3</mn></mrow></mfrac><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>3</mn><mo 
+class="MathClass-bin" stretchy="false">&#x2215;</mo><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo>  <mfrac><mrow 
+><mn>2</mn></mrow> 
+<mrow 
+><mn>1</mn><mn>0</mn></mrow></mfrac><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>5</mn><mo 
+class="MathClass-bin" stretchy="false">&#x2215;</mo><mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><mn>2</mn></mrow> 
+<mrow 
+><mn>4</mn><mn>2</mn></mrow></mfrac><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>7</mn><mo 
+class="MathClass-bin" stretchy="false">&#x2215;</mo><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo>  <mfrac><mrow 
+><mn>2</mn></mrow> 
+<mrow 
+><mn>2</mn><mn>1</mn><mn>6</mn></mrow></mfrac><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>9</mn><mo 
+class="MathClass-bin" stretchy="false">&#x2215;</mo><mn>2</mn></mrow></msup 
+></mrow><mo fence="true" form="postfix">|</mo></mrow> </mrow><mrow 
+>
+<mn>0</mn></mrow><mrow 
+><mn>1</mn></mrow></msubsup 
+></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">   </mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><mn>2</mn></mrow> 
+<mrow 
+><mn>3</mn></mrow></mfrac> <mo 
+class="MathClass-bin" stretchy="false">+</mo>  <mfrac><mrow 
+><mn>2</mn></mrow> 
+<mrow 
+><mn>1</mn><mn>0</mn></mrow></mfrac> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><mn>2</mn></mrow> 
+<mrow 
+><mn>4</mn><mn>2</mn></mrow></mfrac> <mo 
+class="MathClass-bin" stretchy="false">+</mo>  <mfrac><mrow 
+><mn>2</mn></mrow> 
+<mrow 
+><mn>2</mn><mn>1</mn><mn>6</mn></mrow></mfrac></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">   </mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>4</mn><mn>9</mn><mn>5</mn><mn>0</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo></mtd>
+   </mtr></mtable>                                                                       </mtd><mtd>
+   </mtd></mtr></mtable>
+</math></td><td class="eq-no">(9.223)</td></tr></table>
+   Agora, computamos a integral <!--l. 1937--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>I</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></math>
+numericamente usando a regra composta do ponto médio. A seguinte
+tabela apresenta os resultados para as aproximações obtidas para
+<!--l. 1937--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>I</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></math> e consequentemente
+para <!--l. 1937--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>I</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>I</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>I</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>:
+<div class="center" 
+>
+<!--l. 1938--><p class="noindent" >
+<div class="tabular"> <table id="TBL-410" class="tabular" 
+rules="groups" 
+><colgroup id="TBL-410-1g"><col 
+id="TBL-410-1"><col 
+id="TBL-410-2"></colgroup><colgroup id="TBL-410-3g"><col 
+id="TBL-410-3"></colgroup><colgroup id="TBL-410-4g"><col 
+id="TBL-410-4"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-410-1-"><td  style="text-align:left; white-space:nowrap;" id="TBL-410-1-1"  
+class="td11"> n                                                                                                  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-410-1-2"  
+class="td11">                                h                                                  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-410-1-3"  
+class="td11"> <!--l. 1940--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>I</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-410-1-4"  
+class="td11"> <!--l. 1940--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>I</mi></math> </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-410-2-"><td  style="text-align:left; white-space:nowrap;" id="TBL-410-2-1"  
+class="td11"> 1                                                                                                    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-410-2-2"  
+class="td11">                                1                                                   </td><td  style="text-align:center; white-space:nowrap;" id="TBL-410-2-3"  
+class="td11"> <!--l. 1941--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>3</mn><mi 
+>,</mi><mn>3</mn><mn>9</mn><mn>6</mn><mn>5</mn><mn>7</mn><mstyle mathvariant="normal"><mi 
+>E</mi></mstyle><mspace width="-0.17em" class="negthinspace"/> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mspace width="-0.17em" class="negthinspace"/><mn>4</mn></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-410-2-4"  
+class="td11">                             1,49463                                              </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-410-3-"><td  style="text-align:left; white-space:nowrap;" id="TBL-410-3-1"  
+class="td11"> 10                                                                                                  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-410-3-2"  
+class="td11"> <!--l. 1942--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-410-3-3"  
+class="td11"> <!--l. 1942--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn><mi 
+>,</mi><mn>3</mn><mn>1</mn><mn>2</mn><mn>4</mn><mn>0</mn><mstyle mathvariant="normal"><mi 
+>E</mi></mstyle><mspace width="-0.17em" class="negthinspace"/> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mspace width="-0.17em" class="negthinspace"/><mn>3</mn></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-410-3-4"  
+class="td11">                             1,49366                                              </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-410-4-"><td  style="text-align:left; white-space:nowrap;" id="TBL-410-4-1"  
+class="td11"> <!--l. 1943--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-410-4-2"  
+class="td11"> <!--l. 1943--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-410-4-3"  
+class="td11"> <!--l. 1943--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn><mi 
+>,</mi><mn>3</mn><mn>2</mn><mn>5</mn><mn>1</mn><mn>5</mn><mstyle mathvariant="normal"><mi 
+>E</mi></mstyle><mspace width="-0.17em" class="negthinspace"/> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mspace width="-0.17em" class="negthinspace"/><mn>3</mn></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-410-4-4"  
+class="td11">                             1,49365                                              </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-410-5-"><td  style="text-align:left; white-space:nowrap;" id="TBL-410-5-1"  
+class="td11"> <!--l. 1944--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-410-5-2"  
+class="td11"> <!--l. 1944--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></msup 
+></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-410-5-3"  
+class="td11"> <!--l. 1944--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn><mi 
+>,</mi><mn>3</mn><mn>2</mn><mn>5</mn><mn>2</mn><mn>8</mn><mstyle mathvariant="normal"><mi 
+>E</mi></mstyle><mspace width="-0.17em" class="negthinspace"/> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mspace width="-0.17em" class="negthinspace"/><mn>3</mn></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-410-5-4"  
+class="td11">                             1,49365                                              </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-410-6-"><td  style="text-align:left; white-space:nowrap;" id="TBL-410-6-1"  
+class="td11">                                                                 </td></tr></table>                                                                                                                                                                                                                                             </div></div>
+   </div>
+<!--l. 1947--><p class="indent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x99-185000"></a>Exercícios resolvidos</h4>
+<div class="center" 
+>
+<!--l. 1952--><p class="noindent" >
+                                                                          
+
+                                                                          
+<div class="tabular"> <table id="TBL-411" class="tabular" 
+rules="groups" 
+><colgroup id="TBL-411-1g"><col 
+id="TBL-411-1"></colgroup><tr 
+class="hline"><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-411-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-411-1-1"  
+class="td11"> Esta seção carece de exercícios resolvidos. Participe da sua escrita.  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-411-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-411-2-1"  
+class="td11">                         Veja como em:                                       </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-411-3-"><td  style="text-align:center; white-space:nowrap;" id="TBL-411-3-1"  
+class="td11">    <a 
+href="https://github.com/livroscolaborativos/CalculoNumerico" class="url" ><span 
+class="ec-lmtt-12">https://github.com/livroscolaborativos/CalculoNumerico</span></a>    </td>
+</tr><tr 
+class="hline"><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-411-4-"><td  style="text-align:center; white-space:nowrap;" id="TBL-411-4-1"  
+class="td11">                                                              </td></tr></table></div></div>
+<!--l. 1954--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x99-186000"></a>Exercícios</h4>
+<div class="center" 
+>
+<!--l. 1956--><p class="noindent" >
+<div class="tabular"> <table id="TBL-412" class="tabular" 
+rules="groups" 
+><colgroup id="TBL-412-1g"><col 
+id="TBL-412-1"></colgroup><tr 
+class="hline"><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-412-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-412-1-1"  
+class="td11">  Esta seção carece de exercícios. Participe da sua escrita.    </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-412-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-412-2-1"  
+class="td11">                      Veja como em:                                  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-412-3-"><td  style="text-align:center; white-space:nowrap;" id="TBL-412-3-1"  
+class="td11"> <a 
+href="https://github.com/livroscolaborativos/CalculoNumerico" class="url" ><span 
+class="ec-lmtt-12">https://github.com/livroscolaborativos/CalculoNumerico</span></a> </td>
+</tr><tr 
+class="hline"><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-412-4-"><td  style="text-align:center; white-space:nowrap;" id="TBL-412-4-1"  
+class="td11">                                                        </td></tr></table>      </div></div>
+                                                                          
+
+                                                                          
+   <!--l. 1958--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse51.html" >next</a>] [<a 
+href="mainse49.html" >prev</a>] [<a 
+href="mainse49.html#tailmainse49.html" >prev-tail</a>] [<a 
+href="mainse50.html" >front</a>] [<a 
+href="mainch9.html#mainse50.html" >up</a>] </p></div>
+<!--l. 1958--><p class="indent" >   <a 
+ id="tailmainse50.html"></a>   
+</body></html> 

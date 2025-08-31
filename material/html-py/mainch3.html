@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>3 Soluçao de equaçoes de uma variável</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 6--><div class="crosslinks"><p class="noindent">[<a 
+href="mainch4.html" >next</a>] [<a 
+href="mainch2.html" >prev</a>] [<a 
+href="mainch2.html#tailmainch2.html" >prev-tail</a>] [<a 
+href="#tailmainch3.html">tail</a>] [<a 
+href="main.html#mainch3.html" >up</a>] </p></div>
+   <h2 class="chapterHead"><span class="titlemark">Capítulo&#x00A0;3</span><br /><a 
+ id="x27-390003"></a>Solução de equações de uma variável</h2>
+<a 
+ id="dx27-39001"></a>
+<!--l. 8--><p class="noindent" >Neste capítulo, construiremos aproximações numéricas para a solução de
+<span 
+class="ec-lmbx-12">equa</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">õ</span><span 
+class="ec-lmbx-12">es alg</span><span 
+class="ec-lmbx-12">é</span><span 
+class="ec-lmbx-12">bricas em uma </span><span 
+class="ec-lmbx-12">ú</span><span 
+class="ec-lmbx-12">nica vari</span><span 
+class="ec-lmbx-12">á</span><span 
+class="ec-lmbx-12">vel real</span>. Observamos que
+obter uma solução para uma dada equação é equivalente a encontrar
+um <span 
+class="ec-lmbx-12">zero de uma fun</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o real</span><a 
+ id="dx27-39002"></a><a 
+ id="dx27-39003"></a> apropriada. Com isso, iniciamos este
+capítulo discutindo condições de existência e unicidade de raízes de
+funções de uma variável real. Então, apresentamos o <span 
+class="ec-lmbx-12">m</span><span 
+class="ec-lmbx-12">é</span><span 
+class="ec-lmbx-12">todo da</span>
+<span 
+class="ec-lmbx-12">bisse</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o</span><a 
+ id="dx27-39004"></a> como uma primeira abordagem numérica para a solução de tais
+equações.
+<!--l. 10--><p class="indent" >   Em seguida, exploramos outra abordagem via
+<span 
+class="ec-lmbx-12">itera</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o do ponto fixo</span><a 
+ id="dx27-39005"></a>. Desta, obtemos o <span 
+class="ec-lmbx-12">m</span><span 
+class="ec-lmbx-12">é</span><span 
+class="ec-lmbx-12">todo de</span>
+<span 
+class="ec-lmbx-12">Newton</span><span class="footnote-mark"><a 
+href="main28.html#fn1x4"><sup class="textsuperscript">1</sup></a></span><a 
+ id="x27-39006f1"></a> <a 
+ id="dx27-39008"></a>,
+para o qual estudamos aplicações e critérios de convergência. Por fim,
+apresentamos o <span 
+class="ec-lmbx-12">m</span><span 
+class="ec-lmbx-12">é</span><span 
+class="ec-lmbx-12">todo das secantes</span><a 
+ id="dx27-39009"></a> como uma das possíveis variações
+do método de Newton.
+<!--l. 16--><p class="indent" >   Ao longo do capítulo, apresentamos algumas computações com <span class="obeylines-h"><code class="verb">Python</code></span>.
+Nestas, assumiremos o que os seguintes módulos estão carregados:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-29">
+&#x003E;&#x003E;&#x003E;&#x00A0;import&#x00A0;numpy&#x00A0;as&#x00A0;np
+&#x003E;&#x003E;&#x003E;&#x00A0;import&#x00A0;matplotlib.pyplot&#x00A0;as&#x00A0;plt
+&#x003E;&#x003E;&#x003E;&#x00A0;import&#x00A0;scipy&#x00A0;as&#x00A0;sp
+&#x003E;&#x003E;&#x003E;&#x00A0;from&#x00A0;scipy&#x00A0;import&#x00A0;optimize
+</pre>
+<!--l. 22--><p class="nopar" >A segunda instrução carrega a biblioteca de computação científica  <a 
+href="http://www.numpy.org/" >numpy</a>
+e a terceira carrega a biblioteca gráfica  <a 
+href="https://matplotlib.org/" >matplotlib</a>.
+   <div class="sectionTOCS">
+   <span class="sectionToc" >3.1 <a 
+href="mainse10.html#x29-400003.1">Existência e unicidade</a></span>
+<br />   <span class="sectionToc" >3.2 <a 
+href="mainse11.html#x32-420003.2">Método da bisseção</a></span>
+<br />   <span class="subsectionToc" >3.2.1 <a 
+href="mainse11.html#x32-430003.2.1" id="QQ2-32-53">Código Python: método da bisseção</a></span>
+<br />   <span class="sectionToc" >3.3 <a 
+href="mainse12.html#x33-450003.3">Iteração de ponto fixo</a></span>
+<br />   <span class="subsectionToc" >3.3.1 <a 
+href="mainse12.html#x33-460003.3.1" id="QQ2-33-58">Teorema do ponto fixo</a></span>
+<br />   <span class="subsectionToc" >3.3.2 <a 
+href="mainse12.html#x33-470003.3.2" id="QQ2-33-61">Teste de convergência</a></span>
+<br />   <span class="subsectionToc" >3.3.3 <a 
+href="mainse12.html#x33-480003.3.3" id="QQ2-33-63">Estabilidade e convergência</a></span>
+<br />   <span class="subsectionToc" >3.3.4 <a 
+href="mainse12.html#x33-490003.3.4" id="QQ2-33-64">Erro absoluto e tolerância</a></span>
+<br />   <span class="sectionToc" >3.4 <a 
+href="mainse13.html#x35-510003.4">Método de Newton-Raphson</a></span>
+<br />   <span class="subsectionToc" >3.4.1 <a 
+href="mainse13.html#x35-520003.4.1" id="QQ2-35-67">Interpretação geométrica</a></span>
+<br />   <span class="subsectionToc" >3.4.2 <a 
+href="mainse13.html#x35-530003.4.2" id="QQ2-35-69">Análise de convergência</a></span>
+<br />   <span class="sectionToc" >3.5 <a 
+href="mainse14.html#x38-550003.5">Método das secantes</a></span>
+<br />   <span class="subsectionToc" >3.5.1 <a 
+href="mainse14.html#x38-560003.5.1" id="QQ2-38-72">Interpretação geométrica</a></span>
+<br />   <span class="subsectionToc" >3.5.2 <a 
+href="mainse14.html#x38-570003.5.2" id="QQ2-38-74">Análise de convergência</a></span>
+<br />   <span class="sectionToc" >3.6 <a 
+href="mainse15.html#x41-580003.6">Critérios de parada</a></span>
+<br />   <span class="sectionToc" >3.7 <a 
+href="mainse16.html#x42-600003.7">Exercícios finais</a></span>
+   </div>
+
+
+
+
+
+
+                                                                          
+
+                                                                          
+   <!--l. 3--><div class="crosslinks"><p class="noindent">[<a 
+href="mainch4.html" >next</a>] [<a 
+href="mainch2.html" >prev</a>] [<a 
+href="mainch2.html#tailmainch2.html" >prev-tail</a>] [<a 
+href="mainch3.html" >front</a>] [<a 
+href="main.html#mainch3.html" >up</a>] </p></div>
+<!--l. 3--><p class="indent" >   <a 
+ id="tailmainch3.html"></a>  
+</body></html> 

@@ -1,0 +1,291 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>1 Introduçao</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 6--><div class="crosslinks"><p class="noindent">[<a 
+href="mainch2.html" >next</a>] [<a 
+href="mainli5.html" >prev</a>] [<a 
+href="mainli5.html#tailmainli5.html" >prev-tail</a>] [<a 
+href="#tailmainch1.html">tail</a>] [<a 
+href="main.html#mainch1.html" >up</a>] </p></div>
+   <h2 class="chapterHead"><span class="titlemark">Capítulo&#x00A0;1</span><br /><a 
+ id="x7-60001"></a>Introdução</h2>
+<!--l. 8--><p class="noindent" >Cálculo numérico é a disciplina que estuda as técnicas para a solução
+aproximada de problemas matemáticos. Estas técnicas são de natureza
+analítica e computacional. As principais preocupações normalmente envolvem
+exatidão e desempenho.
+<!--l. 10--><p class="indent" >   Aliado ao aumento contínuo da capacidade de computação disponível, o
+desenvolvimento de métodos numéricos tornou a simulação computacional<a 
+ id="dx7-6001"></a> de
+problemas matemáticos uma prática usual nas mais diversas áreas científicas
+e tecnológicas. As então chamadas simulações numéricas<a 
+ id="dx7-6002"></a> são constituídas
+de um arranjo de vários esquemas numéricos dedicados a resolver problemas
+específicos como, por exemplo: resolver equações algébricas, resolver
+sistemas de equações lineares, interpolar e ajustar pontos, calcular derivadas e
+integrais, resolver equações diferenciais ordinárias etc. Neste livro,
+abordamos o desenvolvimento, a implementação, a utilização e os
+aspectos teóricos de métodos numéricos para a resolução desses
+problemas.
+<!--l. 12--><p class="indent" >   Trabalharemos com problemas que abordam aspectos teóricos e de
+utilização dos métodos estudados, bem como com problemas de interesse na
+engenharia, na física e na matemática aplicada.
+<!--l. 14--><p class="indent" >   A necessidade de aplicar aproximações numéricas decorre do fato de que
+esses problemas podem se mostrar intratáveis se dispomos apenas de meios
+puramente analíticos, como aqueles estudados nos cursos de cálculo e álgebra
+linear. Por exemplo, o teorema de Abel-Ruffini nos garante que não existe uma
+fórmula algébrica, isto é, envolvendo apenas operações aritméticas e
+radicais, para calcular as raízes de uma equação polinomial de qualquer grau,
+mas apenas casos particulares:
+      <ul class="itemize1">
+      <li class="itemize">
+      <!--l. 16--><p class="noindent" >Simplesmente  isolar  a  incógnita  para  encontrar  a  raiz  de  uma
+      equação do primeiro grau;
+      </li>
+      <li class="itemize">
+      <!--l. 17--><p class="noindent" >Fórmula de Bhaskara para encontrar raízes de uma equação do
+      segundo grau;
+                                                                          
+
+                                                                          
+      </li>
+      <li class="itemize">
+      <!--l. 18--><p class="noindent" >Fórmula de Cardano para encontrar raízes de uma equação do
+      terceiro grau;
+      </li>
+      <li class="itemize">
+      <!--l. 19--><p class="noindent" >Existe expressão para equações de quarto grau;
+      </li>
+      <li class="itemize">
+      <!--l. 20--><p class="noindent" >Casos simplificados de equações de grau maior que 4 onde alguns
+      coeficientes são nulos também podem ser resolvidos.</li></ul>
+<!--l. 22--><p class="noindent" >Equações não polinomiais podem ser ainda mais complicadas de resolver
+exatamente, por exemplo: <table class="equation"><tr><td>
+<!--l. 23--><p class="indent" >
+<!--l. 23--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                           <mstyle 
+   id="x7-6003r1"  class="label" ></mstyle><!--endlabel--><mtext class="qopname">cos</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>x</mi><mspace width="2em" class="qquad"/><mstyle 
+class="text"><mtext  >ou</mtext></mstyle><mspace width="2em" class="qquad"/><mi 
+>x</mi><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mi 
+>x</mi></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>0</mn>
+</math></td><td class="eq-no">(1.1)</td></tr></table>
+<!--l. 27--><p class="indent" >   Para resolver o problema de valor inicial <table class="equation"><tr><td>
+<!--l. 28--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x7-6004r2"  class="label" ></mstyle><!--endlabel--> <mtable  align="axis" style=""  
+equalrows="false" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>x</mi><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>x</mi><mi 
+>,</mi> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <mi 
+>y</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo>     </mtd></mtr><!--l--></mtable>
+</math></td><td class="eq-no">(1.2)</td></tr></table>
+<!--l. 34--><p class="indent" >   podemos usar o método de fator integrante e obtemos
+<!--l. 34--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+><mo 
+class="MathClass-bin" stretchy="false">&#x2215;</mo><mn>2</mn></mrow></msup 
+></math>. No
+entanto, não parece possível encontrar uma expressão fechada em termos de
+funções elementares para a solução exata do problema de valor inicial dado
+por <table class="equation"><tr><td>
+<!--l. 35--><p class="indent" >
+<!--l. 35--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x7-6005r3"  class="label" ></mstyle><!--endlabel--> <mtable  align="axis" style=""  
+equalrows="false" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <msup><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>x</mi><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mi 
+>y</mi></mrow></msup 
+><mi 
+>,</mi> </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <mi 
+>y</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo>       </mtd></mtr><!--l--></mtable>                                                         <mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(1.3)</td></tr></table>
+<!--l. 43--><p class="indent" >   Da mesma forma, resolvemos a integral <table class="equation"><tr><td>
+<!--l. 44--><p class="indent" >
+<!--l. 44--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                               <mstyle 
+   id="x7-6006r4"  class="label" ></mstyle><!--endlabel--><msubsup><mrow 
+><mo  
+>&#x222B;
+  <!--nolimits--></mo><!--nolimits--></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><mi 
+>x</mi><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+>
+      </mrow></msup 
+><mi 
+>d</mi><mi 
+>x</mi>
+</math></td><td class="eq-no">(1.4)</td></tr></table>
+<!--l. 47--><p class="indent" >   pelo método da substituição e obtemos
+<!--l. 47--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mfrac><mrow 
+><mn>1</mn></mrow>
+<mrow 
+><mn>2</mn></mrow></mfrac><mo 
+class="MathClass-open" stretchy="false">(</mo><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>4</mn></mrow></msup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></math>.
+Porém a integral <table class="equation"><tr><td>
+<!--l. 48--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 48--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                                <mstyle 
+   id="x7-6007r5"  class="label" ></mstyle><!--endlabel--><msubsup><mrow 
+><mo  
+>&#x222B;
+  <!--nolimits--></mo><!--nolimits--></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+>
+      </mrow></msup 
+><mi 
+>d</mi><mi 
+>x</mi>
+</math></td><td class="eq-no">(1.5)</td></tr></table>
+<!--l. 51--><p class="indent" >   não pode ser expressa analiticamente em termos de funções elementares,
+como uma consequência do teorema de Liouville.
+<!--l. 53--><p class="indent" >   A maioria dos problemas envolvendo fenômenos reais produzem modelos
+matemáticos cuja solução analítica é difícil (ou impossível) de obter,
+mesmo quando provamos que a solução existe. Nesse curso propomos calcular
+aproximações numéricas para esses problemas, que apesar de, em geral,
+serem diferentes da solução exata, mostraremos que elas podem ser bem
+próximas.
+<!--l. 55--><p class="indent" >   Para entender a construção de aproximações é necessário estudar
+como funciona a aritmética implementada nos computadores e erros de
+arredondamento. Como computadores, em geral, usam uma base binária para
+representar números, começaremos falando em mudança de base.
+                                                                          
+
+                                                                          
+                                                                          
+
+                                                                          
+                                                                          
+
+                                                                          
+                                                                          
+
+                                                                          
+   <!--l. 6--><div class="crosslinks"><p class="noindent">[<a 
+href="mainch2.html" >next</a>] [<a 
+href="mainli5.html" >prev</a>] [<a 
+href="mainli5.html#tailmainli5.html" >prev-tail</a>] [<a 
+href="mainch1.html" >front</a>] [<a 
+href="main.html#mainch1.html" >up</a>] </p></div>
+<!--l. 6--><p class="indent" >   <a 
+ id="tailmainch1.html"></a>  
+</body></html> 

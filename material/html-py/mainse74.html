@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>Funçoes</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 443--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse75.html" >next</a>] [<a 
+href="mainse73.html" >prev</a>] [<a 
+href="mainse73.html#tailmainse73.html" >prev-tail</a>] [<a 
+href="#tailmainse74.html">tail</a>] [<a 
+href="mainap1.html#mainse74.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">A.5   </span> <a 
+ id="x131-257000A.5"></a>Funções</h3>
+<a 
+ id="dx131-257001"></a>
+<!--l. 445--><p class="noindent" >Além das muitas funções disponíveis em <span class="obeylines-h"><code class="verb">Python</code></span> (e os tantos muitos pacotes
+livres disponíveis), podemos definir nossas próprias funções. Para tanto,
+existe a instrução <span class="obeylines-h"><code class="verb">def</code></span>. Veja os seguintes exemplos:
+   <div class="newtheorem">
+<!--l. 447--><p class="noindent" ><span class="head">
+<a 
+ id="x131-257002r1"></a>
+<span 
+class="ec-lmbx-12">Exemplo A.5.1.</span>  </span>O seguinte código:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-129">
+def&#x00A0;f(x):
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;return&#x00A0;x&#x00A0;+&#x00A0;np.sin(x)
+</pre>
+<!--l. 452--><p class="nopar" >define a função <!--l. 453--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo><mtext class="qopname"> sen</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--> <mspace width="0.17em" class="thinspace"/><mi 
+>x</mi></math>.
+<!--l. 455--><p class="indent" >   Observe que <!--l. 455--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>&#x03C0;</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>&#x03C0;</mi></math>.
+Confirme isso computando:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-130">
+&#x003E;&#x003E;&#x003E;&#x00A0;f(np.pi)
+</pre>
+<!--l. 458--><p class="nopar" >
+   </div>
+<!--l. 459--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 461--><p class="noindent" ><span class="head">
+<a 
+ id="x131-257003r2"></a>
+<span 
+class="ec-lmbx-12">Exemplo A.5.2.</span>  </span>O seguinte código em <span class="obeylines-h"><code class="verb">Python</code></span>:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-131">
+def&#x00A0;h(x,y):
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;if&#x00A0;(x&#x00A0;&#x003C;&#x00A0;y):
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;return&#x00A0;y&#x00A0;-&#x00A0;x
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;else:
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;return&#x00A0;x&#x00A0;-&#x00A0;y
+</pre>
+<!--l. 469--><p class="nopar" >define a função: <table class="equation"><tr><td>
+<!--l. 471--><p class="indent" >
+<!--l. 471--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x131-257004r2"  class="label" ></mstyle><!--endlabel--><mi 
+>h</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mi 
+>,</mi><mi 
+>y</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> {</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left"> <mi 
+>y</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>x</mi> </mtd><mtd 
+class="array-td"  columnalign="left"> <mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mi 
+>y</mi> </mtd></mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="left">  <mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>y</mi> </mtd> <mtd 
+class="array-td"  columnalign="left">  <mo 
+class="MathClass-punc" stretchy="false">,</mo> <mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2265;</mo> <mi 
+>y</mi></mtd></mtr> <!--ll--></mtable>                                                                 </mrow><mo fence="true" form="postfix"></mo></mrow>
+</math></td><td class="eq-no">(A.2)</td></tr></table>
+   </div>
+<!--l. 479--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 481--><p class="noindent" ><span class="head">
+<a 
+ id="x131-257005r3"></a>
+<span 
+class="ec-lmbx-12">Exemplo A.5.3.</span>  </span>O seguinte código:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-132">
+def&#x00A0;J(x):
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;y&#x00A0;=&#x00A0;np.zeros((2,2))
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;y[0,0]&#x00A0;=&#x00A0;2*x[0]
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;y[0,1]&#x00A0;=&#x00A0;2*x[1]
+
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;y[1,0]&#x00A0;=&#x00A0;-x[1]*np.sin(x[0]*x[1])
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;y[1,1]&#x00A0;=&#x00A0;-x[0]*np.sin(x[0]*x[1])
+
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;return&#x00A0;y
+</pre>
+<!--l. 493--><p class="nopar" >define a matriz jacobiana <!--l. 494--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>J</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-punc" stretchy="false">:</mo><mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><mi 
+>&#x2202;</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>f</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow> 
+<mrow 
+><mi 
+>&#x2202;</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></mfrac></math>
+da função: <table class="equation"><tr><td>
+<!--l. 495--><p class="indent" >
+<!--l. 495--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                     <mstyle 
+   id="x131-257006r3"  class="label" ></mstyle><!--endlabel--><!--binary math rel, tripple hight--><mi 
+>f</mi><!--/binary math rel, tripple hight--><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><msubsup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msubsup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mn>2</mn></mrow><mrow 
+><mn>2</mn></mrow></msubsup 
+><mi 
+>,</mi><mspace width="0.33em" class="nbsp" /><mtext class="qopname"> cos</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mn>1</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(A.3)</td></tr></table>
+   </div>
+<!--l. 498--><p class="indent" >
+                                                                          
+
+                                                                          
+   <!--l. 500--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse75.html" >next</a>] [<a 
+href="mainse73.html" >prev</a>] [<a 
+href="mainse73.html#tailmainse73.html" >prev-tail</a>] [<a 
+href="mainse74.html" >front</a>] [<a 
+href="mainap1.html#mainse74.html" >up</a>] </p></div>
+<!--l. 500--><p class="indent" >   <a 
+ id="tailmainse74.html"></a>  
+</body></html> 

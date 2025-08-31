@@ -1,0 +1,2906 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>Sistema de numeraçao e mudança de base</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 24--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse2.html" >next</a>] [<a 
+href="#tailmainse1.html">tail</a>] [<a 
+href="mainch2.html#mainse1.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">2.1   </span> <a 
+ id="x9-80002.1"></a>Sistema de numeração e mudança de base</h3>
+<a 
+ id="dx9-8001"></a>
+<a 
+ id="dx9-8002"></a>
+<!--l. 25--><p class="noindent" >Usualmente, utilizamos o sistema de numeração decimal, isto
+é, base 10, para representar números. Esse é um sistema de
+numeração em que a posição do algarismo indica a potência de
+<!--l. 25--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>0</mn></math> pela
+qual seu valor é multiplicado.
+                                                                          
+
+                                                                          
+   <div class="newtheorem">
+<!--l. 27--><p class="noindent" ><span class="head">
+<a 
+ id="x9-8003r1"></a>
+<span 
+class="ec-lmbx-12">Exemplo 2.1.1.</span>  </span>O número <!--l. 28--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>2</mn><mn>9</mn><mn>3</mn></math>
+é decomposto como <table class="equation"><tr><td>
+<!--l. 29--><p class="indent" >
+<!--l. 29--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x9-8004r1"  class="label" ></mstyle><!--endlabel-->   <mtable 
+class="equation"><mtr><mtd>
+   <mtable  
+columnalign="right left" class="split">
+<mtr class="split-mtr"><mtd 
+class="split-mtd"> <mn>2</mn><mn>9</mn><mn>3</mn></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><mspace width="0.33em" class="nbsp" /><mstyle 
+class="text"><mtext  >centenas</mtext></mstyle> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>9</mn><mspace width="0.33em" class="nbsp" /><mstyle 
+class="text"><mtext  >dezenas&#x00A0;</mtext></mstyle> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>3</mn><mspace width="0.33em" class="nbsp" /><mstyle 
+class="text"><mtext  >unidades</mtext></mstyle></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">    </mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>9</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>0</mn></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo></mtd>
+   </mtr></mtable>                                                                       </mtd><mtd>
+   </mtd></mtr></mtable>
+</math></td><td class="eq-no">(2.1)</td></tr></table>
+   </div>
+<!--l. 35--><p class="indent" >
+<!--l. 37--><p class="indent" >   O sistema de numeração posicional também pode ser usado com outras
+bases. Vejamos a seguinte definição.
+   <div class="newtheorem">
+<!--l. 39--><p class="noindent" ><span class="head">
+<a 
+ id="x9-8005r1"></a>
+<span 
+class="ec-lmbx-12">Defini</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o 2.1.1 </span>(Sistema de numeração de base <!--l. 39--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi></math>)<span 
+class="ec-lmbx-12">.</span>
+</span> <span 
+class="ec-lmri-12">Dado  um  n</span><span 
+class="ec-lmri-12">ú</span><span 
+class="ec-lmri-12">mero  natural</span>
+<!--l. 40--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003E;</mo> <mn>1</mn></math> <span 
+class="ec-lmri-12">e o conjunto de s</span><span 
+class="ec-lmri-12">í</span><span 
+class="ec-lmri-12">mbolos</span>
+<!--l. 40--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">{</mo><!--binary math rel, tripple hight--><mo 
+class="MathClass-bin" stretchy="false">±</mo><!--/binary math rel, tripple hight--><mo 
+class="MathClass-punc" stretchy="false">,</mo><!--binary math rel, tripple hight--> <mn>0</mn><!--/binary math rel, tripple hight--><mo 
+class="MathClass-punc" stretchy="false">,</mo><!--binary math rel, tripple hight--> <mn>1</mn><!--/binary math rel, tripple hight--><mo 
+class="MathClass-punc" stretchy="false">,</mo><!--binary math rel, tripple hight--> <mn>2</mn><!--/binary math rel, tripple hight--><mi 
+>,</mi><mi 
+>&#x2026;</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><!--binary math rel, tripple hight--><mi 
+>b</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn><!--/binary math rel, tripple hight--><mo 
+class="MathClass-close" stretchy="false">}</mo></math><span class="footnote-mark"><a 
+href="main10.html#fn1x3"><sup class="textsuperscript">1</sup></a></span><a 
+ id="x9-8006f1"></a><span 
+class="ec-lmri-12">,</span>
+<span 
+class="ec-lmri-12">a sequ</span><span 
+class="ec-lmri-12">ê</span><span 
+class="ec-lmri-12">ncia de s</span><span 
+class="ec-lmri-12">í</span><span 
+class="ec-lmri-12">mbolos </span><table class="equation"><tr><td>
+                                                                          
+
+                                                                          
+<!--l. 41--><p class="indent" >
+<!--l. 41--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                          <mstyle 
+   id="x9-8008r2"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mrow><mo fence="true" form="prefix"> (</mo><mrow><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo><mspace width="0.17em" class="thinspace"/></mrow><mo fence="true" form="postfix">)</mo></mrow></mrow><mrow 
+><mi 
+>b</mi></mrow></msub 
+>
+</math></td><td class="eq-no">(2.2)</td></tr></table>
+<!--l. 44--><p class="indent" >   <span 
+class="ec-lmri-12">representa o n</span><span 
+class="ec-lmri-12">ú</span><span 
+class="ec-lmri-12">mero positivo </span><table class="equation"><tr><td>
+<!--l. 45--><p class="indent" >
+<!--l. 45--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+         <mstyle 
+   id="x9-8009r3"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mn>0</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>0</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>
+</math></td><td class="eq-no">(2.3)</td></tr></table>
+<!--l. 48--><p class="indent" >   <span 
+class="ec-lmri-12">Para representar n</span><span 
+class="ec-lmri-12">ú</span><span 
+class="ec-lmri-12">meros negativos usamos o s</span><span 
+class="ec-lmri-12">í</span><span 
+class="ec-lmri-12">mbolo</span>
+<!--l. 48--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-bin" stretchy="false">-</mo></math> <span 
+class="ec-lmri-12">à</span> <span 
+class="ec-lmri-12">esquerda</span>
+<span 
+class="ec-lmri-12">do numeral</span><span class="footnote-mark"><a 
+href="main11.html#fn2x3"><sup class="textsuperscript">2</sup></a></span><a 
+ id="x9-8010f2"></a> <span 
+class="ec-lmri-12">.</span>
+   </div>
+<!--l. 49--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 51--><p class="noindent" ><span class="head">
+<a 
+ id="x9-8012r1"></a>
+                                                                          
+
+                                                                          
+<span 
+class="ec-lmbx-12">Observa</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o 2.1.1 </span>(<!--l. 51--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2265;</mo> <mn>1</mn><mn>0</mn></math>)<span 
+class="ec-lmbx-12">.</span>
+</span> Para sistemas de numeração com base
+<!--l. 52--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2265;</mo> <mn>1</mn><mn>0</mn></math> é
+usual utilizar as seguintes notações:
+      <ul class="itemize1">
+      <li class="itemize">
+      <!--l. 54--><p class="noindent" >No sistema de numeração decimal
+      (<!--l. 54--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>0</mn></math>),
+      costumamos representar o número sem os parênteses e o subíndice, ou
+      seja, <table class="equation"><tr><td>
+      <!--l. 55--><p class="noindent" >
+      <!--l. 55--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+               <mstyle 
+   id="x9-8013r4"  class="label" ></mstyle><!--endlabel--><mo 
+class="MathClass-bin" stretchy="false">±</mo><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mo>&#x2026;</mo><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+><mo>&#x2026;</mo> <mo 
+class="MathClass-punc" stretchy="false">:</mo><mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">±</mo><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mo>&#x2026;</mo><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+><mo>&#x2026;</mo><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>1</mn><mn>0</mn></mrow></msub 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.4)</td></tr></table>
+      </li>
+      <li class="itemize">
+      <!--l. 58--><p class="noindent" >Se <!--l. 58--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x003E;</mo> <mn>1</mn><mn>0</mn></math>, usamos as
+      letras <!--l. 58--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>B</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>C</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo><mspace width="0.17em" class="thinspace"/></math> para denotar
+      os algarismos: <!--l. 58--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>0</mn></math>,
+      <!--l. 58--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>B</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>1</mn></math>,
+      <!--l. 58--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>C</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>2</mn></math>,
+      <!--l. 58--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>D</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>3</mn></math>,
+      <!--l. 58--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>E</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>4</mn></math>,
+      <!--l. 58--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>F</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>5</mn></math>.</li></ul>
+   </div>
+<!--l. 60--><p class="indent" >
+                                                                          
+
+                                                                          
+   <div class="newtheorem">
+<!--l. 63--><p class="noindent" ><span class="head">
+<a 
+ id="x9-8014r2"></a>
+<span 
+class="ec-lmbx-12">Exemplo 2.1.2 </span>(Sistema binário)<span 
+class="ec-lmbx-12">.</span>  </span>O sistema de numeração em base dois é
+chamado de binário e os algarismos binários são conhecidos como <span 
+class="ec-lmri-12">bits</span>
+(do inglês <span 
+class="ec-lmbx-12">binary digits</span>). Um <span 
+class="ec-lmri-12">bit </span>pode assumir dois valores distintos:
+<!--l. 63--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn></math> ou
+<!--l. 63--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn></math>. Por
+exemplo: <table class="equation"><tr><td>
+<!--l. 64--><p class="indent" >
+<!--l. 64--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x9-8015r5"  class="label" ></mstyle><!--endlabel-->   <mtable 
+class="equation"><mtr><mtd>
+   <mtable  
+columnalign="right left" class="split">
+<mtr class="split-mtr"><mtd 
+class="split-mtd"> <mi 
+>x</mi></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>0</mn><mn>1</mn><mi 
+>,</mi><mn>1</mn><mn>0</mn><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">  </mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mn>3</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mn>0</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></msup 
+></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">  </mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>8</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mi 
+>,</mi><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mi 
+>,</mi><mn>1</mn><mn>2</mn><mn>5</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>9</mn><mi 
+>,</mi><mn>6</mn><mn>2</mn><mn>5</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo></mtd>
+   </mtr></mtable>                                                                       </mtd><mtd>
+   </mtd></mtr></mtable>
+</math></td><td class="eq-no">(2.5)</td></tr></table>
+   Ou seja, <!--l. 71--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>0</mn><mn>1</mn><mi 
+>,</mi><mn>1</mn><mn>0</mn><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>
+é igual a <!--l. 71--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>9</mn><mi 
+>,</mi><mn>6</mn><mn>2</mn><mn>5</mn></math>
+no sistema decimal.
+<!--l. 99--><p class="indent" >   Em <span class="obeylines-h"><code class="verb">Python</code></span> podemos converter o número
+<!--l. 99--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>0</mn><mn>1</mn><mi 
+>,</mi><mn>1</mn><mn>0</mn><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math> para
+a base decimal computando
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-2">
+&#x003E;&#x003E;&#x003E;&#x00A0;1*2**3&#x00A0;+&#x00A0;0*2**2&#x00A0;+&#x00A0;0*2**1&#x00A0;+&#x00A0;1*2**0&#x00A0;+&#x00A0;1*2**-1&#x00A0;+&#x00A0;0*2**-2&#x00A0;+&#x00A0;1*2**-3
+9.625
+</pre>
+<!--l. 103--><p class="nopar" >
+   </div>
+<!--l. 106--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 109--><p class="noindent" ><span class="head">
+<a 
+ id="x9-8016r3"></a>
+<span 
+class="ec-lmbx-12">Exemplo 2.1.3 </span>(Sistema quaternário)<span 
+class="ec-lmbx-12">.</span>  </span>No sistema quaternário a base
+<!--l. 110--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi></math> é igual
+a <!--l. 110--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>4</mn></math>
+e, portanto, temos o seguinte conjunto de algarismos
+<!--l. 110--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">{</mo><mn>0</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>1</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>2</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>3</mn><mo 
+class="MathClass-close" stretchy="false">}</mo></math>. Por
+exemplo: <table class="equation"><tr><td>
+<!--l. 111--><p class="indent" >
+<!--l. 111--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+              <mstyle 
+   id="x9-8017r6"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>3</mn><mn>0</mn><mn>1</mn><mi 
+>,</mi><mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>4</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>4</mn></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>4</mn></mrow><mrow 
+><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>4</mn></mrow><mrow 
+><mn>0</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>4</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>4</mn><mn>9</mn><mi 
+>,</mi><mn>5</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.6)</td></tr></table>
+<!--l. 114--><p class="indent" >   Verifique no computador!
+   </div>
+<!--l. 115--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 117--><p class="noindent" ><span class="head">
+<a 
+ id="x9-8018r4"></a>
+                                                                          
+
+                                                                          
+<span 
+class="ec-lmbx-12">Exemplo 2.1.4 </span>(Sistema octal)<span 
+class="ec-lmbx-12">.</span>  </span>No sistema octal a base é
+<!--l. 118--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>8</mn></math>. Por
+exemplo: <table class="equation"><tr><td>
+<!--l. 119--><p class="indent" >
+<!--l. 119--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x9-8019r7"  class="label" ></mstyle><!--endlabel-->   <mtable 
+class="equation"><mtr><mtd>
+   <mtable  
+columnalign="right left" class="split">
+<mtr class="split-mtr"><mtd 
+class="split-mtd"> <msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>3</mn><mn>5</mn><mn>7</mn><mi 
+>,</mi><mn>2</mn><mn>4</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>8</mn></mrow></msub 
+></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>8</mn></mrow><mrow 
+><mn>3</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>8</mn></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>8</mn></mrow><mrow 
+><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>7</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>8</mn></mrow><mrow 
+><mn>0</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>8</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>4</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>8</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">           </mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>5</mn><mn>1</mn><mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn><mn>9</mn><mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>4</mn><mn>0</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>7</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mi 
+>,</mi><mn>2</mn><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>6</mn><mn>2</mn><mn>5</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>7</mn><mn>5</mn><mn>1</mn><mi 
+>,</mi><mn>3</mn><mn>1</mn><mn>2</mn><mn>5</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo></mtd>
+   </mtr></mtable>                                                                       </mtd><mtd>
+   </mtd></mtr></mtable>
+</math></td><td class="eq-no">(2.7)</td></tr></table>
+   Verifique no computador!
+   </div>
+<!--l. 126--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 128--><p class="noindent" ><span class="head">
+<a 
+ id="x9-8020r5"></a>
+<span 
+class="ec-lmbx-12">Exemplo 2.1.5 </span>(Sistema hexadecimal)<span 
+class="ec-lmbx-12">.</span>  </span>O sistema de numeração cuja base é
+<!--l. 128--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>6</mn></math> é
+chamado de sistema hexadecimal. Neste, temos o conjunto de algarismos
+<!--l. 128--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">{</mo><mn>0</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>1</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>2</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>3</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>4</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>5</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>6</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>7</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>8</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo> <mn>9</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>A</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>B</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>C</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>D</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>E</mi><mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>F</mi><mo 
+class="MathClass-close" stretchy="false">}</mo></math>. Convertendo
+o número <!--l. 128--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>E</mi><mn>2</mn><mi 
+>A</mi><mi 
+>C</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>1</mn><mn>6</mn></mrow></msub 
+></math>
+para a base <!--l. 128--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>0</mn></math>
+temos <table class="equation"><tr><td>
+<!--l. 129--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 129--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x9-8021r8"  class="label" ></mstyle><!--endlabel-->   <mtable 
+class="equation"><mtr><mtd>
+   <mtable  
+columnalign="right left" class="split">
+<mtr class="split-mtr"><mtd 
+class="split-mtd"> <msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>E</mi><mn>2</mn><mi 
+>A</mi><mi 
+>C</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>1</mn><mn>6</mn></mrow></msub 
+></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>4</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>1</mn><msup><mrow 
+><mn>6</mn></mrow><mrow 
+><mn>3</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>1</mn><msup><mrow 
+><mn>6</mn></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn><mn>0</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>1</mn><msup><mrow 
+><mn>6</mn></mrow><mrow 
+><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn><mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>1</mn><msup><mrow 
+><mn>6</mn></mrow><mrow 
+><mn>0</mn></mrow></msup 
+></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">           </mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>5</mn><mn>7</mn><mn>3</mn><mn>4</mn><mn>4</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>5</mn><mn>1</mn><mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn><mn>6</mn><mn>0</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn><mn>2</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>5</mn><mn>8</mn><mn>0</mn><mn>2</mn><mn>8</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo></mtd>
+   </mtr></mtable>                                                                       </mtd><mtd>
+   </mtd></mtr></mtable>
+</math></td><td class="eq-no">(2.8)</td></tr></table>
+   Verifique no computador!
+   </div>
+<!--l. 136--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 184--><p class="noindent" ><span class="head">
+<a 
+ id="x9-8022r2"></a>
+<span 
+class="ec-lmbx-12">Observa</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o 2.1.2.</span>  </span>O <span class="obeylines-h"><code class="verb">Python</code></span> tem prefixos para representar números nas
+bases 2, 8 e 10. Por exemplo, temos:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-3">
+&#x003E;&#x003E;&#x003E;&#x00A0;print(0b1001)&#x00A0;&#x00A0;#&#x00A0;bin
+9
+&#x003E;&#x003E;&#x003E;&#x00A0;print(0o157)&#x00A0;&#x00A0;#&#x00A0;oct
+111
+&#x003E;&#x003E;&#x003E;&#x00A0;print(0xbeba)&#x00A0;&#x00A0;#&#x00A0;hex
+48826
+</pre>
+<!--l. 193--><p class="nopar" >Também é possível usar a função int() para interpretar a representação
+de um inteiro em uma base com b entre 2 e 36. Por exemplo, temos:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-4">
+&#x003E;&#x003E;&#x003E;&#x00A0;print(int('1001',&#x00A0;2))&#x00A0;&#x00A0;#&#x00A0;Base&#x00A0;2
+9
+&#x003E;&#x003E;&#x003E;&#x00A0;print(int('1001',&#x00A0;5))&#x00A0;&#x00A0;#&#x00A0;Base&#x00A0;5
+126
+&#x003E;&#x003E;&#x003E;&#x00A0;print(int('ABCD',&#x00A0;20))&#x00A0;&#x00A0;#&#x00A0;Base&#x00A0;20
+84653
+&#x003E;&#x003E;&#x003E;&#x00A0;print(int('zz',&#x00A0;36))&#x00A0;&#x00A0;#&#x00A0;Base&#x00A0;36
+1295
+</pre>
+<!--l. 204--><p class="nopar" >
+   </div>
+<!--l. 205--><p class="indent" >
+<!--l. 209--><p class="indent" >   Nos exemplos acima vimos como converter números
+representados em um sistema de numeração de base
+<!--l. 209--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi></math> para o sistema
+decimal. Agora, vamos estudar como fazer o processo inverso. Isto é, dado um número decimal
+<!--l. 209--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>X</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>1</mn><mn>0</mn></mrow></msub 
+></math> queremos escrevê-lo
+em uma outra base <!--l. 209--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi></math>,
+isto é, queremos obter a seguinte representação: <table class="equation"><tr><td>
+<!--l. 210--><p class="indent" >
+<!--l. 210--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x9-8023r9"  class="label" ></mstyle><!--endlabel-->   <mtable 
+class="equation"><mtr><mtd>
+   <mtable  
+columnalign="right left" class="split">
+<mtr class="split-mtr"><mtd 
+class="split-mtd"> <msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>X</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>1</mn><mn>0</mn></mrow></msub 
+></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+><mi 
+>,</mi><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo><mspace width="0.17em" class="thinspace"/><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mi 
+>b</mi></mrow></msub 
+></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">      </mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mn>0</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>0</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo></mtd>
+   </mtr></mtable>                                                                       </mtd><mtd>
+   </mtd></mtr></mtable>
+</math></td><td class="eq-no">(2.9)</td></tr></table>
+                                                                          
+
+                                                                          
+   Separando as partes inteira e fracionária de
+<!--l. 217--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>X</mi></math>, isto
+é, <!--l. 217--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>X</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>X</mi></mrow><mrow 
+><mstyle 
+class="mbox"><mtext  >i</mtext></mstyle></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msup><mrow 
+><mi 
+>X</mi></mrow><mrow 
+><mstyle 
+class="mbox"><mtext  >f</mtext></mstyle></mrow></msup 
+></math>,
+temos <table class="equation"><tr><td>
+<!--l. 218--><p class="indent" >
+<!--l. 218--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+               <mstyle 
+   id="x9-8024r10"  class="label" ></mstyle><!--endlabel--><msup><mrow 
+><mi 
+>X</mi></mrow><mrow 
+><mstyle 
+class="mbox"><mtext  >i</mtext></mstyle></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+><mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mn>0</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>0</mn></mrow></msup 
+>
+</math></td><td class="eq-no">(2.10)</td></tr></table>
+<!--l. 221--><p class="indent" >   e <table class="equation"><tr><td>
+<!--l. 222--><p class="indent" >
+<!--l. 222--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                           <mstyle 
+   id="x9-8025r11"  class="label" ></mstyle><!--endlabel--><msup><mrow 
+><mi 
+>X</mi></mrow><mrow 
+><mstyle 
+class="mbox"><mtext  >f</mtext></mstyle></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+></mrow> 
+ <mrow 
+><msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>1</mn></mrow></msup 
+></mrow></mfrac>   <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+></mrow> 
+ <mrow 
+><msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></mfrac>   <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>
+</math></td><td class="eq-no">(2.11)</td></tr></table>
+<!--l. 225--><p class="indent" >   Nosso objetivo é determinar os algarismos
+<!--l. 225--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">{</mo><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-close" stretchy="false">}</mo></math>.
+<!--l. 227--><p class="indent" >   Primeiramente, vejamos como tratar a parte inteira
+<!--l. 227--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>X</mi></mrow><mrow 
+><mstyle 
+class="mbox"><mtext  >i</mtext></mstyle></mrow></msup 
+></math>. Calculando o
+quociente de <!--l. 227--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>X</mi></mrow><mrow 
+><mstyle 
+class="mbox"><mtext  >i</mtext></mstyle></mrow></msup 
+></math>
+por <!--l. 227--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi></math>,
+temos: <table class="equation"><tr><td>
+<!--l. 228--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 228--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+            <mstyle 
+   id="x9-8026r12"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><msup><mrow 
+><mi 
+>X</mi></mrow><mrow 
+><mstyle 
+class="mbox"><mtext  >i</mtext></mstyle></mrow></msup 
+></mrow>
+ <mrow 
+><mi 
+>b</mi></mrow></mfrac>  <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+></mrow> 
+ <mrow 
+><mi 
+>b</mi></mrow></mfrac> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mi 
+>n</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.12)</td></tr></table>
+<!--l. 231--><p class="indent" >   Observe que <!--l. 231--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+></math> é o
+resto da divisão de <!--l. 231--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>X</mi></mrow><mrow 
+><mstyle 
+class="mbox"><mtext  >i</mtext></mstyle></mrow></msup 
+></math>
+por <!--l. 231--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi></math>, pois
+<!--l. 231--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mi 
+>n</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+></math> é inteiro e
+<!--l. 231--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mfrac><mrow 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+></mrow>
+ <mrow 
+><mi 
+>b</mi></mrow></mfrac> </math> é uma fração com
+<!--l. 231--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mi 
+>b</mi></math>. Da mesma forma, o
+resto da divisão de <!--l. 231--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+>
+<mi 
+>n</mi></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>n</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+></math>
+por <!--l. 231--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi></math>
+é <!--l. 231--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></math>.
+Ou seja, repetindo este processo encontramos os algarismos
+<!--l. 231--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>0</mn></mrow></msub 
+></math>,
+<!--l. 231--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></math>,
+<!--l. 231--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>,
+<!--l. 231--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo>&#x2026;</mo></math>,
+<!--l. 231--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+></math>.
+<!--l. 233--><p class="indent" >   Vamos, agora, converter a parte fracionária
+<!--l. 233--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>X</mi></mrow><mrow 
+><mstyle 
+class="mbox"><mtext  >f</mtext></mstyle></mrow></msup 
+></math> do número
+decimal <!--l. 233--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>X</mi></math> para o
+sistema de base <!--l. 233--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi></math>.
+Multiplicando <!--l. 233--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>X</mi></mrow><mrow 
+><mstyle 
+class="mbox"><mtext  >f</mtext></mstyle></mrow></msup 
+></math>
+por <!--l. 233--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi></math>,
+temos <table class="equation"><tr><td>
+<!--l. 234--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 234--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                        <mstyle 
+   id="x9-8027r13"  class="label" ></mstyle><!--endlabel--><mi 
+>b</mi><msup><mrow 
+><mi 
+>X</mi></mrow><mrow 
+><mstyle 
+class="mbox"><mtext  >f</mtext></mstyle></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+></mrow> 
+  <mrow 
+><mi 
+>b</mi></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></msub 
+></mrow> 
+ <mrow 
+><msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></mfrac>   <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo>
+</math></td><td class="eq-no">(2.13)</td></tr></table>
+<!--l. 237--><p class="indent" >   Observe que a parte inteira desse produto é
+<!--l. 237--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msub 
+></math> e
+<!--l. 237--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mfrac><mrow 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+></mrow>
+  <mrow 
+><mi 
+>b</mi></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></msub 
+></mrow> 
+ <mrow 
+><msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></mfrac>   <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo><mspace width="0.17em" class="thinspace"/></math> é a parte fracionária.
+Quando multiplicamos <!--l. 237--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mfrac><mrow 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+></mrow>
+  <mrow 
+><mi 
+>b</mi></mrow></mfrac>   <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></msub 
+></mrow> 
+ <mrow 
+><msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow></mfrac>   <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo><mspace width="0.17em" class="thinspace"/></math>
+por <!--l. 237--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi></math> novamente,
+encontramos <!--l. 237--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>d</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msub 
+></math>.
+Repetindo este processo encontramos os demais algarismos.
+   <div class="newtheorem">
+<!--l. 240--><p class="noindent" ><span class="head">
+<a 
+ id="x9-8028r6"></a>
+<span 
+class="ec-lmbx-12">Exemplo 2.1.6.</span>  </span>Vamos converter o número
+<!--l. 241--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>9</mn><mi 
+>,</mi><mn>6</mn><mn>2</mn><mn>5</mn></math> para a base binária
+(<!--l. 241--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn></math>). Primeiramente,
+decompomos <!--l. 241--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>9</mn><mi 
+>,</mi><mn>6</mn><mn>2</mn><mn>5</mn></math>
+na soma de suas partes inteira e fracionária. <table class="equation"><tr><td>
+<!--l. 242--><p class="indent" >
+<!--l. 242--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                            <mstyle 
+   id="x9-8029r14"  class="label" ></mstyle><!--endlabel--><mn>9</mn><mi 
+>,</mi><mn>6</mn><mn>2</mn><mn>5</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>9</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mi 
+>,</mi><mn>6</mn><mn>2</mn><mn>5</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.14)</td></tr></table>
+<!--l. 246--><p class="indent" >   <span 
+class="ec-lmbx-12">Convers</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o da parte inteira</span>. Para converter a parte inteira, fazemos sucessivas
+divisões por <!--l. 246--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn></math>
+obtendo
+                                                                          
+
+                                                                          
+<!--tex4ht:inline--><!--l. 251--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" ><mtable 
+displaystyle="true" columnalign="left" class="align">
+                           <mtr><mtd 
+columnalign="right" class="align-odd"><mn>9</mn></mtd>                           <mtd 
+class="align-even"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>4</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn><mspace width="2em"/></mtd>                                                              <mtd 
+columnalign="right" class="align-label"><mstyle 
+   id="x9-8030r15"  class="label" ></mstyle><!--endlabel--><mstyle 
+class="maketag"><mtext  >(2.15)</mtext></mstyle><mspace width="0.33em" class="nbsp" />
+                           </mtd></mtr><mtr><mtd 
+columnalign="right" class="align-odd"></mtd>                            <mtd 
+class="align-even"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn><mspace width="2em"/></mtd>                                                      <mtd 
+columnalign="right" class="align-label"><mstyle 
+   id="x9-8031r16"  class="label" ></mstyle><!--endlabel--><mstyle 
+class="maketag"><mtext  >(2.16)</mtext></mstyle><mspace width="0.33em" class="nbsp" />
+                           </mtd></mtr><mtr><mtd 
+columnalign="right" class="align-odd"></mtd>                            <mtd 
+class="align-even"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mn>3</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo><mspace width="2em"/></mtd>                                                                <mtd 
+columnalign="right" class="align-label"><mstyle 
+   id="x9-8032r17"  class="label" ></mstyle><!--endlabel--><mstyle 
+class="maketag"><mtext  >(2.17)</mtext></mstyle><mspace width="0.33em" class="nbsp" />
+   </mtd></mtr></mtable></math>
+<!--l. 252--><p class="noindent" >Ou seja, temos que <!--l. 252--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>9</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>0</mn><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>.
+Em <span class="obeylines-h"><code class="verb">Python</code></span>, podemos usar os comandos <span class="obeylines-h"><code class="verb">int</code></span> (truncamento) e a operação <span class="obeylines-h"><code class="verb">%</code></span>
+(resto da divisão) para computar esta conversão da seguinte forma
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-5">
+&#x003E;&#x003E;&#x003E;&#x00A0;x&#x00A0;=&#x00A0;9
+&#x003E;&#x003E;&#x003E;&#x00A0;d0&#x00A0;=&#x00A0;x%2;&#x00A0;x&#x00A0;=&#x00A0;int(x/2);&#x00A0;print(f"d0&#x00A0;=&#x00A0;{d0},&#x00A0;x&#x00A0;=&#x00A0;{x}")
+d0&#x00A0;=&#x00A0;1,&#x00A0;x&#x00A0;=&#x00A0;4
+&#x003E;&#x003E;&#x003E;&#x00A0;d1&#x00A0;=&#x00A0;x%2;&#x00A0;x&#x00A0;=&#x00A0;int(x/2);&#x00A0;print(f"d1&#x00A0;=&#x00A0;{d1},&#x00A0;x&#x00A0;=&#x00A0;{x}")
+d1&#x00A0;=&#x00A0;0,&#x00A0;x&#x00A0;=&#x00A0;2
+&#x003E;&#x003E;&#x003E;&#x00A0;d2&#x00A0;=&#x00A0;x%2;&#x00A0;x&#x00A0;=&#x00A0;int(x/2);&#x00A0;print(f"d2&#x00A0;=&#x00A0;{d2},&#x00A0;x&#x00A0;=&#x00A0;{x}")
+d2&#x00A0;=&#x00A0;0,&#x00A0;x&#x00A0;=&#x00A0;1
+&#x003E;&#x003E;&#x003E;&#x00A0;d3&#x00A0;=&#x00A0;x%2;&#x00A0;x&#x00A0;=&#x00A0;int(x/2);&#x00A0;print(f"d3&#x00A0;=&#x00A0;{d3},&#x00A0;x&#x00A0;=&#x00A0;{x}")
+d3&#x00A0;=&#x00A0;1,&#x00A0;x&#x00A0;=&#x00A0;0
+</pre>
+<!--l. 323--><p class="nopar" >
+<!--l. 327--><p class="indent" >   <span 
+class="ec-lmbx-12">Convers</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o da parte fracion</span><span 
+class="ec-lmbx-12">á</span><span 
+class="ec-lmbx-12">ria</span>. Para converter a
+parte fracionária, fazemos sucessivas multiplicações por
+<!--l. 327--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn></math>
+obtendo
+<!--tex4ht:inline--><!--l. 332--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" ><mtable 
+displaystyle="true" columnalign="left" class="align">
+            <mtr><mtd 
+columnalign="right" class="align-odd"><mn>0</mn><mi 
+>,</mi><mn>6</mn><mn>2</mn><mn>5</mn></mtd>            <mtd 
+class="align-even"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>2</mn><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mi 
+>,</mi><mn>2</mn><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+><mspace width="2em"/></mtd>                                     <mtd 
+columnalign="right" class="align-label"><mstyle 
+   id="x9-8033r18"  class="label" ></mstyle><!--endlabel--><mstyle 
+class="maketag"><mtext  >(2.18)</mtext></mstyle><mspace width="0.33em" class="nbsp" />
+            </mtd></mtr><mtr><mtd 
+columnalign="right" class="align-odd"></mtd>                 <mtd 
+class="align-even"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mi 
+>,</mi><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mi 
+>,</mi><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+><mspace width="2em"/></mtd>                        <mtd 
+columnalign="right" class="align-label"><mstyle 
+   id="x9-8034r19"  class="label" ></mstyle><!--endlabel--><mstyle 
+class="maketag"><mtext  >(2.19)</mtext></mstyle><mspace width="0.33em" class="nbsp" />
+            </mtd></mtr><mtr><mtd 
+columnalign="right" class="align-odd"></mtd>                 <mtd 
+class="align-even"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo><mspace width="2em"/></mtd>                           <mtd 
+columnalign="right" class="align-label"><mstyle 
+   id="x9-8035r20"  class="label" ></mstyle><!--endlabel--><mstyle 
+class="maketag"><mtext  >(2.20)</mtext></mstyle><mspace width="0.33em" class="nbsp" />
+   </mtd></mtr></mtable></math>
+<!--l. 333--><p class="noindent" >Ou seja, temos que <!--l. 333--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>6</mn><mn>2</mn><mn>5</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mi 
+>,</mi><mn>1</mn><mn>0</mn><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>.
+Em <span class="obeylines-h"><code class="verb">Python</code></span>, podemos computar esta conversão da parte fracionária da seguinte
+forma
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-6">
+&#x003E;&#x003E;&#x003E;&#x00A0;x=0.625
+&#x003E;&#x003E;&#x003E;&#x00A0;d&#x00A0;=&#x00A0;int(2*x);&#x00A0;x&#x00A0;=&#x00A0;2*x&#x00A0;-&#x00A0;d;&#x00A0;print("d&#x00A0;=&#x00A0;%d,&#x00A0;x&#x00A0;=&#x00A0;%f"&#x00A0;%&#x00A0;(d,x))
+d&#x00A0;=&#x00A0;1,&#x00A0;x&#x00A0;=&#x00A0;0.250000
+&#x003E;&#x003E;&#x003E;&#x00A0;d&#x00A0;=&#x00A0;int(2*x);&#x00A0;x&#x00A0;=&#x00A0;2*x&#x00A0;-&#x00A0;d;&#x00A0;print("d&#x00A0;=&#x00A0;%d,&#x00A0;x&#x00A0;=&#x00A0;%f"&#x00A0;%&#x00A0;(d,x))
+d&#x00A0;=&#x00A0;0,&#x00A0;x&#x00A0;=&#x00A0;0.500000
+&#x003E;&#x003E;&#x003E;&#x00A0;d&#x00A0;=&#x00A0;int(2*x);&#x00A0;x&#x00A0;=&#x00A0;2*x&#x00A0;-&#x00A0;d;&#x00A0;print("d&#x00A0;=&#x00A0;%d,&#x00A0;x&#x00A0;=&#x00A0;%f"&#x00A0;%&#x00A0;(d,x))
+d&#x00A0;=&#x00A0;1,&#x00A0;x&#x00A0;=&#x00A0;0.000000
+</pre>
+<!--l. 394--><p class="nopar" >
+<!--l. 398--><p class="indent" >   <span 
+class="ec-lmbx-12">Conclus</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o. </span>Da conversão das partes inteira e fracionária de
+<!--l. 398--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>9</mn><mi 
+>,</mi><mn>6</mn><mn>2</mn><mn>5</mn></math>,
+obtemos <!--l. 398--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>9</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>0</mn><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>
+e <!--l. 398--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>6</mn><mn>2</mn><mn>5</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mi 
+>,</mi><mn>1</mn><mn>0</mn><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>. Logo,
+concluímos que <!--l. 398--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>9</mn><mi 
+>,</mi><mn>6</mn><mn>2</mn><mn>5</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>0</mn><mn>1</mn><mi 
+>,</mi><mn>1</mn><mn>0</mn><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>.
+   </div>
+<!--l. 399--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 442--><p class="noindent" ><span class="head">
+<a 
+ id="x9-8036r3"></a>
+<span 
+class="ec-lmbx-12">Observa</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o 2.1.3.</span>  </span><span class="obeylines-h"><code class="verb">Python</code></span> oferece algumas funções para a conversão de
+números inteiros em base decimal para uma base dada. Por exemplo,
+temos:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-7">
+&#x003E;&#x003E;&#x003E;&#x00A0;print(bin(9))
+0b1001
+&#x003E;&#x003E;&#x003E;&#x00A0;print(oct(111))
+0157
+&#x003E;&#x003E;&#x003E;&#x00A0;print(hex(48826))
+0xbeba
+</pre>
+<!--l. 451--><p class="nopar" >
+   </div>
+<!--l. 452--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 456--><p class="noindent" ><span class="head">
+<a 
+ id="x9-8037r4"></a>
+<span 
+class="ec-lmbx-12">Observa</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o 2.1.4.</span>  </span>Uma maneira de converter um número dado em
+uma base <!--l. 457--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></math>
+para uma base <!--l. 457--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>
+é fazer em duas partes: primeiro converter o número dado na base <!--l. 457--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></math>
+para base decimal e depois converter para a base <!--l. 457--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>.
+   </div>
+<!--l. 458--><p class="indent" >
+<!--l. 460--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x9-9000"></a>Exercícios resolvidos</h4>
+<div class="center" 
+>
+<!--l. 462--><p class="noindent" >
+<div class="tabular"> <table id="TBL-4" class="tabular" 
+rules="groups" 
+><colgroup id="TBL-4-1g"><col 
+id="TBL-4-1"></colgroup><tr 
+class="hline"><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-4-1-1"  
+class="td11"> Esta seção carece de exercícios resolvidos. Participe da sua escrita.  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-4-2-1"  
+class="td11">                         Veja como em:                                       </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-3-"><td  style="text-align:center; white-space:nowrap;" id="TBL-4-3-1"  
+class="td11">    <a 
+href="https://github.com/livroscolaborativos/CalculoNumerico" class="url" ><span 
+class="ec-lmtt-12">https://github.com/livroscolaborativos/CalculoNumerico</span></a>    </td>
+</tr><tr 
+class="hline"><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-4-4-"><td  style="text-align:center; white-space:nowrap;" id="TBL-4-4-1"  
+class="td11">                                                              </td></tr></table></div></div>
+                                                                          
+
+                                                                          
+   <div class="newtheorem">
+<!--l. 464--><p class="noindent" ><span class="head">
+<a 
+ id="x9-9001r1"></a>
+<span 
+class="ec-lmbx-12">ER 2.1.1.</span>  </span>Obtenha a representação do número <!--l. 465--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>2</mn><mn>5</mn><mi 
+>,</mi><mn>5</mn><mn>8</mn><mover 
+accent="true"><mrow 
+><mn>3</mn></mrow><mo accent="true">¯</mo></mover></math>
+na base <!--l. 465--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>6</mn></math>.
+   </div>
+<!--l. 466--><p class="indent" >    <!--resol begin--> <div class="resol"><span 
+class="ec-lmbx-12">Solu</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o. </span>Decompomos <!--l. 468--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>2</mn><mn>5</mn><mi 
+>,</mi><mn>5</mn><mn>8</mn><mover 
+accent="true"><mrow 
+><mn>3</mn></mrow><mo accent="true">¯</mo></mover></math>
+nas suas partes inteira <!--l. 468--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>2</mn><mn>5</mn></math>
+e fracionária <!--l. 468--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>5</mn><mn>8</mn><mover 
+accent="true"><mrow 
+><mn>3</mn></mrow><mo accent="true">¯</mo></mover></math>.
+Então, convertemos cada parte.
+<!--l. 470--><p class="noindent" ><span 
+class="ec-lmbx-12">Convers</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o da parte inteira. </span>Vamos escrever o número
+<!--l. 470--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>2</mn><mn>5</mn></math> na base
+<!--l. 470--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>6</mn></math>. Para tanto, fazemos
+sucessivas divisões por <!--l. 470--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>6</mn></math>
+como segue: <table class="equation"><tr><td>
+<!--l. 471--><p class="indent" >
+<!--l. 471--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x9-9002r21"  class="label" ></mstyle><!--endlabel-->   <mtable 
+class="equation"><mtr><mtd>
+   <mtable  
+columnalign="right left" class="split">
+<mtr class="split-mtr"><mtd 
+class="split-mtd"> <mn>1</mn><mn>2</mn><mn>5</mn></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><mn>0</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>6</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>5</mn><mspace width="1em" class="quad"/><mo 
+class="MathClass-open" stretchy="false">(</mo><mstyle 
+class="mbox"><mtext  ></mtext><mstyle 
+class="math"><mn>1</mn><mn>2</mn><mn>5</mn></mstyle><mtext  >&#x00A0;dividido&#x00A0;por&#x00A0;</mtext><mstyle 
+class="math"><mn>6</mn></mstyle><mtext  >&#x00A0;é&#x00A0;igual&#x00A0;a&#x00A0;</mtext><mstyle 
+class="math"><mn>2</mn><mn>0</mn></mstyle><mtext  >&#x00A0;e&#x00A0;resta&#x00A0;</mtext><mstyle 
+class="math"><mn>5</mn></mstyle><mtext  ></mtext></mstyle><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">    </mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>6</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>6</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>5</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>6</mn></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>6</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>5</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo></mtd>
+   </mtr></mtable>                                                                       </mtd><mtd>
+   </mtd></mtr></mtable>
+</math></td><td class="eq-no">(2.21)</td></tr></table>
+   logo <!--l. 477--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>2</mn><mn>5</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>3</mn><mn>2</mn><mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>6</mn></mrow></msub 
+></math>.
+<!--l. 517--><p class="indent" >   Estes cálculos podem ser feitos em <span class="obeylines-h"><code class="verb">Python</code></span> com o auxílio do operador <span class="obeylines-h"><code class="verb">%</code></span> e da
+função <span class="obeylines-h"><code class="verb">int</code></span>. Com o primeiro calculamos o resto da divisão entre dois
+números, enquanto que a segunda retorna a parte inteira de um número dado.
+No nosso exemplo, temos:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-8">
+&#x003E;&#x003E;&#x003E;&#x00A0;q&#x00A0;=&#x00A0;125;&#x00A0;d0&#x00A0;=&#x00A0;(q&#x00A0;%&#x00A0;6);&#x00A0;print(q,d0)
+&#x003E;&#x003E;&#x003E;&#x00A0;q&#x00A0;=&#x00A0;int(q/6);&#x00A0;d1&#x00A0;=&#x00A0;(q&#x00A0;%&#x00A0;6);&#x00A0;print(q,d1)
+&#x003E;&#x003E;&#x003E;&#x00A0;q&#x00A0;=&#x00A0;int(q/6);&#x00A0;d2&#x00A0;=&#x00A0;(q&#x00A0;%&#x00A0;6);&#x00A0;print(q,d2)
+</pre>
+<!--l. 522--><p class="nopar" >Verifique!
+<!--l. 527--><p class="indent" >   <span 
+class="ec-lmbx-12">Convers</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o da parte fracion</span><span 
+class="ec-lmbx-12">á</span><span 
+class="ec-lmbx-12">ria. </span>Para converter
+<!--l. 527--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>5</mn><mn>8</mn><mover 
+accent="true"><mrow 
+><mn>3</mn></mrow><mo accent="true">¯</mo></mover></math> para a base
+<!--l. 527--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>6</mn></math>, fazemos sucessivas
+multiplicações por <!--l. 527--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>6</mn></math>
+como segue: <table class="equation"><tr><td>
+<!--l. 528--><p class="indent" >
+<!--l. 528--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x9-9003r22"  class="label" ></mstyle><!--endlabel-->   <mtable 
+class="equation"><mtr><mtd>
+   <mtable  
+columnalign="right left" class="split">
+<mtr class="split-mtr"><mtd 
+class="split-mtd"> <mn>0</mn><mi 
+>,</mi><mn>5</mn><mn>8</mn><mover accent="false" 
+class="mml-overline"><mrow><mn>3</mn></mrow><mo 
+accent="true">¯</mo></mover></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn><mi 
+>,</mi><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>6</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+><mspace width="1em" class="quad"/><mo 
+class="MathClass-open" stretchy="false">(</mo><mstyle 
+class="mbox"><mtext  ></mtext><mstyle 
+class="math"><mn>0</mn><mi 
+>,</mi><mn>5</mn><mn>8</mn><mover accent="false" 
+class="mml-overline"><mrow><mn>3</mn></mrow><mo 
+accent="true">¯</mo></mover></mstyle><mtext  >&#x00A0;multiplicado&#x00A0;por&#x00A0;</mtext><mstyle 
+class="math"><mn>6</mn></mstyle><mtext  >&#x00A0;é&#x00A0;igual&#x00A0;a&#x00A0;</mtext><mstyle 
+class="math"><mn>3</mn><mi 
+>,</mi><mn>5</mn></mstyle><mtext  ></mtext></mstyle><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">      </mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>6</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mi 
+>,</mi><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>6</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">      </mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>6</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-open" stretchy="false">(</mo><mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>6</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>6</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">      </mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>6</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>6</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo></mtd>
+   </mtr></mtable>                                                                       </mtd><mtd>
+   </mtd></mtr></mtable>
+</math></td><td class="eq-no">(2.22)</td></tr></table>
+   logo <!--l. 536--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>5</mn><mn>8</mn><mover accent="false" 
+class="mml-overline"><mrow><mn>3</mn></mrow><mo 
+accent="true">¯</mo></mover> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mi 
+>,</mi><mn>3</mn><mn>3</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>6</mn></mrow></msub 
+></math>.
+Em <span class="obeylines-h"><code class="verb">Python</code></span>, é possível computar esta conversão de valores fracionários da
+seguinte maneira:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-9">
+&#x003E;&#x003E;&#x003E;&#x00A0;x&#x00A0;=&#x00A0;0.58&#x00A0;+&#x00A0;1/3/100;&#x00A0;print("x&#x00A0;=&#x00A0;{}".format(x))
+x&#x00A0;=&#x00A0;0.5833333333333333
+&#x003E;&#x003E;&#x003E;&#x00A0;d&#x00A0;=&#x00A0;int(6*x);&#x00A0;x&#x00A0;=&#x00A0;round(6*x,1)&#x00A0;-&#x00A0;d;&#x00A0;print("d&#x00A0;=&#x00A0;{},&#x00A0;x&#x00A0;=&#x00A0;{}".format(d,&#x00A0;x))
+d&#x00A0;=&#x00A0;3,&#x00A0;x&#x00A0;=&#x00A0;0.5
+&#x003E;&#x003E;&#x003E;&#x00A0;d&#x00A0;=&#x00A0;int(6*x);&#x00A0;x&#x00A0;=&#x00A0;round(6*x,1)&#x00A0;-&#x00A0;d;&#x00A0;print("d&#x00A0;=&#x00A0;{},&#x00A0;x&#x00A0;=&#x00A0;{}".format(d,&#x00A0;x))
+d&#x00A0;=&#x00A0;3,&#x00A0;x&#x00A0;=&#x00A0;0.0
+</pre>
+<!--l. 575--><p class="nopar" >
+                                                                          <div class="flushright" 
+>
+<!--l. 578--><p class="noindent" >
+<!--l. 578--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-ord">&#x2662;</mo></math></div>
+<!--l. 578--><p class="noindent" ></div> <!--resol end-->
+   <div class="newtheorem">
+<!--l. 580--><p class="noindent" ><span class="head">
+<a 
+ id="x9-9004r2"></a>
+<span 
+class="ec-lmbx-12">ER 2.1.2.</span>  </span>Obtenha a representação na base <!--l. 581--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>4</mn></math>
+do número <!--l. 581--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>1</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>.
+   </div>
+<!--l. 582--><p class="indent" >    <!--resol begin--> <div class="resol"><span 
+class="ec-lmbx-12">Solu</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o. </span>Começamos convertendo
+<!--l. 584--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>1</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math> para
+a base decimal: <table class="equation"><tr><td>
+<!--l. 585--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 585--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                 <mstyle 
+   id="x9-9005r23"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>1</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mn>0</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>2</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>5</mn><mi 
+>,</mi><mn>2</mn><mn>5</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.23)</td></tr></table>
+<!--l. 588--><p class="indent" >   Então, convertemos <!--l. 588--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>5</mn><mi 
+>,</mi><mn>2</mn><mn>5</mn></math>
+para a base <!--l. 588--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>4</mn></math>.
+Para sua parte inteira, temos <table class="equation"><tr><td>
+<!--l. 589--><p class="indent" >
+<!--l. 589--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                           <mstyle 
+   id="x9-9006r24"  class="label" ></mstyle><!--endlabel--><mn>5</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <mn>4</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>4</mn></mrow></msub 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.24)</td></tr></table>
+<!--l. 592--><p class="indent" >   Para sua parte fracionária, temos <table class="equation"><tr><td>
+<!--l. 593--><p class="indent" >
+<!--l. 593--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                          <mstyle 
+   id="x9-9007r25"  class="label" ></mstyle><!--endlabel--><mn>0</mn><mi 
+>,</mi><mn>2</mn><mn>5</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x22C5;</mo> <msup><mrow 
+><mn>4</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mi 
+>,</mi><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+>
+<mn>4</mn></mrow></msub 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.25)</td></tr></table>
+<!--l. 596--><p class="indent" >   Logo, <!--l. 596--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>1</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>1</mn><mi 
+>,</mi><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>4</mn></mrow></msub 
+></math>.
+Verifique estas contas no computador!
+                                                                          <div class="flushright" 
+>
+                                                                          
+
+                                                                          
+<!--l. 597--><p class="noindent" >
+<!--l. 597--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-ord">&#x2662;</mo></math></div>
+<!--l. 597--><p class="noindent" ></div> <!--resol end-->
+<!--l. 599--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x9-10000"></a>Exercícios</h4>
+<!--l. 601--><p class="noindent" >
+   <div class="newtheorem">
+<!--l. 602--><p class="noindent" ><span class="head">
+<a 
+ id="x9-10001r1"></a>
+<span 
+class="ec-lmbx-12">E 2.1.1.</span>  </span>Converta para base decimal cada um dos seguintes números:
+   <dl class="enumerate"><dt class="enumerate">
+a) </dt><dd 
+class="enumerate">
+   <!--l. 604--><p class="noindent" ><!--l. 604--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>
+   </dd><dt class="enumerate">
+b) </dt><dd 
+class="enumerate">
+   <!--l. 605--><p class="noindent" ><!--l. 605--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>3</mn></mrow></msub 
+></math>
+   </dd><dt class="enumerate">
+c) </dt><dd 
+class="enumerate">
+   <!--l. 606--><p class="noindent" ><!--l. 606--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mi 
+>b</mi></mrow></msub 
+></math>
+   </dd><dt class="enumerate">
+d) </dt><dd 
+class="enumerate">
+   <!--l. 607--><p class="noindent" ><!--l. 607--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>5</mn></mrow></msub 
+></math>
+   </dd><dt class="enumerate">
+e) </dt><dd 
+class="enumerate">
+   <!--l. 608--><p class="noindent" ><!--l. 608--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>A</mi><mi 
+>A</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>1</mn><mn>6</mn></mrow></msub 
+></math>
+                                                                          
+
+                                                                          
+   </dd><dt class="enumerate">
+ f) </dt><dd 
+class="enumerate">
+   <!--l. 609--><p class="noindent" ><!--l. 609--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>7</mn><mi 
+>,</mi><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>8</mn></mrow></msub 
+></math>
+   </dd><dt class="enumerate">
+g) </dt><dd 
+class="enumerate">
+   <!--l. 610--><p class="noindent" ><!--l. 610--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>3</mn><mi 
+>,</mi><mn>1</mn><mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>5</mn></mrow></msub 
+></math></dd></dl>
+   </div>
+<!--l. 612--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta. </span>a)&#x00A0;<!--l. 614--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>4</mn></math>;
+b)&#x00A0;<!--l. 614--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>9</mn></math>;
+c)&#x00A0;<!--l. 614--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></math>;
+d)&#x00A0;<!--l. 614--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>7</mn></math>;
+e)&#x00A0;<!--l. 614--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>7</mn><mn>0</mn></math>;
+f)&#x00A0;<!--l. 614--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>7</mn><mi 
+>,</mi><mn>1</mn><mn>2</mn><mn>5</mn></math>;
+g)&#x00A0;<!--l. 614--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>3</mn><mi 
+>,</mi><mn>2</mn><mn>8</mn></math>
+</div> <!--resp end-->
+   <div class="newtheorem">
+<!--l. 617--><p class="noindent" ><span class="head">
+<a 
+ id="x9-10009r2"></a>
+<span 
+class="ec-lmbx-12">E 2.1.2.</span>  </span>Escreva os números abaixo na base decimal.
+   <dl class="enumerate"><dt class="enumerate">
+a) </dt><dd 
+class="enumerate">
+   <!--l. 619--><p class="noindent" ><!--l. 619--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>2</mn><mn>5</mn><mi 
+>,</mi><mn>1</mn><mn>3</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>8</mn></mrow></msub 
+></math>
+   </dd><dt class="enumerate">
+b) </dt><dd 
+class="enumerate">
+   <!--l. 620--><p class="noindent" ><!--l. 620--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>1</mn><mi 
+>,</mi><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>
+   </dd><dt class="enumerate">
+c) </dt><dd 
+class="enumerate">
+   <!--l. 621--><p class="noindent" ><!--l. 621--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>2</mn><mi 
+>F</mi><mi 
+>,</mi><mn>4</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>1</mn><mn>6</mn></mrow></msub 
+></math>
+                                                                          
+
+                                                                          
+   </dd><dt class="enumerate">
+d) </dt><dd 
+class="enumerate">
+   <!--l. 622--><p class="noindent" ><!--l. 622--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>1</mn><mi 
+>,</mi><mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>3</mn></mrow></msub 
+></math></dd></dl>
+   </div>
+<!--l. 624--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta. </span>a)&#x00A0;<!--l. 626--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>2</mn><mn>1</mn><mi 
+>,</mi><mn>1</mn><mn>7</mn><mn>2</mn></math>;
+b)&#x00A0;<!--l. 626--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>5</mn><mi 
+>,</mi><mn>5</mn></math>;
+c)&#x00A0;<!--l. 626--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>3</mn><mn>0</mn><mn>3</mn><mi 
+>,</mi><mn>2</mn><mn>5</mn></math>;
+d)&#x00A0;<!--l. 626--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>4</mn><mi 
+>,</mi><mover 
+accent="true"><mrow 
+><mn>6</mn></mrow><mo accent="true">¯</mo></mover></math>.
+</div> <!--resp end-->
+   <div class="newtheorem">
+<!--l. 629--><p class="noindent" ><span class="head">
+<a 
+ id="x9-10010r3"></a>
+<span 
+class="ec-lmbx-12">E 2.1.3.</span>  </span>Escreva                                o                                número
+<!--l. 630--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>5</mn><mi 
+>,</mi><mn>5</mn></math>
+em base binária.
+   </div>
+<!--l. 631--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta. </span><!--l. 633--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>1</mn><mi 
+>,</mi><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>.
+</div> <!--resp end-->
+   <div class="newtheorem">
+<!--l. 636--><p class="noindent" ><span class="head">
+<a 
+ id="x9-10011r4"></a>
+<span 
+class="ec-lmbx-12">E 2.1.4.</span>  </span>Escreva o número <!--l. 637--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>7</mn><mi 
+>,</mi><mn>1</mn><mn>0</mn><mn>9</mn><mn>3</mn><mn>7</mn><mn>5</mn></math>
+em base hexadecimal (<!--l. 637--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>6</mn></math>).
+   </div>
+<!--l. 638--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta. </span><!--l. 639--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>1</mn><mi 
+>,</mi><mn>1</mn><mi 
+>C</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>1</mn><mn>6</mn></mrow></msub 
+></math>.
+</div> <!--resp end-->
+   <div class="newtheorem">
+<!--l. 642--><p class="noindent" ><span class="head">
+<a 
+ id="x9-10012r5"></a>
+                                                                          
+
+                                                                          
+<span 
+class="ec-lmbx-12">E 2.1.5.</span>  </span>Escreva cada número decimal na base
+<!--l. 642--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi></math>.
+   <dl class="enumerate"><dt class="enumerate">
+a) </dt><dd 
+class="enumerate">
+   <!--l. 644--><p class="noindent" ><!--l. 644--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>7</mn><mi 
+>,</mi><mover accent="false" 
+class="mml-overline"><mrow><mn>6</mn></mrow><mo 
+accent="true">¯</mo></mover></math>
+   na base <!--l. 644--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>5</mn></math>
+   </dd><dt class="enumerate">
+b) </dt><dd 
+class="enumerate">
+   <!--l. 645--><p class="noindent" ><!--l. 645--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>2</mn><mn>9</mn><mi 
+>,</mi><mn>1</mn><mover accent="false" 
+class="mml-overline"><mrow><mn>6</mn></mrow><mo 
+accent="true">¯</mo></mover></math>
+   na base <!--l. 645--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>6</mn></math></dd></dl>
+   </div>
+<!--l. 647--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta. </span>a)&#x00A0;<!--l. 649--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>2</mn><mi 
+>,</mi><mover 
+accent="true"><mrow 
+><mn>3</mn><mn>1</mn></mrow><mo accent="true">¯</mo></mover><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>5</mn></mrow></msub 
+></math>;
+b)&#x00A0;<!--l. 649--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>4</mn><mn>5</mn><mi 
+>,</mi><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>6</mn></mrow></msub 
+></math>.
+</div> <!--resp end-->
+   <div class="newtheorem">
+<!--l. 652--><p class="noindent" ><span class="head">
+<a 
+ id="x9-10015r6"></a>
+<span 
+class="ec-lmbx-12">E 2.1.6.</span>  </span>Escreva
+<!--l. 653--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>2</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo><mn>4</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>8</mn></mrow></msub 
+></math>
+em base decimal e binária.
+   </div>
+<!--l. 654--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta. </span><!--l. 656--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>0</mn><mi 
+>,</mi><mn>5</mn></math>;
+<!--l. 656--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>1</mn><mn>0</mn><mi 
+>,</mi><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>.
+</div> <!--resp end-->
+   <div class="newtheorem">
+<!--l. 659--><p class="noindent" ><span class="head">
+<a 
+ id="x9-10016r7"></a>
+<span 
+class="ec-lmbx-12">E 2.1.7.</span>  </span>Escreva cada número dado para a base
+<!--l. 659--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi></math>.
+                                                                          
+
+                                                                          
+   <dl class="enumerate"><dt class="enumerate">
+a) </dt><dd 
+class="enumerate">
+   <!--l. 661--><p class="noindent" ><!--l. 661--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>4</mn><mn>5</mn><mi 
+>,</mi><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>8</mn></mrow></msub 
+></math>
+   para a base <!--l. 661--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn></math>
+   </dd><dt class="enumerate">
+b) </dt><dd 
+class="enumerate">
+   <!--l. 662--><p class="noindent" ><!--l. 662--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>2</mn><mn>1</mn><mi 
+>,</mi><mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>8</mn></mrow></msub 
+></math>
+   para a base <!--l. 662--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>6</mn></math>
+   </dd><dt class="enumerate">
+c) </dt><dd 
+class="enumerate">
+   <!--l. 663--><p class="noindent" ><!--l. 663--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>0</mn><mn>1</mn><mi 
+>,</mi><mn>1</mn><mn>0</mn><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>
+   para a base <!--l. 663--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>8</mn></math>
+   </dd><dt class="enumerate">
+d) </dt><dd 
+class="enumerate">
+   <!--l. 664--><p class="noindent" ><!--l. 664--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>0</mn><mn>1</mn><mi 
+>,</mi><mn>1</mn><mn>0</mn><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>
+   para a base <!--l. 664--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>6</mn></math></dd></dl>
+   </div>
+<!--l. 666--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta. </span>a)&#x00A0;<!--l. 668--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>0</mn><mn>0</mn><mn>1</mn><mn>0</mn><mn>1</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>;
+b)&#x00A0;<!--l. 668--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>1</mn><mi 
+>,</mi><mn>4</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>1</mn><mn>6</mn></mrow></msub 
+></math>;
+c)&#x00A0;<!--l. 668--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn><mn>1</mn><mi 
+>,</mi><mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>8</mn></mrow></msub 
+></math>;
+d)&#x00A0;<!--l. 668--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>9</mn><mi 
+>,</mi><mi 
+>A</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>1</mn><mn>6</mn></mrow></msub 
+></math>.
+</div> <!--resp end-->
+   <div class="newtheorem">
+<!--l. 671--><p class="noindent" ><span class="head">
+<a 
+ id="x9-10017r8"></a>
+<span 
+class="ec-lmbx-12">E 2.1.8.</span>  </span>Quantos algarismos são necessários para representar o número
+<!--l. 671--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>9</mn><mn>3</mn><mn>7</mn><mn>1</mn><mn>6</mn><mn>3</mn><mn>8</mn><mn>3</mn><mn>2</mn><mn>1</mn><mn>7</mn><mn>3</mn><mn>9</mn><mn>4</mn><mn>7</mn></math>
+em        base        binária?        E        em        base        7?        Dica:
+Qual é o menor e o maior inteiro que pode ser escrito em dada base com
+<!--l. 671--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>N</mi></math>
+algarismos?
+                                                                          
+
+                                                                          
+   </div>
+<!--l. 672--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta. </span><!--l. 674--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>5</mn><mn>0</mn></math>;
+<!--l. 674--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>8</mn></math>.
+</div> <!--resp end-->
+                                                                          
+
+                                                                          
+   <!--l. 677--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse2.html" >next</a>] [<a 
+href="mainse1.html" >front</a>] [<a 
+href="mainch2.html#mainse1.html" >up</a>] </p></div>
+<!--l. 677--><p class="indent" >   <a 
+ id="tailmainse1.html"></a>   
+</body></html> 

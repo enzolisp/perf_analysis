@@ -1,0 +1,1243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>Validaçao e &#8220;Benchmarking&#8221;</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 2772--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse67.html" >next</a>] [<a 
+href="mainse65.html" >prev</a>] [<a 
+href="mainse65.html#tailmainse65.html" >prev-tail</a>] [<a 
+href="#tailmainse66.html">tail</a>] [<a 
+href="mainch10.html#mainse66.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">10.15   </span> <a 
+ id="x119-23500010.15"></a>Validação e &#8220;Benchmarking&#8221;</h3>
+<a 
+ id="dx119-235001"></a>
+<a 
+ id="dx119-235002"></a>
+<!--l. 2773--><p class="noindent" >Toda metodologia numérica deve ser validada ao ser aplicada para resolver
+um problema. A validação aumenta a confiabilidade na qualidade dos
+resultados obtidos. A validação procura detectar erros de implementação,
+características numéricas espúrias não prevista em projeto, como
+propagação catastrófica erros de arrendodamento, inadequação do método
+para o problema proposto etc. A principal técnica de validação consiste
+em comparar a solução produzida com soluções de alta qualidade e
+confiabilidade, os chamados <span 
+class="ec-lmri-12">benchmarks</span>. Quando um <span 
+class="ec-lmri-12">benchmark </span>não estiver
+disponível, ainda se dispõe de algumas técnicas para avaliar a qualidade do
+método. Existe uma hierarquia das técnicas de validação conforme listados a
+seguir:
+      <dl class="enumerate"><dt class="enumerate">
+   1. </dt><dd 
+class="enumerate">
+      <!--l. 2775--><p class="noindent" >Expressão analítica: Testar o código com problemas que admitem
+      soluções   analíticas   constitui   a   forma   mais   confiável   para
+      validar  o  esquema  usado.  Expressões  analíticas  são  expressões
+      matemáticas das seguintes formas:
+      <!--l. 2776--><p class="noindent" >&#x00A0;     Expressão aritmética: Expressões envolvendo apenas um número
+      finito de operações aritméticas elementares (soma, subtração,
+      multiplicação e divisão) e números inteiros. Ex: <!--l. 2776--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><msup><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+><mo 
+class="MathClass-bin" stretchy="false">+</mo><mn>1</mn></mrow> 
+<mrow 
+><mn>3</mn><mi 
+>t</mi><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>4</mn></mrow></mfrac></math>
+      ou <!--l. 2776--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><mn>3</mn></mrow> 
+<mrow 
+><mn>4</mn></mrow></mfrac><mo 
+class="MathClass-punc" stretchy="false">.</mo></math>
+      <!--l. 2777--><p class="noindent" >&#x00A0;     Expressão algébrica: Expressões envolvendo apenas um número
+      finito de operações aritméticas elementares e expoentes fracionários.
+      Ex: <!--l. 2777--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msqrt><mrow><mi 
+>t</mi></mrow></msqrt></math>
+      ou <!--l. 2777--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mn>3</mn><mo 
+class="MathClass-bin" stretchy="false">&#x2215;</mo><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msqrt><mrow><mn>2</mn></mrow></msqrt></math>.
+      <!--l. 2778--><p class="noindent" >&#x00A0;     Expressão  forma-fechada:  Expressões  envolvendo  apenas  um
+                                                                          
+
+                                                                          
+      número  finito  de  operações  aritméticas  elementares,  expoentes
+      reais, logaritmos, exponencias, funções trigonométricas e funções
+      trigonométricas inversas. Ex: <!--l. 2778--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo><mtext class="qopname"> ln</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msup><mrow 
+><mi 
+>t</mi></mrow><mrow 
+><mi 
+>&#x03C0;</mi></mrow></msup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></math>,
+      <!--l. 2778--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mi 
+>t</mi></mrow></msup 
+><mtext class="qopname"> sen</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--> <mspace width="0.17em" class="thinspace"/><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>
+      ou <!--l. 2778--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo><msup><mrow 
+><mtext class="qopname"> tan</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--> </mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></math>.
+      <!--l. 2779--><p class="noindent" >&#x00A0;     Expressão                                                        envolvendo
+      funções especiais: Além das operações e funções acima, são
+      permitidas funções especiais, como a função gama, funções de
+      Bessel, séries de taylor, series de Fourier e outras séries envolvendo
+      funções elementares e especiais.
+      </dd><dt class="enumerate">
+   2. </dt><dd 
+class="enumerate">
+      <!--l. 2780--><p class="noindent" >Expressão matemática semi-analítica: Expressão matemática envolvendo,
+      além das operações e funções acima, outros processos de limite,
+      como derivação e integração. Ex: <!--l. 2780--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo><msubsup><mrow 
+> <mo>&#x222B;</mo>
+ <!--nolimits--><!--nolimits--></mrow><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>1</mn></mrow></msubsup 
+><mtext class="qopname"> log</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--> <mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>t</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>x</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>t</mi></mrow></msup 
+><mi 
+>d</mi><mi 
+>x</mi></math>.
+      </dd><dt class="enumerate">
+   3. </dt><dd 
+class="enumerate">
+      <!--l. 2781--><p class="noindent" >Solução numérica com reformulação analítica prévia: Neste
+      caso,  não  se  dispõe  de  uma  expressão  matemática  para  a
+      solução, mas pode-se comparar resultado produzido pelo método
+      numérico com outro problema numérico cuja solução é a mesma
+      e pode ser obtida por outra metodologia numérica mais confiável.
+      </dd><dt class="enumerate">
+   4. </dt><dd 
+class="enumerate">
+      <!--l. 2782--><p class="noindent" >Benchmark   puramente   numérico:   Um   <span 
+class="ec-lmri-12">benchmark   </span>puramente
+      numérico  é  uma  aproximação  numérica  para  a  solução  de
+      um  problema  muito  bem  estabelecida  e  de  alta  confiabilidade.  Os
+      benchmarks  numéricos  normalmente  são  produzidos  comparando
+      diversos métodos numéricos diferentes e independentes e com grande
+      refinamento.
+      </dd><dt class="enumerate">
+   5. </dt><dd 
+class="enumerate">
+      <!--l. 2783--><p class="noindent" >Validação   por   comparação:   Quando   não   se   dispõe   de
+                                                                          
+
+                                                                          
+      <span 
+class="ec-lmri-12">benchmarks</span>, ainda se pode comparar o resultado obtido com outros
+      métodos  numéricos.  Em  caso  de  divergência,  pode  ser  bastante
+      difícil dissernir qual método produz melhores resultados.
+      </dd><dt class="enumerate">
+   6. </dt><dd 
+class="enumerate">
+      <!--l. 2784--><p class="noindent" >Convergência  numérica:  Este  é  o  teste  mais  rudimentar  que  se
+      aplica a métodos e numéricos e consiste em comparar o resultados
+      produzidos com diferentes malhas de cálculo diferentes. Espera-se que
+      o refino da malha produza soluções que convergem para a soluçao
+      exata. Resultados muito próximos entre refinos sugere qualidade nos
+      resultados.</dd></dl>
+   <div class="newtheorem">
+<!--l. 2788--><p class="noindent" ><span class="head">
+<a 
+ id="x119-235009r1"></a>
+<span 
+class="ec-lmbx-12">Exemplo 10.15.1 </span>(Expressão analítica)<span 
+class="ec-lmbx-12">.</span>  </span>A solução do problema de valor
+inicial estudado no Exercício Resolvido&#x00A0;<a 
+href="mainse53.html#x105-193001r1">10.2.1<!--tex4ht:ref: exeresol:exeresol1 --></a> dado por:
+<!--tex4ht:inline--><!--l. 2789--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>0</mn><mi 
+>,</mi><mn>5</mn><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>t</mi><mi 
+>,</mi></mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.372)</mtext><mtext 
+   id="x119-235010r10.372"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1"> <mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mn>8</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo>               </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.373)</mtext><mtext 
+   id="x119-235010r10.373"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>                                             </mtr></mtable>
+</math>
+<!--l. 2792--><p class="nopar" >
+                                                                          
+
+                                                                          
+<!--l. 2793--><p class="indent" >   admite uma solução em forma de expressão analítica dada por:
+<table class="equation"><tr><td>
+<!--l. 2794--><p class="indent" >
+<!--l. 2794--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                            <mstyle 
+   id="x119-235011r374"  class="label" ></mstyle><!--endlabel--><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><mi 
+>t</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>8</mn><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mi 
+>t</mi><mo 
+class="MathClass-bin" stretchy="false">&#x2215;</mo><mn>2</mn></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(10.374)</td></tr></table>
+   </div>
+<!--l. 2797--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 2799--><p class="noindent" ><span class="head">
+<a 
+ id="x119-235012r2"></a>
+<span 
+class="ec-lmbx-12">Exemplo 10.15.2 </span>(Expressão envolvendo funções especiais)<span 
+class="ec-lmbx-12">.</span>  </span>A solução do
+problema de valor inicial dado por:
+                                                                          
+
+                                                                          
+<!--tex4ht:inline--><!--l. 2800--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mo 
+class="MathClass-bin" stretchy="false">-</mo><msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.375)</mtext><mtext 
+   id="x119-235013r10.375"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1"> <mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mfrac><mrow 
+><mn>1</mn></mrow>
+<mrow 
+><mn>2</mn></mrow></mfrac>             </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.376)</mtext><mtext 
+   id="x119-235013r10.376"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>                                               </mtr></mtable>
+</math>
+<!--l. 2803--><p class="nopar" >
+<!--l. 2804--><p class="indent" >   é dada na forma:
+<!--tex4ht:inline--><!--l. 2805--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo>        <mfrac><mrow 
+><mn>1</mn></mrow> 
+<mrow 
+><mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>W</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mn>1</mn><mo 
+class="MathClass-bin" stretchy="false">-</mo><mi 
+>t</mi></mrow></msup 
+><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></mfrac></mtd><mtd 
+class="eqnarray-2">   </mtd><mtd 
+class="eqnarray-3">   </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.377)</mtext><mtext 
+   id="x119-235014r10.377"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>                                                </mtr></mtable>
+</math>
+<!--l. 2807--><p class="nopar" >
+<!--l. 2808--><p class="indent" >   onde <!--l. 2808--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>W</mi></math>
+é a função de Lambert é a função inversa de
+<!--l. 2808--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>f</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>y</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>y</mi><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><mi 
+>y</mi></mrow></msup 
+></math>, onde
+<!--l. 2808--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>W</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>.
+   </div>
+                                                                          
+
+                                                                          
+<!--l. 2809--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 2812--><p class="noindent" ><span class="head">
+<a 
+ id="x119-235015r3"></a>
+<span 
+class="ec-lmbx-12">Exemplo 10.15.3 </span>(Expressão matemática semi-analítica)<span 
+class="ec-lmbx-12">.</span>  </span>A solução do
+problema de valor inicial dado por:
+<!--tex4ht:inline--><!--l. 2813--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1">    <msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>5</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msup 
+></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-bin" stretchy="false">+</mo></mtd><mtd 
+class="eqnarray-3">   <mi 
+>a</mi><msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>4</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>b</mi><msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mi>&#x2034;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>c</mi><msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mi>&#x2033;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>d</mi><msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.378)</mtext><mtext 
+   id="x119-235016r10.378"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1"> <msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>4</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mi>&#x2034;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mi>&#x2033;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo>             </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.379)</mtext><mtext 
+   id="x119-235016r10.379"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>                     </mtr></mtable>
+</math>
+<!--l. 2816--><p class="nopar" >
+<!--l. 2817--><p class="indent" >   é dada na forma:
+                                                                          
+
+                                                                          
+<!--tex4ht:inline--><!--l. 2818--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>A</mi><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><msub><mrow 
+><mi 
+>r</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mi 
+>t</mi></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>B</mi><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><msub><mrow 
+><mi 
+>r</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mi 
+>t</mi></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>C</mi><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><msub><mrow 
+><mi 
+>r</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+><mi 
+>t</mi></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>D</mi><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><msub><mrow 
+><mi 
+>r</mi></mrow><mrow 
+><mn>4</mn></mrow></msub 
+><mi 
+>t</mi></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>E</mi><msup><mrow 
+><mi 
+>e</mi></mrow><mrow 
+><msub><mrow 
+><mi 
+>r</mi></mrow><mrow 
+><mn>5</mn></mrow></msub 
+><mi 
+>t</mi></mrow></msup 
+></mtd><mtd 
+class="eqnarray-2">   </mtd><mtd 
+class="eqnarray-3">   </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.380)</mtext><mtext 
+   id="x119-235017r10.380"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>                    </mtr></mtable>
+</math>
+<!--l. 2820--><p class="nopar" >
+<!--l. 2821--><p class="indent" >   onde <!--l. 2821--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>r</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></math>,
+<!--l. 2821--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>r</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>,
+<!--l. 2821--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>r</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+></math>,
+<!--l. 2821--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>r</mi></mrow><mrow 
+><mn>4</mn></mrow></msub 
+></math> e
+<!--l. 2821--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>r</mi></mrow><mrow 
+><mn>5</mn></mrow></msub 
+></math> são
+as raízes do polinômio característico <table class="equation"><tr><td>
+<!--l. 2821--><p class="indent" >
+<!--l. 2821--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                   <mstyle 
+   id="x119-235018r381"  class="label" ></mstyle><!--endlabel--><mi 
+>p</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>5</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>a</mi><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>4</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>b</mi><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>c</mi><msup><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>d</mi><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(10.381)</td></tr></table>
+<!--l. 2822--><p class="indent" >   cujas raízes, salvo casos particulares, só pode ser obtida por aproximações
+numéricas.
+   </div>
+<!--l. 2823--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 2826--><p class="noindent" ><span class="head">
+<a 
+ id="x119-235019r4"></a>
+                                                                          
+
+                                                                          
+<span 
+class="ec-lmbx-12">Exemplo 10.15.4 </span>(Solução numérica com reformulação analítica prévia)<span 
+class="ec-lmbx-12">.</span>
+</span>A solução do problema de valor inicial dado por:
+<!--tex4ht:inline--><!--l. 2827--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn></mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.382)</mtext><mtext 
+   id="x119-235020r10.382"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1"> <mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mn>0</mn>                             </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.383)</mtext><mtext 
+   id="x119-235020r10.383"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>                                       </mtr></mtable>
+</math>
+<!--l. 2830--><p class="nopar" >
+<!--l. 2831--><p class="indent" >   é dada na forma:
+                                                                          
+
+                                                                          
+<!--tex4ht:inline--><!--l. 2832--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <mtext class="qopname">ln</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--> <mrow><mo fence="true" form="prefix"> (</mo><mrow><mfrac><mrow 
+><msup><mrow 
+> <mrow><mo fence="true" form="prefix"> (</mo><mrow><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn></mrow><mo fence="true" form="postfix">)</mo></mrow> </mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow> 
+<mrow 
+><mi 
+>u</mi><msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mrow 
+><mn>2</mn></mrow></msup 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>1</mn></mrow></mfrac> </mrow><mo fence="true" form="postfix">)</mo></mrow> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn><mtext class="qopname"> arctan</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--> <mrow><mo fence="true" form="prefix"> (</mo><mrow><mi 
+>u</mi> <mrow><mo fence="true" form="prefix"> (</mo><mrow><mi 
+>t</mi></mrow><mo fence="true" form="postfix">)</mo></mrow></mrow><mo fence="true" form="postfix">)</mo></mrow> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>4</mn><mi 
+>t</mi></mtd><mtd 
+class="eqnarray-2">   </mtd><mtd 
+class="eqnarray-3">   </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.384)</mtext><mtext 
+   id="x119-235021r10.384"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>                                   </mtr></mtable>
+</math>
+<!--l. 2834--><p class="nopar" >
+<!--l. 2835--><p class="indent" >   Esta analítica estabelece uma relação funcional implícita entre
+<!--l. 2835--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>t</mi></math> e
+<!--l. 2835--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>, no
+entanto, é necessário resolver uma equação algébrica não-linear para cada
+<!--l. 2835--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>t</mi></math>.
+Ainda assim, pode ser um excelente benchmark, pois o valor de
+<!--l. 2835--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math> é dado explicitamente
+em função de <!--l. 2835--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>t</mi></math>, isto é,
+podemos ver <!--l. 2835--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>t</mi></math> como uma
+função de <!--l. 2835--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi></math>. Por exemplo,
+é fácil descobrir que <!--l. 2835--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></math>
+quando <!--l. 2835--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>t</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><mtext class="qopname"> ln</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>2</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow> 
+   <mrow 
+><mn>4</mn></mrow></mfrac>    <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><mi 
+>&#x03C0;</mi></mrow> 
+<mrow 
+><mn>8</mn></mrow></mfrac>  <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>0</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo><mn>5</mn><mn>6</mn><mn>5</mn><mn>9</mn><mn>8</mn><mn>5</mn><mn>8</mn><mn>7</mn><mn>6</mn><mn>8</mn><mn>3</mn><mn>8</mn><mn>7</mn><mn>1</mn><mn>0</mn><mn>4</mn></math>. Além disso
+tomando o limite <!--l. 2835--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2192;</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo><mi 
+>&#x221E;</mi></math>,
+descobrimos que <!--l. 2835--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math> tende
+a infinito quando <!--l. 2835--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>t</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x2192;</mo> <mfrac><mrow 
+><mi 
+>&#x03C0;</mi></mrow> 
+<mrow 
+><mn>4</mn></mrow></mfrac> <mo 
+class="MathClass-bin" stretchy="false">-</mo></math>.
+   </div>
+<!--l. 2836--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 2838--><p class="noindent" ><span class="head">
+<a 
+ id="x119-235022r5"></a>
+<span 
+class="ec-lmbx-12">Exemplo 10.15.5 </span>(Solução numérica com reformulação analítica prévia)<span 
+class="ec-lmbx-12">.</span>
+</span>A solução do problema de valor inicial dado por:
+                                                                          
+
+                                                                          
+<!--tex4ht:inline--><!--l. 2839--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <msup><mrow 
+><mi 
+>u</mi></mrow><mrow 
+><mi 
+>&#x2032;</mi></mrow></msup 
+><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtext class="qopname">cos</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--> <mrow><mo fence="true" form="prefix"> (</mo><mrow><mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mo fence="true" form="postfix">)</mo></mrow> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow><mo fence="true" form="postfix">]</mo></mrow> <mo 
+class="MathClass-open" stretchy="false">(</mo><mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo><mtext class="qopname"> cos</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.385)</mtext><mtext 
+   id="x119-235023r10.385"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1"> <mi 
+>u</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mn>0</mn>                                  </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.386)</mtext><mtext 
+   id="x119-235023r10.386"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>                                   </mtr></mtable>
+</math>
+<!--l. 2842--><p class="nopar" >
+<!--l. 2843--><p class="indent" >   é dada na forma:
+<!--tex4ht:inline--><!--l. 2844--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <msubsup><mrow 
+><mo  
+>&#x222B;
+ <!--nolimits--></mo><!--nolimits--></mrow><mrow 
+><mn>0</mn></mrow><mrow 
+><mi 
+>y</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mrow></msubsup 
+>        <mfrac><mrow 
+><mi 
+>d</mi><mi 
+>&#x03C4;</mi></mrow>
+<mrow 
+><mtext class="qopname"> cos</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>&#x03C4;</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>&#x03C4;</mi></mrow></mfrac> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>t</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo><mtext class="qopname"> sen</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--> <mspace width="0.17em" class="thinspace"/><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-2">   </mtd><mtd 
+class="eqnarray-3">   </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.387)</mtext><mtext 
+   id="x119-235024r10.387"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>                                      </mtr></mtable>
+</math>
+<!--l. 2846--><p class="nopar" >
+<!--l. 2847--><p class="indent" >   Esta expressão reformula o problema como uma equação integral em
+<!--l. 2847--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>. Esta nova
+reformulação pode ser bastante útil para produzir resultados de benchmark se fixamos
+                                                                          
+
+                                                                          
+o forma de <!--l. 2847--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math>,
+usamos uma técnica de quadratura númerica de boa qualidade para
+aproximar a integral do lado esquerdo da equação. Por exemplo, escolhendo
+<!--l. 2847--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>t</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>y</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>0</mn><mn>0</mn></math>,
+temos:
+<!--tex4ht:inline--><!--l. 2848--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <msubsup><mrow 
+><mo  
+>&#x222B;
+ <!--nolimits--></mo><!--nolimits--></mrow><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>1</mn><mn>0</mn><mn>0</mn></mrow></msubsup 
+>        <mfrac><mrow 
+><mi 
+>d</mi><mi 
+>&#x03C4;</mi></mrow>
+<mrow 
+><mtext class="qopname"> cos</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>&#x03C4;</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>&#x03C4;</mi></mrow></mfrac> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>5</mn><mi 
+>,</mi><mn>5</mn><mn>7</mn><mn>4</mn><mn>3</mn><mn>0</mn><mn>4</mn><mn>7</mn><mn>1</mn><mn>7</mn><mn>2</mn><mn>9</mn><mn>8</mn><mn>4</mn><mn>0</mn><mn>0</mn></mtd><mtd 
+class="eqnarray-2">   </mtd><mtd 
+class="eqnarray-3">   </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(10.388)</mtext><mtext 
+   id="x119-235025r10.388"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>                             </mtr></mtable>
+</math>
+<!--l. 2850--><p class="nopar" >
+<!--l. 2851--><p class="indent" >   Resolvendo a equação algébrica <table class="equation"><tr><td>
+<!--l. 2852--><p class="indent" >
+<!--l. 2852--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                     <mstyle 
+   id="x119-235026r389"  class="label" ></mstyle><!--endlabel--><mi 
+>t</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo><mtext class="qopname"> sen</mtext><mo> &#x2061;<!--FUNCTION APPLICATION--> </mo><!--nolimits--> <mspace width="0.17em" class="thinspace"/><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>5</mn><mi 
+>,</mi><mn>5</mn><mn>7</mn><mn>4</mn><mn>3</mn><mn>0</mn><mn>4</mn><mn>7</mn><mn>1</mn><mn>7</mn><mn>2</mn><mn>9</mn><mn>8</mn><mn>4</mn><mn>0</mn><mn>0</mn><mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(10.389)</td></tr></table>
+<!--l. 2853--><p class="indent" >   obtemos: <table class="equation"><tr><td>
+<!--l. 2854--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 2854--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                          <mstyle 
+   id="x119-235027r390"  class="label" ></mstyle><!--endlabel--><mi 
+>t</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>5</mn><mi 
+>,</mi><mn>9</mn><mn>2</mn><mn>4</mn><mn>9</mn><mn>3</mn><mn>8</mn><mn>0</mn><mn>3</mn><mn>6</mn><mn>5</mn><mn>0</mn><mn>3</mn><mn>0</mn><mn>8</mn><mn>3</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(10.390)</td></tr></table>
+<!--l. 2855--><p class="indent" >   A tabela a seguir mostra os valores de
+<!--l. 2855--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>t</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></math> para
+<!--l. 2855--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>t</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>5</mn><mi 
+>,</mi><mn>9</mn><mn>2</mn><mn>4</mn><mn>9</mn><mn>3</mn><mn>8</mn><mn>0</mn><mn>3</mn><mn>6</mn><mn>5</mn><mn>0</mn><mn>3</mn><mn>0</mn><mn>8</mn><mn>3</mn></math>
+obtidos por quatro métodos de quarta-ordem: Runge-Kutta clássico,
+Adams-Bashforth, preditor-corretor com Adams-Bashforth quarta ordem e
+Adams-Moulton quarta ordem e Adams-Moulton. Os últimos três métodos
+foram inicializados com Runge-Kutta clássico de quarta ordem.
+   <div class="tabular"> <table id="TBL-486" class="tabular" 
+rules="groups" 
+><colgroup id="TBL-486-1g"><col 
+id="TBL-486-1"></colgroup><colgroup id="TBL-486-2g"><col 
+id="TBL-486-2"></colgroup><colgroup id="TBL-486-3g"><col 
+id="TBL-486-3"></colgroup><colgroup id="TBL-486-4g"><col 
+id="TBL-486-4"></colgroup><colgroup id="TBL-486-5g"><col 
+id="TBL-486-5"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-486-1-"><td  style="text-align:center; white-space:nowrap;" id="TBL-486-1-1"  
+class="td11">                 </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-1-2"  
+class="td11"> <!--l. 2859--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>h</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-1-3"  
+class="td11"> <!--l. 2859--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>h</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-1-4"  
+class="td11"> <!--l. 2859--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>h</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></msup 
+></math>  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-1-5"  
+class="td11"> <!--l. 2859--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>h</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>4</mn></mrow></msup 
+></math>  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-486-2-"><td  style="text-align:center; white-space:nowrap;" id="TBL-486-2-1"  
+class="td11">   Runge-Kutta 4    </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-2-2"  
+class="td11">                            95,02737096                                           </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-2-3"  
+class="td11">                            99,04376734                                           </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-2-4"  
+class="td11">                            99,81705606                                           </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-2-5"  
+class="td11">                            99,9925711                                            </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-486-3-"><td  style="text-align:center; white-space:nowrap;" id="TBL-486-3-1"  
+class="td11"> Adams-Bashforth 4  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-3-2"  
+class="td11">                            94,68537569                                           </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-3-3"  
+class="td11">                            99,04349066                                           </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-3-4"  
+class="td11">                            99,81705572                                           </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-3-5"  
+class="td11">                            99,9925711                                            </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-486-4-"><td  style="text-align:center; white-space:nowrap;" id="TBL-486-4-1"  
+class="td11">    Pred. Corr. 4      </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-4-2"  
+class="td11">                            94,68537569                                           </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-4-3"  
+class="td11">                            99,04349066                                           </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-4-4"  
+class="td11">                            99,81705572                                           </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-4-5"  
+class="td11">                            99,9925711                                            </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-486-5-"><td  style="text-align:center; white-space:nowrap;" id="TBL-486-5-1"  
+class="td11">  Adams-Moulton 4  </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-5-2"  
+class="td11">                            94,71724913                                           </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-5-3"  
+class="td11">                            99,04324261                                           </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-5-4"  
+class="td11">                            99,81705570                                           </td><td  style="text-align:center; white-space:nowrap;" id="TBL-486-5-5"  
+class="td11">                            99,9925711                                            </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-486-6-"><td  style="text-align:center; white-space:nowrap;" id="TBL-486-6-1"  
+class="td11">                  </td> </tr></table>                                                                                                                                                                                                                                                                             </div>
+Para <!--l. 2870--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>h</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>6</mn></mrow></msup 
+></math>,
+todos os quatro métodos produzem o resultado
+<!--l. 2870--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>9</mn><mn>9</mn><mi 
+>,</mi><mn>9</mn><mn>9</mn><mn>9</mn><mn>9</mn><mn>9</mn><mn>2</mn><mn>8</mn><mn>7</mn></math>.
+   </div>
+<!--l. 2871--><p class="indent" >
+                                                                          
+
+                                                                          
+   <!--l. 2873--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse67.html" >next</a>] [<a 
+href="mainse65.html" >prev</a>] [<a 
+href="mainse65.html#tailmainse65.html" >prev-tail</a>] [<a 
+href="mainse66.html" >front</a>] [<a 
+href="mainch10.html#mainse66.html" >up</a>] </p></div>
+<!--l. 2873--><p class="indent" >   <a 
+ id="tailmainse66.html"></a>  
+</body></html> 

@@ -1,0 +1,375 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>Matrizes</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 184--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse73.html" >next</a>] [<a 
+href="mainse71.html" >prev</a>] [<a 
+href="mainse71.html#tailmainse71.html" >prev-tail</a>] [<a 
+href="#tailmainse72.html">tail</a>] [<a 
+href="mainap1.html#mainse72.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">A.3   </span> <a 
+ id="x129-250000A.3"></a>Matrizes</h3>
+<a 
+ id="dx129-250001"></a>
+<!--l. 186--><p class="noindent" >Em <span class="obeylines-h"><code class="verb">Python</code></span>, temos um ótimo suporte para computação científica com o pacote  <a 
+href="http://www.numpy.org/" >numpy</a>.
+Uma matriz <!--l. 186--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msubsup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">[</mo><msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>i</mi><mi 
+>,</mi><mi 
+>j</mi></mrow></msub 
+><mo 
+class="MathClass-close" stretchy="false">]</mo></mrow><mrow 
+><mi 
+>i</mi><mi 
+>,</mi><mi 
+>j</mi><mo 
+class="MathClass-rel" stretchy="false">=</mo><mn>1</mn></mrow><mrow 
+><mi 
+>m</mi><mi 
+>,</mi><mi 
+>n</mi></mrow></msubsup 
+></math>
+em Python é definida usando-se a seguinte sintaxe:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-109">
+&#x003E;&#x003E;&#x003E;&#x00A0;import&#x00A0;numpy&#x00A0;as&#x00A0;np
+&#x003E;&#x003E;&#x003E;&#x00A0;A&#x00A0;=&#x00A0;np.array([[&#x00A0;a11&#x00A0;,&#x00A0;a12&#x00A0;,&#x00A0;...&#x00A0;,&#x00A0;a1n],&#x00A0;[...].&#x00A0;[am1&#x00A0;,&#x00A0;am2&#x00A0;,&#x00A0;...&#x00A0;,&#x00A0;amn]])
+</pre>
+<!--l. 190--><p class="nopar" >
+   <div class="newtheorem">
+<!--l. 192--><p class="noindent" ><span class="head">
+<a 
+ id="x129-250002r1"></a>
+<span 
+class="ec-lmbx-12">Exemplo A.3.1.</span>  </span>Defina a matriz: <table class="equation"><tr><td>
+<!--l. 194--><p class="indent" >
+<!--l. 194--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x129-250003r1"  class="label" ></mstyle><!--endlabel--><mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> [</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>3</mn> </mtd></mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <mn>4</mn> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mn>5</mn> </mtd> <mtd 
+class="array-td"  columnalign="center">  <mn>6</mn></mtd></mtr> <!--ccc--></mtable>                                                                                      </mrow><mo fence="true" form="postfix">]</mo></mrow>
+</math></td><td class="eq-no">(A.1)</td></tr></table>
+   </div>
+<!--l. 202--><p class="indent" >    <span 
+class="ec-lmbx-12">Solu</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o. </span>Em <span class="obeylines-h"><code class="verb">Python</code></span>, digitamos:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-110">
+&#x003E;&#x003E;&#x003E;&#x00A0;import&#x00A0;numpy&#x00A0;as&#x00A0;np
+&#x003E;&#x003E;&#x003E;&#x00A0;A&#x00A0;=&#x00A0;np.array([[1,2,3],
+...&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;[4,5,6]])
+&#x003E;&#x003E;&#x003E;&#x00A0;print(A)
+[[1&#x00A0;2&#x00A0;3]
+&#x00A0;[4&#x00A0;5&#x00A0;6]]
+</pre>
+<!--l. 212--><p class="nopar" >
+                                                                          <div class="flushright" 
+>
+<!--l. 213--><p class="noindent" >
+<!--l. 213--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-ord">&#x2662;</mo></math></div>
+<!--l. 215--><p class="indent" >   A seguinte lista contém uma série de funções que geram matrizes
+particulares:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-111">
+numpy.eye&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;matriz&#x00A0;identidade
+numpy.linspace&#x00A0;vetor&#x00A0;de&#x00A0;elementos&#x00A0;linearmente&#x00A0;espaçados
+numpy.ones&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;matriz&#x00A0;cheia&#x00A0;de&#x00A0;uns
+numpy.zeros&#x00A0;&#x00A0;&#x00A0;&#x00A0;matriz&#x00A0;nula
+</pre>
+<!--l. 221--><p class="nopar" >
+<!--l. 223--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">A.3.1   </span> <a 
+ id="x129-251000A.3.1"></a>Obtendo dados de uma matriz</h4>
+<!--l. 225--><p class="noindent" >A função <span class="obeylines-h"><code class="verb">numpy.shape</code></span> retorna o tamanho de uma matriz, por exemplo:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-112">
+&#x003E;&#x003E;&#x003E;&#x00A0;A&#x00A0;=&#x00A0;np.ones((3,2))
+&#x003E;&#x003E;&#x003E;&#x00A0;print(A)
+[[&#x00A0;1.&#x00A0;&#x00A0;1.]
+&#x00A0;[&#x00A0;1.&#x00A0;&#x00A0;1.]
+&#x00A0;[&#x00A0;1.&#x00A0;&#x00A0;1.]]
+&#x003E;&#x003E;&#x003E;&#x00A0;nl,&#x00A0;nc&#x00A0;=&#x00A0;np.shape(A)
+&#x003E;&#x003E;&#x003E;&#x00A0;print(nl,nc)
+(3,&#x00A0;2)
+</pre>
+<!--l. 235--><p class="nopar" >informando que a matriz <span class="obeylines-h"><code class="verb">A</code></span> tem três linhas e duas colunas.
+<!--l. 238--><p class="indent" >   Existem vários métodos para acessar os elementos de uma matriz dada
+<span class="obeylines-h"><code class="verb">A</code></span>:
+      <ul class="itemize1">
+      <li class="itemize">
+      <!--l. 240--><p class="noindent" >a matriz inteira acessa-se com a sintaxe:
+                                                                          
+
+                                                                          
+      <pre class="verbatim" id="verbatim-113">
+      A
+</pre>
+      <!--l. 243--><p class="nopar" >
+      </li>
+      <li class="itemize">
+      <!--l. 244--><p class="noindent" >o elemento da <!--l. 244--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>i</mi></math>-ésima
+      linha e <!--l. 244--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>j</mi></math>-ésima
+      coluna acessa-se usando a sintaxe:
+                                                                          
+
+                                                                          
+      <pre class="verbatim" id="verbatim-114">
+      A[i,j]
+</pre>
+      <!--l. 247--><p class="nopar" >
+      </li>
+      <li class="itemize">
+      <!--l. 248--><p class="noindent" >o bloco formado pelas linhas <!--l. 248--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>i</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></math>,
+      <!--l. 248--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>i</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math> e pelas
+      colunas <!--l. 248--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></math>,
+      <!--l. 248--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>j</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>
+      obtém-se usando a sintaxe:
+                                                                          
+
+                                                                          
+      <pre class="verbatim" id="verbatim-115">
+      A[i1:i2,&#x00A0;j1:j2]
+</pre>
+      <!--l. 251--><p class="nopar" ></li></ul>
+   <div class="newtheorem">
+<!--l. 254--><p class="noindent" ><span class="head">
+<a 
+ id="x129-251001r2"></a>
+<span 
+class="ec-lmbx-12">Exemplo A.3.2.</span>  </span>Veja as seguintes linhas de comando:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-116">
+&#x003E;&#x003E;&#x003E;&#x00A0;from&#x00A0;numpy&#x00A0;import&#x00A0;random
+&#x003E;&#x003E;&#x003E;&#x00A0;A&#x00A0;=&#x00A0;np.random.random((3,4))
+&#x003E;&#x003E;&#x003E;&#x00A0;A
+array([[&#x00A0;0.39235668,&#x00A0;&#x00A0;0.30287204,&#x00A0;&#x00A0;0.24379253,&#x00A0;&#x00A0;0.98866709],
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;[&#x00A0;0.72049734,&#x00A0;&#x00A0;0.99300252,&#x00A0;&#x00A0;0.14232844,&#x00A0;&#x00A0;0.25604346],
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;[&#x00A0;0.61553036,&#x00A0;&#x00A0;0.80615392,&#x00A0;&#x00A0;0.22418474,&#x00A0;&#x00A0;0.13685148]])
+&#x003E;&#x003E;&#x003E;&#x00A0;A[2,3]
+0.13685147547025989
+&#x003E;&#x003E;&#x003E;&#x00A0;A[1:3,1:4]
+array([[&#x00A0;0.99300252,&#x00A0;&#x00A0;0.14232844,&#x00A0;&#x00A0;0.25604346],
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;[&#x00A0;0.80615392,&#x00A0;&#x00A0;0.22418474,&#x00A0;&#x00A0;0.13685148]])
+</pre>
+<!--l. 268--><p class="nopar" >
+   </div>
+<!--l. 269--><p class="indent" >
+<!--l. 271--><p class="indent" >   Definida uma matriz <!--l. 271--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>
+em Python, as seguintes sintaxes são bastante úteis:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-117">
+A[:,:]&#x00A0;&#x00A0;&#x00A0;toda&#x00A0;a&#x00A0;matriz
+A[i:j,k]&#x00A0;os&#x00A0;elementos&#x00A0;das&#x00A0;linhas&#x00A0;i&#x00A0;até&#x00A0;j&#x00A0;(exclusive)&#x00A0;da&#x00A0;k-ésima&#x00A0;coluna
+A[i,j:k]&#x00A0;os&#x00A0;elementos&#x00A0;da&#x00A0;i-ésima&#x00A0;linha&#x00A0;das&#x00A0;colunas&#x00A0;j&#x00A0;até&#x00A0;k&#x00A0;(exclusive)
+A[i,:]&#x00A0;&#x00A0;&#x00A0;a&#x00A0;i-ésima&#x00A0;linha&#x00A0;da&#x00A0;matriz
+A[:,j]&#x00A0;&#x00A0;&#x00A0;a&#x00A0;j-ésima&#x00A0;coluna&#x00A0;da&#x00A0;matriz
+</pre>
+<!--l. 278--><p class="nopar" >
+<!--l. 280--><p class="indent" >   Atenção, os índices em <span class="obeylines-h"><code class="verb">Python</code></span> iniciam-se em
+<!--l. 280--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn></math>.
+Assim, o comando <span class="obeylines-h"><code class="verb">A[1:3,1:4]</code></span> retorna o bloco da matriz
+<!--l. 280--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>
+compreendido da segunda à terceira linha e da segunda a quarta coluna desta
+matriz.
+   <div class="newtheorem">
+<!--l. 282--><p class="noindent" ><span class="head">
+<a 
+ id="x129-251002r3"></a>
+<span 
+class="ec-lmbx-12">Exemplo A.3.3.</span>  </span>Veja as seguintes linhas de comando:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-118">
+&#x003E;&#x003E;&#x003E;&#x00A0;B&#x00A0;=&#x00A0;np.random.random((4,4))
+&#x003E;&#x003E;&#x003E;&#x00A0;B
+array([[&#x00A0;0.94313432,&#x00A0;&#x00A0;0.72650883,&#x00A0;&#x00A0;0.55487089,&#x00A0;&#x00A0;0.18753526],
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;[&#x00A0;0.02094937,&#x00A0;&#x00A0;0.45726099,&#x00A0;&#x00A0;0.51925464,&#x00A0;&#x00A0;0.8535878&#x00A0;],
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;[&#x00A0;0.75948469,&#x00A0;&#x00A0;0.95362926,&#x00A0;&#x00A0;0.77942318,&#x00A0;&#x00A0;0.06464183],
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;[&#x00A0;0.91243198,&#x00A0;&#x00A0;0.22775889,&#x00A0;&#x00A0;0.04061536,&#x00A0;&#x00A0;0.14908227]])
+&#x003E;&#x003E;&#x003E;&#x00A0;aux&#x00A0;=&#x00A0;np.copy(B[:,2])
+&#x003E;&#x003E;&#x003E;&#x00A0;B[:,2]&#x00A0;=&#x00A0;np.copy(B[:,3])
+&#x003E;&#x003E;&#x003E;&#x00A0;B[:,3]&#x00A0;=&#x00A0;np.copy(aux)
+&#x003E;&#x003E;&#x003E;&#x00A0;B
+array([[&#x00A0;0.94313432,&#x00A0;&#x00A0;0.72650883,&#x00A0;&#x00A0;0.18753526,&#x00A0;&#x00A0;0.55487089],
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;[&#x00A0;0.02094937,&#x00A0;&#x00A0;0.45726099,&#x00A0;&#x00A0;0.8535878&#x00A0;,&#x00A0;&#x00A0;0.51925464],
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;[&#x00A0;0.75948469,&#x00A0;&#x00A0;0.95362926,&#x00A0;&#x00A0;0.06464183,&#x00A0;&#x00A0;0.77942318],
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;[&#x00A0;0.91243198,&#x00A0;&#x00A0;0.22775889,&#x00A0;&#x00A0;0.14908227,&#x00A0;&#x00A0;0.04061536]])
+</pre>
+<!--l. 299--><p class="nopar" >
+   </div>
+<!--l. 300--><p class="indent" >
+<!--l. 302--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">A.3.2   </span> <a 
+ id="x129-252000A.3.2"></a>Operações matriciais e elemento-a-elemento</h4>
+<!--l. 304--><p class="noindent" >Em <span class="obeylines-h"><code class="verb">Python</code></span> com <span class="obeylines-h"><code class="verb">numpy</code></span>, o operador <span class="obeylines-h"><code class="verb">*</code></span> opera elemento a elemento. Por
+exemplo:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-119">
+&#x003E;&#x003E;&#x003E;&#x00A0;A&#x00A0;=&#x00A0;np.array([[1,2],[2,1]]);&#x00A0;print(A)
+[[1&#x00A0;2]
+&#x00A0;[2&#x00A0;1]]
+&#x003E;&#x003E;&#x003E;&#x00A0;B&#x00A0;=&#x00A0;np.array([[2,1],[2,1]]);&#x00A0;print(B)
+[[2&#x00A0;1]
+&#x00A0;[2&#x00A0;1]]
+&#x003E;&#x003E;&#x003E;&#x00A0;print(A*B)
+[[2&#x00A0;2]
+&#x00A0;[4&#x00A0;1]]
+</pre>
+<!--l. 315--><p class="nopar" >A multiplicação matricial obtemos com:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-120">
+&#x003E;&#x003E;&#x003E;&#x00A0;C&#x00A0;=&#x00A0;A.dot(B)
+&#x003E;&#x003E;&#x003E;&#x00A0;print(C)
+[[6&#x00A0;3]
+&#x00A0;[6&#x00A0;3]]
+</pre>
+<!--l. 322--><p class="nopar" >
+<!--l. 324--><p class="indent" >   Aqui, temos as sintaxes análogas entre operações elemento-a-elemento:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-121">
++&#x00A0;adição
+-&#x00A0;subtração
+*&#x00A0;multiplicação
+/&#x00A0;divisão
+**&#x00A0;potenciação
+</pre>
+<!--l. 331--><p class="nopar" >
+   <div class="newtheorem">
+<!--l. 333--><p class="noindent" ><span class="head">
+<a 
+ id="x129-252001r4"></a>
+<span 
+class="ec-lmbx-12">Exemplo A.3.4.</span>  </span>Veja as seguintes linhas de comando:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-122">
+&#x003E;&#x003E;&#x003E;&#x00A0;A&#x00A0;=&#x00A0;np.ones((2,2))
+&#x003E;&#x003E;&#x003E;&#x00A0;A
+array([[&#x00A0;1.,&#x00A0;&#x00A0;1.],
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;[&#x00A0;1.,&#x00A0;&#x00A0;1.]])
+&#x003E;&#x003E;&#x003E;&#x00A0;B&#x00A0;=&#x00A0;2&#x00A0;*&#x00A0;np.ones((2,2))
+&#x003E;&#x003E;&#x003E;&#x00A0;B
+array([[&#x00A0;2.,&#x00A0;&#x00A0;2.],
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;[&#x00A0;2.,&#x00A0;&#x00A0;2.]])
+&#x003E;&#x003E;&#x003E;&#x00A0;A*B
+array([[&#x00A0;2.,&#x00A0;&#x00A0;2.],
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;[&#x00A0;2.,&#x00A0;&#x00A0;2.]])
+&#x003E;&#x003E;&#x003E;&#x00A0;A.dot(B)
+array([[&#x00A0;4.,&#x00A0;&#x00A0;4.],
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;[&#x00A0;4.,&#x00A0;&#x00A0;4.]])
+&#x003E;&#x003E;&#x003E;&#x00A0;A/B
+array([[&#x00A0;0.5,&#x00A0;&#x00A0;0.5],
+&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;&#x00A0;[&#x00A0;0.5,&#x00A0;&#x00A0;0.5]])
+</pre>
+<!--l. 353--><p class="nopar" >
+   </div>
+<!--l. 354--><p class="indent" >
+                                                                          
+
+                                                                          
+   <!--l. 356--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse73.html" >next</a>] [<a 
+href="mainse71.html" >prev</a>] [<a 
+href="mainse71.html#tailmainse71.html" >prev-tail</a>] [<a 
+href="mainse72.html" >front</a>] [<a 
+href="mainap1.html#mainse72.html" >up</a>] </p></div>
+<!--l. 356--><p class="indent" >   <a 
+ id="tailmainse72.html"></a>   
+</body></html> 

@@ -1,0 +1,710 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>4 Soluçao de sistemas lineares</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 3--><div class="crosslinks"><p class="noindent">[<a 
+href="mainch5.html" >next</a>] [<a 
+href="mainch3.html" >prev</a>] [<a 
+href="mainch3.html#tailmainch3.html" >prev-tail</a>] [<a 
+href="#tailmainch4.html">tail</a>] [<a 
+href="main.html#mainch4.html" >up</a>] </p></div>
+   <h2 class="chapterHead"><span class="titlemark">Capítulo&#x00A0;4</span><br /><a 
+ id="x43-610004"></a>Solução de sistemas lineares</h2>
+<a 
+ id="dx43-61001"></a>
+<!--l. 5--><p class="noindent" >Muitos problemas da engenharia, física e matemática estão associados à
+solução de sistemas de equações lineares. Nesse capítulo, tratamos de
+técnicas numéricas empregadas para obter a solução desses sistemas.
+Iniciamos por uma rápida revisão do método de eliminação gaussiana do
+ponto de vista computacional. No contexto de análise da propagação
+dos erros de arredondamento, introduzimos o método de eliminação
+gaussiana com pivotamento parcial, bem como, apresentamos o conceito de
+condicionamento de um sistema linear. Além disso, exploramos o conceito de
+complexidade de algoritmos em álgebra linear. Então, passamos a discutir sobre
+técnicas iterativas, mais especificamente, sobre os métodos de Jacobi e
+Gauss-Seidel.
+<!--l. 8--><p class="indent" >   Considere o sistema de equações lineares (escrito na forma algébrica)
+<table class="equation"><tr><td>
+<!--l. 9--><p class="indent" >
+<!--l. 9--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x43-61002r1"  class="label" ></mstyle><!--endlabel-->   <mtable 
+class="equation"><mtr><mtd>
+   <mtable  
+columnalign="right left" class="split">
+<mtr class="split-mtr"><mtd 
+class="split-mtd">   <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mn>1</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mn>2</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mi 
+>n</mi></mrow></msub 
+><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">   <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>2</mn><mn>1</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>2</mn><mn>2</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>2</mn><mi 
+>n</mi></mrow></msub 
+><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">                            </mtd><mtd 
+class="split-mtd"><mi 
+>&#x22EE;</mi></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>m</mi><mn>1</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>m</mi><mn>2</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>m</mi><mi 
+>n</mi></mrow></msub 
+><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mi 
+>n</mi></mrow></msub 
+></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>m</mi></mrow></msub 
+></mtd>
+   </mtr></mtable>                                                                       </mtd><mtd>
+   </mtd></mtr></mtable>
+</math></td><td class="eq-no">(4.1)</td></tr></table>
+   onde <!--l. 17--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi></math> é o número
+de equações e <!--l. 17--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi></math>
+é o número de incógnitas. Este sistema pode ser escrito na <span 
+class="ec-lmbx-12">forma matricial</span>
+                                                                          
+
+                                                                          
+<table class="equation"><tr><td>
+<!--l. 18--><p class="indent" >
+<!--l. 18--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                                  <mstyle 
+   id="x43-61003r2"  class="label" ></mstyle><!--endlabel--><mi 
+>A</mi><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>b</mi>
+</math></td><td class="eq-no">(4.2)</td></tr></table>
+<!--l. 21--><p class="indent" >   onde: <table class="equation"><tr><td>
+<!--l. 22--><p class="indent" >
+<!--l. 22--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x43-61004r3"  class="label" ></mstyle><!--endlabel--><mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo>  <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> </mtd><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mi 
+>n</mi></mrow></msub 
+>  </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>2</mn><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>2</mn><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> </mtd><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>2</mn><mi 
+>n</mi></mrow></msub 
+>  </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">   <mi 
+>&#x22EE;</mi>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi>  </mtd><mtd 
+class="array-td"  columnalign="center"> <mo 
+class="MathClass-rel" stretchy="false">&#x22F1;</mo> </mtd><mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi>  </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+>
+<mi 
+>m</mi><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>m</mi><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> </mtd><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>m</mi><mi 
+>n</mi></mrow></msub 
+> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                                   </mrow><mo fence="true" form="postfix">]</mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">,</mo><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo>  <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>  </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>  </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">   <mi 
+>&#x22EE;</mi>  </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+>
+<mi 
+>n</mi></mrow></msub 
+> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                                                           </mrow><mo fence="true" form="postfix">]</mo></mrow> <mstyle 
+class="text"><mtext  >&#x00A0;e&#x00A0;</mtext></mstyle><mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo>  <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>  </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>  </mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">   <mi 
+>&#x22EE;</mi>  </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+>
+<mi 
+>m</mi></mrow></msub 
+> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                                                          </mrow><mo fence="true" form="postfix">]</mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">,</mo>
+</math></td><td class="eq-no">(4.3)</td></tr></table>
+<!--l. 42--><p class="indent" >   onde <!--l. 42--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>
+é chamada de <span 
+class="ec-lmbx-12">matriz dos coeficientes</span><a 
+ id="dx43-61005"></a>,
+<!--l. 42--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math> de <span 
+class="ec-lmbx-12">vetor das</span>
+<span 
+class="ec-lmbx-12">inc</span><span 
+class="ec-lmbx-12">ó</span><span 
+class="ec-lmbx-12">gnitas</span><a 
+ id="dx43-61006"></a> e <!--l. 42--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>b</mi></math>
+de <span 
+class="ec-lmbx-12">vetor dos termos constantes</span><a 
+ id="dx43-61007"></a>.
+<!--l. 45--><p class="indent" >   Definimos também a <span 
+class="ec-lmbx-12">matriz completa</span><a 
+ id="dx43-61008"></a> (também chamada de <span 
+class="ec-lmbx-12">matriz estendida</span><a 
+ id="dx43-61009"></a>) de
+um sistema como <!--l. 45--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>b</mi></math>
+como <!--l. 45--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">[</mo><mi 
+>A</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>b</mi><mo 
+class="MathClass-close" stretchy="false">]</mo></math>,
+isto é, <table class="equation"><tr><td>
+<!--l. 46--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 46--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x43-61010r4"  class="label" ></mstyle><!--endlabel--><mo 
+class="MathClass-open" stretchy="false">[</mo><mi 
+>A</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>b</mi><mo 
+class="MathClass-close" stretchy="false">]</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mrow><mo fence="true" form="prefix"> [</mo><mrow> <mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none solid" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> </mtd><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>1</mn><mi 
+>n</mi></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+>  </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>2</mn><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>2</mn><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> </mtd><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mn>2</mn><mi 
+>n</mi></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+>  </mtd>
+</mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">    <mi 
+>&#x22EE;</mi>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi>  </mtd><mtd 
+class="array-td"  columnalign="center"> <mo 
+class="MathClass-rel" stretchy="false">&#x22F1;</mo> </mtd><mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mi 
+>&#x22EE;</mi>  </mtd></mtr>  <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+>
+<mi 
+>m</mi><mn>1</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>m</mi><mn>2</mn></mrow></msub 
+>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mo 
+class="MathClass-rel" stretchy="false">&#x22EF;</mo> </mtd><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>a</mi></mrow><mrow 
+><mi 
+>m</mi><mi 
+>n</mi></mrow></msub 
+> </mtd><mtd 
+class="array-td"  columnalign="center"> <msub><mrow 
+><mi 
+>b</mi></mrow><mrow 
+><mi 
+>m</mi></mrow></msub 
+> </mtd></mtr> <!--cccc|c--></mtable>                                                                             </mrow><mo fence="true" form="postfix">]</mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(4.4)</td></tr></table>
+<!--l. 56--><p class="indent" >   Salvo especificado ao contrário, assumiremos ao longo deste capítulo que a matriz dos
+coeficientes <!--l. 56--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>
+é uma matriz real não singular (isto é, invertível).
+<!--l. 62--><p class="indent" >   Ao longo do capítulo, apresentamos algumas computações com <span class="obeylines-h"><code class="verb">Python</code></span>.
+Nestas, assumiremos que a biblioteca  <a 
+href="http://www.numpy.org/" >numpy</a> e seu módulo  <a 
+href="https://docs.scipy.org/doc/numpy/reference/routines.linalg.html" >numpy.linalg</a> estão
+carregados:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-36">
+&#x003E;&#x003E;&#x003E;&#x00A0;import&#x00A0;numpy&#x00A0;as&#x00A0;np
+&#x003E;&#x003E;&#x003E;&#x00A0;from&#x00A0;numpy&#x00A0;import&#x00A0;linalg
+</pre>
+<!--l. 66--><p class="nopar" >
+   <div class="newtheorem">
+<!--l. 69--><p class="noindent" ><span class="head">
+<a 
+ id="x43-61011r1"></a>
+<span 
+class="ec-lmbx-12">Exemplo 4.0.1.</span>  </span>Consideramos o seguinte sistema linear <table class="equation"><tr><td>
+<!--l. 71--><p class="indent" >
+<!--l. 71--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x43-61012r5"  class="label" ></mstyle><!--endlabel-->   <mtable 
+class="equation"><mtr><mtd>
+   <mtable  
+columnalign="right left" class="split">
+<mtr class="split-mtr"><mtd 
+class="split-mtd">    <mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>y</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>z</mi></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd"> <mn>4</mn><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>4</mn><mi 
+>y</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn><mi 
+>z</mi></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">   <mn>2</mn><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mi 
+>y</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mi 
+>z</mi></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo></mtd>
+   </mtr></mtable>                                                                       </mtd><mtd>
+   </mtd></mtr></mtable>
+</math></td><td class="eq-no">(4.5)</td></tr></table>
+   Na sua forma matricial, este sistema é escrito como <table class="equation"><tr><td>
+<!--l. 79--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 79--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x43-61013r6"  class="label" ></mstyle><!--endlabel--><mi 
+>A</mi><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>b</mi> <mo 
+class="MathClass-rel" stretchy="false">&#x21D4;</mo><munder class="msub"><mrow 
+><munder accentunder="false"><mrow> <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"><mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>1</mn>  </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>4</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>4</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>2</mn></mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                                  </mrow><mo fence="true" form="postfix">]</mo></mrow></mrow><mo>&#x23DF;</mo></munder> </mrow><mrow 
+><mi 
+>A</mi></mrow></munder 
+><munder class="msub"><mrow 
+><munder accentunder="false"><mrow>  <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mi 
+>x</mi> </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mi 
+>y</mi></mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mi 
+>z</mi> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                              </mrow><mo fence="true" form="postfix">]</mo></mrow></mrow><mo>&#x23DF;</mo></munder> </mrow><mrow 
+><mover accent="false" 
+class="mml-overline"><mrow><mi 
+>x</mi></mrow><mo 
+accent="true">¯</mo></mover></mrow></munder 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo><munder class="msub"><mrow 
+><munder accentunder="false"><mrow>  <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn></mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                                             </mrow><mo fence="true" form="postfix">]</mo></mrow></mrow><mo>&#x23DF;</mo></munder> </mrow><mrow 
+><mi 
+>b</mi></mrow></munder 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(4.6)</td></tr></table>
+<!--l. 117--><p class="indent" >   A matriz estendida do sistema acima é <table class="equation"><tr><td>
+<!--l. 118--><p class="indent" >
+<!--l. 118--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x43-61014r7"  class="label" ></mstyle><!--endlabel--><mi 
+>E</mi> <mo 
+class="MathClass-punc" stretchy="false">:</mo><mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-open" stretchy="false">[</mo><mi 
+>A</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>b</mi><mo 
+class="MathClass-close" stretchy="false">]</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo>  <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>1</mn>  </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>4</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>4</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>2</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>2</mn></mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                              </mrow><mo fence="true" form="postfix">]</mo></mrow> <mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(4.7)</td></tr></table>
+   </div>
+<!--l. 140--><p class="indent" >
+   <div class="sectionTOCS">
+   <span class="sectionToc" >4.1 <a 
+href="mainse17.html#x44-620004.1">Eliminação gaussiana</a></span>
+<br />   <span class="subsectionToc" >4.1.1 <a 
+href="mainse17.html#x44-630004.1.1" id="QQ2-44-81">Eliminação gaussiana com pivotamento parcial</a></span>
+<br />   <span class="sectionToc" >4.2 <a 
+href="mainse18.html#x45-660004.2">Complexidade de algoritmos em álgebra linear</a></span>
+<br />   <span class="sectionToc" >4.3 <a 
+href="mainse19.html#x48-670004.3">Sistemas triangulares</a></span>
+<br />   <span class="sectionToc" >4.4 <a 
+href="mainse20.html#x49-680004.4">Fatoração LU</a></span>
+<br />   <span class="subsectionToc" >4.4.1 <a 
+href="mainse20.html#x49-690004.4.1" id="QQ2-49-87">Código Python: Fatoração LU</a></span>
+<br />   <span class="subsectionToc" >4.4.2 <a 
+href="mainse20.html#x49-700004.4.2" id="QQ2-49-88">Custo computacional para resolver um sistema linear usando
+fatoração LU</a></span>
+<br />   <span class="subsectionToc" >4.4.3 <a 
+href="mainse20.html#x49-710004.4.3" id="QQ2-49-89">Custo para resolver m sistemas lineares</a></span>
+<br />   <span class="subsectionToc" >4.4.4    <a 
+href="mainse20.html#x49-720004.4.4" id="QQ2-49-90">Custo    para    calcular    a    matriz    inversa    de
+<!--l. 91--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math></a></span>
+<br />   <span class="sectionToc" >4.5 <a 
+href="mainse21.html#x53-730004.5">Método da matriz tridiagonal</a></span>
+<br />   <span class="sectionToc" >4.6 <a 
+href="mainse22.html#x55-750004.6">Condicionamento de sistemas lineares</a></span>
+                                                                          
+
+                                                                          
+<br />   <span class="subsectionToc" >4.6.1 <a 
+href="mainse22.html#x55-760004.6.1" id="QQ2-55-94">Norma de vetores</a></span>
+<br />   <span class="subsectionToc" >4.6.2 <a 
+href="mainse22.html#x55-770004.6.2" id="QQ2-55-95">Norma de matrizes</a></span>
+<br />   <span class="subsectionToc" >4.6.3 <a 
+href="mainse22.html#x55-780004.6.3" id="QQ2-55-96">Número de condicionamento</a></span>
+<br />   <span class="sectionToc" >4.7 <a 
+href="mainse23.html#x56-800004.7">Métodos iterativos para sistemas lineares</a></span>
+<br />   <span class="subsectionToc" >4.7.1 <a 
+href="mainse23.html#x56-810004.7.1" id="QQ2-56-99">Método de Jacobi</a></span>
+<br />   <span class="subsectionToc" >4.7.2 <a 
+href="mainse23.html#x56-830004.7.2" id="QQ2-56-101">Método de Gauss-Seidel</a></span>
+<br />   <span class="subsectionToc" >4.7.3 <a 
+href="mainse23.html#x56-850004.7.3" id="QQ2-56-103">Análise de convergência</a></span>
+<br />   <span class="sectionToc" >4.8 <a 
+href="mainse24.html#x58-910004.8">Cálculo de autovalores e autovetores</a></span>
+<br />   <span class="subsectionToc" >4.8.1 <a 
+href="mainse24.html#x58-920004.8.1" id="QQ2-58-110">Método da potência</a></span>
+<br />   <span class="subsectionToc" >4.8.2 <a 
+href="mainse24.html#x58-950004.8.2" id="QQ2-58-113">Método da iteração inversa</a></span>
+<br />   <span class="sectionToc" >4.9 <a 
+href="mainse25.html#x59-980004.9">Exercícios finais</a></span>
+   </div>
+
+
+
+
+
+
+
+
+                                                                          
+
+                                                                          
+   <!--l. 6--><div class="crosslinks"><p class="noindent">[<a 
+href="mainch5.html" >next</a>] [<a 
+href="mainch3.html" >prev</a>] [<a 
+href="mainch3.html#tailmainch3.html" >prev-tail</a>] [<a 
+href="mainch4.html" >front</a>] [<a 
+href="main.html#mainch4.html" >up</a>] </p></div>
+<!--l. 6--><p class="indent" >   <a 
+ id="tailmainch4.html"></a>  
+</body></html> 

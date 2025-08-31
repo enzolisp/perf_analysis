@@ -1,27 +1,3 @@
-%% example.tex
-%% Copyright 2012 Bruno Menegola
-%
-% This work may be distributed and/or modified under the
-% conditions of the LaTeX Project Public License, either version 1.3
-% of this license or (at your option) any later version.
-% The latest version of this license is in
-%   http://www.latex-project.org/lppl.txt
-% and version 1.3 or later is part of all distributions of LaTeX
-% version 2005/12/01 or later.
-%
-% This work has the LPPL maintenance status ‘maintained’.
-%
-% The Current Maintainer of this work is Bruno Menegola.
-%
-% This work consists of all files listed in MANIFEST
-%
-%
-% Description
-% ===========
-%
-% This is an example latex document to build presentation slides based on
-% the beamer class using the Inf theme.
-
 \documentclass{beamer}
 
 \usepackage[T1]{fontenc}
@@ -33,29 +9,24 @@
 
 % Define the title with \title[short title]{long title}
 % Short title is optional
-\title[Proposta]
-      {Avaliação de Desempenho - Etapa 1: Proposta}
-
-% Optional subtitle
-% \subtitle{Congresso XYZ}
+\title[Etapa 1: Proposta]
+      {Avaliação de Desempenho Etapa 1: Proposta}
 
 \date{Agosto de 2025}
 
 % Author information
-\author{Enzo Lisbôa Peixoto, Nathan Mattes e Pedro Scholz Soares}
-\institute{Instituto de Informática --- UFRGS\\\texttt{inf.ufrgs.br/\~{}bmenegola}}
+\author{Enzo Lisbôa Peixoto, Nathan Mattes e \\Pedro Scholz Soares}
+\institute{Instituto de Informática --- UFRGS\\\texttt{elpeixoto@inf.ufrgs.br\\nmattes@inf.ufrgs.br\\}}
 
 \begin{document}
 
 % Command to create title page
 \InfTitlePage
 
-\begin{frame}
-  \frametitle{Agenda}
-  \tableofcontents
-\end{frame}
+% 1D Heat equation
 
-\section{Detalhes}
+
+\section{Detalhamento}
 
 \frame{
     \frametitle{Descrição}
@@ -63,9 +34,30 @@
     \begin{itemize}
         \item O objeto de estudo deste trabalho é a solução numérica da equação do calor em uma, duas e três dimensões. 
 		\item Essa equação descreve a forma como o calor se espalha por um objeto. Será implementado algoritmos em duas linguagens de programação distintas, julia e python. 
+        
+       % \begin{equation*} \label{eq:heat}
+       % \boldsymbol{u_t = \alpha \, u_{xx}}
+       % \end{equation*}
+        
         \item A justificativa das linguagens vem do fato de python ser uma linguagem consistente para uso científico devido suas bibliotecas e ser amplamente popular, por outro lado julia apresenta ótimos resultados em cálculo numérico.
     \end{itemize}
 }
+
+
+\frame{
+    \frametitle{Descrição}
+    \[
+    \begin{aligned}  
+    \qquad & \boldsymbol{\frac{\partial u}{\partial t} = \alpha \frac{\partial^2 u}{\partial x^2}, \quad x \in [0,L], \; t > 0} 
+        \\[12mm]
+    \qquad & \boldsymbol{\frac{\partial u}{\partial t} = \alpha \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} \right), \quad (x,y) \in \Omega, \; t > 0} 
+        \\[12mm]    
+    \qquad & \boldsymbol{\frac{\partial u}{\partial t} = \alpha \left( \frac{\partial^2 u}{\partial x^2} + \frac{\partial^2 u}{\partial y^2} + \frac{\partial^2 u}{\partial z^2} \right), \quad (x,y,z) \in \Omega, \; t > 0}
+    \end{aligned}
+    \]
+}
+
+\section{Detalhamento}
 
 \frame{
     \frametitle{Método de Análise}
@@ -75,54 +67,67 @@
     \end{itemize}
 }
 
-\section{Outra seção}
-\subsection{Primeira subseção}
+\frame{
+    \frametitle{Método de Análise}
+    
+    \begin{itemize}
+        \item Julia utiliza compilação just-in-time (JIT): 
+        \begin{itemize}
+            \item A primeira execução de um código em Julia pode ser mais lenta devido à necessidade de compilar o código antes de executá-lo.
+            \item Em execuções subsequentes, o código já está compilado, o que resulta em tempos de execução significativamente mais rápidos.
+        \end{itemize}
+        \item Python é uma linguagem interpretada:
+        \begin{itemize}
+            \item Cada vez que um script Python é executado, o interpretador lê e interpreta o código linha por linha.
+            \item Isso pode resultar em tempos de execução mais lentos, especialmente para tarefas computacionalmente intensivas.
+        \end{itemize}
+        \item Para garantir uma comparação justa, o tempo de compilação inicial do Julia será separado do tempo de execução.
+        \item O foco da análise será o tempo de execução após a compilação inicial.
+
+    \end{itemize}
+}
+
+\section{Detalhamento}
 
 \frame{
-    \frametitle{Seções}
+    \frametitle{Justificativa}
 
     \begin{itemize}
-        \item O número a esquerda do cabeçalho marca a seção atual
-        \item Logo a direita ele é seguido por:
+        \item Resolução de EDP's já estudada pelos membros do grupo em outras disciplinas, através da abordagem analítica.
+        \item Nenhum membro do grupo explorou a abordagem computacional da resolução da equação.
+        \item Enxergamos esse trabalho como uma oportunidade de estudar a equação sob outra visão, nos possibilitando abordar conteúdos relativos a cálculo numérico.
+    \end{itemize}
+}
+
+\section{Detalhamento}
+
+\frame{
+    \frametitle{Definição das Métricas}
+
+    \begin{itemize}
+        \item Tempo de execução
         \begin{itemize}
-            \item nome da seção
-            \item subseção
-            \item título do slide
+            \item Coletar múltiplas amostras para fazer uma média e garantir robustez nos resultados
+            \item Distinguir o tempo de compilação inicial do Julia do tempo de execução a fim de ter uma comparação mais justa com Python
+        \end{itemize}
+        \item Uso de memória
+        \begin{itemize}
+            \item Avaliar a eficiência da alocação de memória por ambas as linguagens
         \end{itemize}
     \end{itemize}
 }
 
-\section{Blocos}
-
-\begin{frame}[plain]
- \sectionpage
-\end{frame}
+\section{Detalhamento}
 
 \frame{
-    \frametitle{Teoremas}
-
-    \begin{theorem}
-        foo
-    \end{theorem}
-    \begin{proof}
-        bar
-    \end{proof}
-}
-
-\frame{
-    \frametitle{Exemplos}
-
-    \begin{exampleblock}{exemplo}
-        foo
-    \end{exampleblock}
-}
-
-\frame{
-    \frametitle{Alertas}
-
-    \begin{alertblock}{alerta}
-        foo
-    \end{alertblock}
+    \frametitle{Cronograma Preliminar}
+    \begin{itemize}
+        \item Escrita dos algoritmos de resolução da equação.
+        \item Definição dos métodos de medição.
+        \item Coleta dos dados.
+        \item Análise dos dados.
+        \item Escrita do relatório final.
+    \end{itemize}
 }
 
 \section*{}

@@ -1,0 +1,105 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>2 Representaçao de números e aritmética de máquina</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 6--><div class="crosslinks"><p class="noindent">[<a 
+href="mainch3.html" >next</a>] [<a 
+href="mainch1.html" >prev</a>] [<a 
+href="mainch1.html#tailmainch1.html" >prev-tail</a>] [<a 
+href="#tailmainch2.html">tail</a>] [<a 
+href="main.html#mainch2.html" >up</a>] </p></div>
+   <h2 class="chapterHead"><span class="titlemark">Capítulo&#x00A0;2</span><br /><a 
+ id="x8-70002"></a>Representação de números e aritmética de máquina</h2>
+<a 
+ id="dx8-7001"></a>
+<a 
+ id="dx8-7002"></a>
+<!--l. 8--><p class="noindent" >Neste capítulo, abordaremos formas de representar números reais em
+computadores. Iniciamos com uma discussão sobre representação posicional e
+mudança de base. Então, enfatizaremos a representação de números com
+quantidade finita de dígitos, mais especificamente, as representações de
+números inteiros, ponto fixo e ponto flutuante em computadores.
+<!--l. 10--><p class="indent" >   A representação de números e a aritmética em computadores levam aos
+chamados erros de arredondamento e de truncamento. Ao final deste capítulo,
+abordaremos os efeitos do erro de arredondamento na computação
+científica.
+<!--l. 16--><p class="indent" >   Ao longo do capítulo, faremos alguns comentários usando códigos em
+<span class="obeylines-h"><code class="verb">Python</code></span>. Nestes, assumiremos que os seguintes módulos estão carregados:
+                                                                          
+
+                                                                          
+   <pre class="verbatim" id="verbatim-1">
+
+&#x003E;&#x003E;&#x003E;&#x00A0;import&#x00A0;numpy&#x00A0;as&#x00A0;np
+</pre>
+<!--l. 20--><p class="nopar" >A primeira instrução garante que divisões de números inteiros sejam
+computadas em ponto flutuante (<span class="obeylines-h"><code class="verb">double</code></span>) e a segunda carrega a biblioteca de
+computação científica  <a 
+href="http://www.numpy.org/" >numpy</a>.
+   <div class="sectionTOCS">
+   <span class="sectionToc" >2.1 <a 
+href="mainse1.html#x9-80002.1">Sistema de numeração e mudança de base</a></span>
+<br />   <span class="sectionToc" >2.2 <a 
+href="mainse2.html#x12-110002.2">Notação científica e notação normalizada</a></span>
+<br />   <span class="sectionToc" >2.3 <a 
+href="mainse3.html#x15-140002.3">Representação decimal finita</a></span>
+<br />   <span class="subsectionToc" >2.3.1 <a 
+href="mainse3.html#x15-150002.3.1" id="QQ2-15-20">Arredondamento de números</a></span>
+<br />   <span class="sectionToc" >2.4 <a 
+href="mainse4.html#x19-180002.4">Representação de números em máquina</a></span>
+<br />   <span class="subsectionToc" >2.4.1 <a 
+href="mainse4.html#x19-190002.4.1" id="QQ2-19-24">Números inteiros</a></span>
+<br />   <span class="subsectionToc" >2.4.2 <a 
+href="mainse4.html#x19-230002.4.2" id="QQ2-19-28">Sistema de ponto fixo</a></span>
+<br />   <span class="subsectionToc" >2.4.3 <a 
+href="mainse4.html#x19-240002.4.3" id="QQ2-19-29">Sistema de ponto flutuante</a></span>
+<br />   <span class="subsectionToc" >2.4.4 <a 
+href="mainse4.html#x19-270002.4.4" id="QQ2-19-32">Precisão e épsilon de máquina</a></span>
+<br />   <span class="subsectionToc" >2.4.5 <a 
+href="mainse4.html#x19-280002.4.5" id="QQ2-19-33">Distribuição dos números</a></span>
+<br />   <span class="sectionToc" >2.5 <a 
+href="mainse5.html#x21-300002.5">Tipos de erros</a></span>
+<br />   <span class="sectionToc" >2.6 <a 
+href="mainse6.html#x23-320002.6">Erros nas operações elementares</a></span>
+<br />   <span class="sectionToc" >2.7 <a 
+href="mainse7.html#x24-330002.7">Cancelamento catastrófico</a></span>
+<br />   <span class="sectionToc" >2.8 <a 
+href="mainse8.html#x25-340002.8">Condicionamento de um problema</a></span>
+<br />   <span class="sectionToc" >2.9 <a 
+href="mainse9.html#x26-360002.9">Exemplos selecionados de cancelamento catastrófico</a></span>
+   </div>
+
+
+
+
+
+
+
+
+                                                                          
+
+                                                                          
+   <!--l. 6--><div class="crosslinks"><p class="noindent">[<a 
+href="mainch3.html" >next</a>] [<a 
+href="mainch1.html" >prev</a>] [<a 
+href="mainch1.html#tailmainch1.html" >prev-tail</a>] [<a 
+href="mainch2.html" >front</a>] [<a 
+href="main.html#mainch2.html" >up</a>] </p></div>
+<!--l. 6--><p class="indent" >   <a 
+ id="tailmainch2.html"></a>  
+</body></html> 

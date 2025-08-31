@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head>
+   <title>CÃ&#261;lculo NumÃ&#x013E;rico
+Um Livro Colaborativo
+VersÃ&#x010D;o Python</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+<!--l. 16--><p class="noindent" >
+                                                                          
+
+                                                                          
+   <div class="maketitle">
+                                                                          
+
+                                                                          
+                                                                          
+
+                                                                          
+
+<h2 class="titleHead">Cálculo Numérico<br />
+Um Livro Colaborativo<br />
+Versão Python</h2>
+ <div class="author" ></div><br />
+<div class="date" ><span 
+class="ec-lmr-12x-x-120">29 de agosto de 2025</span></div>
+                                                                          
+
+                                                                          
+   </div>
+                                                                          
+
+                                                                          
+<!--l. 3--><p class="indent" >
+                                                                          
+
+                                                                          
+   <div class="tableofcontents">
+   <span class="chapterToc" > <a 
+href="mainli1.html#Q1-2-2">Organizadores</a></span>
+<br />   <span class="chapterToc" > <a 
+href="mainli2.html#Q1-3-4">Colaboradores</a></span>
+<br />   <span class="chapterToc" > <a 
+href="mainli3.html#Q1-4-6">Licença</a></span>
+<br />   <span class="chapterToc" > <a 
+href="mainli4.html#Q1-5-8">Nota dos organizadores</a></span>
+<br />   <span class="chapterToc" > <a 
+href="mainli5.html#Q1-6-10">Prefácio</a></span>
+<br />   <span class="chapterToc" >1 <a 
+href="mainch1.html#x7-60001" id="QQ2-7-11">Introdução</a></span>
+<br />   <span class="chapterToc" >2 <a 
+href="mainch2.html#x8-70002" id="QQ2-8-12">Representação de números e aritmética de máquina</a></span>
+<br />   <span class="sectionToc" >2.1 <a 
+href="mainse1.html#x9-80002.1" id="QQ2-9-13">Sistema de numeração e mudança de base</a></span>
+<br />   <span class="sectionToc" >2.2 <a 
+href="mainse2.html#x12-110002.2" id="QQ2-12-16">Notação científica e notação normalizada</a></span>
+<br />   <span class="sectionToc" >2.3 <a 
+href="mainse3.html#x15-140002.3" id="QQ2-15-19">Representação decimal finita</a></span>
+<br />   <span class="sectionToc" >2.4 <a 
+href="mainse4.html#x19-180002.4" id="QQ2-19-23">Representação de números em máquina</a></span>
+<br />   <span class="sectionToc" >2.5 <a 
+href="mainse5.html#x21-300002.5" id="QQ2-21-35">Tipos de erros</a></span>
+<br />   <span class="sectionToc" >2.6 <a 
+href="mainse6.html#x23-320002.6" id="QQ2-23-37">Erros nas operações elementares</a></span>
+<br />   <span class="sectionToc" >2.7 <a 
+href="mainse7.html#x24-330002.7" id="QQ2-24-38">Cancelamento catastrófico</a></span>
+<br />   <span class="sectionToc" >2.8 <a 
+href="mainse8.html#x25-340002.8" id="QQ2-25-39">Condicionamento de um problema</a></span>
+<br />   <span class="sectionToc" >2.9 <a 
+href="mainse9.html#x26-360002.9" id="QQ2-26-41">Exemplos selecionados de cancelamento catastrófico</a></span>
+<br />   <span class="chapterToc" >3 <a 
+href="mainch3.html#x27-390003" id="QQ2-27-46">Solução de equações de uma variável</a></span>
+<br />   <span class="sectionToc" >3.1 <a 
+href="mainse10.html#x29-400003.1" id="QQ2-29-47">Existência e unicidade</a></span>
+<br />   <span class="sectionToc" >3.2 <a 
+href="mainse11.html#x32-420003.2" id="QQ2-32-50">Método da bisseção</a></span>
+<br />   <span class="sectionToc" >3.3 <a 
+href="mainse12.html#x33-450003.3" id="QQ2-33-55">Iteração de ponto fixo</a></span>
+<br />   <span class="sectionToc" >3.4 <a 
+href="mainse13.html#x35-510003.4" id="QQ2-35-66">Método de Newton-Raphson</a></span>
+<br />   <span class="sectionToc" >3.5 <a 
+href="mainse14.html#x38-550003.5" id="QQ2-38-71">Método das secantes</a></span>
+<br />   <span class="sectionToc" >3.6 <a 
+href="mainse15.html#x41-580003.6" id="QQ2-41-75">Critérios de parada</a></span>
+<br />   <span class="sectionToc" >3.7 <a 
+href="mainse16.html#x42-600003.7" id="QQ2-42-78">Exercícios finais</a></span>
+<br />   <span class="chapterToc" >4 <a 
+href="mainch4.html#x43-610004" id="QQ2-43-79">Solução de sistemas lineares</a></span>
+<br />   <span class="sectionToc" >4.1 <a 
+href="mainse17.html#x44-620004.1" id="QQ2-44-80">Eliminação gaussiana</a></span>
+<br />   <span class="sectionToc" >4.2 <a 
+href="mainse18.html#x45-660004.2" id="QQ2-45-84">Complexidade de algoritmos em álgebra linear</a></span>
+<br />   <span class="sectionToc" >4.3 <a 
+href="mainse19.html#x48-670004.3" id="QQ2-48-85">Sistemas triangulares</a></span>
+<br />   <span class="sectionToc" >4.4 <a 
+href="mainse20.html#x49-680004.4" id="QQ2-49-86">Fatoração LU</a></span>
+                                                                          
+
+                                                                          
+<br />   <span class="sectionToc" >4.5 <a 
+href="mainse21.html#x53-730004.5" id="QQ2-53-91">Método da matriz tridiagonal</a></span>
+<br />   <span class="sectionToc" >4.6 <a 
+href="mainse22.html#x55-750004.6" id="QQ2-55-93">Condicionamento de sistemas lineares</a></span>
+<br />   <span class="sectionToc" >4.7 <a 
+href="mainse23.html#x56-800004.7" id="QQ2-56-98">Métodos iterativos para sistemas lineares</a></span>
+<br />   <span class="sectionToc" >4.8 <a 
+href="mainse24.html#x58-910004.8" id="QQ2-58-109">Cálculo de autovalores e autovetores</a></span>
+<br />   <span class="sectionToc" >4.9 <a 
+href="mainse25.html#x59-980004.9" id="QQ2-59-116">Exercícios finais</a></span>
+<br />   <span class="chapterToc" >5 <a 
+href="mainch5.html#x60-990005" id="QQ2-60-117">Solução de sistemas de equações não lineares</a></span>
+<br />   <span class="sectionToc" >5.1 <a 
+href="mainse26.html#x61-1000005.1" id="QQ2-61-118">Método de Newton para sistemas</a></span>
+<br />   <span class="sectionToc" >5.2 <a 
+href="mainse27.html#x62-1040005.2" id="QQ2-62-125">Linearização de uma função de várias variáveis</a></span>
+<br />   <span class="chapterToc" >6 <a 
+href="mainch6.html#x63-1070006" id="QQ2-63-128">Interpolação</a></span>
+<br />   <span class="sectionToc" >6.1 <a 
+href="mainse28.html#x64-1080006.1" id="QQ2-64-130">Interpolação polinomial</a></span>
+<br />   <span class="sectionToc" >6.2 <a 
+href="mainse29.html#x67-1110006.2" id="QQ2-67-134">Diferenças divididas de Newton</a></span>
+<br />   <span class="sectionToc" >6.3 <a 
+href="mainse30.html#x68-1120006.3" id="QQ2-68-136">Polinômios de Lagrange</a></span>
+<br />   <span class="sectionToc" >6.4 <a 
+href="mainse31.html#x69-1130006.4" id="QQ2-69-137">Aproximação de funções reais por polinômios interpoladores</a></span>
+<br />   <span class="sectionToc" >6.5 <a 
+href="mainse32.html#x70-1150006.5" id="QQ2-70-139">Interpolação linear segmentada</a></span>
+<br />   <span class="sectionToc" >6.6 <a 
+href="mainse33.html#x71-1160006.6" id="QQ2-71-141">Interpolação cúbica segmentada - spline</a></span>
+<br />   <span class="chapterToc" >7 <a 
+href="mainch7.html#x72-1210007" id="QQ2-72-146">Ajuste de curvas</a></span>
+<br />   <span class="sectionToc" >7.1 <a 
+href="mainse34.html#x73-1220007.1" id="QQ2-73-148">Ajuste de uma reta</a></span>
+<br />   <span class="sectionToc" >7.2 <a 
+href="mainse35.html#x74-1250007.2" id="QQ2-74-151">Ajuste linear geral</a></span>
+<br />   <span class="sectionToc" >7.3 <a 
+href="mainse36.html#x76-1280007.3" id="QQ2-76-157">Aproximando problemas não lineares por problemas lineares</a></span>
+<br />   <span class="chapterToc" >8 <a 
+href="mainch8.html#x78-1310008" id="QQ2-78-160">Derivação numérica</a></span>
+<br />   <span class="sectionToc" >8.1 <a 
+href="mainse37.html#x79-1320008.1" id="QQ2-79-161">Diferenças finitas</a></span>
+<br />   <span class="sectionToc" >8.2 <a 
+href="mainse38.html#x84-1400008.2" id="QQ2-84-171">Diferença finita para derivada segunda</a></span>
+<br />   <span class="sectionToc" >8.3 <a 
+href="mainse39.html#x85-1430008.3" id="QQ2-85-174">Obtenção de fórmulas por polinômios interpoladores</a></span>
+<br />   <span class="sectionToc" >8.4 <a 
+href="mainse40.html#x86-1460008.4" id="QQ2-86-178">Fórmulas de diferenças finitas</a></span>
+<br />   <span class="sectionToc" >8.5 <a 
+href="mainse41.html#x87-1490008.5" id="QQ2-87-181">Derivada via ajuste ou interpolação</a></span>
+<br />   <span class="sectionToc" >8.6 <a 
+href="mainse42.html#x88-1520008.6" id="QQ2-88-184">Exercícios finais</a></span>
+<br />   <span class="chapterToc" >9 <a 
+href="mainch9.html#x89-1530009" id="QQ2-89-185">Integração numérica</a></span>
+<br />   <span class="sectionToc" >9.1 <a 
+href="mainse43.html#x91-1540009.1" id="QQ2-91-188">Somas de Riemann</a></span>
+<br />   <span class="sectionToc" >9.2 <a 
+href="mainse44.html#x92-1570009.2" id="QQ2-92-191">Regras de Newton-Cotes</a></span>
+<br />   <span class="sectionToc" >9.3 <a 
+href="mainse45.html#x93-1650009.3" id="QQ2-93-199">Obtenção das regras de quadratura</a></span>
+<br />   <span class="sectionToc" >9.4 <a 
+href="mainse46.html#x95-1680009.4" id="QQ2-95-202">Regras compostas</a></span>
+<br />   <span class="sectionToc" >9.5 <a 
+href="mainse47.html#x96-1750009.5" id="QQ2-96-209">Método de Romberg</a></span>
+<br />   <span class="sectionToc" >9.6 <a 
+href="mainse48.html#x97-1770009.6" id="QQ2-97-211">Ordem de precisão</a></span>
+<br />   <span class="sectionToc" >9.7 <a 
+href="mainse49.html#x98-1790009.7" id="QQ2-98-213">Quadratura de Gauss-Legendre</a></span>
+<br />   <span class="sectionToc" >9.8 <a 
+href="mainse50.html#x99-1830009.8" id="QQ2-99-218">Integrais impróprias</a></span>
+<br />   <span class="sectionToc" >9.9 <a 
+href="mainse51.html#x101-1870009.9" id="QQ2-101-222">Exercícios finais</a></span>
+<br />   <span class="chapterToc" >10 <a 
+href="mainch10.html#x102-18800010" id="QQ2-102-223">Problemas de valor inicial</a></span>
+<br />   <span class="sectionToc" >10.1 <a 
+href="mainse52.html#x103-18900010.1" id="QQ2-103-224">Rudimentos da teoria de problemas de valor inicial</a></span>
+                                                                          
+
+                                                                          
+<br />   <span class="sectionToc" >10.2 <a 
+href="mainse53.html#x105-19200010.2" id="QQ2-105-227">Método de Euler</a></span>
+<br />   <span class="sectionToc" >10.3 <a 
+href="mainse54.html#x106-19500010.3" id="QQ2-106-230">Método de Euler melhorado</a></span>
+<br />   <span class="sectionToc" >10.4 <a 
+href="mainse55.html#x107-19800010.4" id="QQ2-107-233">Solução de sistemas de equações diferenciais</a></span>
+<br />   <span class="sectionToc" >10.5 <a 
+href="mainse56.html#x108-20100010.5" id="QQ2-108-236">Solução de equações e sistemas de ordem superior</a></span>
+<br />   <span class="sectionToc" >10.6 <a 
+href="mainse57.html#x109-20400010.6" id="QQ2-109-239">Erro de truncamento</a></span>
+<br />   <span class="sectionToc" >10.7 <a 
+href="mainse58.html#x110-20700010.7" id="QQ2-110-242">Métodos de Runge-Kutta explícitos</a></span>
+<br />   <span class="sectionToc" >10.8 <a 
+href="mainse59.html#x112-21300010.8" id="QQ2-112-248">Métodos de Runge-Kutta implícitos</a></span>
+<br />   <span class="sectionToc" >10.9 <a 
+href="mainse60.html#x113-21900010.9" id="QQ2-113-254">O método de Taylor</a></span>
+<br />   <span class="sectionToc" >10.10 <a 
+href="mainse61.html#x114-22200010.10" id="QQ2-114-257">Método de Adams-Bashforth</a></span>
+<br />   <span class="sectionToc" >10.11 <a 
+href="mainse62.html#x115-22500010.11" id="QQ2-115-260">Método de Adams-Moulton</a></span>
+<br />   <span class="sectionToc" >10.12 <a 
+href="mainse63.html#x116-22800010.12" id="QQ2-116-263">Método de Adams-Moulton para sistemas lineares</a></span>
+<br />   <span class="sectionToc" >10.13 <a 
+href="mainse64.html#x117-23100010.13" id="QQ2-117-266">Estratégia preditor-corretor</a></span>
+<br />   <span class="sectionToc" >10.14 <a 
+href="mainse65.html#x118-23400010.14" id="QQ2-118-269">Problemas rígidos</a></span>
+<br />   <span class="sectionToc" >10.15 <a 
+href="mainse66.html#x119-23500010.15" id="QQ2-119-270">Validação e &#8220;Benchmarking&#8221;</a></span>
+<br />   <span class="sectionToc" >10.16 <a 
+href="mainse67.html#x120-23600010.16" id="QQ2-120-271">Convergência, consistência e estabilidade</a></span>
+<br />   <span class="sectionToc" >10.17 <a 
+href="mainse68.html#x121-23700010.17" id="QQ2-121-272">Exercícios finais</a></span>
+<br />   <span class="chapterToc" >11 <a 
+href="mainch11.html#x122-23800011" id="QQ2-122-273">Problemas de valores de contorno</a></span>
+<br />   <span class="sectionToc" >11.1 <a 
+href="mainse69.html#x123-23900011.1" id="QQ2-123-274">Método de diferenças finitas</a></span>
+<br />   <span class="appendixToc" >A <a 
+href="mainap1.html#x125-242000A" id="QQ2-125-282">Rápida introdução ao Python</a></span>
+<br />   <span class="sectionToc" >A.1 <a 
+href="mainse70.html#x126-243000A.1" id="QQ2-126-283">Sobre a linguagem Python</a></span>
+<br />   <span class="sectionToc" >A.2 <a 
+href="mainse71.html#x128-246000A.2" id="QQ2-128-286">Elementos da linguagem</a></span>
+<br />   <span class="sectionToc" >A.3 <a 
+href="mainse72.html#x129-250000A.3" id="QQ2-129-290">Matrizes</a></span>
+<br />   <span class="sectionToc" >A.4 <a 
+href="mainse73.html#x130-253000A.4" id="QQ2-130-293">Estruturas de ramificação e repetição</a></span>
+<br />   <span class="sectionToc" >A.5 <a 
+href="mainse74.html#x131-257000A.5" id="QQ2-131-297">Funções</a></span>
+<br />   <span class="sectionToc" >A.6 <a 
+href="mainse75.html#x132-258000A.6" id="QQ2-132-298">Gráficos</a></span>
+<br />   <span class="chapterToc" > <a 
+href="mainli6.html#Q1-133-300">Referências Bibliográficas</a></span>
+   </div>
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+
+                                                                          
+<!--l. 3--><p class="indent" >
+                                                                          
+
+                                                                          
+<a 
+ id="x1-241015r273"></a>
+                                                                          
+
+                                                                          
+ 
+</body></html> 
+
+                                                                          
+
+

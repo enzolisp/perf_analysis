@@ -1,0 +1,1593 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>Fatoraçao LU</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 1225--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse21.html" >next</a>] [<a 
+href="mainse19.html" >prev</a>] [<a 
+href="mainse19.html#tailmainse19.html" >prev-tail</a>] [<a 
+href="#tailmainse20.html">tail</a>] [<a 
+href="mainch4.html#mainse20.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">4.4   </span> <a 
+ id="x49-680004.4"></a>Fatoração LU</h3>
+<!--l. 1226--><p class="noindent" >Considere um sistema linear <!--l. 1226--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>b</mi></math>,
+onde a matriz <!--l. 1226--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>
+é densa<span class="footnote-mark"><a 
+href="main50.html#fn3x7"><sup class="textsuperscript">3</sup></a></span><a 
+ id="x49-68001f3"></a> .
+A fim de resolver o sistema, podemos fatorar a matriz
+<!--l. 1226--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math> como o produto de uma
+matriz <!--l. 1226--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>L</mi></math> triangular inferior
+e uma matriz <!--l. 1226--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>U</mi></math> triangular
+superior, ou seja, <!--l. 1226--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>L</mi><mi 
+>U</mi></math>.
+<!--l. 1228--><p class="indent" >   Sendo assim, o sistema pode ser reescrito da seguinte forma:
+                                                                          
+
+                                                                          
+<!--tex4ht:inline--><!--l. 1229--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1">    <mi 
+>A</mi><mi 
+>x</mi></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mi 
+>b</mi>      </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(4.74)</mtext><mtext 
+   id="x49-68003r4.4"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1"> <mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>L</mi><mi 
+>U</mi><mo 
+class="MathClass-close" stretchy="false">)</mo><mi 
+>x</mi></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mi 
+>b</mi>      </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(4.75)</mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1"> <mi 
+>L</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mi 
+>U</mi><mi 
+>x</mi><mo 
+class="MathClass-close" stretchy="false">)</mo></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mi 
+>b</mi>      </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(4.76)</mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1"> <mi 
+>L</mi><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>b</mi><mspace width="1em" class="quad"/></mtd><mtd 
+class="eqnarray-2">   <mstyle 
+class="text"><mtext  >&#x00A0;e&#x00A0;</mtext></mstyle></mtd><mtd 
+class="eqnarray-3">   <mspace width="1em" class="quad"/><mi 
+>U</mi><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>y</mi></mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(4.77)</mtext></mtd>                                                   </mtr></mtable>
+</math>
+<!--l. 1234--><p class="nopar" >
+<!--l. 1235--><p class="indent" >   Isto significa que, ao invés de resolvermos o sistema
+original, podemos resolver o sistema triangular inferior
+<!--l. 1235--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>L</mi><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>b</mi></math> e, então, o sistema
+triangular superior <!--l. 1235--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>U</mi><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>y</mi></math>, o qual
+nos fornece a solução de <!--l. 1235--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>b</mi></math>.
+<!--l. 1237--><p class="indent" >   A matriz <!--l. 1237--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>U</mi></math> da
+fatoração<span class="footnote-mark"><a 
+href="main51.html#fn4x7"><sup class="textsuperscript">4</sup></a></span><a 
+ id="x49-68004f4"></a> 
+<!--l. 1237--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>L</mi><mi 
+>U</mi></math>
+é a matriz obtida ao final do escalonamento da matriz
+<!--l. 1237--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>.
+<!--l. 1239--><p class="indent" >   A matriz <!--l. 1239--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>L</mi></math>
+é construída a partir da matriz identidade
+<!--l. 1239--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>I</mi></math>,
+ao longo do escalonamento de A. Os elementos da matriz
+<!--l. 1239--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>L</mi></math>
+são os múltiplos do primeiro elemento da linha de
+<!--l. 1239--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>
+<span class="underline">a ser zerado</span> dividido pelo pivô acima na mesma coluna.
+<!--l. 1241--><p class="indent" >   Por exemplo, para zerar o primeiro elemento da segunda linha de
+<!--l. 1241--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>,
+calculamos <table class="equation"><tr><td>
+                                                                          
+
+                                                                          
+<!--l. 1242--><p class="indent" >
+<!--l. 1242--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                              <mstyle 
+   id="x49-68006r78"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>L</mi></mrow><mrow 
+><mn>2</mn><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>A</mi></mrow><mrow 
+><mn>2</mn><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">&#x2215;</mo><msub><mrow 
+><mi 
+>A</mi></mrow><mrow 
+><mn>1</mn><mn>1</mn></mrow></msub 
+>
+</math></td><td class="eq-no">(4.78)</td></tr></table>
+<!--l. 1243--><p class="indent" >   e fazemos <table class="equation"><tr><td>
+<!--l. 1244--><p class="indent" >
+<!--l. 1244--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                           <mstyle 
+   id="x49-68007r79"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>A</mi></mrow><mrow 
+><mn>2</mn><mi 
+>,</mi><mo 
+class="MathClass-punc" stretchy="false">:</mo></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">&#x2190;</mo> <msub><mrow 
+><mi 
+>A</mi></mrow><mrow 
+><mn>2</mn><mi 
+>,</mi><mo 
+class="MathClass-punc" stretchy="false">:</mo></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>L</mi></mrow><mrow 
+><mn>2</mn><mn>1</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>A</mi></mrow><mrow 
+><mn>1</mn><mi 
+>,</mi><mo 
+class="MathClass-punc" stretchy="false">:</mo></mrow></msub 
+>
+</math></td><td class="eq-no">(4.79)</td></tr></table>
+<!--l. 1246--><p class="indent" >   Note que denotamos <!--l. 1246--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>A</mi></mrow><mrow 
+><mi 
+>i</mi><mi 
+>,</mi><mo 
+class="MathClass-punc" stretchy="false">:</mo></mrow></msub 
+></math> para
+nos referenciarmos a linha <!--l. 1246--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>i</mi></math>
+de <!--l. 1246--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>. Da mesma forma, se
+necessário usaremos <!--l. 1246--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>A</mi></mrow><mrow 
+><mo 
+class="MathClass-punc" stretchy="false">:</mo><mi 
+>,</mi><mi 
+>j</mi></mrow></msub 
+></math> para
+nos referenciarmos a coluna <!--l. 1246--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>j</mi></math>
+de <!--l. 1246--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>.
+<!--l. 1248--><p class="indent" >   Para zerar o primeiro elemento da terceira linha de
+<!--l. 1248--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>,
+temos <table class="equation"><tr><td>
+<!--l. 1249--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 1249--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                              <mstyle 
+   id="x49-68008r80"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>L</mi></mrow><mrow 
+><mn>3</mn><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msub><mrow 
+><mi 
+>A</mi></mrow><mrow 
+><mn>3</mn><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-bin" stretchy="false">&#x2215;</mo><msub><mrow 
+><mi 
+>A</mi></mrow><mrow 
+><mn>1</mn><mn>1</mn></mrow></msub 
+>
+</math></td><td class="eq-no">(4.80)</td></tr></table>
+<!--l. 1250--><p class="indent" >   e fazemos <table class="equation"><tr><td>
+<!--l. 1251--><p class="indent" >
+<!--l. 1251--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                           <mstyle 
+   id="x49-68009r81"  class="label" ></mstyle><!--endlabel--><msub><mrow 
+><mi 
+>A</mi></mrow><mrow 
+><mn>3</mn><mi 
+>,</mi><mo 
+class="MathClass-punc" stretchy="false">:</mo></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">&#x2190;</mo> <msub><mrow 
+><mi 
+>A</mi></mrow><mrow 
+><mn>3</mn><mi 
+>,</mi><mo 
+class="MathClass-punc" stretchy="false">:</mo></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>L</mi></mrow><mrow 
+><mn>3</mn><mn>1</mn></mrow></msub 
+><msub><mrow 
+><mi 
+>A</mi></mrow><mrow 
+><mn>1</mn><mi 
+>,</mi><mo 
+class="MathClass-punc" stretchy="false">:</mo></mrow></msub 
+>
+</math></td><td class="eq-no">(4.81)</td></tr></table>
+<!--l. 1252--><p class="indent" >   até chegarmos ao último elemento da primeira coluna de
+<!--l. 1252--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>.
+<!--l. 1254--><p class="indent" >   Repetimos o processo para as próximas colunas, escalonando a matriz
+<!--l. 1254--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math> e coletando os
+elementos <!--l. 1254--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>L</mi></mrow><mrow 
+><mi 
+>i</mi><mi 
+>j</mi></mrow></msub 
+></math> abaixo
+da diagonal<span class="footnote-mark"><a 
+href="main52.html#fn5x7"><sup class="textsuperscript">5</sup></a></span><a 
+ id="x49-68010f5"></a> .
+   <div class="newtheorem">
+<!--l. 1256--><p class="noindent" ><span class="head">
+<a 
+ id="x49-68012r1"></a>
+                                                                          
+
+                                                                          
+<span 
+class="ec-lmbx-12">Exemplo 4.4.1.</span>  </span>Use a fatoração LU para resolver o seguinte sistema linear:
+<table class="equation"><tr><td>
+<!--l. 1258--><p class="indent" >
+<!--l. 1258--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x49-68013r82"  class="label" ></mstyle><!--endlabel-->   <mtable 
+class="equation"><mtr><mtd>
+   <mtable  
+columnalign="right left" class="split">
+<mtr class="split-mtr"><mtd 
+class="split-mtd">  <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd"> <mn>2</mn><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd"> <mn>2</mn><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn></mtd>
+   </mtr></mtable>                                                                       </mtd><mtd>
+   </mtd></mtr></mtable>
+</math></td><td class="eq-no">(4.82)</td></tr></table>
+   </div>
+<!--l. 1265--><p class="indent" >    <span 
+class="ec-lmbx-12">Solu</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o. </span>Começamos fatorando a matriz
+<!--l. 1267--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math> dos
+coeficientes deste sistema:
+                                                                          
+
+                                                                          
+<!--tex4ht:inline--><!--l. 1268--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <mi 
+>A</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo>  <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>1</mn>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>1</mn>  </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn> </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>1</mn>  </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                                </mrow><mo fence="true" form="postfix">]</mo></mrow> </mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <munder class="msub"><mrow 
+><munder accentunder="false"><mrow> <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>0</mn></mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                                    </mrow><mo fence="true" form="postfix">]</mo></mrow></mrow><mo>&#x23DF;</mo></munder> </mrow><mrow 
+><msub><mrow 
+><mi 
+>I</mi></mrow><mrow 
+><mn>3</mn><mi 
+>,</mi><mn>3</mn></mrow></msub 
+></mrow></munder 
+><munder class="msub"><mrow 
+><munder accentunder="false"><mrow>  <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center">  <mn>1</mn> </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>1</mn>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>1</mn>  </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn> </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>1</mn>  </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                                </mrow><mo fence="true" form="postfix">]</mo></mrow></mrow><mo>&#x23DF;</mo></munder> </mrow><mrow 
+><mi 
+>A</mi></mrow></munder 
+></mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(4.83)</mtext><mtext 
+   id="x49-68014r4.4"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1">                                                                               </mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>0</mn></mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                               </mrow><mo fence="true" form="postfix">]</mo></mrow> <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>1</mn>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>1</mn>  </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                                </mrow><mo fence="true" form="postfix">]</mo></mrow>      </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(4.84)</mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1">                                                                               </mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <munder class="msub"><mrow 
+><munder accentunder="false"><mrow> <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mn>0</mn></mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>2</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>3</mn> </mtd><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                                    </mrow><mo fence="true" form="postfix">]</mo></mrow></mrow><mo>&#x23DF;</mo></munder> </mrow><mrow 
+><mi 
+>L</mi></mrow></munder 
+><munder class="msub"><mrow 
+><munder accentunder="false"><mrow>  <mrow><mo fence="true" form="prefix"> [</mo><mrow><mtable  align="axis" style=""  
+equalrows="false" columnlines="none none none none none none none none none" equalcolumns="false" class="array" displaystyle="true"> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>1</mn> </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>1</mn>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>1</mn>  </mtd></mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn> </mtd> <mtd 
+class="array-td"  columnalign="center"> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mtd>
+</mtr> <mtr class="array-row"><mtd 
+class="array-td"  columnalign="center"> <mn>0</mn> </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>0</mn>  </mtd><mtd 
+class="array-td"  columnalign="center">  <mn>8</mn>  </mtd></mtr> <!--*\c@MaxMatrixCols c--></mtable>                                                                                </mrow><mo fence="true" form="postfix">]</mo></mrow></mrow><mo>&#x23DF;</mo></munder> </mrow><mrow 
+><mi 
+>U</mi></mrow></munder 
+>  </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(4.85)</mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1">                                                                               </mtd><mtd 
+class="eqnarray-2">    </mtd><mtd 
+class="eqnarray-3">                                                                                                                                                           </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(4.86)</mtext></mtd></mtr></mtable>
+</math>
+<!--l. 1308--><p class="nopar" >
+<!--l. 1310--><p class="indent" >   Completada a fatoração LU, resolvemos, primeiramente, o sistema
+<!--l. 1310--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>L</mi><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>b</mi></math>:
+<table class="equation"><tr><td>
+<!--l. 1311--><p class="indent" >
+<!--l. 1311--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x49-68015r87"  class="label" ></mstyle><!--endlabel-->   <mtable 
+class="equation"><mtr><mtd>
+   <mtable  
+columnalign="right left" class="split">
+<mtr class="split-mtr"><mtd 
+class="split-mtd">             <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">       <mn>2</mn><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd"> <mn>2</mn><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>3</mn><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn></mtd>
+   </mtr></mtable>                                                                       </mtd><mtd>
+   </mtd></mtr></mtable>
+</math></td><td class="eq-no">(4.87)</td></tr></table>
+   o qual nos fornece <!--l. 1318--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></math>,
+                                                                          
+
+                                                                          
+<!--l. 1318--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>5</mn></math> e
+<!--l. 1318--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>y</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>8</mn></math>.
+Por fim, obtemos a solução resolvendo o sistema
+<!--l. 1318--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>U</mi><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>y</mi></math>:
+<table class="equation"><tr><td>
+<!--l. 1319--><p class="indent" >
+<!--l. 1319--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+<mstyle 
+   id="x49-68016r88"  class="label" ></mstyle><!--endlabel-->   <mtable 
+class="equation"><mtr><mtd>
+   <mtable  
+columnalign="right left" class="split">
+<mtr class="split-mtr"><mtd 
+class="split-mtd"> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">   <mo 
+class="MathClass-bin" stretchy="false">-</mo> <msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>3</mn><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>5</mn></mtd>
+</mtr><mtr class="split-mtr"><mtd 
+class="split-mtd">         <mn>8</mn><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+></mtd><mtd 
+class="split-mtd"> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>8</mn></mtd>
+   </mtr></mtable>                                                                       </mtd><mtd>
+   </mtd></mtr></mtable>
+</math></td><td class="eq-no">(4.88)</td></tr></table>
+   o qual fornece <!--l. 1326--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>3</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></math>,
+<!--l. 1326--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></math> e
+<!--l. 1326--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></math>.
+                                                                          <div class="flushright" 
+>
+<!--l. 1327--><p class="noindent" >
+<!--l. 1327--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-ord">&#x2662;</mo></math></div>
+   <h4 class="subsectionHead"><span class="titlemark">4.4.1   </span> <a 
+ id="x49-690004.4.1"></a>Código Python: Fatoração LU</h4>
+<!--l. 1353--><p class="noindent" >Em <span class="obeylines-h"><code class="verb">Python</code></span>, podemos implementar o algoritmo para fatoração
+<!--l. 1353--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>L</mi><mi 
+>U</mi></math> da
+seguinte forma: <div class="verbatiminput">
+                                                                          
+
+                                                                          
+<span 
+class="ec-lmtt-12">def</span><span 
+class="ec-lmtt-12">&#x00A0;fatoraLU(A):</span>
+<span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;U</span><span 
+class="ec-lmtt-12">&#x00A0;=</span><span 
+class="ec-lmtt-12">&#x00A0;np.copy(A)</span>
+<span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;n</span><span 
+class="ec-lmtt-12">&#x00A0;=</span><span 
+class="ec-lmtt-12">&#x00A0;np.shape(U)[0]</span>
+<span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;L</span><span 
+class="ec-lmtt-12">&#x00A0;=</span><span 
+class="ec-lmtt-12">&#x00A0;np.eye(n)</span>
+<span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;for</span><span 
+class="ec-lmtt-12">&#x00A0;j</span><span 
+class="ec-lmtt-12">&#x00A0;in</span><span 
+class="ec-lmtt-12">&#x00A0;np.arange(n-1):</span>
+<span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;for</span><span 
+class="ec-lmtt-12">&#x00A0;i</span><span 
+class="ec-lmtt-12">&#x00A0;in</span><span 
+class="ec-lmtt-12">&#x00A0;np.arange(j+1,n):</span>
+<span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;L[i,j]</span><span 
+class="ec-lmtt-12">&#x00A0;=</span><span 
+class="ec-lmtt-12">&#x00A0;U[i,j]/U[j,j]</span>
+<span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;for</span><span 
+class="ec-lmtt-12">&#x00A0;k</span><span 
+class="ec-lmtt-12">&#x00A0;in</span><span 
+class="ec-lmtt-12">&#x00A0;np.arange(j+1,n):</span>
+<span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;U[i,k]</span><span 
+class="ec-lmtt-12">&#x00A0;=</span><span 
+class="ec-lmtt-12">&#x00A0;U[i,k]</span><span 
+class="ec-lmtt-12">&#x00A0;-</span><span 
+class="ec-lmtt-12">&#x00A0;L[i,j]*U[j,k]</span>
+<span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;U[i,j]</span><span 
+class="ec-lmtt-12">&#x00A0;=</span><span 
+class="ec-lmtt-12">&#x00A0;0</span>
+<span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;</span><span 
+class="ec-lmtt-12">&#x00A0;return</span><span 
+class="ec-lmtt-12">&#x00A0;L,</span><span 
+class="ec-lmtt-12">&#x00A0;U</span>
+   </div>
+   <div class="newtheorem">
+<!--l. 1422--><p class="noindent" ><span class="head">
+<a 
+ id="x49-69001r1"></a>
+<span 
+class="ec-lmbx-12">Observa</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o 4.4.1.</span>  </span>O custo computacional do algoritmo da fatoração LU
+é <table class="equation"><tr><td>
+<!--l. 1424--><p class="indent" >
+<!--l. 1424--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                           <mstyle 
+   id="x49-69002r89"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mn>2</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></mrow>
+
+  <mrow 
+><mn>3</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow> 
+ <mrow 
+><mn>2</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><mi 
+>n</mi></mrow> 
+<mrow 
+><mn>6</mn></mrow></mfrac><mstyle 
+class="text"><mtext  >&#x00A0;flops</mtext></mstyle><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(4.89)</td></tr></table>
+   </div>
+<!--l. 1427--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 1431--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">4.4.2   </span> <a 
+ id="x49-700004.4.2"></a>Custo computacional para resolver um sistema linear usando
+fatoração LU</h4>
+<!--l. 1432--><p class="noindent" >Para calcularmos o custo computacional de um algoritmo completo, uma
+estratégia é separar o algoritmo em partes menores, mais fáceis de
+analisar.
+<!--l. 1434--><p class="indent" >   Para resolver o sistema, devemos primeiro fatorar a matriz
+<!--l. 1434--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math> nas
+matrizes <!--l. 1434--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>L</mi></math>
+e <!--l. 1434--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>U</mi></math>.
+Vimos que o custo é <table class="equation"><tr><td>
+<!--l. 1435--><p class="indent" >
+<!--l. 1435--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                           <mstyle 
+   id="x49-70001r90"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mn>2</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></mrow>
+
+  <mrow 
+><mn>3</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow> 
+ <mrow 
+><mn>2</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><mi 
+>n</mi></mrow> 
+<mrow 
+><mn>6</mn></mrow></mfrac><mstyle 
+class="text"><mtext  >&#x00A0;flops</mtext></mstyle><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(4.90)</td></tr></table>
+<!--l. 1437--><p class="indent" >   Depois devemos resolver os sistemas
+<!--l. 1437--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>L</mi><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>b</mi></math> e
+<!--l. 1437--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>U</mi><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>y</mi></math>. O
+custo de resolver os dois sistemas é (devemos contar duas vezes) <table class="equation"><tr><td>
+<!--l. 1438--><p class="indent" >
+<!--l. 1438--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                                 <mstyle 
+   id="x49-70002r91"  class="label" ></mstyle><!--endlabel--><mn>2</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+><mstyle 
+class="text"><mtext  >&#x00A0;flops</mtext></mstyle><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(4.91)</td></tr></table>
+                                                                          
+
+                                                                          
+<!--l. 1440--><p class="indent" >   Somando esses <!--l. 1440--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>3</mn></math>
+custos, temos que o custo para resolver um sistema linear usando fatoração
+<!--l. 1440--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>L</mi><mi 
+>U</mi></math> é
+<table class="equation"><tr><td>
+<!--l. 1441--><p class="indent" >
+<!--l. 1441--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                           <mstyle 
+   id="x49-70003r92"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mn>2</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></mrow>
+
+  <mrow 
+><mn>3</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><mn>3</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow> 
+  <mrow 
+><mn>2</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><mi 
+>n</mi></mrow> 
+<mrow 
+><mn>6</mn></mrow></mfrac><mstyle 
+class="text"><mtext  >&#x00A0;flops</mtext></mstyle><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(4.92)</td></tr></table>
+<!--l. 1443--><p class="indent" >   Quando <!--l. 1443--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi></math>
+cresce, prevalessem os termos de mais alta ordem, ou seja, <table class="equation"><tr><td>
+<!--l. 1444--><p class="indent" >
+<!--l. 1444--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+              <mstyle 
+   id="x49-70004r93"  class="label" ></mstyle><!--endlabel--><mstyle 
+mathvariant="script"><mi 
+>O</mi></mstyle><mo 
+class="MathClass-open" stretchy="false">(</mo><mfrac><mrow 
+><mn>2</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></mrow>
+  <mrow 
+><mn>3</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><mn>3</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow> 
+  <mrow 
+><mn>2</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><mi 
+>n</mi></mrow> 
+<mrow 
+><mn>6</mn></mrow></mfrac><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mstyle 
+mathvariant="script"><mi 
+>O</mi></mstyle><mo 
+class="MathClass-open" stretchy="false">(</mo><mfrac><mrow 
+><mn>2</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></mrow>
+  <mrow 
+><mn>3</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><mn>3</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow> 
+  <mrow 
+><mn>2</mn></mrow></mfrac>  <mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mstyle 
+mathvariant="script"><mi 
+>O</mi></mstyle><mo 
+class="MathClass-open" stretchy="false">(</mo><mfrac><mrow 
+><mn>2</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></mrow>
+  <mrow 
+><mn>3</mn></mrow></mfrac>  <mo 
+class="MathClass-close" stretchy="false">)</mo>
+</math></td><td class="eq-no">(4.93)</td></tr></table>
+<!--l. 1446--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">4.4.3   </span> <a 
+ id="x49-710004.4.3"></a>Custo para resolver m sistemas lineares</h4>
+<!--l. 1447--><p class="noindent" >Devemos apenas multiplicar <!--l. 1447--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi></math>
+pelo custo de resolver um sistema linear usando fatoração
+<!--l. 1447--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>L</mi><mi 
+>U</mi></math>, ou
+seja, o custo será <table class="equation"><tr><td>
+                                                                          
+
+                                                                          
+<!--l. 1448--><p class="indent" >
+<!--l. 1448--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                <mstyle 
+   id="x49-71001r94"  class="label" ></mstyle><!--endlabel--><mi 
+>m</mi><mo 
+class="MathClass-open" stretchy="false">(</mo><mfrac><mrow 
+><mn>2</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></mrow>
+  <mrow 
+><mn>3</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><mn>3</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow> 
+  <mrow 
+><mn>2</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><mi 
+>n</mi></mrow> 
+<mrow 
+><mn>6</mn></mrow></mfrac><mo 
+class="MathClass-close" stretchy="false">)</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><mn>2</mn><mi 
+>m</mi><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></mrow> 
+    <mrow 
+><mn>3</mn></mrow></mfrac>    <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><mn>3</mn><mi 
+>m</mi><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow> 
+    <mrow 
+><mn>2</mn></mrow></mfrac>    <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><mi 
+>m</mi><mi 
+>n</mi></mrow> 
+ <mrow 
+><mn>6</mn></mrow></mfrac>
+</math></td><td class="eq-no">(4.94)</td></tr></table>
+<!--l. 1449--><p class="indent" >   e com <!--l. 1449--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>n</mi></math>
+temos <table class="equation"><tr><td>
+<!--l. 1450--><p class="indent" >
+<!--l. 1450--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                             <mstyle 
+   id="x49-71002r95"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mn>2</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>4</mn></mrow></msup 
+></mrow>
+
+  <mrow 
+><mn>3</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mfrac><mrow 
+><mn>3</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></mrow> 
+  <mrow 
+><mn>2</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow> 
+ <mrow 
+><mn>6</mn></mrow></mfrac> <mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(4.95)</td></tr></table>
+<!--l. 1452--><p class="indent" >   Porém, se estivermos resolvendo
+<!--l. 1452--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi></math> sistemas com <span 
+class="ec-lmri-12">a</span>
+<span 
+class="ec-lmri-12">mesma matriz </span><!--l. 1452--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math> (e
+diferente lado direito <!--l. 1452--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><!--binary math rel, tripple hight--><mi 
+>b</mi><!--/binary math rel, tripple hight--></math>
+para cada sistema) podemos fazer a fatoração LU uma única vez e contar
+apenas o custo de resolver os sistemas triangulares obtidos.
+<!--l. 1454--><p class="indent" >   Custo para fatoração LU de <!--l. 1454--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>:
+<!--l. 1454--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mfrac><mrow 
+><mn>2</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></mrow>
+  <mrow 
+><mn>3</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow> 
+ <mrow 
+><mn>2</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><mi 
+>n</mi></mrow> 
+<mrow 
+><mn>6</mn></mrow></mfrac> </math>.
+<!--l. 1456--><p class="indent" >   Custo para resolver <!--l. 1456--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi></math> sistemas
+triangulares inferiores: <!--l. 1456--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></math>.
+<!--l. 1458--><p class="indent" >   Custo para resolver <!--l. 1458--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi></math> sistemas
+triangulares superiores: <!--l. 1458--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></math>.
+                                                                          
+
+                                                                          
+<!--l. 1460--><p class="indent" >   Somando esses custos obtemos <table class="equation"><tr><td>
+<!--l. 1461--><p class="indent" >
+<!--l. 1461--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                          <mstyle 
+   id="x49-71003r96"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mn>2</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></mrow>
+
+  <mrow 
+><mn>3</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow> 
+ <mrow 
+><mn>2</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><mi 
+>n</mi></mrow> 
+<mrow 
+><mn>6</mn></mrow></mfrac> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>2</mn><mi 
+>m</mi><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+>
+</math></td><td class="eq-no">(4.96)</td></tr></table>
+<!--l. 1462--><p class="indent" >   que quando <!--l. 1462--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>m</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>n</mi></math>
+obtemos <table class="equation"><tr><td>
+<!--l. 1463--><p class="indent" >
+<!--l. 1463--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                           <mstyle 
+   id="x49-71004r97"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mn>8</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></mrow>
+
+  <mrow 
+><mn>3</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow> 
+ <mrow 
+><mn>2</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><mi 
+>n</mi></mrow> 
+<mrow 
+><mn>6</mn></mrow></mfrac><mstyle 
+class="text"><mtext  >&#x00A0;flops</mtext></mstyle><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(4.97)</td></tr></table>
+<!--l. 1465--><p class="noindent" >
+   <h4 class="subsectionHead"><span class="titlemark">4.4.4   </span> <a 
+ id="x49-720004.4.4"></a>Custo para calcular a matriz inversa de
+<!--l. 1465--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math></h4>
+<!--l. 1466--><p class="noindent" >Como vemos em Álgebra Linear, um método para obter a matriz
+<!--l. 1466--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>A</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+></math> é realizar o
+escalonamento da matriz <!--l. 1466--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mo 
+class="MathClass-open" stretchy="false">[</mo><mi 
+>A</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>I</mi><mo 
+class="MathClass-close" stretchy="false">]</mo></math>
+onde <!--l. 1466--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>I</mi></math> é
+a matriz identidade. Ao terminar o escalonamento, o bloco do lado direito conterá
+<!--l. 1466--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msup><mrow 
+><mi 
+>A</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+></math>.
+                                                                          
+
+                                                                          
+<!--l. 1468--><p class="indent" >   Isto é equivalente a resolver <!--l. 1468--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi></math>
+sistemas lineares com a mesma matriz
+<!--l. 1468--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math> e os vetores da
+base canônica <!--l. 1468--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><!--binary math rel, tripple hight--><msub><mrow 
+><mi 
+>e</mi><!--/binary math rel, tripple hight--></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mo 
+class="MathClass-open" stretchy="false">[</mo><mn>0</mn><mi 
+>,</mi><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mi 
+>,</mi><mn>0</mn><mi 
+>,</mi><mn>1</mn><mi 
+>,</mi><mn>0</mn><mi 
+>,</mi><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mn>0</mn><mo 
+class="MathClass-close" stretchy="false">]</mo></mrow><mrow 
+><mi 
+>T</mi> </mrow></msup 
+></math>,
+isto é, <table class="equation"><tr><td>
+<!--l. 1469--><p class="indent" >
+<!--l. 1469--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                            <mstyle 
+   id="x49-72001r98"  class="label" ></mstyle><!--endlabel--><mi 
+>A</mi><!--binary math rel, tripple hight--><msub><mrow 
+><mi 
+>x</mi><!--/binary math rel, tripple hight--></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo><!--binary math rel, tripple hight--><msub><mrow 
+> <mi 
+>e</mi><!--/binary math rel, tripple hight--></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+><mo 
+class="MathClass-punc" stretchy="false">,</mo><mspace width="1em" class="quad"/><mspace width="1em" class="quad"/><mi 
+>i</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn> <mo 
+class="MathClass-punc" stretchy="false">:</mo> <mi 
+>n</mi>
+</math></td><td class="eq-no">(4.98)</td></tr></table>
+<!--l. 1470--><p class="indent" >   onde <!--l. 1470--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><!--binary math rel, tripple hight--><msub><mrow 
+><mi 
+>x</mi><!--/binary math rel, tripple hight--></mrow><mrow 
+><mi 
+>i</mi></mrow></msub 
+></math> serão as
+colunas da matriz <!--l. 1470--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>
+inversa, já que <!--l. 1470--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi><mi 
+>X</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>I</mi></math>.
+<!--l. 1472--><p class="indent" >   O custo para resolver esses <!--l. 1472--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>n</mi></math>
+sistemas lineares foi calculado na seção anterior como <table class="equation"><tr><td>
+<!--l. 1473--><p class="indent" >
+<!--l. 1473--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                              <mstyle 
+   id="x49-72002r99"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mn>8</mn><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>3</mn></mrow></msup 
+></mrow>
+
+  <mrow 
+><mn>3</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><msup><mrow 
+><mi 
+>n</mi></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></mrow> 
+ <mrow 
+><mn>2</mn></mrow></mfrac>  <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mfrac><mrow 
+><mi 
+>n</mi></mrow> 
+<mrow 
+><mn>6</mn></mrow></mfrac><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(4.99)</td></tr></table>
+   <div class="newtheorem">
+<!--l. 1475--><p class="noindent" ><span class="head">
+<a 
+ id="x49-72003r2"></a>
+                                                                          
+
+                                                                          
+<span 
+class="ec-lmbx-12">Exemplo 4.4.2.</span>  </span>Qual o melhor método para resolver um sistema linear:
+via fatoração LU ou calculando a inversa de <!--l. 1476--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>A</mi></math>
+e obtendo <!--l. 1476--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <msup><mrow 
+><mi 
+>A</mi></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+><mi 
+>b</mi></math>?
+   </div>
+<!--l. 1477--><p class="indent" >
+                                                                          
+
+                                                                          
+   <!--l. 1480--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse21.html" >next</a>] [<a 
+href="mainse19.html" >prev</a>] [<a 
+href="mainse19.html#tailmainse19.html" >prev-tail</a>] [<a 
+href="mainse20.html" >front</a>] [<a 
+href="mainch4.html#mainse20.html" >up</a>] </p></div>
+<!--l. 1480--><p class="indent" >   <a 
+ id="tailmainse20.html"></a>   
+</body></html> 

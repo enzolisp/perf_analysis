@@ -1,0 +1,1561 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN"  
+  "http://www.w3.org/TR/html4/loose.dtd">  
+<html xml:lang="pt" > 
+<head><title>Tipos de erros</title> 
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"> 
+<meta name="generator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<meta name="originator" content="TeX4ht (https://tug.org/tex4ht/)"> 
+<!-- 3,notoc*,html,mathml --> 
+<meta name="src" content="main.tex"> 
+<link rel="stylesheet" type="text/css" href="main.css"> 
+<link rel="stylesheet" type="text/css" href="main.css" /> 
+<script type="text/javascript" 
+src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML" 
+></script> 
+<style type="text/css"> 
+.MathJax_MathML {text-indent: 0;} 
+</style> 
+</head><body 
+>
+   <!--l. 1871--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse6.html" >next</a>] [<a 
+href="mainse4.html" >prev</a>] [<a 
+href="mainse4.html#tailmainse4.html" >prev-tail</a>] [<a 
+href="#tailmainse5.html">tail</a>] [<a 
+href="mainch2.html#mainse5.html" >up</a>] </p></div>
+   <h3 class="sectionHead"><span class="titlemark">2.5   </span> <a 
+ id="x21-300002.5"></a>Tipos de erros</h3>
+<a 
+ id="dx21-30001"></a>
+<!--l. 1873--><p class="noindent" >Em geral, os números não são representados de forma exata nos computadores.
+Isto nos leva ao chamado erro de arredondamento. Quando resolvemos problemas
+com técnicas numéricas, estamos sujeitos a este e outros tipos de erros. Nesta
+seção, veremos quais são estes erros e como controlá-los, quando
+possível.
+<!--l. 1875--><p class="indent" >   Quando fazemos aproximações numéricas, os erros são gerados de várias
+formas, sendo as principais delas as seguintes:
+      <dl class="enumerate"><dt class="enumerate">
+   1. </dt><dd 
+class="enumerate">
+      <!--l. 1877--><p class="noindent" ><span 
+class="ec-lmbx-12">Incerteza dos dados </span>são devidos aos erros nos dados de entrada.
+      Quando o modelo matemático é oriundo de um problema físico,
+      existe incerteza nas medidas feitas pelos instrumentos de medição,
+      que possuem acurácia finita.
+      </dd><dt class="enumerate">
+   2. </dt><dd 
+class="enumerate">
+      <!--l. 1878--><p class="noindent" ><span 
+class="ec-lmbx-12">Erros  de  Arredondamento  </span>são  aqueles  relacionados  com  as
+      limitações   existentes   na   forma   de   representar   números   em
+      máquina.
+      </dd><dt class="enumerate">
+   3. </dt><dd 
+class="enumerate">
+      <!--l. 1879--><p class="noindent" ><span 
+class="ec-lmbx-12">Erros de Truncamento </span>surgem quando aproximamos um conceito
+      matemático formado por uma sequência infinita de passos por de um
+      procedimento finito. Por exemplo, a definição de integral é dada por
+      um processo de limite de somas. Numericamente, aproximamos por um
+      soma finita. O erro de truncamento deve ser estudado analiticamente
+      para cada método empregado e normalmente envolve matemática
+      mais avançada que a estudado em um curso de graduação.</dd></dl>
+                                                                          
+
+                                                                          
+<!--l. 1882--><p class="indent" >   Uma questão fundamental é a quantificação dos erros imbricados na
+computação da solução de um dado problema. Para tanto, precisamos definir
+medidas de erros (ou de exatidão)<a 
+ id="dx21-30005"></a><a 
+ id="dx21-30006"></a>. As medidas de erro mais utilizadas são o
+<span 
+class="ec-lmbx-12">erro absoluto</span><a 
+ id="dx21-30007"></a> e o <span 
+class="ec-lmbx-12">erro relativo</span><a 
+ id="dx21-30008"></a>.
+   <div class="newtheorem">
+<!--l. 1884--><p class="noindent" ><span class="head">
+<a 
+ id="x21-30009r1"></a>
+<span 
+class="ec-lmbx-12">Defini</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o 2.5.1 </span>(Erro absoluto e relativo)<span 
+class="ec-lmbx-12">.</span>  </span><span 
+class="ec-lmri-12">Seja</span>
+<!--l. 1884--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math> <span 
+class="ec-lmri-12">um n</span><span 
+class="ec-lmri-12">ú</span><span 
+class="ec-lmri-12">mero</span>
+<span 
+class="ec-lmri-12">real e </span><!--l. 1884--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover accent="false" 
+class="mml-overline"><mrow><mi 
+>x</mi></mrow><mo 
+accent="true">¯</mo></mover></math><span 
+class="ec-lmri-12">,</span>
+<span 
+class="ec-lmri-12">sua aproxima</span><span 
+class="ec-lmri-12">ç</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o. O </span><span 
+class="ec-lmbxi-10x-x-120">erro absoluto </span><span 
+class="ec-lmri-12">da aproxima</span><span 
+class="ec-lmri-12">ç</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o</span>
+<!--l. 1884--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover accent="false" 
+class="mml-overline"><mrow><mi 
+>x</mi></mrow><mo 
+accent="true">¯</mo></mover></math> <span 
+class="ec-lmri-12">é</span>
+<span 
+class="ec-lmri-12">definido como </span><table class="equation"><tr><td>
+<!--l. 1885--><p class="indent" >
+<!--l. 1885--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                                  <mstyle 
+   id="x21-30010r69"  class="label" ></mstyle><!--endlabel--><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mover accent="false" 
+class="mml-overline"><mrow><mi 
+>x</mi></mrow><mo 
+accent="true">¯</mo></mover><mo 
+class="MathClass-rel" stretchy="false">|</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.69)</td></tr></table>
+<!--l. 1888--><p class="indent" >   <span 
+class="ec-lmri-12">O </span><span 
+class="ec-lmbxi-10x-x-120">erro relativo </span><span 
+class="ec-lmri-12">da aproxima</span><span 
+class="ec-lmri-12">ç</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o</span>
+<!--l. 1888--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover accent="false" 
+class="mml-overline"><mrow><mi 
+>x</mi></mrow><mo 
+accent="true">¯</mo></mover></math> <span 
+class="ec-lmri-12">é</span>
+<span 
+class="ec-lmri-12">definido como </span><table class="equation"><tr><td>
+<!--l. 1889--><p class="indent" >
+                                                                          
+
+                                                                          
+<!--l. 1889--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                               <mstyle 
+   id="x21-30011r70"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mover accent="false" 
+class="mml-overline"><mrow><mi 
+>x</mi></mrow><mo 
+accent="true">¯</mo></mover><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow>
+  <mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow></mfrac>  <mi 
+>,</mi><mspace width="1em" class="quad"/><mi 
+>x</mi><mo 
+class="MathClass-rel" stretchy="false">&#x2260;</mo><mn>0</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.70)</td></tr></table>
+   </div>
+<!--l. 1892--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 1894--><p class="noindent" ><span class="head">
+<a 
+ id="x21-30012r1"></a>
+<span 
+class="ec-lmbx-12">Observa</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o 2.5.1.</span>  </span>Observe que o erro relativo é adimensional e, muitas vezes,
+é expresso em porcentagens. Mais precisamente, o erro relativo em porcentagem da
+aproximação <!--l. 1895--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover accent="false" 
+class="mml-overline"><mrow><mi 
+>x</mi></mrow><mo 
+accent="true">¯</mo></mover></math>
+é dado por <table class="equation"><tr><td>
+<!--l. 1896--><p class="indent" >
+<!--l. 1896--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                             <mstyle 
+   id="x21-30013r71"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow>
+  <mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow></mfrac>   <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><mn>0</mn><mn>0</mn><mi 
+>%</mi><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.71)</td></tr></table>
+   </div>
+<!--l. 1899--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 1901--><p class="noindent" ><span class="head">
+<a 
+ id="x21-30014r1"></a>
+                                                                          
+
+                                                                          
+<span 
+class="ec-lmbx-12">Exemplo 2.5.1.</span>  </span>Sejam <!--l. 1902--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>2</mn><mn>3</mn><mn>4</mn><mn>5</mn><mn>6</mn><mi 
+>,</mi><mn>7</mn><mn>8</mn><mn>9</mn></math>
+e sua aproximação <!--l. 1902--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>2</mn><mn>3</mn><mn>0</mn><mn>0</mn><mn>0</mn></math>.
+O erro absoluto é <table class="equation"><tr><td>
+<!--l. 1903--><p class="indent" >
+<!--l. 1903--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                <mstyle 
+   id="x21-30015r72"  class="label" ></mstyle><!--endlabel--><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover><mo 
+class="MathClass-rel" stretchy="false">|</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-rel" stretchy="false">|</mo><mn>1</mn><mn>2</mn><mn>3</mn><mn>4</mn><mn>5</mn><mn>6</mn><mi 
+>,</mi><mn>7</mn><mn>8</mn><mn>9</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn><mn>2</mn><mn>3</mn><mn>0</mn><mn>0</mn><mn>0</mn><mo 
+class="MathClass-rel" stretchy="false">|</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>4</mn><mn>5</mn><mn>6</mn><mi 
+>,</mi><mn>7</mn><mn>8</mn><mn>9</mn>
+</math></td><td class="eq-no">(2.72)</td></tr></table>
+<!--l. 1906--><p class="indent" >   e o erro relativo é <table class="equation"><tr><td>
+<!--l. 1907--><p class="indent" >
+<!--l. 1907--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+              <mstyle 
+   id="x21-30016r73"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow>
+  <mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow></mfrac>    <mo 
+class="MathClass-rel" stretchy="false">=</mo>   <mfrac><mrow 
+><mn>4</mn><mn>5</mn><mn>6</mn><mi 
+>,</mi><mn>7</mn><mn>8</mn><mn>9</mn></mrow> 
+<mrow 
+><mn>1</mn><mn>2</mn><mn>3</mn><mn>4</mn><mn>5</mn><mn>6</mn><mi 
+>,</mi><mn>7</mn><mn>8</mn><mn>9</mn></mrow></mfrac> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>3</mn><mn>6</mn><mn>9</mn><mn>9</mn><mn>9</mn><mn>9</mn><mstyle 
+class="text"><mtext  >&#x00A0;ou&#x00A0;</mtext></mstyle><mn>0</mn><mi 
+>,</mi><mn>3</mn><mn>6</mn><mi 
+>%</mi>
+</math></td><td class="eq-no">(2.73)</td></tr></table>
+   </div>
+<!--l. 1910--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 1912--><p class="noindent" ><span class="head">
+<a 
+ id="x21-30017r2"></a>
+<span 
+class="ec-lmbx-12">Exemplo 2.5.2.</span>  </span>Sejam <!--l. 1913--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>y</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>2</mn><mn>3</mn><mn>4</mn><mn>5</mn><mn>6</mn><mn>7</mn><mn>8</mn><mn>9</mn></math>
+e <!--l. 1913--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>&#x0233;</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>1</mn><mn>3</mn></math>. O
+erro absoluto é <table class="equation"><tr><td>
+                                                                          
+
+                                                                          
+<!--l. 1914--><p class="indent" >
+<!--l. 1914--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                <mstyle 
+   id="x21-30018r74"  class="label" ></mstyle><!--endlabel--><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>y</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mi 
+>&#x0233;</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-rel" stretchy="false">|</mo><mn>1</mn><mi 
+>,</mi><mn>2</mn><mn>3</mn><mn>4</mn><mn>5</mn><mn>6</mn><mn>7</mn><mn>8</mn><mn>9</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn><mi 
+>,</mi><mn>1</mn><mn>3</mn><mo 
+class="MathClass-rel" stretchy="false">|</mo> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>1</mn><mn>0</mn><mn>4</mn><mn>5</mn><mn>6</mn><mn>7</mn><mn>8</mn><mn>9</mn>
+</math></td><td class="eq-no">(2.74)</td></tr></table>
+<!--l. 1917--><p class="indent" >   que parece pequeno se compararmos com o exemplo anterior. Entretanto o
+erro relativo é <table class="equation"><tr><td>
+<!--l. 1918--><p class="indent" >
+<!--l. 1918--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+               <mstyle 
+   id="x21-30019r75"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>y</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mi 
+>&#x0233;</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow>
+  <mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>y</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow></mfrac>    <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><mn>0</mn><mi 
+>,</mi><mn>1</mn><mn>0</mn><mn>4</mn><mn>5</mn><mn>6</mn><mn>7</mn><mn>8</mn><mn>9</mn></mrow> 
+<mrow 
+><mn>1</mn><mi 
+>,</mi><mn>2</mn><mn>3</mn><mn>4</mn><mn>5</mn><mn>6</mn><mn>7</mn><mn>8</mn><mn>9</mn></mrow></mfrac> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>8</mn><mn>4</mn><mn>6</mn><mn>9</mn><mn>9</mn><mn>9</mn><mn>9</mn><mstyle 
+class="text"><mtext  >&#x00A0;ou&#x00A0;</mtext></mstyle><mn>8</mn><mi 
+>,</mi><mn>4</mn><mi 
+>%</mi>
+</math></td><td class="eq-no">(2.75)</td></tr></table>
+<!--l. 1921--><p class="indent" >   Note que o erro relativo leva em consideração a escala do problema.
+   </div>
+<!--l. 1922--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 1926--><p class="noindent" ><span class="head">
+<a 
+ id="x21-30020r3"></a>
+<span 
+class="ec-lmbx-12">Exemplo 2.5.3.</span>  </span>Observe os erros absolutos e relativos em cada caso a
+seguir:
+                                                                          
+
+                                                                          
+<div class="center" 
+>
+<!--l. 1928--><p class="noindent" >
+<div class="tabular"> <table id="TBL-15" class="tabular" 
+rules="groups" 
+><colgroup id="TBL-15-1g"><col 
+id="TBL-15-1"><col 
+id="TBL-15-2"></colgroup><colgroup id="TBL-15-3g"><col 
+id="TBL-15-3"><col 
+id="TBL-15-4"></colgroup><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-15-1-"><td  style="text-align:left; white-space:nowrap;" id="TBL-15-1-1"  
+class="td11"> <!--l. 1930--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math> </td><td  style="text-align:left; white-space:nowrap;" id="TBL-15-1-2"  
+class="td11"> <!--l. 1930--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover></math> </td><td  style="text-align:right; white-space:nowrap;" id="TBL-15-1-3"  
+class="td11">                                                    &#x00A0;Erro absoluto  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-15-1-4"  
+class="td11">                                                      Erro relativo  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-15-2-"><td  style="text-align:left; white-space:nowrap;" id="TBL-15-2-1"  
+class="td11"> <!--l. 1931--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mover accent="false" 
+class="mml-overline"><mrow><mn>3</mn></mrow><mo 
+accent="true">¯</mo></mover> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+></math>   </td><td  style="text-align:left; white-space:nowrap;" id="TBL-15-2-2"  
+class="td11"> <!--l. 1931--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+></math>  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-15-2-3"  
+class="td11"> <!--l. 1931--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mover accent="false" 
+class="mml-overline"><mrow><mn>3</mn></mrow><mo 
+accent="true">¯</mo></mover> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></msup 
+></math>  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-15-2-4"  
+class="td11"> <!--l. 1931--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>0</mn><mi 
+>%</mi></math>  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-15-3-"><td  style="text-align:left; white-space:nowrap;" id="TBL-15-3-1"  
+class="td11"> <!--l. 1932--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mover accent="false" 
+class="mml-overline"><mrow><mn>3</mn></mrow><mo 
+accent="true">¯</mo></mover></math>   </td><td  style="text-align:left; white-space:nowrap;" id="TBL-15-3-2"  
+class="td11"> <!--l. 1932--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>3</mn></math>  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-15-3-3"  
+class="td11"> <!--l. 1932--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mover accent="false" 
+class="mml-overline"><mrow><mn>3</mn></mrow><mo 
+accent="true">¯</mo></mover> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+></math>  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-15-3-4"  
+class="td11"> <!--l. 1932--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>0</mn><mi 
+>%</mi></math>  </td>
+</tr><tr  
+ style="vertical-align:baseline;" id="TBL-15-4-"><td  style="text-align:left; white-space:nowrap;" id="TBL-15-4-1"  
+class="td11"> <!--l. 1933--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mover accent="false" 
+class="mml-overline"><mrow><mn>3</mn></mrow><mo 
+accent="true">¯</mo></mover> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></math>   </td><td  style="text-align:left; white-space:nowrap;" id="TBL-15-4-2"  
+class="td11"> <!--l. 1933--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>2</mn></mrow></msup 
+></math>  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-15-4-3"  
+class="td11"> <!--l. 1933--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mover accent="false" 
+class="mml-overline"><mrow><mn>3</mn></mrow><mo 
+accent="true">¯</mo></mover> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>1</mn></mrow></msup 
+></math>  </td><td  style="text-align:right; white-space:nowrap;" id="TBL-15-4-4"  
+class="td11"> <!--l. 1933--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>0</mn><mi 
+>%</mi></math>  </td>
+</tr><tr 
+class="hline"><td><hr></td><td><hr></td><td><hr></td><td><hr></td></tr><tr  
+ style="vertical-align:baseline;" id="TBL-15-5-"><td  style="text-align:left; white-space:nowrap;" id="TBL-15-5-1"  
+class="td11">                                                                  </td></tr></table>                                                                                                                                                                                                                                             </div></div>
+   </div>
+<!--l. 1936--><p class="indent" >
+<!--l. 1938--><p class="indent" >   Outra forma de medir a exatidão de uma aproximação numérica é
+contar o <span 
+class="ec-lmbx-12">n</span><span 
+class="ec-lmbx-12">ú</span><span 
+class="ec-lmbx-12">mero de d</span><span 
+class="ec-lmbx-12">í</span><span 
+class="ec-lmbx-12">gitos significativos corretos </span>em relação ao valor
+exato.
+   <div class="newtheorem">
+<!--l. 1940--><p class="noindent" ><span class="head">
+<a 
+ id="x21-30021r2"></a>
+<span 
+class="ec-lmbx-12">Defini</span><span 
+class="ec-lmbx-12">ç</span><span 
+class="ec-lmbx-12">ã</span><span 
+class="ec-lmbx-12">o 2.5.2 </span>(Número de dígitos significativos corretos)<span 
+class="ec-lmbx-12">.</span>  </span><a 
+ id="dx21-30022"></a><a 
+ id="dx21-30023"></a> <span 
+class="ec-lmri-12">A aproxima</span><span 
+class="ec-lmri-12">ç</span><span 
+class="ec-lmri-12">ã</span><span 
+class="ec-lmri-12">o</span>
+<!--l. 1941--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover accent="false" 
+class="mml-overline"><mrow><mi 
+>x</mi></mrow><mo 
+accent="true">¯</mo></mover></math> <span 
+class="ec-lmri-12">de um</span>
+<span 
+class="ec-lmri-12">n</span><span 
+class="ec-lmri-12">ú</span><span 
+class="ec-lmri-12">mero </span><!--l. 1941--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math> <span 
+class="ec-lmri-12">tem</span>
+<!--l. 1941--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>s</mi></math> <span 
+class="ec-lmbxi-10x-x-120">d</span><span 
+class="ec-lmbxi-10x-x-120">í</span><span 
+class="ec-lmbxi-10x-x-120">gitos significativos</span>
+                                                                          
+
+                                                                          
+<span 
+class="ec-lmbxi-10x-x-120">corretos </span><span 
+class="ec-lmri-12">quando</span><span class="footnote-mark"><a 
+href="main22.html#fn9x3"><sup class="textsuperscript">9</sup></a></span><a 
+ id="x21-30024f9"></a> 
+<table class="equation"><tr><td>
+<!--l. 1945--><p class="indent" >
+<!--l. 1945--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                            <mstyle 
+   id="x21-30027r77"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mover accent="false" 
+class="mml-overline"><mrow><mi 
+>x</mi></mrow><mo 
+accent="true">¯</mo></mover><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow>
+  <mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow></mfrac>   <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mi 
+>s</mi></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.77)</td></tr></table>
+   </div>
+<!--l. 1948--><p class="indent" >
+   <div class="newtheorem">
+<!--l. 1951--><p class="noindent" ><span class="head">
+<a 
+ id="x21-30028r4"></a>
+                                                                          
+
+                                                                          
+<span 
+class="ec-lmbx-12">Exemplo 2.5.4.</span>  </span>Vejamos os seguintes casos:
+      <ul class="itemize1">
+      <li class="itemize">
+      <!--l. 1953--><p class="noindent" >A aproximação de <!--l. 1953--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>3</mn><mn>3</mn><mn>3</mn><mn>3</mn><mn>3</mn><mn>3</mn></math>
+      por <!--l. 1953--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover accent="false" 
+class="mml-overline"><mrow><mi 
+>x</mi></mrow><mo 
+accent="true">¯</mo></mover> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>3</mn><mn>3</mn><mn>3</mn></math>
+      tem <!--l. 1953--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>3</mn></math>
+      dígitos significativos corretos, pois <table class="equation"><tr><td>
+      <!--l. 1954--><p class="noindent" >
+      <!--l. 1954--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                     <mstyle 
+   id="x21-30029r78"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mover accent="false" 
+class="mml-overline"><mrow><mi 
+>x</mi></mrow><mo 
+accent="true">¯</mo></mover><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow> 
+  <mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow></mfrac>  <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>0</mn><mn>3</mn><mn>3</mn><mn>3</mn></mrow> 
+<mrow 
+><mn>0</mn><mi 
+>,</mi><mn>3</mn><mn>3</mn><mn>3</mn><mn>3</mn><mn>3</mn><mn>3</mn></mrow></mfrac> <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>0</mn><mn>9</mn><mn>9</mn><mn>9</mn> <mo 
+class="MathClass-rel" stretchy="false">&#x2264;</mo> <mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><!--binary math rel, tripple hight--><mn>3</mn><!--/binary math rel, tripple hight--></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.78)</td></tr></table>
+      </li>
+      <li class="itemize">
+      <!--l. 1957--><p class="noindent" >Considere as aproximações <!--l. 1957--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>6</mn><mn>6</mn><mn>6</mn></math>
+      e <!--l. 1957--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>6</mn><mn>6</mn><mn>7</mn></math>
+      de <!--l. 1957--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mi 
+>,</mi><mn>6</mn><mn>6</mn><mn>6</mn><mn>8</mn><mn>8</mn><mn>8</mn></math>.
+      Os erros relativos são <table class="equation"><tr><td>
+      <!--l. 1958--><p class="noindent" >
+                                                                          
+
+                                                                          
+      <!--l. 1958--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+             <mstyle 
+   id="x21-30030r79"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover></mrow><mrow 
+><mn>1</mn></mrow></msub 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow> 
+  <mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow></mfrac>   <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mn>0</mn><mi 
+>,</mi><mn>6</mn><mn>6</mn><mn>6</mn><mn>8</mn><mn>8</mn><mn>8</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>0</mn><mi 
+>,</mi><mn>6</mn><mn>6</mn><mn>6</mn><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow> 
+   <mrow 
+><mn>0</mn><mi 
+>,</mi><mn>6</mn><mn>6</mn><mn>6</mn><mn>8</mn><mn>8</mn><mn>8</mn></mrow></mfrac>       <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>1</mn><mn>3</mn><mn>3</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.79)</td></tr></table>
+      <table class="equation"><tr><td>
+      <!--l. 1961--><p class="noindent" >
+      <!--l. 1961--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+            <mstyle 
+   id="x21-30031r80"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><msub><mrow 
+><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover></mrow><mrow 
+><mn>2</mn></mrow></msub 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow> 
+  <mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow></mfrac>   <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mn>0</mn><mi 
+>,</mi><mn>6</mn><mn>6</mn><mn>6</mn><mn>8</mn><mn>8</mn><mn>8</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>0</mn><mi 
+>,</mi><mn>6</mn><mn>6</mn><mn>7</mn><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow> 
+   <mrow 
+><mn>0</mn><mi 
+>,</mi><mn>6</mn><mn>6</mn><mn>6</mn><mn>8</mn><mn>8</mn><mn>8</mn></mrow></mfrac>       <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>0</mn><mn>1</mn><mn>6</mn><mn>7</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>4</mn></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.80)</td></tr></table>
+      <!--l. 1964--><p class="noindent" >Note que <!--l. 1964--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></math> possui
+      <!--l. 1964--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>3</mn></math> dígitos significativos
+      corretos e <!--l. 1964--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math>
+      possui <!--l. 1964--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>4</mn></math>
+      dígitos significativos (o quarto dígito é o dígito
+      <!--l. 1964--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn></math> que não aparece
+      à direita, i.e, <!--l. 1964--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>0</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo><mn>6</mn><mn>6</mn><mn>7</mn><mn>0</mn></math>.
+      Isto também leva a conclusão que
+      <!--l. 1964--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>2</mn></mrow></msub 
+></math> aproxima melhor
+      o valor de <!--l. 1964--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math> do que
+      <!--l. 1964--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>x</mi></mrow><mrow 
+><mn>1</mn></mrow></msub 
+></math> pois está mais
+      próximo de <!--l. 1964--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math>.
+      </li>
+      <li class="itemize">
+      <!--l. 1966--><p class="noindent" ><!--l. 1966--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover accent="false" 
+class="mml-overline"><mrow><mi 
+>x</mi></mrow><mo 
+accent="true">¯</mo></mover> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>9</mn><mi 
+>,</mi><mn>9</mn><mn>9</mn><mn>9</mn></math> aproxima
+      <!--l. 1966--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>0</mn></math> com
+      <!--l. 1966--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>4</mn></math>
+      dígitos significativos corretos, pois <table class="equation"><tr><td>
+                                                                          
+
+                                                                          
+      <!--l. 1967--><p class="noindent" >
+      <!--l. 1967--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                 <mstyle 
+   id="x21-30032r81"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo><mover accent="false" 
+class="mml-overline"><mrow><mi 
+>x</mi></mrow><mo 
+accent="true">¯</mo></mover><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow> 
+  <mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mi 
+>x</mi><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow></mfrac>  <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mn>1</mn><mn>0</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>9</mn><mi 
+>,</mi><mn>9</mn><mn>9</mn><mn>9</mn><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow> 
+   <mrow 
+><mn>1</mn><mn>0</mn></mrow></mfrac>       <mo 
+class="MathClass-rel" stretchy="false">&#x2248;</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>0</mn><mn>0</mn><mn>9</mn><mn>9</mn><mn>9</mn><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo><mo 
+class="MathClass-punc" stretchy="false">.</mo> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>4</mn></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.81)</td></tr></table>
+      </li>
+      <li class="itemize">
+      <!--l. 1970--><p class="noindent" >Considere as aproximações <!--l. 1970--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mover accent="false" 
+class="mml-overline"><mrow><mi 
+>x</mi></mrow><mo 
+accent="true">¯</mo></mover></mrow><mrow 
+><mn>1</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>4</mn><mn>9</mn></math>
+      e <!--l. 1970--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mover accent="false" 
+class="mml-overline"><mrow><mi 
+>x</mi></mrow><mo 
+accent="true">¯</mo></mover></mrow><mrow 
+><mn>2</mn></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>5</mn></math> de
+      <!--l. 1970--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></math>. Da definição,
+      temos que <!--l. 1970--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mi 
+>,</mi><mn>4</mn><mn>9</mn></math>
+      aproxima <!--l. 1970--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn></math>
+      com um dígito significativo correto (verifique), enquanto
+      <!--l. 1970--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mi 
+>,</mi><mn>5</mn></math>
+      tem zero dígito significativo correto, pois: <table class="equation"><tr><td>
+      <!--l. 1971--><p class="noindent" >
+      <!--l. 1971--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" class="equation">
+                             <mstyle 
+   id="x21-30033r82"  class="label" ></mstyle><!--endlabel--><mfrac><mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mn>1</mn> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>1</mn><mi 
+>,</mi><mn>5</mn><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow> 
+  <mrow 
+><mo 
+class="MathClass-rel" stretchy="false">|</mo><mn>1</mn><mo 
+class="MathClass-rel" stretchy="false">|</mo></mrow></mfrac>   <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+> <mo 
+class="MathClass-rel" stretchy="false">&#x003C;</mo> <mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>0</mn></mrow></msup 
+><mo 
+class="MathClass-punc" stretchy="false">.</mo>
+</math></td><td class="eq-no">(2.82)</td></tr></table>
+      </li></ul>
+                                                                          
+
+                                                                          
+   </div>
+<!--l. 1975--><p class="indent" >
+<!--l. 1977--><p class="noindent" >
+   <h4 class="likesubsectionHead"><a 
+ id="x21-31000"></a>Exercícios</h4>
+   <div class="newtheorem">
+<!--l. 1979--><p class="noindent" ><span class="head">
+<a 
+ id="x21-31001r1"></a>
+<span 
+class="ec-lmbx-12">E 2.5.1.</span>  </span>Calcule os erros absoluto e relativo das aproximações
+<!--l. 1979--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover></math> para
+<!--l. 1979--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math> em
+cada caso:
+   <dl class="enumerate"><dt class="enumerate">
+a) </dt><dd 
+class="enumerate">
+   <!--l. 1981--><p class="noindent" ><!--l. 1981--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mi 
+>&#x03C0;</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn><mi 
+>,</mi><mn>1</mn><mn>4</mn><mn>1</mn><mn>5</mn><mn>9</mn><mn>2</mn><mn>6</mn><mn>5</mn><mn>3</mn><mn>5</mn><mn>8</mn><mn>9</mn><mn>7</mn><mn>9</mn><mo>&#x2026;</mo></math>
+   e <!--l. 1981--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn><mi 
+>,</mi><mn>1</mn><mn>4</mn><mn>1</mn></math>
+   </dd><dt class="enumerate">
+b) </dt><dd 
+class="enumerate">
+   <!--l. 1982--><p class="noindent" ><!--l. 1982--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>0</mn><mn>0</mn><mn>1</mn></math>
+   e <!--l. 1982--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></math>
+   </dd><dt class="enumerate">
+c) </dt><dd 
+class="enumerate">
+   <!--l. 1983--><p class="noindent" ><!--l. 1983--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>0</mn><mn>0</mn><mn>0</mn><mn>0</mn><mn>1</mn></math>
+   e <!--l. 1983--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>0</mn><mn>0</mn><mn>0</mn><mn>0</mn><mn>0</mn></math></dd></dl>
+   </div>
+<!--l. 1985--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta. </span>a)&#x00A0;<!--l. 1987--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B5;</mi></mrow><mrow 
+><mi 
+>a</mi><mi 
+>b</mi><mi 
+>s</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>5</mn><mi 
+>,</mi><mn>9</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>4</mn></mrow></msup 
+></math>,
+<!--l. 1987--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B5;</mi></mrow><mrow 
+><mi 
+>r</mi><mi 
+>e</mi><mi 
+>l</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>9</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>2</mn></mrow></msup 
+><mi 
+>%</mi></math>;
+b)&#x00A0;<!--l. 1987--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B5;</mi></mrow><mrow 
+><mi 
+>a</mi><mi 
+>b</mi><mi 
+>s</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo><mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>5</mn></mrow></msup 
+></math>,
+<!--l. 1987--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B5;</mi></mrow><mrow 
+><mi 
+>r</mi><mi 
+>e</mi><mi 
+>l</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo><mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></msup 
+><mi 
+>%</mi></math>;
+c)&#x00A0;<!--l. 1987--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B5;</mi></mrow><mrow 
+><mi 
+>a</mi><mi 
+>b</mi><mi 
+>s</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn></math>,
+                                                                          
+
+                                                                          
+<!--l. 1987--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B5;</mi></mrow><mrow 
+><mi 
+>r</mi><mi 
+>e</mi><mi 
+>l</mi></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>5</mn></mrow></msup 
+><mi 
+>%</mi></math>.
+</div> <!--resp end-->
+   <div class="newtheorem">
+<!--l. 1991--><p class="noindent" ><span class="head">
+<a 
+ id="x21-31005r2"></a>
+<span 
+class="ec-lmbx-12">E 2.5.2.</span>  </span>Arredonde os seguintes números para cinco algarismos significativos:
+   <dl class="enumerate"><dt class="enumerate">
+a) </dt><dd 
+class="enumerate">
+   <!--l. 1993--><p class="noindent" ><!--l. 1993--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mi 
+>,</mi><mn>7</mn><mn>8</mn><mn>8</mn><mn>8</mn><mn>5</mn><mn>4</mn><mn>4</mn></math>
+   </dd><dt class="enumerate">
+b) </dt><dd 
+class="enumerate">
+   <!--l. 1994--><p class="noindent" ><!--l. 1994--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>7</mn><mn>8</mn><mn>8</mn><mi 
+>,</mi><mn>8</mn><mn>5</mn><mn>4</mn><mn>4</mn></math>
+   </dd><dt class="enumerate">
+c) </dt><dd 
+class="enumerate">
+   <!--l. 1995--><p class="noindent" ><!--l. 1995--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>1</mn><mn>7</mn><mn>8</mn><mn>8</mn><mn>8</mn><mn>5</mn><mn>4</mn><mn>4</mn></math>
+   </dd><dt class="enumerate">
+d) </dt><dd 
+class="enumerate">
+   <!--l. 1996--><p class="noindent" ><!--l. 1996--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>4</mn><mn>5</mn><mn>9</mn><mn>6</mn><mn>6</mn><mn>3</mn><mn>2</mn></math>
+   </dd><dt class="enumerate">
+e) </dt><dd 
+class="enumerate">
+   <!--l. 1997--><p class="noindent" ><!--l. 1997--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>2</mn><mi 
+>,</mi><mn>1</mn><mn>7</mn><mn>5</mn><mn>4</mn><mn>9</mn><mn>9</mn><mn>9</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn><mn>0</mn></mrow></msup 
+></math>
+   </dd><dt class="enumerate">
+ f) </dt><dd 
+class="enumerate">
+   <!--l. 1998--><p class="noindent" ><!--l. 1998--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>2</mn><mi 
+>,</mi><mn>1</mn><mn>7</mn><mn>5</mn><mn>4</mn><mn>9</mn><mn>9</mn><mn>9</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>1</mn><mn>0</mn></mrow></msup 
+></math></dd></dl>
+   </div>
+                                                                          
+
+                                                                          
+<!--l. 2000--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta. </span>a)&#x00A0;<!--l. 2002--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mi 
+>,</mi><mn>7</mn><mn>8</mn><mn>8</mn><mn>9</mn></math>;
+b)&#x00A0;<!--l. 2002--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>7</mn><mn>8</mn><mn>8</mn><mi 
+>,</mi><mn>9</mn></math>;
+c)&#x00A0;<!--l. 2002--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>1</mn><mn>7</mn><mn>8</mn><mn>8</mn><mn>9</mn></math>;
+d)&#x00A0;<!--l. 2002--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>4</mn><mn>5</mn><mn>9</mn><mn>6</mn><mn>6</mn></math>;
+e)&#x00A0;<!--l. 2002--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>2</mn><mi 
+>,</mi><mn>1</mn><mn>7</mn><mn>5</mn><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn><mn>0</mn></mrow></msup 
+></math>;
+f)&#x00A0;<!--l. 2002--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>2</mn><mi 
+>,</mi><mn>1</mn><mn>7</mn><mn>5</mn><mn>5</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mn>1</mn><mn>0</mn></mrow></msup 
+></math>.
+</div> <!--resp end-->
+   <div class="newtheorem">
+<!--l. 2005--><p class="noindent" ><span class="head">
+<a 
+ id="x21-31012r3"></a>
+<span 
+class="ec-lmbx-12">E 2.5.3.</span>  </span>Represente os seguintes números com três dígitos significativos
+usando arredondamento por truncamento e arredondamento por proximidade.
+   <dl class="enumerate"><dt class="enumerate">
+a) </dt><dd 
+class="enumerate">
+   <!--l. 2007--><p class="noindent" >&#x00A0;<!--l. 2007--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>3</mn><mn>2</mn><mn>7</mn><mn>6</mn></math>.
+   </dd><dt class="enumerate">
+b) </dt><dd 
+class="enumerate">
+   <!--l. 2008--><p class="noindent" >&#x00A0;<!--l. 2008--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>4</mn><mn>2</mn><mi 
+>,</mi><mn>5</mn><mn>5</mn></math>.
+   </dd><dt class="enumerate">
+c) </dt><dd 
+class="enumerate">
+   <!--l. 2009--><p class="noindent" >&#x00A0;<!--l. 2009--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>0</mn><mn>0</mn><mn>3</mn><mn>3</mn><mn>3</mn><mn>1</mn></math>.</dd></dl>
+   </div>
+<!--l. 2011--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta. </span>a)&#x00A0;<!--l. 2013--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>3</mn><mn>2</mn><mn>7</mn><mn>0</mn></math>,
+<!--l. 2013--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>3</mn><mn>2</mn><mn>8</mn><mn>0</mn></math>;
+b)&#x00A0;<!--l. 2013--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>4</mn><mn>2</mn><mi 
+>,</mi><mn>5</mn></math>,
+<!--l. 2013--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>4</mn><mn>2</mn><mi 
+>,</mi><mn>6</mn></math>;
+c)&#x00A0;<!--l. 2013--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>0</mn><mn>0</mn><mn>3</mn><mn>3</mn><mn>3</mn></math>,
+<!--l. 2013--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn><mn>0</mn><mn>0</mn><mn>3</mn><mn>3</mn><mn>3</mn></math>.
+</div> <!--resp end-->
+   <div class="newtheorem">
+<!--l. 2016--><p class="noindent" ><span class="head">
+<a 
+ id="x21-31016r4"></a>
+                                                                          
+
+                                                                          
+<span 
+class="ec-lmbx-12">E 2.5.4.</span>  </span>Usando a Definição&#x00A0;<a 
+href="#x21-30021r2">2.5.2<!--tex4ht:ref: def:num_dig_sig_corretos --></a>, verifique quantos
+são os dígitos significativos corretos na aproximação de
+<!--l. 2017--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi></math> por
+<!--l. 2017--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover></math>.
+   <dl class="enumerate"><dt class="enumerate">
+a) </dt><dd 
+class="enumerate">
+   <!--l. 2019--><p class="noindent" ><!--l. 2019--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><mi 
+>,</mi><mn>5</mn><mn>8</mn><mn>3</mn><mn>4</mn></math>
+   e <!--l. 2019--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>2</mn><mi 
+>,</mi><mn>6</mn></math>
+   </dd><dt class="enumerate">
+b) </dt><dd 
+class="enumerate">
+   <!--l. 2020--><p class="noindent" ><!--l. 2020--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>0</mn><mn>0</mn></math>
+   e <!--l. 2020--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">¯</mo></mover> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>9</mn><mn>9</mn></math></dd></dl>
+   </div>
+<!--l. 2022--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta. </span>a)&#x00A0;<!--l. 2024--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>2</mn></math>;
+b)&#x00A0;<!--l. 2024--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>2</mn></math>.
+</div> <!--resp end-->
+   <div class="newtheorem">
+<!--l. 2027--><p class="noindent" ><span class="head">
+<a 
+ id="x21-31019r5"></a>
+<span 
+class="ec-lmbx-12">E 2.5.5.</span>  </span>Resolva                               a                               equação
+<!--l. 2027--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>0</mn><mi 
+>,</mi><mn>1</mn><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>2</mn></math>
+usando arredondamento com três dígitos significativos em cada passo e
+compare com o resultado exato.
+   </div>
+<!--l. 2028--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta.</span>
+                                                                          
+
+                                                                          
+<!--tex4ht:inline--><!--l. 2030--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="block" >
+<mtable 
+displaystyle="true" class="eqnarray" columnalign="right center left" >
+<mtr><mtd 
+class="eqnarray-1"> <mn>0</mn><mi 
+>,</mi><mn>1</mn><mi 
+>x</mi> <mo 
+class="MathClass-bin" stretchy="false">-</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mn>1</mn><mn>2</mn>               </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(2.83)</mtext><mtext 
+   id="x21-31020r"  class="label" ></mtext><mtext 
+class="endlabel"></mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1">        <mn>0</mn><mi 
+>,</mi><mn>1</mn><mi 
+>x</mi></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mn>1</mn><mn>2</mn> <mo 
+class="MathClass-bin" stretchy="false">+</mo> <mn>0</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mn>2</mn><mi 
+>,</mi><mn>0</mn><mn>1</mn></mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(2.84)</mtext></mtd>
+</mtr><mtr><mtd 
+class="eqnarray-1">          <mi 
+>x</mi></mtd><mtd 
+class="eqnarray-2">   <mo 
+class="MathClass-rel" stretchy="false">=</mo></mtd><mtd 
+class="eqnarray-3">   <mn>1</mn><mn>2</mn><mn>0</mn><mi 
+>,</mi><mn>1</mn>            </mtd><mtd 
+class="eqnarray-4"> <mtext class="eqnarray">(2.85)</mtext></mtd>                                      </mtr></mtable>
+</math>
+<!--l. 2034--><p class="nopar" >
+<!--l. 2035--><p class="noindent" >A resposta exata é <!--l. 2035--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mn>1</mn><mn>2</mn><mn>0</mn><mi 
+>,</mi><mn>1</mn></math>.
+</div> <!--resp end-->
+   <div class="newtheorem">
+<!--l. 2039--><p class="noindent" ><span class="head">
+<a 
+ id="x21-31021r6"></a>
+<span 
+class="ec-lmbx-12">E 2.5.6.</span>  </span>Calcule o erro relativo e absoluto envolvido nas seguintes
+aproximações e expresse as respostas com três algarismos significativos
+corretos.
+   <dl class="enumerate"><dt class="enumerate">
+a) </dt><dd 
+class="enumerate">
+   <!--l. 2041--><p class="noindent" ><!--l. 2041--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn><mi 
+>,</mi><mn>1</mn><mn>4</mn><mn>1</mn><mn>5</mn><mn>9</mn><mn>2</mn><mn>6</mn><mn>5</mn><mn>3</mn><mn>5</mn><mn>8</mn><mn>9</mn><mn>8</mn></math>
+   e <!--l. 2041--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">~</mo></mover> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn><mi 
+>,</mi><mn>1</mn><mn>4</mn><mn>1</mn><mn>5</mn><mn>9</mn><mn>3</mn></math>
+   </dd><dt class="enumerate">
+b) </dt><dd 
+class="enumerate">
+   <!--l. 2042--><p class="noindent" ><!--l. 2042--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mi 
+>x</mi> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mfrac><mrow 
+><mn>1</mn></mrow> 
+<mrow 
+><mn>7</mn></mrow></mfrac></math>
+   e <!--l. 2042--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><mover 
+accent="true"><mrow 
+><mi 
+>x</mi></mrow><mo accent="true">~</mo></mover> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>4</mn><mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>1</mn></mrow></msup 
+></math></dd></dl>
+                                                                          
+
+                                                                          
+   </div>
+<!--l. 2044--><p class="indent" >    <!--resp begin--> <div class="resp"><span 
+class="ec-lmbx-12">Resposta. </span>a)&#x00A0;<!--l. 2046--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mstyle 
+class="mbox"><mtext  >abs</mtext></mstyle></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>3</mn><mi 
+>,</mi><mn>4</mn><mn>6</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>7</mn></mrow></msup 
+></math>,
+<!--l. 2046--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mstyle 
+class="mbox"><mtext  >rel</mtext></mstyle></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>1</mn><mn>0</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>7</mn></mrow></msup 
+></math>;
+b)&#x00A0;<!--l. 2046--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mstyle 
+class="mbox"><mtext  >abs</mtext></mstyle></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>4</mn><mn>3</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>4</mn></mrow></msup 
+></math>,
+<!--l. 2046--><math 
+ xmlns="http://www.w3.org/1998/Math/MathML"  
+display="inline" ><msub><mrow 
+><mi 
+>&#x03B4;</mi></mrow><mrow 
+><mstyle 
+class="mbox"><mtext  >rel</mtext></mstyle></mrow></msub 
+> <mo 
+class="MathClass-rel" stretchy="false">=</mo> <mn>1</mn><mi 
+>,</mi><mn>0</mn><mn>0</mn> <mo 
+class="MathClass-bin" stretchy="false">&#x00D7;</mo> <mn>1</mn><msup><mrow 
+><mn>0</mn></mrow><mrow 
+><mo 
+class="MathClass-bin" stretchy="false">-</mo><mn>3</mn></mrow></msup 
+></math>.
+</div> <!--resp end-->
+                                                                          
+
+                                                                          
+   <!--l. 2051--><div class="crosslinks"><p class="noindent">[<a 
+href="mainse6.html" >next</a>] [<a 
+href="mainse4.html" >prev</a>] [<a 
+href="mainse4.html#tailmainse4.html" >prev-tail</a>] [<a 
+href="mainse5.html" >front</a>] [<a 
+href="mainch2.html#mainse5.html" >up</a>] </p></div>
+<!--l. 2051--><p class="indent" >   <a 
+ id="tailmainse5.html"></a>   
+</body></html> 
