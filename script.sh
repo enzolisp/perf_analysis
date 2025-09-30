@@ -1,7 +1,7 @@
 #!/bin/bash
 
 if [[ ! "$(groups)" == *"docker"* ]]; then
-    sudo groupadd dockerd
+    sudo groupadd docker
     sudo usermod -aG docker ${USER}
     newgrp docker
 fi
