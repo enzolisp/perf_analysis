@@ -1,5 +1,9 @@
 #!/bin/bash
 
+# sampling rate (seconds)
+SAMPLING=0.5
+
+
 if [[ ! "$(groups)" == *"docker"* ]]; then
     sudo groupadd docker
     sudo usermod -aG docker ${USER}
@@ -8,6 +12,7 @@ fi
 
 docker pull jupyter/scipy-notebook
 docker run -d --rm -p 8888:8888 --name jupyter -v "${PWD}/src":/home/jovyan/work jupyter/scipy-notebook
-(echo "CPU_PERC,MEM_USAGE,NET_IO,BLOCK_IO"; docker stats --no-stream --format "{{.CPUPerc}},{{.MemUsage}},{{.NetIO}},{{.BlockIO}}") > docker_metrics.csv
+while true; do docker stats --no-stream | cat >> ./experiments-csv/`date +"%d_%m_%Y - %H:%M:%S.csv"`; sleep $SAMPLING; done
+#(echo "CPU_PERC,MEM_USAGE,NET_IO,BLOCK_IO"; watch -n 1 docker stats --no-stream --format "{{.CPUPerc}},{{.MemUsage}},{{.NetIO}},{{.BlockIO}}\n") >> docker_metrics/docker_metrics.csv
 #sed 's/\[H|\[K|\[J//g' -nrw docker_metrics.csv 
-
+docker stop jupyter
