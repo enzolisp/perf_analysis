@@ -33,9 +33,9 @@ get_l_value() {
 
 echo "Verificando a imagem Docker '$DOCKER_IMAGE'..."
 if [[ "$(docker images -q $DOCKER_IMAGE 2> /dev/null)" == "" ]]; then
-  echo "ERRO: A imagem Docker '$DOCKER_IMAGE' não foi encontrada."
-  echo "Por favor, construa a imagem usando o Dockerfile fornecido e tente novamente."
-  exit 1
+    echo "ERRO: A imagem Docker '$DOCKER_IMAGE' não foi encontrada."
+    echo "Por favor, construa a imagem usando o Dockerfile fornecido e tente novamente."
+    exit 1
 fi
 
 echo "Preparando diretórios para resultados..."
@@ -67,7 +67,7 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
     log_file="${LOGS_DIR}/${language}_${dimension}_log.txt"
     
     if [ ! -f "$stats_file" ]; then
-    	echo "Timestamp,ContainerID,CPUPerc,MemUsed,MemLimit,NetReceived,NetSent,BlockRead,BlockWritten,Size,L_Value,language,dimension" > "$stats_file"
+    	echo "Timestamp,ContainerID,CPUPerc,MemUsed,MemLimit,NetReceived,NetSent,BlockRead,BlockWritten,Size,L_Value,language,dimension,sum_t0,sum_tmax,t_exec,peak_mem" > "$stats_file"
     fi
     
 
@@ -107,8 +107,11 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
           block_read="${c_block% / *}"
           block_written="${c_block#* / }"
 
+          # extrai as metricas provenientes dos programas
+            IFS=',' read -r sum_t0 sum_tmax t_exec peak_mem <<< "$(docker logs "$container_id")"
+          
           # Monta e salva a nova linha do CSV com todas as colunas separadas
-          echo "$timestamp_log,$c_id,$c_cpu,$mem_used,$mem_limit,$net_received,$net_sent,$block_read,$block_written,$size,$l_value,$language,$dimension"
+          echo "$timestamp_log,$c_id,$c_cpu,$mem_used,$mem_limit,$net_received,$net_sent,$block_read,$block_written,$size,$l_value,$language,$dimension,$sum_t0,$sum_tmax,$t_exec,$peak_mem"
           
           sleep "$SAMPLING_RATE"
 		
@@ -117,15 +120,16 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
 
     docker wait "$container_id" > /dev/null
 
-    (
-        echo "-------------------------------------------------------------"
-        echo "Run: $language, $dimension, $size, L=$l_value, Container=${container_id:0:12}"
-        echo "Timestamp: $(date +"%Y%m%d-%H%M%S")"
-        echo "-------------------------------------------------------------"
-        docker logs "$container_id"
-        echo "" # Adiciona uma linha em branco para espaçamento
-    ) >> "$log_file" 2>&1
+    # (
+    #     echo "-------------------------------------------------------------"
+    #     echo "Run: $language, $dimension, $size, L=$l_value, Container=${container_id:0:12}"
+    #     echo "Timestamp: $(date +"%Y%m%d-%H%M%S")"
+    #     echo "-------------------------------------------------------------"
+    #     docker logs "$container_id"
+    #     echo "" # Adiciona uma linha em branco para espaçamento
+    # ) >> "$log_file" 2>&1
 
+  
     echo "Execução finalizada."
 
 done

@@ -39,4 +39,4 @@ docker build -t calor:latest .
 
 ## Usage
  
-#
+## Docker 
