@@ -1,0 +1,90 @@
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O     BLOCK I/O    PIDS
+a137ba0f767c   jupyter   95.22%    53.07MiB / 7.463GiB   0.69%     741B / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.00%     72.13MiB / 7.463GiB   0.94%     3.65kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   7.71%     72.18MiB / 7.463GiB   0.94%     4.55kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O      BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.01%     72.18MiB / 7.463GiB   0.94%     5.3kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   13.52%    72.18MiB / 7.463GiB   0.94%     5.46kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.01%     72.18MiB / 7.463GiB   0.94%     5.46kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   12.77%    72.18MiB / 7.463GiB   0.94%     5.53kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.00%     72.18MiB / 7.463GiB   0.94%     5.74kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT    MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   12.94%    72.2MiB / 7.463GiB   0.94%     5.74kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.01%     72.18MiB / 7.463GiB   0.94%     5.74kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT    MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   13.19%    72.2MiB / 7.463GiB   0.94%     5.74kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.00%     72.18MiB / 7.463GiB   0.94%     5.74kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   11.53%    72.23MiB / 7.463GiB   0.95%     5.81kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.01%     72.18MiB / 7.463GiB   0.94%     6.01kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   12.56%    72.19MiB / 7.463GiB   0.94%     6.01kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.01%     72.18MiB / 7.463GiB   0.94%     6.01kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   12.31%    72.25MiB / 7.463GiB   0.95%     6.01kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.00%     72.18MiB / 7.463GiB   0.94%     6.01kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   12.07%    72.19MiB / 7.463GiB   0.94%     6.01kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.00%     72.18MiB / 7.463GiB   0.94%     6.01kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   13.48%    72.29MiB / 7.463GiB   0.95%     6.01kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.01%     72.18MiB / 7.463GiB   0.94%     6.01kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   4.21%     76.21MiB / 7.463GiB   1.00%     6.01kB / 0B   332kB / 0B   4
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.01%     72.18MiB / 7.463GiB   0.94%     6.01kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.00%     72.18MiB / 7.463GiB   0.94%     6.08kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.01%     72.18MiB / 7.463GiB   0.94%     6.08kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.01%     72.18MiB / 7.463GiB   0.94%     6.28kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.00%     72.18MiB / 7.463GiB   0.94%     6.28kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.00%     72.18MiB / 7.463GiB   0.94%     6.28kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.00%     72.18MiB / 7.463GiB   0.94%     6.28kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.01%     72.18MiB / 7.463GiB   0.94%     6.28kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O       BLOCK I/O    PIDS
+a137ba0f767c   jupyter   0.01%     72.18MiB / 7.463GiB   0.94%     6.28kB / 0B   332kB / 0B   2
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT   MEM %     NET I/O        BLOCK I/O    PIDS
+a137ba0f767c   jupyter   54.87%    107MiB / 7.463GiB   1.40%     36kB / 157kB   557kB / 0B   11
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O       PIDS
+a137ba0f767c   jupyter   1.14%     84.43MiB / 7.463GiB   1.10%     42.8kB / 162kB   918kB / 4.1kB   4
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O        PIDS
+a137ba0f767c   jupyter   0.01%     84.43MiB / 7.463GiB   1.10%     44.7kB / 163kB   918kB / 8.19kB   4
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O        PIDS
+a137ba0f767c   jupyter   0.01%     84.43MiB / 7.463GiB   1.10%     44.7kB / 163kB   918kB / 8.19kB   4
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O        PIDS
+a137ba0f767c   jupyter   0.01%     84.43MiB / 7.463GiB   1.10%     48.6kB / 164kB   918kB / 8.19kB   4
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O        PIDS
+a137ba0f767c   jupyter   0.01%     84.43MiB / 7.463GiB   1.10%     50.2kB / 166kB   918kB / 8.19kB   4
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O        PIDS
+a137ba0f767c   jupyter   0.01%     84.43MiB / 7.463GiB   1.10%     50.5kB / 167kB   918kB / 8.19kB   4
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O        PIDS
+a137ba0f767c   jupyter   0.97%     84.43MiB / 7.463GiB   1.10%     52.1kB / 169kB   918kB / 8.19kB   4
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O        PIDS
+a137ba0f767c   jupyter   0.00%     84.43MiB / 7.463GiB   1.10%     59.2kB / 172kB   918kB / 12.3kB   4
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O        PIDS
+a137ba0f767c   jupyter   0.00%     84.43MiB / 7.463GiB   1.10%     60.7kB / 173kB   918kB / 12.3kB   4
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O        PIDS
+a137ba0f767c   jupyter   0.01%     84.43MiB / 7.463GiB   1.10%     60.7kB / 173kB   918kB / 12.3kB   4
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O        PIDS
+a137ba0f767c   jupyter   0.01%     84.46MiB / 7.463GiB   1.11%     60.7kB / 173kB   918kB / 12.3kB   4
+CONTAINER ID   NAME      CPU %     MEM USAGE / LIMIT     MEM %     NET I/O          BLOCK I/O        PIDS
+a137ba0f767c   jupyter   0.01%     84.43MiB / 7.463GiB   1.10%     64.7kB / 175kB   918kB / 12.3kB   4
