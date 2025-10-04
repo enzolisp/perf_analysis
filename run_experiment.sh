@@ -1,3 +1,6 @@
+# Stage 2 - Comp. Sys. Perf Analysis (2025/2) - Lucas M. Schnorr
+# Group F: Enzo Lisboa Peixoto - 00584827, Nathan Mattes - 00342941 e Pedro Scholz Soares - 00578266
+
 #!/bin/bash
 
 DOCKER_IMAGE="calor" 

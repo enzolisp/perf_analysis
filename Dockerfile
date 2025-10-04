@@ -1,3 +1,6 @@
+# Stage 2 - Comp. Sys. Perf Analysis (2025/2) - Lucas M. Schnorr
+# Group F: Enzo Lisboa Peixoto - 00584827, Nathan Mattes - 00342941 e Pedro Scholz Soares - 00578266
+
 # --- Estágio 1: "Construtor" com uma instalação funcional do Julia ---
 # Usamos a imagem oficial do Julia como uma base temporária e a nomeamos 'julia_base'
 FROM julia:1.9.3 AS julia_base
