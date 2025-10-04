@@ -48,11 +48,8 @@ function main()
     stats = @timed run_simulation(L)
     
     sum_inicial, sum_final = stats.value
-    
-    println("Integral em t=0: ", sum_inicial)
-	println("Integral em tmax: ", sum_final)
-    
-    println("$(stats.time),$(stats.bytes)")
+     
+    println("$(sum_inicial),$(sum_final),$(stats.time),$(stats.bytes)")
 end
 
 main()
