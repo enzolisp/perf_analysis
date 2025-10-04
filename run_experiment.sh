@@ -30,9 +30,9 @@ get_l_value() {
 
 echo "Verificando a imagem Docker '$DOCKER_IMAGE'..."
 if [[ "$(docker images -q $DOCKER_IMAGE 2> /dev/null)" == "" ]]; then
-  echo "ERRO: A imagem Docker '$DOCKER_IMAGE' não foi encontrada."
-  echo "Por favor, construa a imagem usando o Dockerfile fornecido e tente novamente."
-  exit 1
+    echo "ERRO: A imagem Docker '$DOCKER_IMAGE' não foi encontrada."
+    echo "Por favor, construa a imagem usando o Dockerfile fornecido e tente novamente."
+    exit 1
 fi
 
 echo "Preparando diretórios para resultados..."

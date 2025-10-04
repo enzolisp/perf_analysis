@@ -5,6 +5,7 @@ Explicit scheme (forward euler) <- resolucao da edp
 https://github.com/reamat/CalculoNumerico
 
 
+# Repository Structure
 ```
 .
 ├── Dockerfile      --> source code for building python and julia images
@@ -25,3 +26,9 @@ https://github.com/reamat/CalculoNumerico
     ├── 2d.jl
     └── 2d.py
 ```
+
+# Run Experiments
+makefile?
+# Usage
+ 
+#
