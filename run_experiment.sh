@@ -20,9 +20,9 @@ get_l_value() {
             ;;
         "2d")
             case "$size" in
-                "low")  echo 200 ;;
-                "mid")  echo 350 ;;
-                "high") echo 500 ;;
+                "low")  echo 200 200 ;;
+                "mid")  echo 350 350 ;;
+                "high") echo 500 500 ;;
             esac
             ;;
     esac
