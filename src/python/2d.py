@@ -66,11 +66,8 @@ def main():
     tracemalloc.stop()
     
     execution_time = end_time - start_time
-    
-    print("Integral em t=0: %7.4f" % sum0)
-    print("Integral em tmax: %7.4f" % sum1)
-    
-    print(f"{execution_time},{peak}")
+
+    print(f"{sum0},{sum1},{execution_time},{peak}")
 
 if __name__ == "__main__":
     main()
