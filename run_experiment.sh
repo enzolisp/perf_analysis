@@ -1,6 +1,6 @@
 #!/bin/bash
 
-DOCKER_IMAGE="calor" #nome que defini quando docker build -t calor:latest .
+DOCKER_IMAGE="calor" 
 PLANO_CSV="plano.csv"
 SRC_DIR="${PWD}/src"
 STATS_DIR="${PWD}/docker_stats_results"
@@ -53,11 +53,11 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r linguagem dimensao size; do
         continue
     fi
 
-    script_file="${dimensao}.$( [[ $linguagem == "python" ]] && echo "py" || echo "jl" )"
+    script_file="${linguagem}/${dimensao}.$( [[ $linguagem == "python" ]] && echo "py" || echo "jl" )"
     run_command="$linguagem $script_file $l_value"
     
-    timestamp=$(date +"%Y%m%d-%H%M%S")
-    output_prefix="${timestamp}_${linguagem}_${dimensao}_${size}_L${l_value}"
+    #timestamp=$(date +"%Y%m%d-%H%M%S")
+    output_prefix="${linguagem}_${dimensao}_${size}_L${l_value}"
     stats_file="${STATS_DIR}/${output_prefix}_stats.csv"
     log_file="${LOGS_DIR}/${output_prefix}_log.txt"
 
@@ -75,12 +75,12 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r linguagem dimensao size; do
     echo "Logs serão salvos em: $log_file"
 
     (
-      echo "Timestamp,ContainerID,CPUPerc,MemUsage,NetIO,BlockIO"
+      echo "ContainerID,CPUPerc,MemUsage,NetIO,BlockIO"
       while docker top "$container_id" &>/dev/null; do
-          timestamp_log=$(date --iso-8601=seconds)
-          stats_line=$(docker stats --no-stream --format "{{.ID}},{{.CPUPerc}},{{.MemUsage}},{{.NetIO}},{{.BlockIO}}" "$container_id")
-          echo "$timestamp_log,$stats_line"
-          sleep "$SAMPLING_RATE"
+        #timestamp_log=$(date --iso-8601=seconds)
+        stats_line=$(docker stats --no-stream --format "{{.ID}},{{.CPUPerc}},{{.MemUsage}},{{.NetIO}},{{.BlockIO}}" "$container_id")
+        echo "$timestamp_log,$stats_line"
+        sleep $SAMPLING_RATE
       done
     ) > "$stats_file" &
 
