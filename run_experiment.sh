@@ -40,9 +40,10 @@ fi
 echo "Preparando diretórios para resultados..."
 mkdir -p "$STATS_DIR"
 
-echo "Limpando resultados de execuções anteriores..."
-rm -vf "${STATS_DIR}"/*.csv
-rm -vf "${LOGS_DIR}"/*.txt
+if ls -A "$STATS_DIR" | read -r; then
+    echo "Limpando resultados de execuções anteriores..."
+    rm -vf "${STATS_DIR}"/*.csv
+fi
 
 # Lê o CSV, pulando a primeira linha (cabeçalho)
 tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
