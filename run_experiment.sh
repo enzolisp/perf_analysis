@@ -61,16 +61,22 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
     fi
 
     script_file="${language}/${dimension}.$( [[ $language == "python" ]] && echo "py" || echo "jl" )"
-    run_command="$language $script_file $l_value"
     
+    # rodar usando valores de L iguais para todas as dimensoes
+    if [[ $dimension == "1d" ]]; then
+        run_command="$language $script_file $l_value"
+    elif [[ $dimension == "2d" ]]; then
+        run_command="$language $script_file $l_value $l_value"
+    elif [[ $dimension == "3d" ]]; then
+        run_command="$language $script_file $l_value $l_value"
+    fi
+
     stats_file="${STATS_DIR}/${language}_${dimension}stats.csv"
-    log_file="${LOGS_DIR}/${language}_${dimension}_log.txt"
-    
+
     if [ ! -f "$stats_file" ]; then
     	echo "Timestamp,ContainerID,CPUPerc,MemUsed,MemLimit,NetReceived,NetSent,BlockRead,BlockWritten,Size,L_Value,language,dimension,sum_t0,sum_tmax,t_exec,peak_mem" > "$stats_file"
     fi
     
-
     echo "-------------------------------------------------------------"
     echo "Executando: $run_command"
     
@@ -82,10 +88,8 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
 
     echo "Contêiner iniciado com ID: ${container_id:0:12}"
     echo "Coletando stats em: $stats_file"
-    echo "Logs serão salvos em: $log_file"
-
+    
     (
-      #echo "Timestamp,ContainerID,CPUPerc,MemUsage,NetIO,BlockIO"
       while docker top "$container_id" &>/dev/null; do
           timestamp_log=$(date --iso-8601=seconds)
           
@@ -120,16 +124,6 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
 
     docker wait "$container_id" > /dev/null
 
-    # (
-    #     echo "-------------------------------------------------------------"
-    #     echo "Run: $language, $dimension, $size, L=$l_value, Container=${container_id:0:12}"
-    #     echo "Timestamp: $(date +"%Y%m%d-%H%M%S")"
-    #     echo "-------------------------------------------------------------"
-    #     docker logs "$container_id"
-    #     echo "" # Adiciona uma linha em branco para espaçamento
-    # ) >> "$log_file" 2>&1
-
-  
     echo "Execução finalizada."
 
 done
