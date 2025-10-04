@@ -7,7 +7,6 @@ DOCKER_IMAGE="calor" #nome que defini quando docker build -t calor:latest .
 PLANO_CSV="plano.csv"
 SRC_DIR="${PWD}/src"
 STATS_DIR="${PWD}/docker_stats_results"
-LOGS_DIR="${PWD}/docker_logs"
 SAMPLING_RATE=0.000001 # Intervalo do docker stats em segundos
 
 get_l_value() {
@@ -40,7 +39,6 @@ fi
 
 echo "Preparando diretórios para resultados..."
 mkdir -p "$STATS_DIR"
-mkdir -p "$LOGS_DIR"
 
 echo "Limpando resultados de execuções anteriores..."
 rm -vf "${STATS_DIR}"/*.csv
@@ -89,38 +87,38 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
     echo "Contêiner iniciado com ID: ${container_id:0:12}"
     echo "Coletando stats em: $stats_file"
     
-    (
-      while docker top "$container_id" &>/dev/null; do
-          timestamp_log=$(date --iso-8601=seconds)
-          
-          # Usa um separador diferente (pipe '|') para facilitar a leitura em variáveis
-          raw_stats=$(docker stats --no-stream --format "{{.ID}}|{{.CPUPerc}}|{{.MemUsage}}|{{.NetIO}}|{{.BlockIO}}" "$container_id")
-          
-          # Lê a string raw_stats e a divide em variáveis usando o separador '|'
-          IFS='|' read -r c_id c_cpu c_mem c_net c_block <<< "$raw_stats"
+    ( 
+    while docker top "$container_id" &>/dev/null; do
+        timestamp_log=$(date --iso-8601=seconds)
+        
+        # Usa um separador diferente (pipe '|') para facilitar a leitura em variáveis
+        raw_stats=$(docker stats --no-stream --format "{{.ID}}|{{.CPUPerc}}|{{.MemUsage}}|{{.NetIO}}|{{.BlockIO}}" "$container_id")
+        
+        # Lê a string raw_stats e a divide em variáveis usando o separador '|'
+        IFS='|' read -r c_id c_cpu c_mem c_net c_block <<< "$raw_stats"
 
-          # Separa MemUsage ("Usado / Limite")
-          mem_used="${c_mem% / *}"
-          mem_limit="${c_mem#* / }"
+        # Separa MemUsage ("Usado / Limite")
+        mem_used="${c_mem% / *}"
+        mem_limit="${c_mem#* / }"
 
-          # Separa NetIO ("Recebido / Enviado")
-          net_received="${c_net% / *}"
-          net_sent="${c_net#* / }"
+        # Separa NetIO ("Recebido / Enviado")
+        net_received="${c_net% / *}"
+        net_sent="${c_net#* / }"
 
-          # Separa BlockIO ("Lido / Escrito")
-          block_read="${c_block% / *}"
-          block_written="${c_block#* / }"
+        # Separa BlockIO ("Lido / Escrito")
+        block_read="${c_block% / *}"
+        block_written="${c_block#* / }"
 
-          # extrai as metricas provenientes dos programas
-            IFS=',' read -r sum_t0 sum_tmax t_exec peak_mem <<< "$(docker logs "$container_id")"
-          
-          # Monta e salva a nova linha do CSV com todas as colunas separadas
-          echo "$timestamp_log,$c_id,$c_cpu,$mem_used,$mem_limit,$net_received,$net_sent,$block_read,$block_written,$size,$l_value,$language,$dimension,$sum_t0,$sum_tmax,$t_exec,$peak_mem"
-          
-          sleep "$SAMPLING_RATE"
-		
-      done
-    ) >> "$stats_file" & #>> concatenar e nao sobrescrever
+        # extrai as metricas provenientes dos programas
+        IFS=',' read -r sum_t0 sum_tmax t_exec peak_mem <<< "$(docker logs "$container_id")"
+        
+        # Monta e salva a nova linha do CSV com todas as colunas separadas
+        echo "$timestamp_log,$c_id,$c_cpu,$mem_used,$mem_limit,$net_received,$net_sent,$block_read,$block_written,$size,$l_value,$language,$dimension,$sum_t0,$sum_tmax,$t_exec,$peak_mem" >> "$stats_file"  #>> concatenar e nao sobrescrever
+    
+        sleep "$SAMPLING_RATE"
+        
+    done
+    ) 
 
     docker wait "$container_id" > /dev/null
 
