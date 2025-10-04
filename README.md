@@ -29,6 +29,11 @@ https://github.com/reamat/CalculoNumerico
 
 # Run Experiments
 makefile?
+
+```
+docker build -t calor:latest .
+```
+
 # Usage
  
 #
