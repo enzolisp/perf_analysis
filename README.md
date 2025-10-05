@@ -1,4 +1,4 @@
-# Stage 2 - Comp. Sys. Perf Analysis (2025/2) - Lucas M. Schnorr
+# Stage 2 - Comp. Sys. Perf Analysis (2025/2)<br/>Lucas M. Schnorr
 > ## Group F:<br/>Enzo Lisboa Peixoto - 00584827<br/>Nathan Mattes - 00342941<br/>Pedro Scholz Soares - 00578266
 
 Finite Difference Methods
