@@ -6,7 +6,7 @@
 DOCKER_IMAGE="calor" #nome que defini quando docker build -t calor:latest .
 PLANO_CSV="plano.csv"
 SRC_DIR="${PWD}/src"
-STATS_DIR="${PWD}/docker_stats_results"
+STATS_DIR="${PWD}/stats"
 SAMPLING_RATE=0.000001 # Intervalo do docker stats em segundos
 
 get_l_value() {
@@ -38,12 +38,13 @@ if [[ "$(docker images -q $DOCKER_IMAGE 2> /dev/null)" == "" ]]; then
 fi
 
 echo "Preparando diretórios para resultados..."
-mkdir -p "$STATS_DIR"
+mkdir -p "$STATS_DIR/performance"
+mkdir -p "$STATS_DIR/results"
 
-if ls -A "$STATS_DIR" | read -r; then
-    echo "Limpando resultados de execuções anteriores..."
-    rm -vf "${STATS_DIR}"/*.csv
-fi
+# if ls -A "$STATS_DIR" | read -r; then
+#     echo "Limpando resultados de execuções anteriores..."
+#     rm -vf "${STATS_DIR}"/*.csv
+# fi
 
 # Lê o CSV, pulando a primeira linha (cabeçalho)
 tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
@@ -70,10 +71,15 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
         run_command="$language $script_file $l_value $l_value"
     fi
 
-    stats_file="${STATS_DIR}/${language}_${dimension}stats.csv"
+    performance_stats_file="${STATS_DIR}/performance/${language}_${dimension}stats.csv"
+    results_stats_file="${STATS_DIR}/results/${language}_${dimension}stats.csv"
 
-    if [ ! -f "$stats_file" ]; then
-    	echo "Timestamp,ContainerID,CPUPerc,MemUsed,MemLimit,NetReceived,NetSent,BlockRead,BlockWritten,Size,L_Value,language,dimension,sum_t0,sum_tmax,t_exec,peak_mem" > "$stats_file"
+    if [ ! -f "$performance_stats_file" ]; then
+    	echo "Timestamp,ContainerID,CPUPerc,MemUsed,MemLimit,NetReceived,NetSent,BlockRead,BlockWritten,Size,L_Value,language,dimension" > "$performance_stats_file"
+    fi
+    
+    if [ ! -f "$results_stats_file" ]; then
+    	echo "Timestamp,ContainerID,Size,L_Value,language,dimension,sum_t0,sum_tmax,t_exec,peak_mem" > "$results_stats_file"
     fi
     
     echo "-------------------------------------------------------------"
@@ -114,8 +120,11 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
         # extrai as metricas provenientes dos programas
         IFS=',' read -r sum_t0 sum_tmax t_exec peak_mem <<< "$(docker logs "$container_id")"
         
-        # Monta e salva a nova linha do CSV com todas as colunas separadas
-        echo "$timestamp_log,$c_id,$c_cpu,$mem_used,$mem_limit,$net_received,$net_sent,$block_read,$block_written,$size,$l_value,$language,$dimension,$sum_t0,$sum_tmax,$t_exec,$peak_mem" >> "$stats_file"  #>> concatenar e nao sobrescrever
+        if [ -z "$sum_t0" ] && [ -z "$sum_tmax" ] && [ -z "$t_exec" ] && [ -z "$peak_mem" ]; then
+            echo "$timestamp_log,$c_id,$c_cpu,$mem_used,$mem_limit,$net_received,$net_sent,$block_read,$block_written,$size,$l_value,$language,$dimension" >> "$performance_stats_file"  #>> concatenar e nao sobrescrever            
+        else
+            echo "$timestamp_log,$c_id,$size,$l_value,$language,$dimension,$sum_t0,$sum_tmax,$t_exec,$peak_mem" >> "$results_stats_file"  #>> concatenar e nao sobrescrever
+        fi
     
         sleep "$SAMPLING_RATE"
         
