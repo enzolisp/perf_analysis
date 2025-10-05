@@ -11,5 +11,4 @@ src/.ipynb_checkpoints/
 *.fls
 *.fdb_latexmk
 *.synctex.gz
-docker_logs
-docker_stats_results
+stats/
