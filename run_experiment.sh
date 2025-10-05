@@ -15,16 +15,16 @@ get_l_value() {
     case "$dimension" in
         "1d")
             case "$size" in
-                "low")  echo 500 ;;
-                "mid")  echo 1250 ;;
-                "high") echo 2000 ;;
+                "low")  echo 500000 ;;
+                "mid")  echo 1000000 ;;
+                "high") echo 5000000 ;;
             esac
             ;;
         "2d")
             case "$size" in
-                "low")  echo 200 ;;
-                "mid")  echo 350 ;;
-                "high") echo 500 ;;
+                "low")  echo 500 ;;
+                "mid")  echo 750 ;;
+                "high") echo 1000 ;;
             esac
             ;;
     esac
@@ -82,7 +82,7 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
     if [ ! -f "$results_stats_file" ]; then
     	echo "ContainerID,language,dimension,Size,L_Value,Timestamp,sum_t0,sum_tmax,t_exec,peak_mem" > "$results_stats_file"
     fi
-    
+
     echo "-------------------------------------------------------------"
     echo "Executando: $run_command"
     
@@ -127,7 +127,7 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
         else
             echo "$c_id,$language,$dimension,$size,$l_value,$timestamp_log,$sum_t0,$sum_tmax,$t_exec,$peak_mem" >> "$results_stats_file"  #>> concatenar e nao sobrescrever
         fi
-    
+        
         sleep "$SAMPLING_RATE"
         
     done
