@@ -1,5 +1,5 @@
-# Stage 2 - Comp. Sys. Perf Analysis (2025/2) - Lucas M. Schnorr
-# Group F: Enzo Lisboa Peixoto - 00584827, Nathan Mattes - 00342941 e Pedro Scholz Soares - 00578266
+## Stage 2 - Comp. Sys. Perf Analysis (2025/2) - Lucas M. Schnorr
+## Group F: Enzo Lisboa Peixoto - 00584827, Nathan Mattes - 00342941 e Pedro Scholz Soares - 00578266
 
 Finite Difference Methods
 
@@ -8,35 +8,31 @@ Explicit scheme (forward euler) <- resolucao da edp
 https://github.com/reamat/CalculoNumerico
 
 
-## Repository Structure
+### Repository Structure
 ```
 .
-├── Dockerfile      --> source code for building python and julia images
-├── docs            --> all sorts of documents used 
+├── Dockerfile
+├── docs
 │   ├── material
 │   ├── relatorio
 │   └── slides
-├── experiments-csv -->
-├── plano.csv       -->
-├── rand_exp.R      --> R script for randomizeing all experimentation cases
-├── README.md   
-├── requirements.txt    
-├── results.csv         --> csv file for keeping results
-├── run_experiment.sh --> bash script to run experiments
-└── src
-    ├── 1d.jl
-    ├── 1d.py
-    ├── 2d.jl
-    └── 2d.py
+├── plano.csv
+├── rand_exp.R
+├── README.md
+├── run_experiment.sh
+├── src
+│   ├── julia
+│   └── python
+└── stats
+    ├── performance
+    └── results
 ```
 
-## Run Experiments
-makefile?
-
+### Run Experiments
 ```
 docker build -t calor:latest .
 ```
 
-## Usage
+### Usage
  
-## Docker 
+### Docker 
