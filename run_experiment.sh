@@ -90,8 +90,9 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
     
     ( 
     while docker top "$container_id" &>/dev/null; do
-        timestamp_log=$(date --iso-8601=seconds)
-        
+        #timestamp_log=$(date --iso-8601=seconds)
+        timestamp_log=$(date +'%H:%M:%S') # Formato ISO 8601 com fuso horário
+
         # Usa um separador diferente (pipe '|') para facilitar a leitura em variáveis
         raw_stats=$(docker stats --no-stream --format "{{.ID}}|{{.CPUPerc}}|{{.MemUsage}}|{{.NetIO}}|{{.BlockIO}}" "$container_id")
         
