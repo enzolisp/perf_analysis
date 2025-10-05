@@ -41,10 +41,11 @@ echo "Preparando diretórios para resultados..."
 mkdir -p "$STATS_DIR/performance"
 mkdir -p "$STATS_DIR/results"
 
-# if ls -A "$STATS_DIR" | read -r; then
-#     echo "Limpando resultados de execuções anteriores..."
-#     rm -vf "${STATS_DIR}"/*.csv
-# fi
+ if ls -A "$STATS_DIR/performance" | read -r || ls -A "$STATS_DIR/results" | read -r; then
+    echo "Limpando resultados de execuções anteriores..."
+    rm -vf "${STATS_DIR}"/performance/*.csv
+    rm -vf "${STATS_DIR}"/results/*.csv
+fi
 
 # Lê o CSV, pulando a primeira linha (cabeçalho)
 tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
@@ -71,8 +72,8 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
         run_command="$language $script_file $l_value $l_value"
     fi
 
-    performance_stats_file="${STATS_DIR}/performance/${language}_${dimension}stats.csv"
-    results_stats_file="${STATS_DIR}/results/${language}_${dimension}stats.csv"
+    performance_stats_file="${STATS_DIR}/performance/${language}_${dimension}_performance.csv"
+    results_stats_file="${STATS_DIR}/results/${language}_${dimension}_results.csv"
 
     if [ ! -f "$performance_stats_file" ]; then
     	echo "ContainerID,language,dimension,Size,L_Value,Timestamp,CPUPerc,MemUsed,MemLimit,NetReceived,NetSent,BlockRead,BlockWritten" > "$performance_stats_file"
@@ -92,7 +93,8 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
         $run_command)
 
     echo "Contêiner iniciado com ID: ${container_id:0:12}"
-    echo "Coletando stats em: $stats_file"
+    echo "Inserindo perfomance em: $performance_stats_file"
+    echo "Inserindo resultados em: $results_stats_file"
     
     ( 
     while docker top "$container_id" &>/dev/null; do
