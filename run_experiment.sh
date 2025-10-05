@@ -75,11 +75,11 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
     results_stats_file="${STATS_DIR}/results/${language}_${dimension}stats.csv"
 
     if [ ! -f "$performance_stats_file" ]; then
-    	echo "Timestamp,ContainerID,CPUPerc,MemUsed,MemLimit,NetReceived,NetSent,BlockRead,BlockWritten,Size,L_Value,language,dimension" > "$performance_stats_file"
+    	echo "ContainerID,language,dimension,Size,L_Value,Timestamp,CPUPerc,MemUsed,MemLimit,NetReceived,NetSent,BlockRead,BlockWritten" > "$performance_stats_file"
     fi
     
     if [ ! -f "$results_stats_file" ]; then
-    	echo "Timestamp,ContainerID,Size,L_Value,language,dimension,sum_t0,sum_tmax,t_exec,peak_mem" > "$results_stats_file"
+    	echo "ContainerID,language,dimension,Size,L_Value,Timestamp,sum_t0,sum_tmax,t_exec,peak_mem" > "$results_stats_file"
     fi
     
     echo "-------------------------------------------------------------"
@@ -121,9 +121,9 @@ tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
         IFS=',' read -r sum_t0 sum_tmax t_exec peak_mem <<< "$(docker logs "$container_id")"
         
         if [ -z "$sum_t0" ] && [ -z "$sum_tmax" ] && [ -z "$t_exec" ] && [ -z "$peak_mem" ]; then
-            echo "$timestamp_log,$c_id,$c_cpu,$mem_used,$mem_limit,$net_received,$net_sent,$block_read,$block_written,$size,$l_value,$language,$dimension" >> "$performance_stats_file"  #>> concatenar e nao sobrescrever            
+            echo "$c_id,$language,$dimension,$size,$l_value,$timestamp_log,$c_cpu,$mem_used,$mem_limit,$net_received,$net_sent,$block_read,$block_written" >> "$performance_stats_file"  #>> concatenar e nao sobrescrever            
         else
-            echo "$timestamp_log,$c_id,$size,$l_value,$language,$dimension,$sum_t0,$sum_tmax,$t_exec,$peak_mem" >> "$results_stats_file"  #>> concatenar e nao sobrescrever
+            echo "$c_id,$language,$dimension,$size,$l_value,$timestamp_log,$sum_t0,$sum_tmax,$t_exec,$peak_mem" >> "$results_stats_file"  #>> concatenar e nao sobrescrever
         fi
     
         sleep "$SAMPLING_RATE"
