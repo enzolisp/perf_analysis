@@ -1,0 +1,145 @@
+% Stage 2 - Comp. Sys. Perf Analysis (2025/2) - Lucas M. Schnorr
+% Group F: Enzo Lisboa Peixoto - 00584827, Nathan Mattes - 00342941 e Pedro Scholz Soares - 00578266 
+%
+
+\documentclass{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+
+% Choose the Inf theme
+\usetheme{Inf}
+
+% Define the title with \title[short title]{long title}
+% Short title is optional
+\title[Etapa 2: Parcial]
+      {Avaliação de Desempenho Etapa 2: Parcial}
+
+\date{Outubro de 2025}
+
+% Author information
+\author{Enzo Lisbôa Peixoto, Nathan Mattes e \\Pedro Scholz Soares}
+\institute{Instituto de Informática --- UFRGS\\\texttt{elpeixoto@inf.ufrgs.br\\nmattes@inf.ufrgs.br\\pedro.soares@inf.ufrgs.br\\}}
+
+\begin{document}
+
+% Command to create title page
+\InfTitlePage
+
+% 1D Heat equation
+
+
+\section{Detalhamento}
+
+\frame{
+    \frametitle{Descrição}
+
+    \begin{itemize}
+        \item O objeto de estudo deste trabalho é a solução numérica da equação do
+         calor em uma, duas e três dimensões. 
+		\item Essa equação descreve a forma como o calor se espalha por um objeto. 
+        Será implementado algoritmos em duas linguagens de programação distintas, 
+        julia e python. 
+        \item A justificativa das linguagens vem do fato de python ser uma linguagem 
+        consistente para uso científico devido suas bibliotecas e ser amplamente
+        popular, por outro lado julia apresenta ótimos resultados em cálculo numérico.
+    \end{itemize}
+}
+
+
+\frame{
+    \frametitle{Descrição}
+    \begin{figure}[h!]
+    \centering
+        \includegraphics[width=0.8\textwidth]{../../imagensEtapa2/OrgranogramaExperimentos.jpeg}
+        \caption{Orgranograma dos Experimentos}
+    \end{figure}
+}
+
+\section{Detalhamento}
+
+\frame{
+    \frametitle{Método de Coleta de Dados}
+
+    \begin{itemize}
+        \item Usaremos medição como método de análise.
+        \item São algoritmos de implementação simples.
+        \item Podemos analisar dados obtidos de forma empírica.
+    \end{itemize}
+}
+
+\frame{
+    \frametitle{Método de Coleta de Dados}
+    
+    \begin{itemize}
+        \item Julia utiliza compilação just-in-time (JIT): 
+        \begin{itemize}
+            \item A primeira execução de um código em Julia pode ser mais lenta devido à necessidade de compilar o código antes de executá-lo.
+            \item Em execuções subsequentes, o código já está compilado, o que resulta em tempos de execução significativamente mais rápidos.
+        \end{itemize}
+        \item Python é uma linguagem interpretada:
+        \begin{itemize}
+            \item Cada vez que um script Python é executado, o interpretador lê e interpreta o código linha por linha.
+            \item Isso pode resultar em tempos de execução mais lentos, especialmente para tarefas computacionalmente intensivas.
+        \end{itemize}
+        \item Para garantir uma comparação justa, o tempo de compilação inicial do Julia será separado do tempo de execução.
+        \item O foco da análise será o tempo de execução após a compilação inicial.
+
+    \end{itemize}
+}
+
+\section{Detalhamento}
+
+\frame{
+    \frametitle{Resultados Preliminares}
+
+    \begin{itemize}
+        \item Resolução de EDP's já estudada pelos membros do grupo em outras disciplinas, através da abordagem analítica.
+        \item Nenhum membro do grupo explorou a abordagem computacional da resolução da equação.
+        \item Enxergamos esse trabalho como uma oportunidade de estudar a equação sob outra visão, nos possibilitando abordar conteúdos relativos a cálculo numérico.
+    \end{itemize}
+}
+
+\section{Detalhamento}
+
+\frame{
+    \frametitle{Dificuldades e Soluções}
+
+    \begin{itemize}
+        \item Tempo de execução
+        \begin{itemize}
+            \item Coletar múltiplas amostras para fazer uma média e garantir robustez nos resultados
+            \item Distinguir o tempo de compilação inicial do Julia do tempo de execução a fim de ter uma comparação mais justa com Python
+        \end{itemize}
+        \item Uso de memória
+        \begin{itemize}
+            \item Avaliar a eficiência da alocação de memória por ambas as linguagens
+        \end{itemize}
+    \end{itemize}
+}
+
+\section{Detalhamento}
+
+\frame{
+    \frametitle{Plano para Finalização e Cronograma Atualizado}
+    \begin{tabular}{l r}
+        Atividade & Prazo Máximo\\
+        Organizar os scripts auxiliares & 11/10\\
+        Ampliar a análise com novas comparações & 18/10\\
+        Analise qualitativa dos resultados & 25/10\\
+        Expecificação do hardware para o experimento & 01/11\\
+        Coleta total dos dados & 15/11\\
+        Análise final dos dados & 22/11\\
+        Escrita do relatório final &  30/11\\
+    \end{tabular}
+}
+
+\section*{}
+
+\begin{frame}
+    \frametitle{Obrigado!}
+    \InfContacts
+\end{frame}
+
+\end{document}
