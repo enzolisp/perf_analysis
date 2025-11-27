@@ -25,12 +25,12 @@ parse_mem_to_MiB <- function(x) {
 }
 
 files <- c(
-  "julia_1d_performance.csv",
-  "julia_2d_performance.csv",
-  "python_1d_performance.csv",
-  "python_2d_performance.csv",
-  "julia_3d_performance.csv",
-  "python_3d_performance.csv"
+  "../stats/perfomance/julia_1d_performance.csv",
+  "../stats/perfomance/julia_2d_performance.csv",
+  "../stats/perfomance/python_1d_performance.csv",
+  "../stats/perfomance/python_2d_performance.csv",
+  "../stats/perfomance/julia_3d_performance.csv",
+  "../stats/perfomance/python_3d_performance.csv"
 )
 files <- files[file.exists(files)]
 if (length(files) == 0) stop("Nenhum arquivo encontrado no diretório atual. Ajuste os caminhos.")

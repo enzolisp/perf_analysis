@@ -29,7 +29,7 @@ converte_memoria_para_mib <- function(mem_col) {
 
 # 2. Função de Leitura
 ler_dados_docker_media <- function(lang, dim) {
-  arquivo <- sprintf("stats/performance/%s_%s_performance.csv", lang, dim)
+  arquivo <- sprintf("../stats/performance/%s_%s_performance.csv", lang, dim)
   
   if (!file.exists(arquivo)) {
     warning(paste("Arquivo não encontrado:", arquivo))
@@ -86,7 +86,7 @@ p <- ggplot(dados, aes(x = Memoria_Media_MiB, y = L_num)) +
   theme_bw()
 
 # Salvar
-nome_arquivo <- sprintf("stats/memoria_media_%s_%s.png", LANG_ALVO, DIM_ALVO)
+nome_arquivo <- sprintf("../graphs/memoria_media_%s_%s.png", LANG_ALVO, DIM_ALVO)
 ggsave(nome_arquivo, p, width = 8, height = 6)
 
 print(paste("Gráfico salvo em:", nome_arquivo))

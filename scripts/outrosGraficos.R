@@ -15,7 +15,7 @@ library(scales)
 
 # Define caminhos
 input_dir <- "." # Roda dentro de stats/results
-output_dir <- "../graficos_estabilidade"
+output_dir <- "../graphs/graficos_estabilidade"
 dir.create(output_dir, showWarnings = FALSE, recursive = TRUE)
 
 # --- CARREGAMENTO DOS DADOS ---

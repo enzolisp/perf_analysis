@@ -12,7 +12,7 @@ library(readr)
 
 # 1. Função de Leitura
 ler_dados <- function(lang, dim) {
-  arquivo <- sprintf("stats/results/%s_%s_results.csv", lang, dim)
+  arquivo <- sprintf("../stats/results/%s_%s_results.csv", lang, dim)
   
   if (!file.exists(arquivo)) {
     warning(paste("Arquivo não encontrado:", arquivo))
@@ -66,7 +66,7 @@ p1 <- ggplot(dados, aes(x = L_num, y = Tempo)) +
     axis.text = element_text(size = 12)
   )
 
-nome_p1 <- sprintf("stats/regressao_%s_%s.png", LANG_ALVO, DIM_ALVO)
+nome_p1 <- sprintf("../graphs/regressao_%s_%s.png", LANG_ALVO, DIM_ALVO)
 ggsave(nome_p1, p1, width = 8, height = 6)
 
 print(paste("Gráfico salvo sem avisos em:", nome_p1))
