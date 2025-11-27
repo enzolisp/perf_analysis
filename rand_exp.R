@@ -4,7 +4,7 @@
 #fatores e seus níveis
 fatores <- list(
   linguagem = c("python", "julia"),
-  dimensao  = c("1d", "2d"),
+  dimensao  = c("1d", "2d", "3d"),
   size      = c("low", "mid", "high") # Incluindo o novo nível "mid"
 )
 
@@ -14,7 +14,7 @@ plano_base <- expand.grid(fatores)
 print("Plano base com as 12 combinações únicas:")
 print(plano_base)
 
-REPLICACOES <- 10 # O mesmo número de replicações do seu script Python
+REPLICACOES <- 50 #era 10
 
 # repetir com base em REPLICACOES
 plano_replicado <- plano_base[rep(1:nrow(plano_base), each = REPLICACOES), ]
@@ -30,5 +30,4 @@ print(head(plano_final_aleatorizado))
 
 print("Dimensões do plano final:")
 print(dim(plano_final_aleatorizado))
-
-write.csv(plano_final_aleatorizado, "plano.csv", row.names = FALSE)
+write.csv(plano_final_aleatorizado, "plano.csv", row.names = FALSE, col.names = FALSE)

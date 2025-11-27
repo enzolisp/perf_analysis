@@ -1,143 +1,129 @@
-# Stage 2 - Comp. Sys. Perf Analysis (2025/2) - Lucas M. Schnorr
-# Group F: Enzo Lisboa Peixoto - 00584827, Nathan Mattes - 00342941 e Pedro Scholz Soares - 00578266
-
 #!/bin/bash
 
-DOCKER_IMAGE="calor" #nome que defini quando docker build -t calor:latest .
-PLANO_CSV="plano.csv"
-SRC_DIR="${PWD}/src"
-STATS_DIR="${PWD}/stats"
-SAMPLING_RATE=0.000001 # Intervalo do docker stats em segundos
+# ==============================================================================
+# CONFIGURAÇÕES
+# ==============================================================================
+SRC_DIR=$(pwd)/src
+PLANO_FILE=plano.csv
+OUTPUT_DIR=stats
+PERFORMANCE_DIR=${OUTPUT_DIR}/performance
+RESULTS_DIR=${OUTPUT_DIR}/results
+IMAGE_NAME="calor:latest"
 
+CPU_SET="0"
+
+# Cria diretórios
+mkdir -p "$PERFORMANCE_DIR"
+mkdir -p "$RESULTS_DIR"
+
+# Limpa arquivos antigos
+rm -f "${PERFORMANCE_DIR}"/*.csv
+rm -f "${RESULTS_DIR}"/*.csv
+
+# Função para definir L
 get_l_value() {
-    local dimension=$1
-    local size=$2
-    case "$dimension" in
-        "1d")
-            case "$size" in
-                "low")  echo 500000 ;;
-                "mid")  echo 1000000 ;;
-                "high") echo 5000000 ;;
-            esac
-            ;;
-        "2d")
-            case "$size" in
-                "low")  echo 500 ;;
-                "mid")  echo 750 ;;
-                "high") echo 1000 ;;
-            esac
-            ;;
+    local dim=$1
+    local sz=$2
+    case "$dim" in
+        "1d") case "$sz" in "low") echo 1000 ;; "mid") echo 2000 ;; "high") echo 10000 ;; *) echo 1000 ;; esac ;;
+        "2d") case "$sz" in "low") echo 500 ;; "mid") echo 750 ;; "high") echo 1000 ;; *) echo 500 ;; esac ;;
+        "3d") case "$sz" in "low") echo 50 ;; "mid") echo 75 ;; "high") echo 100 ;; *) echo 50 ;; esac ;;
     esac
 }
 
-echo "Verificando a imagem Docker '$DOCKER_IMAGE'..."
-if [[ "$(docker images -q $DOCKER_IMAGE 2> /dev/null)" == "" ]]; then
-    echo "ERRO: A imagem Docker '$DOCKER_IMAGE' não foi encontrada."
-    echo "Por favor, construa a imagem usando o Dockerfile fornecido e tente novamente."
-    exit 1
-fi
+# ==============================================================================
+# LOOP DE EXECUÇÃO
+# ==============================================================================
+echo "Iniciando experimentos..."
 
-echo "Preparando diretórios para resultados..."
-mkdir -p "$STATS_DIR/performance"
-mkdir -p "$STATS_DIR/results"
+while IFS=, read -r language dimension size; do
+    # Limpeza de strings
+    language=$(echo "$language" | tr -d '"' | xargs)
+    dimension=$(echo "$dimension" | tr -d '"' | xargs)
+    size=$(echo "$size" | tr -d '"' | xargs)
 
- if ls -A "$STATS_DIR/performance" | read -r || ls -A "$STATS_DIR/results" | read -r; then
-    echo "Limpando resultados de execuções anteriores..."
-    rm -vf "${STATS_DIR}"/performance/*.csv
-    rm -vf "${STATS_DIR}"/results/*.csv
-fi
+    if [[ "$language" == "linguagem" || -z "$language" ]]; then continue; fi
 
-# Lê o CSV, pulando a primeira linha (cabeçalho)
-tail -n +2 "$PLANO_CSV" | while IFS=',' read -r language dimension size; do
-    # Remove aspas que podem vir do CSV
-    language=$(echo "$language" | tr -d '"')
-    dimension=$(echo "$dimension" | tr -d '"')
-    size=$(echo "$size" | tr -d '"')
+    if [[ "$language" == "julia" ]]; then ext="jl"; cmd="julia"; else ext="py"; cmd="python"; fi
+    
+    script="${language}/${dimension}.${ext}"
+    l_val=$(get_l_value "$dimension" "$size")
+    path="/app/${script}"
+    
+    # Argumentos (CORREÇÃO 3D INCLUÍDA)
+    if [[ "$dimension" == "1d" ]]; then args="$l_val"; 
+    elif [[ "$dimension" == "2d" ]]; then args="$l_val $l_val"; 
+    else args="$l_val $l_val $l_val"; fi
 
-    # Obter o valor de L
-    l_value=$(get_l_value "$dimension" "$size")
-    if [[ -z "$l_value" ]]; then
-        echo "AVISO: Combinação inválida encontrada: $dimension, $size. Pulando..."
-        continue
+    echo ">>> Executando: $language | $dimension | $size (L=$l_val)"
+
+    # 1. Inicia Container em Background
+    container_id=$(docker run -d --cpuset-cpus="$CPU_SET" -v "${SRC_DIR}:/app" "$IMAGE_NAME" $cmd $path $args)
+
+    # Define arquivos de saída
+    perf_file="${PERFORMANCE_DIR}/${language}_${dimension}_performance.csv"
+    res_file="${RESULTS_DIR}/${language}_${dimension}_results.csv"
+
+    # Cria cabeçalhos se necessário
+    if [[ ! -s "$perf_file" ]]; then
+        echo "ContainerID,language,dimension,Size,L_Value,Timestamp,CPUPerc,MemUsed,MemLimit,NetReceived,NetSent,BlockRead,BlockWritten" > "$perf_file"
+    fi
+    if [[ ! -s "$res_file" ]]; then
+        echo "ContainerID,language,dimension,Size,L_Value,Timestamp,sum_t0,sum_tmax,t_exec,peak_mem" > "$res_file"
     fi
 
-    script_file="${language}/${dimension}.$( [[ $language == "python" ]] && echo "py" || echo "jl" )"
-    
-    # rodar usando valores de L iguais para todas as dimensoes
-    if [[ $dimension == "1d" ]]; then
-        run_command="$language $script_file $l_value"
-    elif [[ $dimension == "2d" ]]; then
-        run_command="$language $script_file $l_value $l_value"
-    elif [[ $dimension == "3d" ]]; then
-        run_command="$language $script_file $l_value $l_value"
-    fi
-
-    performance_stats_file="${STATS_DIR}/performance/${language}_${dimension}_performance.csv"
-    results_stats_file="${STATS_DIR}/results/${language}_${dimension}_results.csv"
-
-    if [ ! -f "$performance_stats_file" ]; then
-    	echo "ContainerID,language,dimension,Size,L_Value,Timestamp,CPUPerc,MemUsed,MemLimit,NetReceived,NetSent,BlockRead,BlockWritten" > "$performance_stats_file"
-    fi
-    
-    if [ ! -f "$results_stats_file" ]; then
-    	echo "ContainerID,language,dimension,Size,L_Value,Timestamp,sum_t0,sum_tmax,t_exec,peak_mem" > "$results_stats_file"
-    fi
-
-    echo "-------------------------------------------------------------"
-    echo "Executando: $run_command"
-    
-    container_id=$(docker run -d \
-        -v "${SRC_DIR}:/app" \
-        -w /app \
-        "$DOCKER_IMAGE" \
-        $run_command)
-
-    echo "Contêiner iniciado com ID: ${container_id:0:12}"
-    echo "Inserindo perfomance em: $performance_stats_file"
-    echo "Inserindo resultados em: $results_stats_file"
-    
-    ( 
-    while docker top "$container_id" &>/dev/null; do
-        #timestamp_log=$(date --iso-8601=seconds)
-        timestamp_log=$(date +'%H:%M:%S') # Formato ISO 8601 com fuso horário
-
-        # Usa um separador diferente (pipe '|') para facilitar a leitura em variáveis
-        raw_stats=$(docker stats --no-stream --format "{{.ID}}|{{.CPUPerc}}|{{.MemUsage}}|{{.NetIO}}|{{.BlockIO}}" "$container_id")
+    # 2. Loop de Monitoramento (Docker Stats)
+    # Coleta estatísticas a cada 1s enquanto o container estiver rodando
+    while docker ps -q | grep -q "^${container_id:0:12}"; do
+        timestamp=$(date +%T)
         
-        # Lê a string raw_stats e a divide em variáveis usando o separador '|'
-        IFS='|' read -r c_id c_cpu c_mem c_net c_block <<< "$raw_stats"
-
-        # Separa MemUsage ("Usado / Limite")
-        mem_used="${c_mem% / *}"
-        mem_limit="${c_mem#* / }"
-
-        # Separa NetIO ("Recebido / Enviado")
-        net_received="${c_net% / *}"
-        net_sent="${c_net#* / }"
-
-        # Separa BlockIO ("Lido / Escrito")
-        block_read="${c_block% / *}"
-        block_written="${c_block#* / }"
-
-        # extrai as metricas provenientes dos programas
-        IFS=',' read -r sum_t0 sum_tmax t_exec peak_mem <<< "$(docker logs "$container_id")"
+        # Pega stats em formato CSV puro
+        stats=$(docker stats --no-stream --format "{{.CPUPerc}},{{.MemUsage}},{{.NetIO}},{{.BlockIO}}" "$container_id")
         
-        if [ -z "$sum_t0" ] && [ -z "$sum_tmax" ] && [ -z "$t_exec" ] && [ -z "$peak_mem" ]; then
-            echo "$c_id,$language,$dimension,$size,$l_value,$timestamp_log,$c_cpu,$mem_used,$mem_limit,$net_received,$net_sent,$block_read,$block_written" >> "$performance_stats_file"  #>> concatenar e nao sobrescrever            
-        else
-            echo "$c_id,$language,$dimension,$size,$l_value,$timestamp_log,$sum_t0,$sum_tmax,$t_exec,$peak_mem" >> "$results_stats_file"  #>> concatenar e nao sobrescrever
+        if [[ -n "$stats" ]]; then
+            # Limpa formatação do Docker Stats (ex: separa MemUsed / MemLimit)
+            # Formato original: 10.5%, 100MiB / 1GiB, 1kB / 2kB, 0B / 0B
+            
+            # Remove espaços
+            stats=$(echo "$stats" | tr -d ' ')
+            
+            # Separa os campos compostos (/)
+            cpu=$(echo "$stats" | cut -d',' -f1)
+            mem_full=$(echo "$stats" | cut -d',' -f2)
+            net_full=$(echo "$stats" | cut -d',' -f3)
+            blk_full=$(echo "$stats" | cut -d',' -f4)
+            
+            mem_used=$(echo "$mem_full" | cut -d'/' -f1)
+            mem_limit=$(echo "$mem_full" | cut -d'/' -f2)
+            net_rx=$(echo "$net_full" | cut -d'/' -f1)
+            net_tx=$(echo "$net_full" | cut -d'/' -f2)
+            blk_read=$(echo "$blk_full" | cut -d'/' -f1)
+            blk_write=$(echo "$blk_full" | cut -d'/' -f2)
+
+            # Salva no arquivo de Performance
+            echo "${container_id:0:12},$language,$dimension,$size,$l_val,$timestamp,$cpu,$mem_used,$mem_limit,$net_rx,$net_tx,$blk_read,$blk_write" >> "$perf_file"
         fi
         
-        sleep "$SAMPLING_RATE"
-        
+        sleep 1
     done
-    ) 
 
-    docker wait "$container_id" > /dev/null
+    # 3. Captura Resultados Finais (Do Script Interno)
+    logs=$(docker logs "$container_id" 2>&1 | tail -n 1 | tr -d '\r')
+    docker rm "$container_id" > /dev/null 2>&1
 
-    echo "Execução finalizada."
+    if [[ "$logs" == *","* ]]; then
+        sum0=$(echo "$logs" | cut -d',' -f1)
+        sum1=$(echo "$logs" | cut -d',' -f2)
+        exec_time=$(echo "$logs" | cut -d',' -f3)
+        peak_mem=$(echo "$logs" | cut -d',' -f4)
+        
+        timestamp_end=$(date +%T)
+        echo "${container_id:0:12},$language,$dimension,$size,$l_val,$timestamp_end,$sum0,$sum1,$exec_time,$peak_mem" >> "$res_file"
+        echo "    Finalizado: Tempo=${exec_time}s"
+    else
+        echo "    ERRO: Script falhou ou não retornou CSV. Logs: $logs"
+    fi
 
-done
+done < "$PLANO_FILE"
 
-echo "-------------------------------------------------------------"
-echo "Plano de experimento concluído!"
+echo "Experimento concluído."
