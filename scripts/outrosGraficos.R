@@ -1,26 +1,19 @@
-# ==============================================================================
-# SCRIPT: Gráficos de Estabilidade (Run Sequence Plot) - CORRIGIDO
-# LOCALIZAÇÃO: stats/results/gerar_graficos_estabilidade.R
-# ==============================================================================
-
-if (!require("ggplot2")) install.packages("ggplot2")
-if (!require("dplyr")) install.packages("dplyr")
-if (!require("readr")) install.packages("readr")
-if (!require("scales")) install.packages("scales")
-
 library(ggplot2)
 library(dplyr)
 library(readr)
 library(scales)
 
-# Define caminhos
-input_dir <- "." # Roda dentro de stats/results
-output_dir <- "../graphs/graficos_estabilidade"
-dir.create(output_dir, showWarnings = FALSE, recursive = TRUE)
+dir.create("graphs/graficos_estabilidade", showWarnings = FALSE, recursive = TRUE)
 
 # --- CARREGAMENTO DOS DADOS ---
 carregar_tudo_local <- function() {
-  arquivos <- list.files(pattern = "_results\\.csv$")
+  
+  arquivos <- list.files(
+    path = "stats/results/", 
+    pattern = "_results\\.csv$",
+    full.names = TRUE # ESSENCIAL: Retorna o caminho completo para 'read_csv'
+  )
+  
   if (length(arquivos) == 0) stop("ERRO: Nenhum CSV encontrado em stats/results.")
   
   lapply(arquivos, function(arq) {
@@ -110,7 +103,7 @@ for (i in 1:nrow(combinacoes)) {
       axis.title = element_text(face = "bold")
     )
   
-  nome_arquivo <- sprintf("%s/estabilidade_%s_%s_%s.png", output_dir, lang, dim, sz)
+  nome_arquivo <- sprintf("graphs/graficos_estabilidade/estabilidade_%s_%s_%s.png", lang, dim, sz)
   ggsave(nome_arquivo, plot = p, width = 8, height = 6)
   print(paste("Salvo:", nome_arquivo))
 }
