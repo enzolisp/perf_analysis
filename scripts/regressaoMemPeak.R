@@ -15,6 +15,8 @@ ler_dados <- function(lang, dim) {
     )
 }
 
+dir.create("graphs/graficos_regressaoMemPeak", showWarnings = FALSE)
+
 # Definição das combinações
 linguagens <- c("python", "julia")
 dimensoes  <- c("1d", "2d", "3d")
@@ -48,7 +50,8 @@ for (lang in linguagens) {
         ) +
         theme_bw()
       
-      ggsave(sprintf("stats/regressao_peak_mem_%s_%s.png", lang, dim), p, width = 6, height = 4)
+      ggsave(sprintf("graphs/graficos_regressaoMemPeak/regressao_peak_mem_%s_%s.png", lang, dim), p, width = 6, height = 4)
+    
     }
   }
 }

@@ -15,6 +15,8 @@ ler_dados <- function(lang, dim) {
     )
 }
 
+dir.create("graphs/graficos_regressao", showWarnings = FALSE)
+
 linguagens <- c("python", "julia")
 dimensoes  <- c("1d", "2d", "3d")
 
@@ -47,7 +49,8 @@ for (lang in linguagens) {
         ) +
         theme_bw()
       
-      ggsave(sprintf("stats/regressao_%s_%s.png", lang, dim), p, width = 6, height = 4)
+      ggsave(sprintf("graphs/graficos_regressao/regressao_%s_%s.png", lang, dim), p, width = 6, height = 4)
+    
     }
   }
 }

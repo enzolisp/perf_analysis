@@ -11,7 +11,7 @@ library(dplyr)
 library(readr)
 
 # Cria uma pasta para organizar a saída (para não misturar com os scripts)
-dir.create("../graphs/graficos_individuais", showWarnings = FALSE)
+dir.create("graphs/graficos_individuais", showWarnings = FALSE)
 
 # 1. Carregar todos os arquivos _results.csv do diretório ATUAL
 carregar_tudo_local <- function() {

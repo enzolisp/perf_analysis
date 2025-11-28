@@ -27,6 +27,8 @@ ler_dados_media <- function(lang, dim) {
     ungroup()
 }
 
+dir.create("graphs/graficos_regressao_media_mem", showWarnings = FALSE)
+
 linguagens <- c("python", "julia")
 dimensoes  <- c("1d", "2d", "3d")
 
@@ -58,7 +60,8 @@ for (lang in linguagens) {
         ) +
         theme_bw()
       
-      ggsave(sprintf("stats/regressao_media_mem_%s_%s.png", lang, dim), p, width = 6, height = 4)
+      ggsave(sprintf("graphs/graficos_regressao_media_mem/regressao_media_mem_%s_%s.png", lang, dim), p, width = 6, height = 4)
+
     }
   }
 }
