@@ -12,3 +12,4 @@ src/.ipynb_checkpoints/
 *.fdb_latexmk
 *.synctex.gz
 stats/
+graphs/
