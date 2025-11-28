@@ -1,11 +1,3 @@
-# ==============================================================================
-# SCRIPT: Gerar 18 Boxplots Individuais (Lendo do diretório atual)
-# ==============================================================================
-
-if (!require("ggplot2")) install.packages("ggplot2")
-if (!require("dplyr")) install.packages("dplyr")
-if (!require("readr")) install.packages("readr")
-
 library(ggplot2)
 library(dplyr)
 library(readr)
@@ -16,7 +8,11 @@ dir.create("graphs/graficos_individuais", showWarnings = FALSE)
 # 1. Carregar todos os arquivos _results.csv do diretório ATUAL
 carregar_tudo_local <- function() {
   # Procura arquivos no padrão "algo_algo_results.csv" na pasta atual (.)
-  arquivos <- list.files(pattern = "../stats/results/_results\\.csv$")
+  arquivos <- list.files(
+    path = "stats/results/", 
+    pattern = "_results\\.csv$",
+    full.names = TRUE # ESSENCIAL: Retorna o caminho completo para 'read_csv'
+  )
   
   if (length(arquivos) == 0) {
     stop("ERRO: Nenhum arquivo '_results.csv' encontrado neste diretório.")
@@ -90,10 +86,10 @@ for (i in 1:nrow(combinacoes)) {
     )
   
   # Nome do arquivo organizado
-  nome_arquivo <- sprintf("../graphs/graficos_individuais/boxplot_%s_%s_%s.png", lang, dim, sz)
-  
+  nome_arquivo <- sprintf("graphs/graficos_individuais/boxplot_%s_%s_%s.png", lang, dim, sz)
   ggsave(nome_arquivo, plot = p, width = 6, height = 6)
   print(paste("Salvo:", nome_arquivo))
+
 }
 
 print("-------------------------------------------------------")
