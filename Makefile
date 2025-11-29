@@ -7,12 +7,16 @@ run_experiments: $(DEP1)
 	bash run_experiment.sh
 
 plot_data: 
-	Rscript scripts/gerarBoxplot.R
-	Rscript scripts/outrosGraficos.R
-	Rscript scripts/plotMemUse.R
-	Rscript scripts/regressao_varianca.R
-	Rscript scripts/regressaoMediaMem.R
-	Rscript scripts/regressaoMemPeak.R
-	Rscript scripts/gerarGraficos.R 
+	Rscript scripts/generate_boxplots_mem.R
+	Rscript scripts/generate_combined_boxplots.R
+	Rscript scripts/generate_comparison_boxplots.R
+	Rscript scripts/generate_control_charts.R
+	Rscript scripts/generate_general_boxplot.R
+	Rscript scripts/generate_general_comparison.R
+	Rscript scripts/generate_individual_boxplots.R
+	Rscript scripts/generate_linear_regression_mem.R
+	Rscript scripts/generate_linear_regression_mempeak.R
+	Rscript scripts/generate_linear_regression_texec.R
+	
 	
 	
