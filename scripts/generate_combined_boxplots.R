@@ -31,7 +31,7 @@ for (i in 1:nrow(combinacoes_grafico)) {
   
   p <- ggplot(dados_subset, aes(x = factor(L_Value), y = t_exec)) + 
   
-    geom_boxplot(fill = cor_fill, alpha = 0.7, outlier.color = "red") + 
+    geom_boxplot(fill = cor_fill, alpha = 0.7) + 
     geom_jitter(width = 0.1, alpha = 0.5, size = 1.5) + 
     
     # Labels and Title
