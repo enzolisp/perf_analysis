@@ -13,3 +13,5 @@ src/.ipynb_checkpoints/
 *.synctex.gz
 stats/
 graphs/
+.RData
+.Rhistory
