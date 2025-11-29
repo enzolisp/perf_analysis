@@ -7,6 +7,7 @@ run_experiments: $(DEP1)
 	bash run_experiment.sh
 
 plot_data: 
+	mkdir graphs/
 	Rscript scripts/generate_boxplots_mem.R
 	Rscript scripts/generate_combined_boxplots.R
 	Rscript scripts/generate_comparison_boxplots.R
