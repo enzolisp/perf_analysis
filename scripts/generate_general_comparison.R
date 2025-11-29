@@ -13,6 +13,7 @@ dados$L_fator <- factor(dados$L_Value, levels = sort(unique(dados$L_Value)))
 
 p_comp <- ggplot(dados, aes(x = L_fator, y = t_exec, fill = language)) +
   geom_boxplot() +
+  geom_jitter(alpha = 0.5, size = 1.5, position = position_jitterdodge(jitter.width = 0.1, dodge.width = 0.75)) + 
   facet_wrap(~dimension, scales = "free", ncol = 3) +
   scale_fill_manual(values = c("julia" = "#984ea3", "python" = "#377eb8")) +
   labs(

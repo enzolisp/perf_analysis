@@ -15,6 +15,7 @@ dados$L_fator <- factor(dados$L_Value, levels = sort(unique(dados$L_Value)))
 
 p_geral <- ggplot(dados, aes(x = L_fator, y = t_exec, fill = language)) +
   geom_boxplot(alpha = 0.8) +
+  geom_jitter(width = 0.1, alpha = 0.5, size = 1.5) + 
   # divide os gráficos Scales="free"
   facet_grid(language ~ dimension, scales = "free") +
   scale_fill_manual(values = c("julia" = "#984ea3", "python" = "#377eb8")) +
