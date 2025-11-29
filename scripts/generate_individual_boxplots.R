@@ -1,37 +1,15 @@
-library(ggplot2)
-library(dplyr)
-library(readr)
+suppressPackageStartupMessages({
+  library(dplyr)
+  library(ggplot2)
+  library(readr)
+})
+
+source("scripts/read_csv.R")
 
 dir.create("graphs/individual_boxplots", showWarnings = FALSE)
 
-carregar_tudo_local <- function() {
-  
-  arquivos <- list.files(
-    path = "stats/results/", 
-    pattern = "_results\\.csv$",
-    full.names = TRUE # ESSENCIAL: Retorna o caminho completo para 'read_csv'
-  )
-  
-  if (length(arquivos) == 0) {
-    stop("ERRO: Nenhum arquivo '_results.csv' encontrado neste diretório.")
-  }
-  
-  print(paste(length(arquivos), "CSV files found."))
-  
-  dados_lista <- lapply(arquivos, function(arq) {
-    df <- read_csv(arq, show_col_types = FALSE)
-
-    names(df)[names(df) == "L_value"] <- "L_Value"
-    names(df)[names(df) == "avg_time"] <- "t_exec"
-    
-    return(df)
-  })
-  
-  bind_rows(dados_lista)
-}
-
 print("Reading CSVs...")
-dados <- carregar_tudo_local()
+dados <- read_csv_results()
 
 dados$L_Value <- as.numeric(dados$L_Value)
 dados$t_exec <- as.numeric(dados$t_exec)
