@@ -48,7 +48,7 @@ for (i in 1:nrow(combinacoes_grafico)) {
       panel.grid.major.x = element_blank()
     )
   
-  nome_arquivo <- sprintf("graphs/combined_boxplots/boxplot_%s_%sd.png", lang, dim)
+  nome_arquivo <- sprintf("graphs/combined_boxplots/boxplot_%s_%sd.pdf", lang, dim)
   ggsave(nome_arquivo, plot = p, width = 8, height = 6) 
   print(paste("Saved:", nome_arquivo))
 

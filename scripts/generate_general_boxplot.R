@@ -28,8 +28,8 @@ p_geral <- ggplot(dados, aes(x = L_fator, y = t_exec, fill = language)) +
   theme_bw() +
   theme(legend.position = "bottom")
 
-ggsave("graphs/general_boxplot.png", p_geral, width = 12, height = 8)
-print("Saved: graphs/general_boxplot.png")
+ggsave("graphs/general_boxplot.pdf", p_geral, width = 12, height = 8)
+print("Saved: graphs/general_boxplot.pdf")
 
 print("-------------------------------------------------------")
 cat("Completed! Check 'graphs'.\n\n")

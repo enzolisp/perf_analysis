@@ -56,10 +56,10 @@ for (i in 1:nrow(combinacoes_grafico)) {
       # Use a clean, black-and-white theme
       theme_bw()
     
-    # Save the plot as a PNG file
-    nome_arquivo = sprintf("graphs/linear_regression_texec/linear_regression_texec_%s_%sd.png", lang, dim)
+    # Save the plot as a pdf file
+    nome_arquivo = sprintf("graphs/linear_regression_texec/linear_regression_texec_%s_%sd.pdf", lang, dim)
     ggsave(
-      filename = sprintf("graphs/linear_regression_texec/linear_regression_texec_%s_%sd.png", lang, dim), 
+      filename = sprintf("graphs/linear_regression_texec/linear_regression_texec_%s_%sd.pdf", lang, dim), 
       plot = p, 
       width = 6, 
       height = 4

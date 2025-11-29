@@ -44,7 +44,7 @@ for (i in 1:nrow(combinacoes_grafico)) {
         ) +
         theme_bw()
       
-        filename = sprintf("graphs/linear_regression_mempeak/linear_regression_mempeak_%s_%sd.png", lang, dim)
+        filename = sprintf("graphs/linear_regression_mempeak/linear_regression_mempeak_%s_%sd.pdf", lang, dim)
         ggsave(filename, p, width = 6, height = 4)
         print(paste("Saved:", filename))
     }

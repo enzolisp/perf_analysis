@@ -85,7 +85,7 @@ for (i in 1:nrow(combinacoes)) {
       axis.title = element_text(face = "bold")
     )
   
-  nome_arquivo <- sprintf("graphs/control_charts/control_chart_%s_%s_%sd.png", lang, sz, dim)
+  nome_arquivo <- sprintf("graphs/control_charts/control_chart_%s_%s_%sd.pdf", lang, sz, dim)
   ggsave(nome_arquivo, plot = p, width = 8, height = 6)
   print(paste("Saved:", nome_arquivo))
 }

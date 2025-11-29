@@ -35,11 +35,11 @@ for (d in dims) {
     theme_minimal(base_size = 14)
   
   # Output filename
-  filename <- sprintf("graphs/comparison_boxplots/boxplot_%sd.png", d)
+  filename <- sprintf("graphs/comparison_boxplots/boxplot_%sd.pdf", d)
   
   ggsave(filename, p, width = 12, height = 4, dpi = 300)
-  print("Saved:", filename)
+  print(paste("Saved:", filename))
 }
 
 print("-------------------------------------------------------")
-cat("Completed! Check 'graphs/comparison_boxplots.png'.\n\n")
+cat("Completed! Check 'graphs/comparison_boxplots.pdf'.\n\n")

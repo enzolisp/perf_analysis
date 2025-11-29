@@ -49,7 +49,7 @@ for (i in 1:nrow(combinacoes)) {
       panel.grid.major.x = element_blank()
     )
   
-  nome_arquivo <- sprintf("graphs/individual_boxplots/boxplot_%s_%s_%sd.png", lang, sz, dim)
+  nome_arquivo <- sprintf("graphs/individual_boxplots/boxplot_%s_%s_%sd.pdf", lang, sz, dim)
   ggsave(nome_arquivo, plot = p, width = 6, height = 6)
   print(paste("Saved:", nome_arquivo))
 

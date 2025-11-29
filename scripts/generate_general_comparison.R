@@ -23,8 +23,8 @@ p_comp <- ggplot(dados, aes(x = L_fator, y = t_exec, fill = language)) +
   ) +
   theme_bw()
 
-ggsave("graphs/general_comparison.png", p_comp, width = 12, height = 6)
-print("Saved: graphs/general_comparison.png")
+ggsave("graphs/general_comparison.pdf", p_comp, width = 12, height = 6)
+print("Saved: graphs/general_comparison.pdf")
 
 print("-------------------------------------------------------")
 cat("Completed! Check 'graphs'.\n\n")
