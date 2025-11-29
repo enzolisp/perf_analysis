@@ -35,12 +35,14 @@ for (i in 1:nrow(combinacoes_grafico)) {
     # 🌟 NEW: Get the unique L_num values from the subset to use as axis breaks
     unique_L_values <- sort(unique(dados_subset$L_Value))
     
+    cor_fill <- if(lang == "python") "#377eb8" else "#984ea3" 
+
     p <- ggplot(dados_subset, aes(x = L_Value, y = t_exec)) +
       # Scatter plot of the data points
       geom_jitter(width = if(dim == 1) 250 else if(dim == 2) 50 else 5, height = 0, alpha = 0.6, color = "blue", size = 2) +
       
       # Add the Linear Regression Line
-      geom_smooth(method = "lm", formula = y ~ x, color = "red", se = TRUE, fill = "gray80") +
+      geom_smooth(method = "lm", formula = y ~ x, color = cor_fill, se = TRUE, fill = "gray80") +
       
       # 🌟 THE FIX IS HERE: Set the axis breaks to only the L_num values present in the data
       scale_x_continuous(breaks = unique_L_values) +

@@ -32,7 +32,7 @@ for (i in 1:nrow(combinacoes)) {
   
   # Cria o gráfico (Eixo X vazio, pois é um único boxplot)
   p <- ggplot(dados_subset, aes(x = "", y = t_exec)) +
-    geom_boxplot(fill = cor_fill, alpha = 0.7, width = 0.5, outlier.color = "red") +
+    geom_boxplot(fill = cor_fill, alpha = 0.7, width = 0.5) +
     geom_jitter(width = 0.05, alpha = 0.6, size = 3) + 
     
     labs(

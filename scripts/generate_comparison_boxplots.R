@@ -21,7 +21,7 @@ for (d in dims) {
   
   p <- ggplot(df_sub, aes(x = language, y = t_exec, fill = language)) +
     geom_boxplot() +
-    geom_jitter(width = 0.1, alpha = 0.5, size = 1.5) + 
+    geom_jitter(width = 0.1, alpha = 0.5, size = 3) + 
     facet_wrap(~ L_Value, ncol = 3) +
     scale_fill_manual(values = c(
       python = "#377eb8",
