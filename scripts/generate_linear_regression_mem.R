@@ -20,6 +20,7 @@ source("scripts/read_csv.R")
 dir.create("graphs/linear_regression_mem", showWarnings = FALSE)
 
 # 1. Read the data
+print("Reading CSVs...")
 dados <- read_csv_performance() 
 
 # 2. Ensure L_num is explicitly treated as a numeric variable
@@ -28,15 +29,16 @@ dados <- dados %>%
     group_by(ContainerID, language, dimension) %>%
     summarise(
         L_Value = first(L_Value),
-        Mem_Media = mean(Mem_MiB, na.rm = TRUE)
+        Mem_Media = mean(Mem_MiB, na.rm = TRUE),
+        .groups = 'drop' # <-- Tells dplyr to fully ungroup the output
     ) %>%
     ungroup()
-
-print(dados)
 
 # 3. Determine unique combinations for plotting
 combinacoes_grafico <- unique(dados[, c("language", "dimension")])
 combinacoes_grafico <- combinacoes_grafico %>% arrange(language, dimension)
+
+print(paste("Generating", nrow(combinacoes_grafico), "graphs..."))
 
 # 4. Loop through combinations and generate plots
 for (i in 1:nrow(combinacoes_grafico)) {
@@ -63,12 +65,16 @@ for (i in 1:nrow(combinacoes_grafico)) {
         ) +
         theme_bw()
     # Save the plot as a PNG file
+    nome_arquivo = sprintf("graphs/linear_regression_mem/linear_regression_mem_%s_%sd.png", lang, dim)
     ggsave(
-      filename = sprintf("graphs/linear_regression_mem/linear_regression_mem_%s_%sd.png", lang, dim), 
+      filename = nome_arquivo,
       plot = p, 
       width = 6, 
       height = 4
     )
-  
+    print(paste("Saved:", nome_arquivo))
   }
 }
+
+print("-------------------------------------------------------")
+print("Completed! Check 'scripts/linear_regression_mem'.")

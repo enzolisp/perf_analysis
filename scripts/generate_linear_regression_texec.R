@@ -57,12 +57,16 @@ for (i in 1:nrow(combinacoes_grafico)) {
       theme_bw()
     
     # Save the plot as a PNG file
+    nome_arquivo = sprintf("graphs/linear_regression_texec/linear_regression_texec_%s_%sd.png", lang, dim)
     ggsave(
       filename = sprintf("graphs/linear_regression_texec/linear_regression_texec_%s_%sd.png", lang, dim), 
       plot = p, 
       width = 6, 
       height = 4
     )
-  
+    print(paste("Saved:", nome_arquivo))
   }
 }
+
+print("-------------------------------------------------------")
+print("Completed! Check 'scripts/linear_regression_texec'.")
