@@ -69,4 +69,4 @@ for (i in 1:nrow(combinacoes_grafico)) {
 }
 
 print("-------------------------------------------------------")
-print("Completed! Check 'scripts/linear_regression_texec'.")
+cat("Completed! Check 'graphs/linear_regression_texec'.\n\n")

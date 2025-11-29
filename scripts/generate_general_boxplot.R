@@ -29,3 +29,6 @@ p_geral <- ggplot(dados, aes(x = L_fator, y = t_exec, fill = language)) +
 
 ggsave("graphs/general_boxplot.png", p_geral, width = 12, height = 8)
 print("Saved: graphs/general_boxplot.png")
+
+print("-------------------------------------------------------")
+cat("Completed! Check 'graphs'.\n\n")

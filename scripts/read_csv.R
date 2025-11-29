@@ -6,6 +6,8 @@ suppressPackageStartupMessages({
 
 read_csv_results <- function() {
   
+    print("Reading CSVs...")
+
     files <- list.files(
         path = "stats/results/", 
         pattern = "_results\\.csv$",
@@ -31,7 +33,9 @@ read_csv_results <- function() {
 }
 
 read_csv_performance <- function() {
-  
+    
+    print("Reading CSVs...")
+
     files <- list.files(
         path = "stats/performance/", 
         pattern = "_performance\\.csv$",

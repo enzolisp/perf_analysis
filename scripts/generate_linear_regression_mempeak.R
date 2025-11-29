@@ -9,7 +9,6 @@ source("scripts/read_csv.R")
 
 dir.create("graphs/linear_regression_mempeak", showWarnings = FALSE)
 
-print("Reading CSVs...")
 dados <- read_csv_results() 
 
 dados <- dados %>%
@@ -20,8 +19,6 @@ dados <- dados %>%
 
 combinacoes_grafico <- unique(dados[, c("language", "dimension")])
 combinacoes_grafico <- combinacoes_grafico %>% arrange(language, dimension)
-
-print(paste("Generating", nrow(combinacoes_grafico), "graphs..."))
 
 for (i in 1:nrow(combinacoes_grafico)) {
     
@@ -47,11 +44,11 @@ for (i in 1:nrow(combinacoes_grafico)) {
         ) +
         theme_bw()
       
-        filename = sprintf("graphs/linear_regression_mempeak/linear_regression_mempeak_%s_%s.png", lang, dim)
+        filename = sprintf("graphs/linear_regression_mempeak/linear_regression_mempeak_%s_%sd.png", lang, dim)
         ggsave(filename, p, width = 6, height = 4)
         print(paste("Saved:", filename))
     }
 }
 
 print("-------------------------------------------------------")
-print("Completed! Check 'scripts/linear_regression_mempeak'.")
+cat("Completed! Check 'graphs/linear_regression_mempeak'.\n\n")

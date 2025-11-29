@@ -8,7 +8,6 @@ source("scripts/read_csv.R")
 
 dir.create("graphs/individual_boxplots", showWarnings = FALSE)
 
-print("Reading CSVs...")
 dados <- read_csv_results()
 
 dados$L_Value <- as.numeric(dados$L_Value)
@@ -17,9 +16,6 @@ dados$t_exec <- as.numeric(dados$t_exec)
 # criar combinacoes e ordenar
 combinacoes <- unique(dados[, c("language", "dimension", "Size", "L_Value")])
 combinacoes <- combinacoes %>% arrange(language, dimension, L_Value)
-
-print(paste("Generating", nrow(combinacoes), "graphs..."))
-
 
 for (i in 1:nrow(combinacoes)) {
   
@@ -53,11 +49,11 @@ for (i in 1:nrow(combinacoes)) {
       panel.grid.major.x = element_blank()
     )
   
-  nome_arquivo <- sprintf("graphs/individual_boxplots/boxplot_%s_%s_%s.png", lang, dim, sz)
+  nome_arquivo <- sprintf("graphs/individual_boxplots/boxplot_%s_%s_%sd.png", lang, sz, dim)
   ggsave(nome_arquivo, plot = p, width = 6, height = 6)
   print(paste("Saved:", nome_arquivo))
 
 }
 
 print("-------------------------------------------------------")
-print("Completed! Check 'scripts/individual_boxplots'.")
+cat("Completed! Check 'graphs/individual_boxplots'.\n\n")

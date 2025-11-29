@@ -143,10 +143,14 @@ plot_3d_bars <- summary_geral %>%
   theme(legend.position = "top")
 
 
-#print(plot_1d_bars)
-#print(plot_2d_bars)
-#print(plot_3d_bars)
-
 ggsave("graphs/boxplots_mem/boxplot_mem_1d.png", plot_1d_bars, width = 10, height = 7)
+print("Saved: graphs/boxplot_mem_1d.png")
+
 ggsave("graphs/boxplots_mem/boxplot_mem_2d.png", plot_2d_bars, width = 10, height = 7)
+print("Saved: graphs/boxplot_mem_2d.png")
+
 ggsave("graphs/boxplots_mem/boxplot_mem_3d.png", plot_3d_bars, width = 10, height = 7)
+print("Saved: graphs/boxplot_mem_3d.png")
+
+print("-------------------------------------------------------")
+cat("Completed! Check 'graphs/boxplots_mem'.\n\n")

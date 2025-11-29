@@ -20,7 +20,6 @@ source("scripts/read_csv.R")
 dir.create("graphs/linear_regression_mem", showWarnings = FALSE)
 
 # 1. Read the data
-print("Reading CSVs...")
 dados <- read_csv_performance() 
 
 # 2. Ensure L_num is explicitly treated as a numeric variable
@@ -37,8 +36,6 @@ dados <- dados %>%
 # 3. Determine unique combinations for plotting
 combinacoes_grafico <- unique(dados[, c("language", "dimension")])
 combinacoes_grafico <- combinacoes_grafico %>% arrange(language, dimension)
-
-print(paste("Generating", nrow(combinacoes_grafico), "graphs..."))
 
 # 4. Loop through combinations and generate plots
 for (i in 1:nrow(combinacoes_grafico)) {
@@ -72,4 +69,4 @@ for (i in 1:nrow(combinacoes_grafico)) {
 }
 
 print("-------------------------------------------------------")
-print("Completed! Check 'scripts/linear_regression_mem'.")
+cat("Completed! Check 'graphs/linear_regression_mem'.\n\n")

@@ -9,15 +9,12 @@ source("scripts/read_csv.R")
 
 dir.create("graphs/control_charts", showWarnings = FALSE, recursive = TRUE)
 
-print("Reading CSVs...")
 df <- read_csv_results()
 df$t_exec <- as.numeric(df$t_exec)
 
 # Identifica combinações
 combinacoes <- unique(df[, c("language", "dimension", "Size", "L_Value")]) %>%
   arrange(language, dimension, L_Value)
-
-print(paste("Generating", nrow(combinacoes), "graphs..."))
 
 # Função segura para formatar os labels do eixo Y
 # Resolve o erro "argumento 'scientific' inválido"
@@ -88,10 +85,10 @@ for (i in 1:nrow(combinacoes)) {
       axis.title = element_text(face = "bold")
     )
   
-  nome_arquivo <- sprintf("graphs/control_charts/control_chart_%s_%s_%s.png", lang, dim, sz)
+  nome_arquivo <- sprintf("graphs/control_charts/control_chart_%s_%s_%sd.png", lang, sz, dim)
   ggsave(nome_arquivo, plot = p, width = 8, height = 6)
   print(paste("Saved:", nome_arquivo))
 }
 
 print("-------------------------------------------------------")
-print("Completed! Check 'scripts/control_charts'.")
+cat("Completed! Check 'graphs/control_charts'.\n\n")

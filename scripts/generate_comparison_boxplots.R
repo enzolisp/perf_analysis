@@ -38,4 +38,8 @@ for (d in dims) {
   filename <- sprintf("graphs/comparison_boxplots/boxplot_%sd.png", d)
   
   ggsave(filename, p, width = 12, height = 4, dpi = 300)
+  print("Saved:", filename)
 }
+
+print("-------------------------------------------------------")
+cat("Completed! Check 'graphs/comparison_boxplots.png'.\n\n")

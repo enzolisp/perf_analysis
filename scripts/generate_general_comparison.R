@@ -24,3 +24,6 @@ p_comp <- ggplot(dados, aes(x = L_fator, y = t_exec, fill = language)) +
 
 ggsave("graphs/general_comparison.png", p_comp, width = 12, height = 6)
 print("Saved: graphs/general_comparison.png")
+
+print("-------------------------------------------------------")
+cat("Completed! Check 'graphs'.\n\n")
