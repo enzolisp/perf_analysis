@@ -37,7 +37,7 @@ for (i in 1:nrow(combinacoes_grafico)) {
     
     p <- ggplot(dados_subset, aes(x = L_Value, y = t_exec)) +
       # Scatter plot of the data points
-      geom_point(alpha = 0.6, color = "blue", size = 2) +
+      geom_jitter(width = if(dim == 1) 250 else if(dim == 2) 50 else 5, height = 0, alpha = 0.6, color = "blue", size = 2) +
       
       # Add the Linear Regression Line
       geom_smooth(method = "lm", formula = y ~ x, color = "red", se = TRUE, fill = "gray80") +

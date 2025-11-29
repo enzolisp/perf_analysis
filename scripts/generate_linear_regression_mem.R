@@ -52,7 +52,7 @@ for (i in 1:nrow(combinacoes_grafico)) {
     unique_L_values <- sort(unique(dados_subset$L_Value))
     
     p <- ggplot(dados_subset, aes(x = L_Value, y = Mem_Media)) +
-        geom_point(alpha = 0.6, color = "darkgreen", size = 2) +
+        geom_jitter(width = if(dim == 1) 250 else if(dim == 2) 50 else 5, height = 0, alpha = 0.6, color = "blue", size = 2) +
         geom_smooth(method = "lm", formula = y ~ x, color = "black", se = TRUE, fill = "gray80") +
         scale_x_continuous(breaks = unique_L_values) +
         labs(
