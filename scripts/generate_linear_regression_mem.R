@@ -66,12 +66,7 @@ for (i in 1:nrow(combinacoes_grafico)) {
         theme_bw()
     # Save the plot as a PNG file
     nome_arquivo = sprintf("graphs/linear_regression_mem/linear_regression_mem_%s_%sd.png", lang, dim)
-    ggsave(
-      filename = nome_arquivo,
-      plot = p, 
-      width = 6, 
-      height = 4
-    )
+    ggsave(filename = nome_arquivo, plot = p, width = 6, height = 4)
     print(paste("Saved:", nome_arquivo))
   }
 }
