@@ -2,7 +2,7 @@
 %%% Do NOT edit. File created by BibTeX with style
 %%% ACM-Reference-Format-Journals [18-Jan-2012].
 
-\begin{thebibliography}{35}
+\begin{thebibliography}{34}
 
 %%% ====================================================================
 %%% NOTE TO THE USER: you can override these defaults by providing
@@ -235,14 +235,6 @@ Retrieved May 27, 2019 from \tempurl}
 \bibfield{author}{\bibinfo{person}{David Kosiur}.} \bibinfo{year}{2001}\natexlab{}.
 \newblock \bibinfo{booktitle}{\emph{Understanding Policy-Based Networking} (\bibinfo{edition}{2nd.} ed.)}.
 \newblock \bibinfo{publisher}{Wiley}, \bibinfo{address}{New York, NY}.
-\newblock
-
-
-\bibitem[Lamport(1986)]%
-        {Lamport:LaTeX}
-\bibfield{author}{\bibinfo{person}{Leslie Lamport}.} \bibinfo{year}{1986}\natexlab{}.
-\newblock \bibinfo{booktitle}{\emph{\it {\LaTeX}: A Document Preparation System}}.
-\newblock \bibinfo{publisher}{Addison-Wesley}, \bibinfo{address}{Reading, MA.}
 \newblock
 
 
