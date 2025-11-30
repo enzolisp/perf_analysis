@@ -1,6 +1,5 @@
 % Stage 3 - Comp. Sys. Perf Analysis (2025/2) - Lucas M. Schnorr
 % Group F: Enzo Lisboa Peixoto - 00584827, Nathan Mattes - 00342941 e Pedro Scholz Soares - 00578266 
-%
 
 \documentclass{beamer}
 
@@ -10,13 +9,14 @@
 \usepackage{graphicx}
 \usepackage{pdfpages}
 \usepackage[section]{placeins}
+\usepackage{booktabs}
 
 % Choose the Inf theme
 \usetheme{Inf}
 
 % Define the title with \title[short title]{long title}
 % Short title is optional
-\title[Etapa 3: Parcial]
+\title[Etapa 3: Final]
       {Avaliação de Desempenho Etapa 3: Final}
 
 \date{Outubro de 2025}
@@ -33,115 +33,435 @@
 % 1D Heat equation
 
 
-\section{Detalhamento}
+\section{Revisão da Proposta e Metodologia
+}
 
 \frame{
     \frametitle{Descrição}
 
     \begin{itemize}
-        \item Docker que carrega as dependências das linguagens Julia e Python. 
-		\item randexp.R gera testes em ordem aleatória. Combinações entre (Julia
-         ou Python), (1 dimensão, 2 dimensões e 3 dimensões) e (low, mid e high).
-        \item Cada combinação é executada 10 vezes.
-        \item runExperiment.sh executa os códigos em Julia e Python com as entradas
-        já definidas, coleta dados e de memória e tempo de execução e salva os 
-        resultados.
-        \item Os resultados são tratados por scripts R e com eles são gerados gráficos.
+        \item Problema: Resolução da Equação de Calor (Difusão) usando o método das Diferenças Finitas em 1D, 2D e 3D;
+		\item Comparação: Linguagem Compilada JIT (Julia) vs. Linguagem Interpretada (Python);
+        \item Fatores: Linguagem (2 níveis), Dimensão (3 níveis), Tamanho do Problema (3 níveis: Low, Mid, High);
+        \item Métricas: Tempo de Execução e Pico de Memória;
+        \item Repetições: 50 execuções por configuração para garantir significância estatística.
+
     \end{itemize}
 }
 
 
+
+\section{Descrição do Ambiente, Ferramentas e Métodos}
+
 \frame{
-    \frametitle{Descrição}
+    \frametitle{Controle do experimento}
+
+    \begin{itemize}
+        \item CPU Pinning: Uso de --cpuset-cpus="0" para isolar o processo em um único núcleo e evitar trocas de contexto;
+        \item Frequency Governor: Fixado em performance para evitar oscilação de clock;
+        \item Turbo Boost: Desativado.
+    \end{itemize}
+}
+
+\frame{
+    \frametitle{Reprodutibilidade e Especificações}
+
+    \begin{itemize}
+        \item 12th Gen Intel(R) Core(TM) i3-1215U (6/8);
+        \item 8GB de Memória
+        \item Uso de Docker para garantir reprodutibilidade do ambiente de software;
+        \item Script automacao.py que orquestra todo o fluxo;
+    \end{itemize}
+}
+
+\frame{
+    \frametitle{resultados}
     \begin{figure}[!htb]
     \centering
         \includegraphics[width=0.8\textwidth]{../../imagensEtapa2/OrgranogramaExperimentos.jpeg}
         \caption{Organograma dos Experimentos}
     \end{figure}
 }
-
 \section{Detalhamento}
 
-\frame{
-    \frametitle{Método de Coleta de Dados}
 
-    \begin{itemize}
-        \item São coletados o uso de memória e o tempo de execução dos algoritmos.
-        \item Uso de memória é coletado pelo Docker.
-        \item Tempo de execução é calculado pelos algoritmos durante a execução.
-    \end{itemize}
-}
-
-\section{Detalhamento}
-
-\frame{
-    \frametitle{Resultados Finais}
-
-    \begin{itemize}
-        \item 12th Gen Intel(R) Core(TM) i3-1215U e 8GB de ram.
-    \end{itemize}
-    \begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.75\textwidth, height=0.60\textheight]{../../imagensEtapa2/boxplotJulia.pdf}
-    \caption{Tempo de execução do Julia para todos os casos}
-    \end{figure}
-}
-
-\frame{
-    \frametitle{Resultados Finais}
-    \begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.8\textwidth, height=0.65\textheight]{../../imagensEtapa2/boxplotPython.pdf}
-    \caption{Tempo de execução do Python para todos os casos}
-    \end{figure}
-}
-
-\frame{
-    \frametitle{Resultados Finais}
-    \begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.8\textwidth, height=0.65\textheight]{../../imagensEtapa2/Rplots.pdf}
-    \caption{Comparação do tempo de execução entre Python e Julia para todos os casos}
-    \end{figure}
-}
-
-\frame{
-    \frametitle{Resultados Finais}
-    \begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.8\textwidth, height=0.65\textheight]{../../imagensEtapa2/mem_bars_1d.png}
-    \caption{Uso de memória para 1 dimensão}
-    \end{figure}
-}
-
-\frame{
-    \frametitle{Resultados Finais}
-    \begin{figure}[!htb]
-    \centering
-    \includegraphics[width=0.8\textwidth, height=0.65\textheight]{../../imagensEtapa2/mem_bars_2d.png}
-    \caption{Uso de memória para 2 dimensões}
-    \end{figure}
-}
-
-\section{Detalhamento}
-
-\frame{
-    \frametitle{Discussão dos Resultados}
-
-}
-
-\frame{
-    \frametitle{Discussão dos Resultados}
-
-}
-
-\section{Detalhamento}
-
-\frame{
-    \frametitle{Conclusões e Melhorias}
+\begin{frame}
+    \frametitle{Resultados}
     
+    \begin{center}
+        \textbf{\large Gráficos de Tempo de Execução, carga intermediária - Julia}
+    \end{center}
+    
+    \vspace{0.2cm} 
+    
+    \begin{columns}[c]
+        \begin{column}{0.33\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../imagensEtapa3/estabilidade_julia_1_mid.pdf}
+            \vspace{0.1cm}
+            {\tiny \textbf{1D}}
+        \end{column}
+        
+        \begin{column}{0.33\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../imagensEtapa3/estabilidade_julia_2_mid.pdf}
+            \vspace{0.1cm}
+            {\tiny \textbf{2D}}
+        \end{column}
+        
+        \begin{column}{0.33\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../imagensEtapa3/estabilidade_julia_3_mid.pdf}
+            \vspace{0.1cm}
+            {\tiny \textbf{3D}}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Resultados}
+    
+    \begin{center}
+        \textbf{\large Gráficos de Tempo de Execução, carga intermediária - Python}
+    \end{center}
+    
+    \vspace{0.2cm} 
+    
+    \begin{columns}[c]
+        \begin{column}{0.33\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../imagensEtapa3/estabilidade_python_1_mid.pdf}
+            \vspace{0.1cm}
+            {\tiny \textbf{1D}}
+        \end{column}
+        
+        \begin{column}{0.33\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../imagensEtapa3/estabilidade_python_2_mid.pdf}
+            \vspace{0.1cm}
+            {\tiny \textbf{2D}}
+        \end{column}
+        
+        \begin{column}{0.33\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../imagensEtapa3/estabilidade_python_3_mid.pdf}
+            \vspace{0.1cm}
+            {\tiny \textbf{3D}}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\begin{frame}
+	\frametitle{Resultados}
+    
+    \begin{center}
+        \textbf{\large Gráficos Memória}
+    \end{center}
+    
+    \vspace{0.2cm} 
+    
+    \begin{columns}[c]
+        \begin{column}{0.33\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../imagensEtapa3/mem_bars_1d.pdf}
+            \vspace{0.1cm}
+            {\tiny \textbf{1D}}
+        \end{column}
+        
+        \begin{column}{0.33\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../imagensEtapa3/mem_bars_2d.pdf}
+            \vspace{0.1cm}
+            {\tiny \textbf{2D}}
+        \end{column}
+        
+        \begin{column}{0.33\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../imagensEtapa3/mem_bars_3d.pdf}
+            \vspace{0.1cm}
+            {\tiny \textbf{3D}}
+        \end{column}
+    \end{columns}
+\end{frame}
+
+\frame{
+\frametitle{Resultados}
+\begin{table}[]
+    \centering
+    \caption{Regressão Linear: Tempo de Execução}
+    \begin{tabular}{cccc}
+        \toprule
+        \textbf{Linguagem} & \textbf{Dimensão} & \textbf{$R^2$} & \textbf{$R^2_{adj}$} \\
+        \midrule
+        Python & 1D & \textbf{0.9631} & 0.9627 \\
+        Python & 2D & \textbf{0.9720} & 0.9717 \\
+        Python & 3D & \textbf{0.9773} & 0.9771 \\
+        \midrule
+        Julia & 1D & \textbf{0.9924} & 0.9923 \\
+        Julia & 2D & \textbf{0.9760} & 0.9758 \\
+        Julia & 3D & \textbf{0.9675} & 0.9671 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 }
 
+\frame{
+\frametitle{Resultados}
+    \begin{table}[]
+    \centering
+    \caption{Regressão Linear: Pico de Memória}
+    \begin{tabular}{cccc}
+        \toprule
+        \textbf{Linguagem} & \textbf{Dimensão} & \textbf{$R^2$} & \textbf{$R^2_{adj}$} \\
+        \midrule
+        Python & 1D & \textbf{1.0000} & 1.0000 \\
+        Python & 2D & \textbf{0.9908} & 0.9907 \\
+        Python & 3D & \textbf{0.9661} & 0.9657 \\
+        \midrule
+        Julia & 1D & \textbf{1.0000} & 1.0000 \\
+        Julia & 2D & \textbf{0.9908} & 0.9907 \\
+        Julia & 3D & \textbf{0.9667} & 0.9663 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+}
+
+
+\frame{
+    \frametitle{resultados}
+    \begin{figure}[!htb]
+    \centering
+        \includegraphics[width=0.8\textwidth]{../../imagensEtapa3/regressao_julia_2d.pdf}
+        \caption{Regressão linear julia 2d}
+    \end{figure}
+}
+
+\begin{frame}
+	\frametitle{Resultados}
+    
+    \begin{center}
+        \textbf{\large Regressão Tempo de Execução}
+    \end{center}
+    
+    \vspace{0.2cm} 
+    
+    \begin{columns}[c]
+        \begin{column}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../imagensEtapa3/regressao_julia_1d.pdf}
+            \vspace{0.1cm}
+            {\tiny \textbf{1D}}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../imagensEtapa3/regressao_julia_3d.pdf}
+            \vspace{0.1cm}
+            {\tiny \textbf{3D}}
+        \end{column}
+        
+    \end{columns}
+\end{frame}
+
+%--------------------------
+
+\frame{
+    \frametitle{resultados}
+    \begin{figure}[!htb]
+    \centering
+        \includegraphics[width=0.8\textwidth]{../../imagensEtapa3/regressao_python_2d.pdf}
+        \caption{Regressão linear python 2d}
+    \end{figure}
+}
+
+\begin{frame}
+	\frametitle{Resultados}
+    
+    \begin{center}
+        \textbf{\large Regressão Tempo de Execução}
+    \end{center}
+    
+    \vspace{0.2cm} 
+    
+    \begin{columns}[c]
+        \begin{column}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../imagensEtapa3/regressao_python_1d.pdf}
+            \vspace{0.1cm}
+            {\tiny \textbf{1D}}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../imagensEtapa3/regressao_python_3d.pdf}
+            \vspace{0.1cm}
+            {\tiny \textbf{3D}}
+        \end{column}
+        
+    \end{columns}
+\end{frame}
+
+
+%--------------------------
+
+\frame{
+    \frametitle{resultados}
+    \begin{figure}[!htb]
+    \centering
+        \includegraphics[width=0.8\textwidth]{../../imagensEtapa3/regressao_peak_mem_julia_2d.pdf}
+        \caption{Regressão linear julia 2d}
+    \end{figure}
+}
+
+\begin{frame}
+	\frametitle{Resultados}
+    
+    \begin{center}
+        \textbf{\large Regressão Pico de Memória}
+    \end{center}
+    
+    \vspace{0.2cm} 
+    
+    \begin{columns}[c]
+        \begin{column}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../imagensEtapa3/regressao_peak_mem_julia_1d.pdf}
+            \vspace{0.1cm}
+            {\tiny \textbf{1D}}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../imagensEtapa3/regressao_peak_mem_julia_3d.pdf}
+            \vspace{0.1cm}
+            {\tiny \textbf{3D}}
+        \end{column}
+        
+    \end{columns}
+\end{frame}
+
+%--------------------------
+
+\frame{
+    \frametitle{resultados}
+    \begin{figure}[!htb]
+    \centering
+        \includegraphics[width=0.8\textwidth]{../../imagensEtapa3/regressao_peak_mem_python_2d.pdf}
+        \caption{Regressão linear python 2d}
+    \end{figure}
+}
+
+\begin{frame}
+	\frametitle{Resultados}
+    
+    \begin{center}
+        \textbf{\large Regressão Pico de Memória}
+    \end{center}
+    
+    \vspace{0.2cm} 
+    
+    \begin{columns}[c]
+        \begin{column}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../imagensEtapa3/regressao_peak_mem_python_1d.pdf}
+            \vspace{0.1cm}
+            {\tiny \textbf{1D}}
+        \end{column}
+        
+        \begin{column}{0.5\textwidth}
+            \centering
+            \includegraphics[width=\linewidth]{../../imagensEtapa3/regressao_peak_mem_python_3d.pdf}
+            \vspace{0.1cm}
+            {\tiny \textbf{3D}}
+        \end{column}
+        
+    \end{columns}
+\end{frame}
+
+\section{Discussão dos Resultados}
+
+\begin{frame}
+    \frametitle{Discussão: O Trade-off Velocidade vs. Memória}
+    \begin{itemize}
+        \item \textbf{Desempenho Bruto:} Como esperado, Julia demonstrou ser ordens de magnitude mais rápida que Python em todas as dimensões testadas.
+        
+        \vspace{0.3cm}
+        
+        \item \textbf{Contrapartida de Memória:} 
+        \begin{itemize}
+            \item Os dados mostram que \textbf{Julia consome significativamente mais memória RAM} que Python para realizar a mesma tarefa.
+            \item \textbf{Interpretação:} Este é o custo da velocidade. A infraestrutura de compilação \textit{Just-In-Time} (JIT) e o gerenciamento de tipos do Julia exigem uma alocação de recursos muito mais agressiva do que o interpretador leve do Python.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Discussão: O Gargalo dos Loops Explícitos}
+    \begin{itemize}
+        \item \textbf{Por que Python foi lento?}
+        \begin{itemize}
+            \item A implementação utilizou loops explícitos (`for`) iterando sobre a matriz ponto a ponto.
+            \item Em Python, cada iteração do loop carrega o \textit{overhead} da tipagem dinâmica e verificação de objetos, o que torna o processamento escalar extremamente ineficiente.
+        \end{itemize}
+        
+        \vspace{0.3cm}
+        
+        \item \textbf{A Vantagem de Julia:}
+        \begin{itemize}
+            \item Julia foi projetada para otimizar loops. O compilador infere os tipos e gera código de máquina eficiente para as iterações, eliminando o gargalo que existe no Python puro.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Discussão: Produtividade e Abstração}
+    \begin{itemize}
+        \item \textbf{O "Problema das Duas Linguagens":}
+        \begin{itemize}
+            \item Python resolve a facilidade de escrita, mas exige C/C++ para performance crítica.
+            \item Julia resolve ambos: permite escrever código matemático de alto nível (idêntico ao Python) com a performance de linguagens compiladas.
+        \end{itemize}
+        
+        \vspace{0.3cm}
+        
+        \item \textbf{Conclusão da Análise:}
+        \begin{itemize}
+            \item Para algoritmos científicos que dependem de iterações complexas, Julia oferece a melhor relação entre \textbf{tempo de desenvolvimento} e \textbf{tempo de execução}, contanto que o maior uso de memória seja aceitável.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
+
+\section{Conclusão}
+
+\begin{frame}
+    \frametitle{Conclusões}
+    \begin{block}{Conclusão Técnica}
+        Para computação científica baseada em iterações explícitas (simulações físicas), Julia é a escolha superior, oferecendo desempenho próximo de C/Fortran com a facilidade de escrita de Python.
+    \end{block}
+    
+    \vspace{0.5cm}
+    
+    \begin{block}{Aprendizado Metodológico}
+        A análise de desempenho exige controle rigoroso de hardware. O uso de Mediana mostrou-se mais robusto que a Média para ignorar \textit{outliers} causados pelo Sistema Operacional.
+    \end{block}
+\end{frame}
+
+\begin{frame}
+    \frametitle{Recomendações e Trabalhos Futuros}
+    \begin{itemize}
+        \item \textbf{Melhoria de Desempenho:} 
+        \begin{itemize}
+            \item Implementar paralelismo (\texttt{Threads.@threads} em Julia).
+        \end{itemize}
+        
+        \item \textbf{Boas Práticas de Benchmarking:}
+        \begin{itemize}
+            \item Sempre travar a frequência da CPU (\textit{governor performance}).
+            \item Realizar rodadas de aquecimento (\textit{warm-up}) antes da medição.
+            \item Usar Docker com \textit{CPU Pinning} para reprodutibilidade.
+        \end{itemize}
+    \end{itemize}
+\end{frame}
 \section*{}
 
 \begin{frame}
