@@ -2,11 +2,11 @@
 # Group F: Enzo Lisboa Peixoto - 00584827, Nathan Mattes - 00342941 e Pedro Scholz Soares - 00578266 
 
 
-run_experiments: $(DEP1)
+run-experiments: $(DEP1)
 	Rscript rand_exp.R
 	bash run_experiment.sh
 
-plot_data: 
+plot-data: 
 	mkdir -p graphs/
 	Rscript scripts/generate_boxplots_mem.R
 	Rscript scripts/generate_combined_boxplots.R
