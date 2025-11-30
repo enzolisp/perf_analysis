@@ -1,0 +1,152 @@
+% Stage 3 - Comp. Sys. Perf Analysis (2025/2) - Lucas M. Schnorr
+% Group F: Enzo Lisboa Peixoto - 00584827, Nathan Mattes - 00342941 e Pedro Scholz Soares - 00578266 
+%
+
+\documentclass{beamer}
+
+\usepackage[T1]{fontenc}
+\usepackage[brazil]{babel}
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\usepackage{pdfpages}
+\usepackage[section]{placeins}
+
+% Choose the Inf theme
+\usetheme{Inf}
+
+% Define the title with \title[short title]{long title}
+% Short title is optional
+\title[Etapa 3: Parcial]
+      {Avaliação de Desempenho Etapa 3: Final}
+
+\date{Outubro de 2025}
+
+% Author information
+\author{Enzo Lisbôa Peixoto, Nathan Mattes e \\Pedro Scholz Soares}
+\institute{Instituto de Informática --- UFRGS\\\texttt{elpeixoto@inf.ufrgs.br\\nmattes@inf.ufrgs.br\\pedro.soares@inf.ufrgs.br\\}}
+
+\begin{document}
+
+% Command to create title page
+\InfTitlePage
+
+% 1D Heat equation
+
+
+\section{Detalhamento}
+
+\frame{
+    \frametitle{Descrição}
+
+    \begin{itemize}
+        \item Docker que carrega as dependências das linguagens Julia e Python. 
+		\item randexp.R gera testes em ordem aleatória. Combinações entre (Julia
+         ou Python), (1 dimensão, 2 dimensões e 3 dimensões) e (low, mid e high).
+        \item Cada combinação é executada 10 vezes.
+        \item runExperiment.sh executa os códigos em Julia e Python com as entradas
+        já definidas, coleta dados e de memória e tempo de execução e salva os 
+        resultados.
+        \item Os resultados são tratados por scripts R e com eles são gerados gráficos.
+    \end{itemize}
+}
+
+
+\frame{
+    \frametitle{Descrição}
+    \begin{figure}[!htb]
+    \centering
+        \includegraphics[width=0.8\textwidth]{../../imagensEtapa2/OrgranogramaExperimentos.jpeg}
+        \caption{Organograma dos Experimentos}
+    \end{figure}
+}
+
+\section{Detalhamento}
+
+\frame{
+    \frametitle{Método de Coleta de Dados}
+
+    \begin{itemize}
+        \item São coletados o uso de memória e o tempo de execução dos algoritmos.
+        \item Uso de memória é coletado pelo Docker.
+        \item Tempo de execução é calculado pelos algoritmos durante a execução.
+    \end{itemize}
+}
+
+\section{Detalhamento}
+
+\frame{
+    \frametitle{Resultados Finais}
+
+    \begin{itemize}
+        \item 12th Gen Intel(R) Core(TM) i3-1215U e 8GB de ram.
+    \end{itemize}
+    \begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.75\textwidth, height=0.60\textheight]{../../imagensEtapa2/boxplotJulia.pdf}
+    \caption{Tempo de execução do Julia para todos os casos}
+    \end{figure}
+}
+
+\frame{
+    \frametitle{Resultados Finais}
+    \begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.8\textwidth, height=0.65\textheight]{../../imagensEtapa2/boxplotPython.pdf}
+    \caption{Tempo de execução do Python para todos os casos}
+    \end{figure}
+}
+
+\frame{
+    \frametitle{Resultados Finais}
+    \begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.8\textwidth, height=0.65\textheight]{../../imagensEtapa2/Rplots.pdf}
+    \caption{Comparação do tempo de execução entre Python e Julia para todos os casos}
+    \end{figure}
+}
+
+\frame{
+    \frametitle{Resultados Finais}
+    \begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.8\textwidth, height=0.65\textheight]{../../imagensEtapa2/mem_bars_1d.png}
+    \caption{Uso de memória para 1 dimensão}
+    \end{figure}
+}
+
+\frame{
+    \frametitle{Resultados Finais}
+    \begin{figure}[!htb]
+    \centering
+    \includegraphics[width=0.8\textwidth, height=0.65\textheight]{../../imagensEtapa2/mem_bars_2d.png}
+    \caption{Uso de memória para 2 dimensões}
+    \end{figure}
+}
+
+\section{Detalhamento}
+
+\frame{
+    \frametitle{Discussão dos Resultados}
+
+}
+
+\frame{
+    \frametitle{Discussão dos Resultados}
+
+}
+
+\section{Detalhamento}
+
+\frame{
+    \frametitle{Conclusões e Melhorias}
+    
+}
+
+\section*{}
+
+\begin{frame}
+    \frametitle{Obrigado!}
+    \InfContacts
+\end{frame}
+
+\end{document}
