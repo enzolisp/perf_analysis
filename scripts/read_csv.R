@@ -8,10 +8,13 @@ read_csv_results <- function() {
   
     print("Reading CSVs...")
 
-    files <- list.files(
-        path = "stats/results/", 
-        pattern = "_results\\.csv$",
-        full.names = TRUE 
+    files <- c(
+        "stats/results/julia_1d_results.csv",
+        "stats/results/julia_2d_results.csv",
+        "stats/results/julia_3d_results.csv",
+        "stats/results/python_1d_results.csv",
+        "stats/results/python_2d_results.csv",
+        "stats/results/python_3d_results.csv"
     )
     
     if (length(files) == 0) {
@@ -21,10 +24,7 @@ read_csv_results <- function() {
     print(paste(length(files), "CSV files found."))
     
     df_list <- lapply(files, function(arq) {
-        df <- read_csv(arq, show_col_types = FALSE)
-        names(df)[names(df) == "L_value"] <- "L_Value"
-        names(df)[names(df) == "avg_time"] <- "t_exec"
-        
+        df <- read_csv(arq, show_col_types = FALSE)        
         return(df)
     })
  
@@ -36,10 +36,13 @@ read_csv_performance <- function() {
     
     print("Reading CSVs...")
 
-    files <- list.files(
-        path = "stats/performance/", 
-        pattern = "_performance\\.csv$",
-        full.names = TRUE 
+    files <- c(
+        "stats/performance/julia_1d_performance.csv",
+        "stats/performance/julia_2d_performance.csv",
+        "stats/performance/julia_3d_performance.csv",
+        "stats/performance/python_1d_performance.csv",
+        "stats/performance/python_2d_performance.csv",
+        "stats/performance/python_3d_performance.csv"
     )
     
     if (length(files) == 0) {
@@ -49,10 +52,7 @@ read_csv_performance <- function() {
     print(paste(length(files), "CSV files found."))
     
     df_list <- lapply(files, function(arq) {
-        df <- read_csv(arq, show_col_types = FALSE)
-        #names(df)[names(df) == "L_value"] <- "L_Value"
-        #names(df)[names(df) == "avg_time"] <- "t_exec"
-        
+        df <- read_csv(arq, show_col_types = FALSE)        
         return(df)
     })
  
