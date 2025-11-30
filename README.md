@@ -12,14 +12,33 @@ https://github.com/reamat/CalculoNumerico
 ```
 .
 ├── Dockerfile
+├── Makefile
+├── README.md
+├── Rplots.pdf
 ├── docs
+│   ├── imagensEtapa2
+│   ├── imagensEtapa3
 │   ├── material
 │   ├── relatorio
 │   └── slides
+├── notebooks
 ├── plano.csv
 ├── rand_exp.R
-├── README.md
+├── results
+│   └── main.ipynb
 ├── run_experiment.sh
+├── scripts
+│   ├── generate_boxplots_mem.R
+│   ├── generate_combined_boxplots.R
+│   ├── generate_comparison_boxplots.R
+│   ├── generate_control_charts.R
+│   ├── generate_general_boxplot.R
+│   ├── generate_general_comparison.R
+│   ├── generate_individual_boxplots.R
+│   ├── generate_linear_regression_mem.R
+│   ├── generate_linear_regression_mempeak.R
+│   ├── generate_linear_regression_texec.R
+│   └── read_csv.R
 ├── src
 │   ├── julia
 │   └── python
@@ -34,5 +53,10 @@ docker build -t calor:latest .
 ```
 
 ### Usage
- 
+```
+make run-experiments
+```
+```
+make plot-data
+```
 ### Docker 
