@@ -1,5 +1,3 @@
-# Dependências
-#library(tidyverse)
 suppressPackageStartupMessages({
   library(dplyr)
   library(ggplot2)
@@ -35,33 +33,6 @@ dados <- read_csv_performance()
 
 dir.create("graphs/boxplots_mem", showWarnings = FALSE)
 
-# files <- c(
-#   "stats/performance/julia_1d_performance.csv",
-#   "stats/performance/julia_2d_performance.csv",
-#   "stats/performance/python_1d_performance.csv",
-#   "stats/performance/python_2d_performance.csv",
-#   "stats/performance/julia_3d_performance.csv",
-#   "stats/performance/python_3d_performance.csv"
-# )
-# files <- files[file.exists(files)]
-# if (length(files) == 0) stop("Nenhum arquivo encontrado no diretório atual. Ajuste os caminhos.")
-
-# df_list <- lapply(files, function(f) {
-#   df <- read_csv(f, show_col_types = FALSE)
-#   df$.source_file <- f
-#   df
-# })
-# dados <- bind_rows(df_list)
-
-# dados <- dados %>%
-#   mutate(
-#     ContainerID = pick_col(., c("ContainerID", "container", "container_id")),
-#     language    = pick_col(., c("language", "lang", "Language")),
-#     mem_raw     = pick_col(., c("MemUsed", "MemUsage", "memused", "Memused")),
-#     L_value_raw = pick_col(., c("L_Value", "L", "l", "n", "N", "Size", "size")),
-#     dim_raw     = pick_col(., c("dimension", "dim", "dimensoes"))
-#   )
-
 dados <- dados %>%
   mutate(
     Mem_MiB = parse_mem_to_MiB(MemUsed),
@@ -71,16 +42,6 @@ dados <- dados %>%
     L_Value = as.numeric(L_Value)
   )
 
-# dados <- dados %>%
-#   mutate(
-#     language = if_else(is.na(language),
-#                        if_else(str_detect(.source_file, "julia"), "julia",
-#                                if_else(str_detect(.source_file, "python"), "python",
-#                                        NA_character_)),
-#                        language)
-#   )
-
-#print(dados)
 summary_mem <- dados %>%
   group_by(language, ContainerID, dimension, L_Value) %>%
   summarise(mean_mem_MiB = mean(Mem_MiB, na.rm = TRUE),

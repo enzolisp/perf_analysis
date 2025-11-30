@@ -8,49 +8,49 @@ source("scripts/read_csv.R")
 
 dir.create("graphs/combined_boxplots", showWarnings = FALSE)
 
-dados <- read_csv_results()
+df_results <- read_csv_results()
 
-dados$L_Value <- as.numeric(dados$L_Value)
-dados$t_exec <- as.numeric(dados$t_exec)
+combinations_1 <- unique(df_results[, c("language", "dimension")])
+combinations_1 <- combinations_1 %>% 
+  arrange(language, dimension)
 
-combinacoes_grafico <- unique(dados[, c("language", "dimension")])
-combinacoes_grafico <- combinacoes_grafico %>% arrange(language, dimension)
+df_plot <- df_results
 
-for (i in 1:nrow(combinacoes_grafico)) {
+for (i in 1:nrow(combinations_1)) {
   
-  lang  <- combinacoes_grafico$language[i]
-  dim   <- combinacoes_grafico$dimension[i]
-  
-  dados_subset <- dados %>%
+  lang <- combinations_1$language[i]
+  dim <- combinations_1$dimension[i]
+  sz <- combinations_1$Size[i]
+  L <- combinations_1$L_Value[i]
+
+  df_subset <- df_plot %>%
     filter(language == lang, dimension == dim)
   
-  cor_fill <- if(lang == "python") "#377eb8" else "#984ea3" 
+  color_fill <- if(lang == "python") "#377eb8" else "#984ea3" 
   
-  p <- ggplot(dados_subset, aes(x = factor(L_Value), y = t_exec)) + 
-  
-    geom_boxplot(fill = cor_fill, alpha = 0.7) + 
-    geom_jitter(width = 0.1, alpha = 0.5, size = 1.5) + 
-    
-    # Labels and Title
+  p <- ggplot(df_subset, aes(x = factor(L_Value), y = t_exec)) + 
+    geom_boxplot(fill = color_fill, alpha = 0.7) + 
+    geom_jitter(width = 0.15, alpha = 0.28, size = 1.8) + 
     labs(
-      title = paste("Performance:", toupper(lang), "in", toupper(dim)),
+      title = paste0(toupper(lang), " ", toupper(dim), "D - ", sz, " (L_Value = ", L, ")"),
       subtitle = "Distribution of Execution Time by Problem Size (L)",
       x = "Problem Size (L)", 
       y = "Time (s)",
     ) +
-    
-    # Theme adjustments
-    theme_bw() +
+    theme_minimal() +
     theme(
-      plot.title = element_text(face = "bold", size = 16, hjust = 0), # Left-aligned like example
-      plot.subtitle = element_text(hjust = 0), # Left-aligned like example
-      axis.text.x = element_text(size = 12),
+      plot.title = element_text(face = "bold", size = 16, hjust = 0), 
+      plot.subtitle = element_text(size = 14, hjust = 0), 
+      axis.title.x = element_text(size = 16),
+      axis.title.y = element_text(size = 16),
+      axis.text.x = element_text(size = 14),
+      axis.text.y = element_text(size = 14),
       panel.grid.major.x = element_blank()
     )
   
-  nome_arquivo <- sprintf("graphs/combined_boxplots/boxplot_%s_%sd.pdf", lang, dim)
-  ggsave(nome_arquivo, plot = p, width = 8, height = 6) 
-  print(paste("Saved:", nome_arquivo))
+  filename <- sprintf("graphs/combined_boxplots/boxplot_%s_%sd.pdf", lang, dim)
+  ggsave(filename, plot = p, width = 8, height = 6) 
+  print(paste("Saved:", filename))
 
 }
 
