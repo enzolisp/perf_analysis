@@ -1,0 +1,5 @@
+Graficos usados na apresentação e relatório em:
+
+control_charts, graficos tempoExecução X repetição do experimento
+linear_regression_mempeak, regressão linear pico de meória
+linear_regression_texec, regressão linear tempo de execuçãos
