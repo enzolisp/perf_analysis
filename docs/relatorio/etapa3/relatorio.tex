@@ -79,7 +79,7 @@ A simulação numérica de fenômenos físicos, como a difusão de calor, é uma
 \section{Metodologia}
 
 \subsection{O Problema Computacional}
-A Equação do Calor foi discretizada utilizando o Método das Diferenças Finitas (FDM) com esquema explícito no tempo. Foram implementados três dimensões:
+A Equação do Calor foi discretizada utilizando o Método das Diferenças Finitas (FDM)\cite{REAMAT} com esquema explícito no tempo. Foram implementados três dimensões:
 \begin{itemize}
     \item \textbf{1D:} Complexidade $O(L)$, onde $L$ é o tamanho do domínio linear.
     \item \textbf{2D:} Complexidade $O(L^2)$, representando uma malha quadrada.
@@ -93,7 +93,7 @@ Foi utilizado um projeto fatorial completo considerando os fatores:
     \item \textbf{Dimensão:} 1D, 2D, 3D.
     \item \textbf{Tamanho do Problema ($L$):} Três níveis (Low, Mid, High) ajustados para cada dimensão para manter tempos de execução mensuráveis.
 \end{itemize}
-Cada configuração foi executada 30 vezes (`REPLICACOES = 30`) para garantir significância estatística e permitir a análise de variabilidade.
+Cada configuração foi executada 30 vezes (`REPLICACOES = 30`) para garantir significância estatística e permitir a análise de variabilidade\cite{Perf-01}\cite{SMPE-01}.
 
 \section{Ambiente e Ferramentas}
 
@@ -192,6 +192,6 @@ Recomenda-se para trabalhos futuros a exploração de paralelismo (multithreadin
 %%
 %% A bibliografia
 \bibliographystyle{ACM-Reference-Format}
-\bibliography{sample-base}
+\bibliography{bibliography}
 
 \end{document}
