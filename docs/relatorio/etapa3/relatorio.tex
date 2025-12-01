@@ -7,6 +7,7 @@
 \usepackage{booktabs} % Para tabelas bonitas
 \usepackage{graphicx} % Para imagens
 \usepackage{subcaption} % Para subfiguras
+\usepackage{float}
 
 %% Configurações do BibTeX
 \AtBeginDocument{%
@@ -79,7 +80,7 @@ A simulação numérica de fenômenos físicos, como a difusão de calor, é uma
 \section{Metodologia}
 
 \subsection{O Problema Computacional}
-A Equação do Calor foi discretizada utilizando o Método das Diferenças Finitas (FDM)\cite{REAMAT} com esquema explícito no tempo. Foram implementados três dimensões:
+A Equação do Calor foi discretizada utilizando o Método das Diferenças Finitas (FDM) com esquema explícito no tempo. Foram implementados três dimensões:
 \begin{itemize}
     \item \textbf{1D:} Complexidade $O(L)$, onde $L$ é o tamanho do domínio linear.
     \item \textbf{2D:} Complexidade $O(L^2)$, representando uma malha quadrada.
@@ -93,7 +94,7 @@ Foi utilizado um projeto fatorial completo considerando os fatores:
     \item \textbf{Dimensão:} 1D, 2D, 3D.
     \item \textbf{Tamanho do Problema ($L$):} Três níveis (Low, Mid, High) ajustados para cada dimensão para manter tempos de execução mensuráveis.
 \end{itemize}
-Cada configuração foi executada 30 vezes (`REPLICACOES = 30`) para garantir significância estatística e permitir a análise de variabilidade\cite{Perf-01}\cite{SMPE-01}.
+Cada configuração foi executada 30 vezes (`REPLICACOES = 30`) para garantir significância estatística e permitir a análise de variabilidade.
 
 \section{Ambiente e Ferramentas}
 
@@ -120,14 +121,99 @@ O fluxo de trabalho foi totalmente automatizado para garantir reprodutibilidade 
 Os resultados indicam uma diferença expressiva de desempenho. A Figura \ref{fig:comparativo} apresenta a distribuição do tempo de execução para as três dimensões.
 
 \begin{figure}[h]
-  \centering
-  % Substitua pelo caminho real do seu gráfico gerado pelo R
-  %\includegraphics[width=0.9\textwidth]{stats/graficos/painel_geral.pdf} 
-  \caption{Painel Comparativo de Tempo de Execução (Python vs Julia) para 1D, 2D e 3D.}
-  \label{fig:comparativo}
+    \centering
+    % --- Linha 1: Julia 2D ---
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        % Note o ../../../ antes de graphs (3 níveis)
+        \includegraphics[width=\textwidth]{../../../graphs/control_charts/control_chart_julia_low_2d.pdf}
+        \caption{Julia - Low}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../../../graphs/control_charts/control_chart_julia_mid_2d.pdf}
+        \caption{Julia - Mid}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../../../graphs/control_charts/control_chart_julia_high_2d.pdf}
+        \caption{Julia - High}
+    \end{subfigure}
+    
+    \vspace{0.3cm}
+    
+    % --- Linha 2: Python 2D ---
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../../../graphs/control_charts/control_chart_python_low_2d.pdf}
+        \caption{Python - Low}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../../../graphs/control_charts/control_chart_python_mid_2d.pdf}
+        \caption{Python - Mid}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../../../graphs/control_charts/control_chart_python_high_2d.pdf}
+        \caption{Python - High}
+    \end{subfigure}
+    
+    \caption{Gráficos de Estabilidade para a dimensão 2D. A linha superior apresenta os resultados para Julia e a inferior para Python. Embora apresentados apenas os dados de 2D, o comportamento de estabilidade mostram o controle do experimento e a diferença da ordem de grandeza do tempo entre Julia e python. Graficos similares para 1d e 2d podem ser encontrados nos anexos. }
+    \label{fig:estabilidade_2d}
 \end{figure}
 
 Os experimentos demonstram que o Julia oferece tempos de resposta substancialmente menores que o Python para a mesma lógica algorítmica. A validação estatística apresentada na Tabela \ref{tab:regressao_tempo} confirma a consistência dos dados: o alto valor de $R^2$ em todos os casos indica que a variação do tempo é explicada quase integralmente pelo aumento do tamanho do problema ($L$), seguindo a complexidade polinomial teórica.
+
+\begin{figure}[h]
+    \centering
+    % --- Linha 1: Julia (1D, 2D, 3D) ---
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../../../graphs/linear_regression_texec/linear_regression_texec_julia_1d.pdf}
+        \caption{Julia 1D}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../../../graphs/linear_regression_texec/linear_regression_texec_julia_2d.pdf}
+        \caption{Julia 2D}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../../../graphs/linear_regression_texec/linear_regression_texec_julia_3d.pdf}
+        \caption{Julia 3D}
+    \end{subfigure}
+    
+    \vspace{0.3cm} % Espaço vertical entre as linhas
+    
+    % --- Linha 2: Python (1D, 2D, 3D) ---
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../../../graphs/linear_regression_texec/linear_regression_texec_python_1d.pdf}
+        \caption{Python 1D}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../../../graphs/linear_regression_texec/linear_regression_texec_python_2d.pdf}
+        \caption{Python 2D}
+    \end{subfigure}
+    \hfill
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../../../graphs/linear_regression_texec/linear_regression_texec_python_3d.pdf}
+        \caption{Python 3D}
+    \end{subfigure}
+    
+    \caption{Regressão Linear do Tempo de Execução ($t_{exec}$) versus Tamanho do Problema ($L$).\%.}
+    \label{fig:regressao_linear}
+\end{figure}
 
 \begin{table}[h]
     \centering
@@ -148,30 +234,56 @@ Os experimentos demonstram que o Julia oferece tempos de resposta substancialmen
     \end{tabular}
 \end{table}
 
+
 \subsection{Consumo de Memória}
 A análise de memória revela o custo do desempenho. A Figura \ref{fig:memoria} e a Tabela \ref{tab:regressao_mem} mostram que o Julia consome consistentemente mais memória RAM que o Python.
 
-\begin{figure}[h]
-  \centering
-  % Substitua pelo caminho real do seu gráfico de memória
-  %\includegraphics[width=0.8\textwidth]{stats/graficos/memoria_perfil/perfil_julia_3d.pdf} 
-  \caption{Perfil de consumo de memória para Julia em 3D, evidenciando a alocação estática.}
-  \label{fig:memoria}
-\end{figure}
+A análise do consumo de memória revela um claro trade-off entre tempo e espaço. Enquanto o Julia oferece um desempenho temporal (velocidade) muito superior, ele exige uma alocação de memória RAM significativamente maior que o Python em todas as dimensões testadas.
 
-\begin{table}[h]
+    \begin{table}[]
     \centering
-    \caption{Regressão Linear: Pico de Memória ($R^2 \approx 1.0$ indica comportamento determinístico).}
-    \label{tab:regressao_mem}
-    \begin{tabular}{ccc}
+    \caption{Regressão Linear: Pico de Memória}
+    \begin{tabular}{cccc}
         \toprule
-        \textbf{Linguagem} & \textbf{Dimensão} & \textbf{$R^2$} \\
+        \textbf{Linguagem} & \textbf{Dimensão} & \textbf{$R^2$} & \textbf{$R^2_{adj}$} \\
         \midrule
-        Python & 3D & 0.9661 \\
-        Julia & 3D & 0.9667 \\
+        Python & 1D & \textbf{1.0000} & 1.0000 \\
+        Python & 2D & \textbf{0.9908} & 0.9907 \\
+        Python & 3D & \textbf{0.9661} & 0.9657 \\
+        \midrule
+        Julia & 1D & \textbf{1.0000} & 1.0000 \\
+        Julia & 2D & \textbf{0.9908} & 0.9907 \\
+        Julia & 3D & \textbf{0.9667} & 0.9663 \\
         \bottomrule
     \end{tabular}
 \end{table}
+
+\begin{figure}[H]
+    \centering
+    % --- 1D ---
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../../../graphs/boxplots_mem/boxplot_mem_1d.pdf}
+        \caption{Dimensão 1D}
+    \end{subfigure}
+    \hfill
+    % --- 2D ---
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../../../graphs/boxplots_mem/boxplot_mem_2d.pdf}
+        \caption{Dimensão 2D}
+    \end{subfigure}
+    \hfill
+    % --- 3D ---
+    \begin{subfigure}[b]{0.32\textwidth}
+        \centering
+        \includegraphics[width=\textwidth]{../../../graphs/boxplots_mem/boxplot_mem_3d.pdf}
+        \caption{Dimensão 3D}
+    \end{subfigure}
+    
+    \caption{Comparação do consumo de memória entre Python e Julia. Observa-se que, em todas as dimensões, a alocação de memória do Julia é superior, refletindo o custo do JIT e da gestão de tipos.}
+    \label{fig:memoria}
+\end{figure}
 
 \section{Discussão}
 
@@ -192,6 +304,6 @@ Recomenda-se para trabalhos futuros a exploração de paralelismo (multithreadin
 %%
 %% A bibliografia
 \bibliographystyle{ACM-Reference-Format}
-\bibliography{bibliography}
+\bibliography{sample-base}
 
 \end{document}
