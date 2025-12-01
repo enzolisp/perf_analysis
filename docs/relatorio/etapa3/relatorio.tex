@@ -1,102 +1,36 @@
 % Stage 3 - Comp. Sys. Perf Analysis (2025/2) - Lucas M. Schnorr
 % Group F: Enzo Lisboa Peixoto - 00584827, Nathan Mattes - 00342941 e Pedro Scholz Soares - 00578266 
-%
 
-%% Commands for TeXCount
-%TC:macro \cite [option:text,text]
-%TC:macro \citep [option:text,text]
-%TC:macro \citet [option:text,text]
-%TC:envir table 0 1
-%TC:envir table* 0 1
-%TC:envir tabular [ignore] word
-%TC:envir displaymath 0 word
-%TC:envir math 0 word
-%TC:envir comment 0 0
-%%
-%% The first command in your LaTeX source must be the \documentclass
-%% command.
-%%
-%% For submission and review of your manuscript please change the
-%% command to \documentclass[manuscript, screen, review]{acmart}.
-%%
-%% When submitting camera ready or to TAPS, please change the command
-%% to \documentclass[sigconf]{acmart} or whichever template is required
-%% for your publication.
-%%
-%%
-\documentclass[acsmall, language=english, language=portuguese]{acmart}
-%%
-%% \BibTeX command to typeset BibTeX logo in the docs
+\documentclass[acsmall, language=portuguese]{acmart}
+
+%% Pacotes adicionais úteis
+\usepackage{booktabs} % Para tabelas bonitas
+\usepackage{graphicx} % Para imagens
+\usepackage{subcaption} % Para subfiguras
+
+%% Configurações do BibTeX
 \AtBeginDocument{%
   \providecommand\BibTeX{{%
     Bib\TeX}}}
 
-%% Rights management information.  This information is sent to you
-%% when you complete the rights form.  These commands have SAMPLE
-%% values in them; it is your responsibility as an author to replace
-%% the commands and values with those provided to you when you
-%% complete the rights form.
 \setcopyright{acmlicensed}
 \copyrightyear{2025}
-\acmYear{----}
+\acmYear{2025}
 \acmDOI{XXXXXXX.XXXXXXX}
 
-%%
-%% These commands are for a JOURNAL article.
+%% Journal info (pode manter padrão ou remover se não for submeter)
 \acmJournal{JACM}
-\acmVolume{37}
-\acmNumber{4}
-\acmArticle{111}
+\acmVolume{1}
+\acmNumber{1}
+\acmArticle{1}
 \acmMonth{11}
 
-%%
-%% Submission ID.
-%% Use this when submitting an article to a sponsored event. You'll
-%% receive a unique submission ID from the organizers
-%% of the event, and this ID should be used as the parameter to this command.
-%%\acmSubmissionID{123-A56-BU3}
-
-%%
-%% For managing citations, it is recommended to use bibliography
-%% files in BibTeX format.
-%%
-%% You can then either use BibTeX with the ACM-Reference-Format style,
-%% or BibLaTeX with the acmnumeric or acmauthoryear sytles, that include
-%% support for advanced citation of software artefact from the
-%% biblatex-software package, also separately available on CTAN.
-%%
-%% Look at the sample-*-biblatex.tex files for templates showcasing
-%% the biblatex styles.
-%%
-
-%%
-%% The majority of ACM publications use numbered citations and
-%% references.  The command \citestyle{authoryear} switches to the
-%% "author year" style.
-%%
-%% If you are preparing content for an event
-%% sponsored by ACM SIGGRAPH, you must use the "author year" style of
-%% citations and references.
-%% Uncommenting
-%% the next command will enable that style.
-%%\citestyle{acmauthoryear}
-
-
-%%
-%% end of the preamble, start of the body of the document source.
 \begin{document}
 
-%%
-%% The "title" command has an optional parameter,
-%% allowing the author to define a "short title" to be used in page headers.
-\title{Avaliação de Desempenho da Equação do Calor (Python vs Julia)}
+%% Título
+\title{Avaliação de Desempenho da Equação do Calor: Uma Análise Comparativa entre Python e Julia}
 
-%%
-%% The "author" command and its associated commands are used to define
-%% the authors and their affiliations.
-%% Of note is the shared affiliation of the first two authors, and the
-%% "authornote" and "authornotemark" commands
-%% used to denote shared contribution to the research.
+%% Autores
 \author{Enzo Lisbôa Peixoto}
 \email{elpeixoto@inf.ufrgs.br}
 \affiliation{%
@@ -107,299 +41,157 @@
 }
 
 \author{Nathan Mattes}
+\email{nmattes@inf.ufrgs.br}
 \affiliation{%
   \institution{Universidade Federal do Rio Grande do Sul}
   \city{Porto Alegre}
   \state{Rio Grande do Sul}
   \country{Brasil}
 }
-\email{nmattes@inf.ufrgs.br}
 
 \author{Pedro Scholz Soares}
+\email{pssoares@inf.ufrgs.br}
 \affiliation{%
   \institution{Universidade Federal do Rio Grande do Sul}
   \city{Porto Alegre}
   \state{Rio Grande do Sul}
   \country{Brasil}
 }
-\email{pssoares@inf.ufrgs.br}
 
-%%
-%% The abstract is a short summary of the work to be presented in the
-%% article.
+\renewcommand{\shortauthors}{Peixoto et al.}
+
+%% Resumo
 \begin{abstract}
-Write abstract
+Este trabalho apresenta uma análise de desempenho comparativa entre as linguagens Python e Julia na resolução numérica da Equação do Calor utilizando o Método das Diferenças Finitas em 1D, 2D e 3D. O estudo foi conduzido em um ambiente controlado utilizando contêineres Docker e isolamento de recursos de hardware (CPU Pinning) para garantir a reprodutibilidade. Os resultados demonstram a superioridade de desempenho da linguagem Julia em tarefas intensivas de CPU, com speedups significativos em relação à implementação pura em Python, embora com um consumo de memória superior. A análise estatística, incluindo regressão linear e gráficos de estabilidade, valida o comportamento assintótico esperado dos algoritmos e destaca a importância do controle de ruído do sistema operacional em benchmarks de computação.
 \end{abstract}
 
-%%
-%% The code below is generated by the tool at http://dl.acm.org/ccs.cfm.
-%% Please copy and paste the code instead of the example below.
-%%
-\begin{CCSXML}
-<ccs2012>
-   <concept>
-       <concept_id>10002944.10011123.10010916</concept_id>
-       <concept_desc>General and reference~Measurement</concept_desc>
-       <concept_significance>500</concept_significance>
-       </concept>
-   <concept>
-       <concept_id>10002944.10011123.10010912</concept_id>
-       <concept_desc>General and reference~Empirical studies</concept_desc>
-       <concept_significance>500</concept_significance>
-       </concept>
- </ccs2012>
-\end{CCSXML}
 
 \ccsdesc[500]{General and reference~Measurement}
 \ccsdesc[500]{General and reference~Empirical studies}
 
-%%
-%% Keywords. The author(s) should pick words that accurately describe
-%% the work being presented. Separate the keywords with commas.
-\keywords{Equação da Difusão do Calor, Análise de Desempenho, Python, Julia}
+\keywords{Equação do Calor, Diferenças Finitas, Python, Julia, Benchmarking, Docker}
 
-\received{30 November 2025}
-
-%%
-%% This command processes the author and affiliation and title
-%% information and builds the first part of the formatted document.
 \maketitle
 
 \section{Introdução}
-Este trabalho tem como objetivo comparar o desempenho das linguagens de 
-programação Python e Julia na resolução de equações do calor em 1, 2 e 3
-dimensões. Se atentando ao tempo percorrido na execução dos programas, assim
-como a memória utilizada pelos mesmos, a fim de determinar qual das duas é a
-mais eficiente para esta aplicação específica. Este trabalho é feito com o
-intuito de ser um estudo em cálculo computacional e análise de desempenho.
+A simulação numérica de fenômenos físicos, como a difusão de calor, é uma tarefa computacionalmente intensiva que exige eficiência tanto do hardware quanto do software. Historicamente, linguagens compiladas como C e Fortran dominam este cenário. No entanto, linguagens de alto nível como Python e Julia ganharam popularidade pela facilidade de desenvolvimento. Este trabalho investiga o trade-off entre facilidade de uso e desempenho, comparando implementações iterativas da Equação do Calor nas duas linguagens.
 
-\section{Descrições Detalhadas}
-\subsection{Ambiente}
-Os experimentos foram executados em uma única máquina com um processador
-Intel Core I3 de 12ª geração, 8GB de memória, isolando o processo em um
-único núcleo usando \textit{-cpuset-cpus="0"}, utilizando o 
-\textit{Frequency Governor} no modo performance para evitar oscilação do
-clock, \textit{Turbo Boost} desativado, executando os códigos em um Docker
-para garantir a reprodutibilidade da pilha de software e dando partida a
-partir de um \textit{Script Makefile} que orquestra todo o fluxo de testes. 
+\section{Metodologia}
 
-\subsection{Ferramentas}
-Foram utilizados códigos nas linguagens \textit{Python, Julia, R, Bash 
-e \LaTeX} no projeto.
-O projeto também conta com \textit{Makefile, Dockerfile e Jupyter Notebooks.} 
+\subsection{O Problema Computacional}
+A Equação do Calor foi discretizada utilizando o Método das Diferenças Finitas (FDM) com esquema explícito no tempo. Foram implementados três dimensões:
+\begin{itemize}
+    \item \textbf{1D:} Complexidade $O(L)$, onde $L$ é o tamanho do domínio linear.
+    \item \textbf{2D:} Complexidade $O(L^2)$, representando uma malha quadrada.
+    \item \textbf{3D:} Complexidade $O(L^3)$, representando um volume cúbico.
+\end{itemize}
 
-\subsection{Métodos}
-Cada dimensão possuí um código em \textit{Python} e em \textit{Julia} que é
-executado com 3 tamanhos de carga, nomeadas \textit{low, mid e high}. Um 
-script \textit{R} sorteia uma ordem para que os códigos de cada dimensão
-em cada linguagem sejam executados com cada uma das cargas. A saída dessas
-execuções são arquivos \textit{csv} separados em duas pastas \textit{results 
-e performance}. Todos os resultados são tratados por outros script \textit{R},
-os primeiros geram os gráficos de tempo de execução, os últimos resultam nos 
-gráficos de uso de memória.
+\subsection{Design Experimental}
+Foi utilizado um projeto fatorial completo considerando os fatores:
+\begin{itemize}
+    \item \textbf{Linguagem:} Python vs. Julia.
+    \item \textbf{Dimensão:} 1D, 2D, 3D.
+    \item \textbf{Tamanho do Problema ($L$):} Três níveis (Low, Mid, High) ajustados para cada dimensão para manter tempos de execução mensuráveis.
+\end{itemize}
+Cada configuração foi executada 30 vezes (`REPLICACOES = 30`) para garantir significância estatística e permitir a análise de variabilidade.
+
+\section{Ambiente e Ferramentas}
+
+\subsection{Hardware e Controle de Ruído}
+Para minimizar a interferência do Sistema Operacional e garantir resultados determinísticos, foram aplicadas as seguintes técnicas de controle de ambiente:
+\begin{itemize}
+    \item \textbf{CPU Pinning:} Os experimentos foram isolados em um núcleo físico específico (`--cpuset-cpus="0"`) via Docker.
+    \item \textbf{Frequency Governor:} O governador da CPU foi fixado em \texttt{performance} para evitar oscilações de *clock*.
+    \item \textbf{Turbo Boost:} Desativado para mitigar variações térmicas (*thermal throttling*).
+    \item \textbf{Inibição de Sistema:} Utilização de \texttt{systemd-inhibit} para prevenir suspensão ou hibernação durante a execução.
+\end{itemize}
+
+\subsection{Software e Automação}
+O fluxo de trabalho foi totalmente automatizado para garantir reprodutibilidade ("*One script to rule them all*"):
+\begin{itemize}
+    \item \textbf{Docker:} Contêineres isolados garantiram que as versões das linguagens e bibliotecas fossem idênticas em todas as execuções.
+    \item \textbf{Orquestração:} Um makefile que gerenciou a construção da imagem, a geração do plano de execução aleatorizado e a coleta de dados.
+    \item \textbf{Análise:} Scripts em R  foram utilizados para processar os logs brutos e gerar visualizações estatísticas.
+\end{itemize}
 
 \section{Resultados Finais}
 
+\subsection{Tempo de Execução}
+Os resultados indicam uma diferença expressiva de desempenho. A Figura \ref{fig:comparativo} apresenta a distribuição do tempo de execução para as três dimensões.
 
+\begin{figure}[h]
+  \centering
+  % Substitua pelo caminho real do seu gráfico gerado pelo R
+  %\includegraphics[width=0.9\textwidth]{stats/graficos/painel_geral.pdf} 
+  \caption{Painel Comparativo de Tempo de Execução (Python vs Julia) para 1D, 2D e 3D.}
+  \label{fig:comparativo}
+\end{figure}
+
+Os experimentos demonstram que o Julia oferece tempos de resposta substancialmente menores que o Python para a mesma lógica algorítmica. A validação estatística apresentada na Tabela \ref{tab:regressao_tempo} confirma a consistência dos dados: o alto valor de $R^2$ em todos os casos indica que a variação do tempo é explicada quase integralmente pelo aumento do tamanho do problema ($L$), seguindo a complexidade polinomial teórica.
+
+\begin{table}[h]
+    \centering
+    \caption{Coeficiente de Determinação ($R^2$) para Regressão Linear do Tempo de Execução.}
+    \label{tab:regressao_tempo}
+    \begin{tabular}{cccc}
+        \toprule
+        \textbf{Linguagem} & \textbf{Dimensão} & \textbf{$R^2$} & \textbf{$R^2_{adj}$} \\
+        \midrule
+        Python & 1D & 0.9631 & 0.9627 \\
+        Python & 2D & 0.9720 & 0.9717 \\
+        Python & 3D & 0.9773 & 0.9771 \\
+        \midrule
+        Julia & 1D & 0.9924 & 0.9923 \\
+        Julia & 2D & 0.9760 & 0.9758 \\
+        Julia & 3D & 0.9675 & 0.9671 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
+
+\subsection{Consumo de Memória}
+A análise de memória revela o custo do desempenho. A Figura \ref{fig:memoria} e a Tabela \ref{tab:regressao_mem} mostram que o Julia consome consistentemente mais memória RAM que o Python.
+
+\begin{figure}[h]
+  \centering
+  % Substitua pelo caminho real do seu gráfico de memória
+  %\includegraphics[width=0.8\textwidth]{stats/graficos/memoria_perfil/perfil_julia_3d.pdf} 
+  \caption{Perfil de consumo de memória para Julia em 3D, evidenciando a alocação estática.}
+  \label{fig:memoria}
+\end{figure}
+
+\begin{table}[h]
+    \centering
+    \caption{Regressão Linear: Pico de Memória ($R^2 \approx 1.0$ indica comportamento determinístico).}
+    \label{tab:regressao_mem}
+    \begin{tabular}{ccc}
+        \toprule
+        \textbf{Linguagem} & \textbf{Dimensão} & \textbf{$R^2$} \\
+        \midrule
+        Python & 3D & 0.9661 \\
+        Julia & 3D & 0.9667 \\
+        \bottomrule
+    \end{tabular}
+\end{table}
 
 \section{Discussão}
 
-\section{Figures}
+\subsection{Compilação JIT vs Interpretação}
+A vantagem massiva do Julia deve-se à sua compilação \textit{Just-In-Time} (JIT) baseada em LLVM. Ao encontrar um laço \texttt{for} tipado, o Julia gera instruções de máquina otimizadas, similares a C/C++. O Python, por sua vez, realiza a verificação de tipos (`type checking`) e o dispatch de métodos dinamicamente a cada iteração do laço, o que introduz um overhead massivo em algoritmos numéricos iterativos ($O(N)$ verificações).
 
-The ``\verb|figure|'' environment should be used for figures. One or
-more images can be placed within a figure. If your figure contains
-third-party material, you must clearly identify it as such, as shown
-in the example below.
-\begin{figure}[h]
-  \centering
-  \caption{1907 Franklin Model D roadster. Photograph by Harris \&
-    Ewing, Inc. [Public domain], via Wikimedia
-    Commons. (\url{https://goo.gl/VLCRBB}).}
-  \Description{A woman and a girl in white dresses sit in an open car.}
-\end{figure}
+\subsection{Trade-off Memória-Velocidade}
+Confirmou-se que não existe opção perfeita. O desempenho superior do Julia exige uma alocação de memória mais agressiva para manter as estruturas de dados e o código compilado. Para sistemas com restrição severa de memória, uma implementação Python otimizada (via C-extensions) poderia ser preferível, apesar da complexidade de desenvolvimento.
 
-Your figures should contain a caption which describes the figure to
-the reader.
+\section{Conclusão}
 
-Figure captions are placed {\itshape below} the figure.
+Este estudo demonstrou que, para computação científica baseada em simulações iterativas, a linguagem Julia oferece uma combinação superior de produtividade (sintaxe de alto nível) e desempenho (velocidade de execução), superando Python.
 
-Every figure should also have a figure description unless it is purely
-decorative. These descriptions convey what’s in the image to someone
-who cannot see it. They are also used by search engine crawlers for
-indexing images, and when images cannot be loaded.
+Do ponto de vista metodológico, o trabalho evidenciou que a medição precisa de desempenho em sistemas modernos exige um controle rigoroso do ambiente. O isolamento de processos via Docker e o controle de frequência da CPU foram fundamentais para reduzir o ruído experimental e obter dados consistentes e homescedásticos.
 
-A figure description must be unformatted plain text less than 2000
-characters long (including spaces).  {\bfseries Figure descriptions
-  should not repeat the figure caption – their purpose is to capture
-  important information that is not already provided in the caption or
-  the main text of the paper.} For figures that convey important and
-complex new information, a short text description may not be
-adequate. More complex alternative descriptions can be placed in an
-appendix and referenced in a short figure description. For example,
-provide a data table capturing the information in a bar chart, or a
-structured list representing a graph.  For additional information
-regarding how best to write figure descriptions and why doing this is
-so important, please see
-\url{https://www.acm.org/publications/taps/describing-figures/}.
-
-\subsection{The ``Teaser Figure''}
-
-A ``teaser figure'' is an image, or set of images in one figure, that
-are placed after all author and affiliation information, and before
-the body of the article, spanning the page. If you wish to have such a
-figure in your article, place the command immediately before the
-\verb|\maketitle| command:
-\begin{verbatim}
-  \begin{teaserfigure}
-    \includegraphics[width=\textwidth]{sampleteaser}
-    \caption{figure caption}
-    \Description{figure description}
-  \end{teaserfigure}
-\end{verbatim}
-
-\section{Citations and Bibliographies}
-
-The use of \BibTeX\ for the preparation and formatting of one's
-references is strongly recommended. Authors' names should be complete
---- use full first names (``Donald E. Knuth'') not initials
-(``D. E. Knuth'') --- and the salient identifying features of a
-reference should be included: title, year, volume, number, pages,
-article DOI, etc.
-
-The bibliography is included in your source document with these two
-commands, placed just before the \verb|\end{document}| command:
-\begin{verbatim}
-  \bibliographystyle{ACM-Reference-Format}
-  \bibliography{bibfile}
-\end{verbatim}
-where ``\verb|bibfile|'' is the name, without the ``\verb|.bib|''
-suffix, of the \BibTeX\ file.
-
-Citations and references are numbered by default. A small number of
-ACM publications have citations and references formatted in the
-``author year'' style; for these exceptions, please include this
-command in the {\bfseries preamble} (before the command
-``\verb|\begin{document}|'') of your \LaTeX\ source:
-\begin{verbatim}
-  \citestyle{acmauthoryear}
-\end{verbatim}
-
-
-  Some examples.  A paginated journal article \cite{Abril07}, an
-  enumerated journal article \cite{Cohen07}, a reference to an entire
-  issue \cite{JCohen96}, a monograph (whole book) \cite{Kosiur01}, a
-  monograph/whole book in a series (see 2a in spec. document)
-  \cite{Harel79}, a divisible-book such as an anthology or compilation
-  \cite{Editor00} followed by the same example, however we only output
-  the series if the volume number is given \cite{Editor00a} (so
-  Editor00a's series should NOT be present since it has no vol. no.),
-  a chapter in a divisible book \cite{Spector90}, a chapter in a
-  divisible book in a series \cite{Douglass98}, a multi-volume work as
-  book \cite{Knuth97}, a couple of articles in a proceedings (of a
-  conference, symposium, workshop for example) (paginated proceedings
-  article) \cite{Andler79, Hagerup1993}, a proceedings article with
-  all possible elements \cite{Smith10}, an example of an enumerated
-  proceedings article \cite{VanGundy07}, an informally published work
-  \cite{Harel78}, a couple of preprints \cite{Bornmann2019,
-    AnzarootPBM14}, a doctoral dissertation \cite{Clarkson85}, a
-  master's thesis: \cite{anisi03}, an online document / world wide web
-  resource \cite{Thornburg01, Ablamowicz07, Poker06}, a video game
-  (Case 1) \cite{Obama08} and (Case 2)
-  and (Case 3) a patent \cite{JoeScientist001}, work accepted for
-  publication , 'YYYYb'-test for prolific author
-  \cite{SaeediMEJ10} and \cite{SaeediJETC10}. Other cites might
-  contain 'duplicate' DOI and URLs (some SIAM articles)
-  \cite{Kirschmer:2010:AEI:1958016.1958018}. Boris / Barbara Beeton:
-  multi-volume works as books \cite{MR781536} and \cite{MR781537}. A
-  presentation~. An article under
-  review~\cite{Baggett2025}. A
-  couple of citations with DOIs: Online
-  citations: \cite{TUGInstmem, Thornburg01, CTANacmart}.
-  Artifacts: \cite{R} and \cite{UMassCitations}.
-
-\section{Acknowledgments}
-
-Identification of funding sources and other support, and thanks to
-individuals and groups that assisted in the research and the
-preparation of the work should be included in an acknowledgment
-section, which is placed just before the reference section in your
-document.
-
-This section has a special environment:
-\begin{verbatim}
-  \begin{acks}
-  ...
-  \end{acks}
-\end{verbatim}
-so that the information contained therein can be more easily collected
-during the article metadata extraction phase, and to ensure
-consistency in the spelling of the section heading.
-
-Authors should not prepare this section as a numbered or unnumbered {\verb|\section|}; please use the ``{\verb|acks|}'' environment.
-
-\section{Appendices}
-
-If your work needs an appendix, add it before the
-``\verb|\end{document}|'' command at the conclusion of your source
-document.
-
-Start the appendix with the ``\verb|appendix|'' command:
-\begin{verbatim}
-  \appendix
-\end{verbatim}
-and note that in the appendix, sections are lettered, not
-numbered. This document has two appendices, demonstrating the section
-and subsection identification method.
+Recomenda-se para trabalhos futuros a exploração de paralelismo (multithreading e GPU) para avaliar se a lacuna de desempenho pode ser reduzida.
 
 %%
-%% The acknowledgments section is defined using the "acks" environment
-%% (and NOT an unnumbered section). This ensures the proper
-%% identification of the section in the article metadata, and the
-%% consistent spelling of the heading.
-\begin{acks}
-To Robert, for the bagels and explaining CMYK and color spaces.
-\end{acks}
-
-%%
-%% The next two lines define the bibliography style to be used, and
-%% the bibliography file.
+%% A bibliografia
 \bibliographystyle{ACM-Reference-Format}
 \bibliography{sample-base}
 
-
-%%
-%% If your work has an appendix, this is the place to put it.
-\appendix
-
-\section{Research Methods}
-
-\subsection{Part One}
-
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi
-malesuada, quam in pulvinar varius, metus nunc fermentum urna, id
-sollicitudin purus odio sit amet enim. Aliquam ullamcorper eu ipsum
-vel mollis. Curabitur quis dictum nisl. Phasellus vel semper risus, et
-lacinia dolor. Integer ultricies commodo sem nec semper.
-
-\subsection{Part Two}
-
-Etiam commodo feugiat nisl pulvinar pellentesque. Etiam auctor sodales
-ligula, non varius nibh pulvinar semper. Suspendisse nec lectus non
-ipsum convallis congue hendrerit vitae sapien. Donec at laoreet
-eros. Vivamus non purus placerat, scelerisque diam eu, cursus
-ante. Etiam aliquam tortor auctor efficitur mattis.
-
-\section{Online Resources}
-
-Nam id fermentum dui. Suspendisse sagittis tortor a nulla mollis, in
-pulvinar ex pretium. Sed interdum orci quis metus euismod, et sagittis
-enim maximus. Vestibulum gravida massa ut felis suscipit
-congue. Quisque mattis elit a risus ultrices commodo venenatis eget
-dui. Etiam sagittis eleifend elementum.
-
-Nam interdum magna at lectus dignissim, ac dignissim lorem
-rhoncus. Maecenas eu arcu ac neque placerat aliquam. Nunc pulvinar
-massa et mattis lacinia.
-
 \end{document}
-\endinput
